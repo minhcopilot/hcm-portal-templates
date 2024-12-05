@@ -1,0 +1,183 @@
+
+<div class="category-news-container">
+    <div>
+        <div class="category-menu">
+            <!-- Menu chính -->
+
+            <!-- Thanh công cụ -->
+            <div
+                    class="tool-container d-flex justify-content-between align-items-center gap-3 flex-wrap my-4"
+            >
+                <!-- Phần bên trái -->
+                <div class="d-flex align-items-center gap-3">
+                    <select class="custom-select" id="yearSelect">
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+                    <select class="custom-select" id="monthSelect">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <button class="btn text-white px-4 btn-view">Xem</button>
+                </div>
+
+                <!-- Phần search bên phải -->
+                <div class="search-container d-flex align-items-center gap-2">
+                    <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Nhập nội dung tìm kiếm"
+                    />
+                    <button class="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="slideshow-news-container position-relative">
+            <!-- Thêm nút điều hướng tùy chỉnh -->
+            <button class="custom-prev-btn">
+
+                <img src="/documents/39403/310714/left-arrow.svg"
+                     alt="Previous"
+                />
+            </button>
+            <button class="custom-next-btn">
+                <img
+                        src="/documents/39403/310714/right-arrow.svg"
+                        alt="Next"
+                />
+            </button>
+
+            <!-- Định nghĩa mapping cho icons -->
+            <#assign categoryIcons = {
+            "KINH_TE": "/documents/39403/331149/ic_kt.png/618bcf29-7fbf-f158-f303-8a77ac7ade92?t=1732155565667",
+            "THONG_BAO": "/documents/39403/331149/ic_tb.png/4e4c2773-3b95-a073-7e4d-b0faba997d51?t=1732155565926",
+            "HA_TANG": "/documents/39403/331149/ic_ht.png/efcf15fa-7c8d-0461-3095-831796a669d8?t=1732155565437",
+            "VAN_HOA": "/documents/39403/331149/ic_vh.png/05543994-41a5-e16e-89b9-cee9a415e8f1?t=1732155566178",
+            "KHOA_GIAO":"/documents/39403/331149/khoa+gi%C3%A1o.png/100f8139-6dbd-6b6a-b441-0e51259b0807?t=1732155566411",
+            "DOI_NGOAI": "/documents/39403/331149/%C4%91%E1%BB%91i+ngo%E1%BA%A1i.png/e9278b95-d550-abbb-7a3c-bc0e6c7145bf?t=1732155565214",
+            "CHINH_TRI": "/documents/39403/331149/CH%C3%8DNH+TR%E1%BB%8A.png/aff1039f-cafc-1121-e49f-210645a54730?t=1732155564962",
+            "BUSINESS": "/documents/39403/331149/BUSINESS.png/8e06bae4-1c7e-aec4-c6b0-291439f12207?t=1732155564731",
+            "AN_NINH":"/documents/39403/331149/AN+NINH+TRAT+TU.png/adb2dc88-bb80-b5fe-c14a-c9f3b3b1e15e?t=1732155564481"
+            } />
+
+            <!-- Định nghĩa mảng các category -->
+            <#assign categories = ["KINH_TE", "THONG_BAO", "HA_TANG", "VAN_HOA","KHOA_GIAO","DOI_NGOAI","CHINH_TRI","BUSINESS","AN_NINH"] />
+            <#assign dateFormatDay = "dd" />
+            <#assign monthFormatDay = "MM" />
+            <#assign yearFormatDay = "yyyy" />
+            <#assign dateFormatTime = "HH:mm" />
+            <#assign indexLocal = 0/>
+            <swiper-container
+                    class="newsSwiper position-relative"
+                    pagination="true"
+                    pagination-clickable="true"
+                    space-between="20"
+                    slides-per-view="4"
+                    loop="true"
+                    initial-slide="0"
+                    navigation="false"
+                    pagination-dynamic-bullets="true"
+                    pagination-dynamic-main-bullets="3"
+            >
+                <#if entries?has_content>
+
+                    <#list entries as curEntry>
+                        <#assign
+                        renderer = curEntry.getAssetRenderer()
+                        className = renderer.getClassName()
+
+                        iconUrl = categoryIcons["THONG_BAO"]!""
+                        />
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 10>
+                            <#assign
+                            title = curEntry.getTitle(locale)
+                            article = renderer.getArticle()
+                            description = article.getDescription(locale)
+                            ddmTemplateKey = article.getDDMTemplateKey()
+                            createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                            createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                            createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                            createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                            curEntry = curEntry
+                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                            indexLocal = indexLocal + 1 />
+                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                            <#else>
+                                <#assign smallImageUrl = "" >
+                            </#if>
+                            <swiper-slide
+                            ><div class="card position-relative mb-5">
+                                    <!-- Phần hình ảnh -->
+                                    <div class="card-img-wrapper">
+                                        <img src="${smallImageUrl}"
+                                             class="card-img-top"
+                                             alt="Tin tức" />
+                                    </div>
+                                    <div class="bage-slide position-absolute top-0 start-0">
+                                        <img
+                                                src="${iconUrl}"
+                                                alt=""
+                                        />
+                                    </div>
+
+                                    <!-- Phần nội dung -->
+                                    <div class="card-content-container">
+                                        <div class="card-body py-4 px-3">
+                                            <h5 class="card-title-news text-truncate-3">
+                                                ${title}
+                                            </h5>
+
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <span class="me-3 text-muted">${createTime} | ${createDay}/${createMonth}/${createYear}</span>
+                                                <div
+                                                        class="d-flex align-items-center gap-1 view-count-container"
+                                                >
+                                                    <i class="fa fa-eye"></i>
+                                                    <span class="views-tindang">1,141</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Nút xem chi tiết -->
+                                        <div class="border-0 pb-3 ms-3">
+                                            <a href="${viewURL}" >
+                                                <button class="btn btn-detail rounded">
+                                                    Xem chi tiết
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div></swiper-slide
+                            >
+
+                        </#if>
+                    </#list>
+                </#if>
+
+            </swiper-container>
+            <div class="pagination-container position-absolute">
+                <a href="/tin-tuc-2">
+                    <button class="btn text-white text-nowrap btn-orange">
+                        Xem thêm
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

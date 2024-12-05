@@ -748,20 +748,6 @@
                 });
 
                 // Thêm xử lý cho menu chính và menu phụ
-                const menuMapping = {
-                    "TẤT CẢ": null, // Hiển thị tất cả
-                    "CHÍNH TRỊ": [0], // Slide 1-4
-                    "KINH TẾ": [1], // Slide 5-8
-                    "VĂN HÓA - XÃ HỘI": [2], // Slide 9-10
-                    "ĐỐI NGOẠI": [3], // Slide 11-12
-                    "THÔNG TIN CHỈ ĐẠO ĐIỀU HÀNH": [1],
-                    "KHOA GIÁO": [0],
-                    "HẠ TẦNG - ĐÔ THỊ": [2],
-                    "THÔNG TIN DOANH NGHIỆP": [3],
-                    "AN NINH - TRẬT TỰ": [0],
-                };
-
-                // Xử lý click menu
                 $(".nav-pills .nav-link").off('click').on("click", function (e) {
                     e.preventDefault();
 
@@ -774,8 +760,7 @@
                     $(".no-results-message").remove();
                     $(".btn-orange").show();
 
-                    const category = $(this).text().trim();
-                    const slidesToShow = menuMapping[category];
+                    const selectedCategory = $(this).text().trim();
 
                     // Reset tất cả slide về trạng thái ẩn
                     if (swiperNewsWrapper && swiperNewsWrapper.slides) {
@@ -783,19 +768,23 @@
                             slide.style.display = "none";
                         });
 
-                        let visibleSlides = 0; // Đếm số slide được hiển thị
+                        let visibleSlides = 0;
 
-                        if (slidesToShow === null) {
-                            // Nếu chọn "TẤT CẢ" - hiển thị tất cả slide
+                        if (selectedCategory === "TẤT CẢ") {
+                            // Hiển thị tất cả slides
                             swiperNewsWrapper.slides.forEach((slide) => {
                                 slide.style.display = "block";
                                 visibleSlides++;
                             });
                         } else {
-                            // Hiển thị các slide được chọn
-                            slidesToShow.forEach((slideIndex) => {
-                                if (swiperNewsWrapper.slides[slideIndex]) {
-                                    swiperNewsWrapper.slides[slideIndex].style.display = "block";
+                            // Lọc slides theo category
+                            swiperNewsWrapper.slides.forEach((slide) => {
+                                const slideCategory = $(slide).find(".bage-slide img").attr("src");
+                                // Map category name to icon URL
+                                const categoryIconUrl = getCategoryIconUrl(selectedCategory);
+                                
+                                if (slideCategory === categoryIconUrl) {
+                                    slide.style.display = "block";
                                     visibleSlides++;
                                 }
                             });
@@ -809,11 +798,43 @@
                             navigationButtons.show();
                         }
 
+                        // Hiển thị thông báo nếu không có kết quả
+                        if (visibleSlides === 0) {
+                            if (!$(".no-results-message").length) {
+                                const noResultsMessage = 
+                                    '<div class="no-results-message text-center py-5">' +
+                                    '<div class="mb-3">' +
+                                    '<i class="bi bi-search" style="font-size: 3rem; color: #ccc;"></i>' +
+                                    '</div>' +
+                                    '<h5 class="text-muted">Không tìm thấy bài viết nào</h5>' +
+                                    '<p class="text-muted">Không có bài viết nào thuộc danh mục ' + selectedCategory + '</p>' +
+                                    '</div>';
+                                $(".newsSwiper").after(noResultsMessage);
+                                $(".btn-orange").hide();
+                            }
+                        }
+
                         // Update swiper
                         swiperNewsWrapper.update();
                         swiperNewsWrapper.slideTo(0);
                     }
                 });
+
+                // Thêm hàm helper để map category name với icon URL
+                function getCategoryIconUrl(categoryName) {
+                    const categoryIconMap = {
+                        "CHÍNH TRỊ": "/documents/39403/331149/CH%C3%8DNH+TR%E1%BB%8A.png/aff1039f-cafc-1121-e49f-210645a54730?t=1732155564962",
+                        "KINH TẾ": "/documents/39403/331149/ic_kt.png/618bcf29-7fbf-f158-f303-8a77ac7ade92?t=1732155565667",
+                        "VĂN HÓA - XÃ HỘI": "/documents/39403/331149/ic_vh.png/05543994-41a5-e16e-89b9-cee9a415e8f1?t=1732155566178",
+                        "ĐỐI NGOẠI": "/documents/39403/331149/%C4%91%E1%BB%91i+ngo%E1%BA%A1i.png/e9278b95-d550-abbb-7a3c-bc0e6c7145bf?t=1732155565214",
+                        "KHOA GIÁO": "/documents/39403/331149/khoa+gi%C3%A1o.png/100f8139-6dbd-6b6a-b441-0e51259b0807?t=1732155566411",
+                        "HẠ TẦNG - ĐÔ THỊ": "/documents/39403/331149/ic_ht.png/efcf15fa-7c8d-0461-3095-831796a669d8?t=1732155565437",
+                        "AN NINH - TRẬT TỰ": "/documents/39403/331149/AN+NINH+TRAT+TU.png/adb2dc88-bb80-b5fe-c14a-c9f3b3b1e15e?t=1732155564481",
+                        "THÔNG TIN DOANH NGHIỆP": "/documents/39403/331149/BUSINESS.png/8e06bae4-1c7e-aec4-c6b0-291439f12207?t=1732155564731"
+                    };
+                    
+                    return categoryIconMap[categoryName] || null;
+                }
 
                 // Thêm xử lý cho nút Xem (lọc theo tháng/năm)
                 $(".tool-container .btn-view").off('click').on("click", function () {
