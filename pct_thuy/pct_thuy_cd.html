@@ -1,0 +1,370 @@
+<style>
+      * {
+        font-family: Roboto;
+      }
+
+      .header-pct-cd {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .header-images-pct-cd {
+        position: relative;
+        width: 66px;
+        height: 60px;
+        margin-right: 10px;
+      }
+
+      .header-images-pct-cd img:first-child {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .header-images-pct-cd img:last-child {
+        position: absolute;
+        width: 60%;
+        height: 60%;
+        right: 7px;
+        bottom: 11px;
+      }
+
+      .header-title-pct-cd {
+        font-size: 28px;
+        font-weight: 700;
+        color: #0d4c92;
+        margin: 0;
+      }
+
+      .news-list-pct-cd {
+        list-style: none;
+        margin-left: 3%;
+      }
+
+      .news-item-pct-cd {
+        padding: 15px 0;
+      }
+
+      .news-link-pct-cd {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+      }
+      .news-link-pct-cd:hover .news-title-pct-cd {
+        color: #0d4c92;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .news-link-pct-cd:hover img {
+        content: url("/documents/1064288/1076388/dot_active.png/99bf191c-d663-bd6d-bd10-20cd83094062?t=1732774716897");
+      }
+
+      .news-title-pct-cd {
+        color: #2E2E2E;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.5;
+        margin-left: 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .view-more-pct-cd {
+        margin-left: auto;
+      }
+
+      .view-more-pct-cd a {
+        color: #db7100;
+        text-decoration: none;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .container-pct-cd {
+        position: relative;
+        margin: 50px 0 50px 10%;
+      }
+      .floating-image-pct-cd-1,
+      .floating-image-pct-cd-2,
+      .floating-image-pct-cd-3 {
+        position: absolute;
+      }
+      .floating-image-pct-cd-1 {
+        z-index: 1;
+        top: 24%;
+        right: 7%;
+      }
+      .floating-image-pct-cd-2 {
+        z-index: 2;
+        bottom: -50%;
+        right: 0;
+      }
+      .floating-image-pct-cd-3 {
+        z-index: 3;
+        top: 12%;
+        right: 0;
+      }
+      .wrapper-pct-cd-content {
+        width: 75%;
+      }
+
+      .dot-pct-cd {
+        width: 17px;
+        height: 16px;
+        object-fit: contain;
+      }
+            /* Responsive styles */
+      @media screen and (max-width: 426px) {
+        .news-list-pct-cd{
+          margin-left: 5%;
+        }
+        .wrapper-pct-cd-content {
+          width: 100%;
+          padding: 0 20px;
+        }
+        .header-title-pct-cd {
+          font-size: 20px;
+        }
+        .news-title-pct-cd {
+          font-size: 16px;
+        }
+        .floating-image-pct-cd-1 {
+          width: 60px;
+          right: 2%;
+          display: none;
+        }
+        .floating-image-pct-cd-2 {
+          width: 165px;
+          bottom: -41%;
+          z-index: -2;
+        }
+        .floating-image-pct-cd-3 {
+          width: 70px;
+          display: none;
+        }
+        .container-pct-cd {
+          margin-left: 0;
+        }
+      }
+
+      @media screen and (min-width: 426px) and (max-width: 768px) {
+        .news-list-pct-cd{
+          margin-left: 5%;
+        }
+        .wrapper-pct-cd-content {
+          width: 90%;
+        }
+        .floating-image-pct-cd-1 {
+          width: 60px;
+          right: 2%;
+          display: none;
+        }
+        .floating-image-pct-cd-2 {
+          width: 165px;
+          bottom: -41%;
+          z-index: -2;
+        }
+        .floating-image-pct-cd-3 {
+          width: 70px;
+          display: none;
+        }
+        .container-pct-cd {
+          margin-left: 5%;
+        }
+      }
+
+      @media screen and (min-width: 769px) and (max-width: 1024px) {
+        .wrapper-pct-cd-content {
+          width: 85%;
+        }
+        .floating-image-pct-cd-1 {
+          width: 100px;
+          right: 5%;
+          top: 73%;
+          z-index: -2;
+        }
+        .floating-image-pct-cd-2 {
+          width: 32%;
+          z-index: -2;
+        }
+        .floating-image-pct-cd-3 {
+          width: 100px;
+          top: 68%;
+        }
+      }
+
+      @media screen and (min-width: 1025px) and (max-width: 1324px) {
+         .wrapper-pct-cd-content {
+          width: 80%;
+        }
+        .floating-image-pct-cd-1 {
+          width: 120px;
+          right: 6%;
+          top: 60%;
+        }
+        .floating-image-pct-cd-2 {
+          width: 236px;
+        }
+        .floating-image-pct-cd-3 {
+          width: 130px;
+          top: 50%;
+        }
+        .container-pct-cd{
+          margin: 50px 0 50px 6%;
+        }
+      }
+
+      @media screen and (min-width: 1325px) and (max-width: 1440px) {
+        .floating-image-pct-cd-1 {
+          width: 210px;
+          top: 28%;
+          right: 7%;
+        }
+        .floating-image-pct-cd-2 {
+          width: 346px;
+          top: 51%;
+        }
+        .floating-image-pct-cd-3 {
+          width: 194px;
+          top: 10%;
+        }
+        .container-pct-cd{
+          margin: 50px 0 50px 7.5%;
+        }
+      }
+
+      @media screen and (min-width: 1441px) and (max-width: 1824px) {
+       .floating-image-pct-cd-1 {
+          width: 17%;
+
+        }
+        .floating-image-pct-cd-2 {
+          width: 29%;
+          top: 45%;
+        }
+        .floating-image-pct-cd-3 {
+          width: 17%;
+        }
+        .container-pct-cd{
+          margin: 50px 0 50px 8.5%;
+        }
+      }
+
+      @media screen and (min-width: 1825px) and (max-width: 2304px) {
+        .floating-image-pct-cd-1 {
+          width: 16%;
+          top: 21%;
+          right: 7%;
+        }
+        .floating-image-pct-cd-2 {
+          width: 26%;
+          bottom: -89%;
+        }
+        .floating-image-pct-cd-3 {
+          width: 13%;
+        }
+        .container-pct-cd{
+          margin: 50px 0 50px 11.5%;
+        }
+      }
+
+      @media screen and (min-width: 2305px) {
+        .floating-image-pct-cd-1 {
+          width: 15%;
+          top: 21%;
+          right: 4%;
+        }
+        .floating-image-pct-cd-2 {
+          width: 24%;
+          bottom: -127%;
+        }
+        .floating-image-pct-cd-3 {
+          width: 13%;
+        }
+        .wrapper-pct-cd-content {
+          width: 70%;
+        }
+        .container-pct-cd{
+          margin: 50px 0 50px 14%;
+        }
+      }
+    </style>
+  </head>
+  
+    <div class="container-pct-cd">
+      <img
+        class="floating-image-pct-cd-1"
+        src="/documents/1064288/1076388/ic_right_1.png/d50aec90-b4aa-99e3-ee1a-20f06fda1c80?t=1732774715577"
+        alt="Floating image 1"
+      />
+      <img
+        class="floating-image-pct-cd-2"
+        src="/documents/1064288/1076388/ic_right_2.png/f552c31c-c880-c487-ee94-305e0dcd53a1?t=1732774715832"
+        alt="Floating image 2"
+      />
+      <img
+        class="floating-image-pct-cd-3"
+        src="/documents/1064288/1076388/ic_right_3.png/922230a9-5ec3-da79-37e5-b22bb6fb76b4?t=1732774716075"
+        alt="Floating image 3"
+      />
+      <div class="wrapper-pct-cd-content">
+        <div class="header-pct-cd">
+          <div class="header-images-pct-cd">
+            <img src="/documents/1064288/1076388/ic_hoat_dong.png/13a6cdec-3d22-06f6-0f2f-87974990911b?t=1732774717171" alt="Chỉ đạo" />
+            <img src="/documents/1064288/1076388/ic_write.png/f7327449-b983-02a7-6e89-103dfcc04a54?t=1732774717410" alt="Chỉ đạo" />
+          </div>
+          <h1 class="header-title-pct-cd">CHỈ ĐẠO</h1>
+          <div class="view-more-pct-cd">
+            <a href="/vi/web/pct-tran-thi-dieu-thuy/chi-dao">Xem thêm <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <ul class="news-list-pct-cd">
+          <#assign indexLocal = 0/>
+        <#if entries?has_content>
+            <#list entries as curEntry>
+                <#assign
+                renderer = curEntry.getAssetRenderer()
+                className = renderer.getClassName() />
+                <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 5>
+                    <#assign
+                    title = curEntry.getTitle(locale)
+                    article = renderer.getArticle()
+                    description = article.getDescription(locale)
+                    ddmTemplateKey = article.getDDMTemplateKey()
+                    curEntry = curEntry
+                    viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                    indexLocal = indexLocal + 1 />
+
+                    <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                        <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                    <#else>
+                        <#assign smallImageUrl = "" >
+                    </#if>
+
+                    <li class="news-item-pct-cd">
+            <a href="${viewURL}" class="news-link-pct-cd">
+              <img class="dot-pct-cd" src="/documents/1064288/1076388/dot.png/36ce89ac-a018-c1b5-c4ba-010c713fba83?t=1732774716611" alt="dot" />
+              <div class="news-title-pct-cd">
+                ${title}
+              </div>
+            </a>
+          </li>
+                </#if>
+            </#list>
+        </#if>
+          
+          
+        </ul>
+      </div>
+    </div>

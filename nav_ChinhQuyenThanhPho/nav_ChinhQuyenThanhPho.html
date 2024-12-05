@@ -1,0 +1,874 @@
+<style>
+  .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 250px;
+      padding: 10px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #f5f5f5;
+      color: #333;
+      /*border-radius: 5px;*/
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.3s;
+  }
+  .button:hover {
+      background-color: #d66929;
+      color: #fff;
+      /*transform: translateY(-5px);*/
+  }
+  .button.active {
+      background-color: #ffedcc;
+      color: #DB7100;
+  }
+  .content-gt-chinhquyen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: url('/documents/39403/318145/bg-gt-chinhquyen.png') no-repeat center;
+  }
+  body {
+      font-family: "Roboto";
+  }
+  .container-1440px {
+      max-width: 90%;
+      margin: 0 auto;
+  }
+  .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 250px;
+      padding: 10px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #f5f5f5;
+      color: #333;
+      /*border-radius: 5px;*/
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.3s;
+  }
+  .button:hover {
+      background-color: #d66929;
+      color: #fff;
+      /*transform: translateY(-5px);*/
+  }
+  .button.active {
+      background-color: #ffedcc;
+      color: #DB7100;
+  }
+  .content-gt-chinhquyen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: url("/documents/39403/318145/bg-gt-chinhquyen.png") no-repeat
+      center;
+  }
+  .tieude-tab-thuongtruc > p {
+      text-align: center !important;
+      font-family: Roboto !important;
+      font-size: 32px !important;
+      font-weight: 700 !important;
+      line-height: 41.6px !important;
+      text-align: center !important;
+      text-underline-position: from-font !important;
+      text-decoration-skip-ink: none !important;
+      text-transform: uppercase !important;
+      margin-bottom: 40px !important;
+  }
+  .card-chutich {
+  }
+  .ten-chutich {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #c95202;
+      padding: 10px 15px;
+  }
+  .ten-chutich > span {
+      color: #fff;
+      font-family: Roboto;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 28.6px;
+      letter-spacing: 0.0015em;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      text-transform: uppercase;
+  }
+  .ten-phochutich {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: #0078a7;
+      padding: 10px 15px;
+  }
+  .ten-phochutich span {
+      text-transform: uppercase;
+  }
+  .card-pct-duongnhiem .ten-phochutich > span {
+      color: #fff;
+      font-family: Roboto;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 28.6px;
+      letter-spacing: 0.0015em;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      text-transform: uppercase;
+  }
+  .card-canbo {
+      width: 384px;
+      display: flex;
+      flex-direction: column;
+  }
+  .card-chutich-thongtin {
+      border: 1px solid #c95202;
+      width: 100%;
+      background: #fff2e9;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 40px;
+  }
+  .card-chutich-thongtin > span,
+  .card-phochutich-thongtin > span {
+      padding: 4px 8px;
+      width: 100%;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 18.2px;
+      letter-spacing: 0.0015em;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: #2e2e2e;
+  }
+  .card-phochutich {
+      position: relative;
+  }
+  .mb-card-duongnhiem {
+      margin-bottom: 200px;
+  }
+  .card-phochutich:hover .card-phochutich-thongtin {
+      box-shadow: rgba(0, 0, 0, 0.5) -7px 7px 20px -5px;
+  }
+  .card-phochutich:hover .ten-phochutich {
+      box-shadow: rgba(0, 0, 0, 0.5) -7px 7px 20px -5px;
+  }
+  .card-chutich:hover .card-chutich-thongtin {
+      box-shadow: rgba(0, 0, 0, 0.5) -7px 7px 20px -5px;
+  }
+  .card-chutich:hover .ten-chutich {
+      box-shadow: rgba(0, 0, 0, 0.5) -7px 7px 20px -5px;
+  }
+  .card-phochutich-thongtin {
+      border: 1px solid #0078a7;
+      width: 100%;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+  }
+  .phochutich-right {
+      padding-left: 130px;
+  }
+  .phochutich-left {
+      padding-right: 130px;
+  }
+  .phochutich-right .card-phochutich::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -20px;
+      transform: translate(-100%, -50%);
+      width: 110px;
+      height: 2px;
+      background-color: #777777;
+  }
+  .phochutich-left .card-phochutich::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translate(100%, -50%);
+      width: 110px;
+      height: 2px;
+      background-color: #777777;
+  }
+  .line-center {
+      position: relative;
+  }
+  .line-center::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(-50%, -50%);
+      width: 1px;
+      height: 90%;
+      background-color: #777777;
+  }
+  body {
+      font-family: "Roboto";
+  }
+  .container-1440px {
+      max-width: 90%;
+      margin: 0 auto;
+  }
+  .introduce_donvi_bg {
+      background-image: url(/documents/39403/318145/bg-gt-chinhquyen.png);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+  }
+  .introduce_donvi {
+      height: 100%;
+  }
+  .introduce_donvi .introduce_donvi_title {
+      color: #2e2e2e;
+      font-size: 32px;
+      font-weight: 700;
+  }
+  .table-introduce .tr-introduce:hover {
+      background-color: transparent;
+      color: inherit;
+  }
+  .table-title-introduce {
+      background-color: #bce6fe;
+      color: #0d4c92;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+  }
+  .table-introduce td {
+      vertical-align: middle;
+  }
+  .table-introduce .tr-introduce {
+      height: 120px;
+      font-size: 14px;
+      font-weight: 400;
+  }
+  body {
+      font-family: "Roboto";
+  }
+  .container-1440px {
+      max-width: 90%;
+      margin: 0 auto;
+  }
+  .introduce_donvi_bg {
+      background-image: url(/documents/39403/318145/bg-gt-chinhquyen.png);
+      background-size: cover;
+      background-position: center;
+      min-height: 280px;
+      background-repeat: no-repeat;
+  }
+  .introduce_donvi {
+      height: 100%;
+  }
+  .introduce_donvi .introduce_donvi_title {
+      color: #2e2e2e;
+      font-size: 32px;
+      font-weight: 700;
+  }
+  .table-introduce .tr-introduce:hover {
+      background-color: transparent;
+      color: inherit;
+  }
+  .table-title-introduce {
+      background-color: #bce6fe;
+      color: #0d4c92;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+  }
+  .table-introduce td {
+      vertical-align: middle;
+  }
+  .table-introduce .tr-introduce {
+      height: 120px;
+      font-size: 14px;
+      font-weight: 400;
+  }
+  body {
+      font-family: "Roboto";
+  }
+  .container-1440px {
+      max-width: 90%;
+      margin: 0 auto;
+  }
+  .introduce_donvi_bg {
+      background-image: url(/documents/39403/318145/bg-gt-chinhquyen.png);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+  }
+  .introduce_donvi {
+      height: 100%;
+  }
+  .introduce_donvi .introduce_donvi_title {
+      color: #2e2e2e;
+      font-size: 32px;
+      font-weight: 700;
+  }
+  .table-introduce .tr-introduce:hover {
+      background-color: transparent;
+      color: inherit;
+  }
+  .table-title-introduce > tr > th {
+      background-color: #bce6fe;
+      color: #0d4c92;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+  }
+  .table-introduce td {
+      vertical-align: middle;
+  }
+  .table-introduce .tr-introduce {
+      height: 120px;
+      font-size: 14px;
+      font-weight: 400;
+  }
+  .ct-btn-xemthem {
+      background: #db7100;
+      color: #ffffff;
+      font-family: Roboto;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 23.4px;
+      border-radius: 8px;
+      border: 1px solid #ffffff;
+      padding: 5px 10px;
+  }
+  .card-text {
+      height: 138px;
+      align-content: center;
+  }
+  .card-text span {
+      display: block;
+      padding: 4px 8px;
+      width: 100%;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 18.2px;
+      letter-spacing: 0.0015em;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: #2e2e2e;
+  }
+  .content-gt-chinhquyen-quacacthoiky {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: url("/documents/39403/318145/bg-gt-chinhquyen.png") no-repeat
+      center;
+  }
+  .tieude-tab-thoiky {
+      text-align: center !important;
+      margin-bottom: 40px !important;
+  }
+  .tieude-tab-thoiky > span {
+      text-align: center !important;
+      font-family: Roboto !important;
+      font-size: 32px !important;
+      font-weight: 700 !important;
+      line-height: 41.6px !important;
+      text-underline-position: from-font !important;
+      text-decoration-skip-ink: none !important;
+      text-transform: uppercase !important;
+      margin-bottom: 40px !important;
+      color: #000000 !important;
+  }
+  .card-chutich {
+  }
+  .ten-chutich {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #c95202;
+      padding: 10px 15px;
+  }
+  .ten-chutich > span {
+      color: #fff;
+      font-family: Roboto;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 28.6px;
+      letter-spacing: 0.0015em;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      text-transform: uppercase;
+  }
+  .ten-phochutich {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: #0078a7;
+      padding: 10px 15px;
+  }
+  .ten-phochutich > span {
+      color: #fff;
+      font-family: Roboto;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 28.6px;
+      letter-spacing: 0.0015em;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+  }
+  .card-canbo {
+      width: 469px;
+      display: flex;
+      flex-direction: column;
+  }
+  .card-chutich-thongtin {
+      border: 1px solid #c95202;
+      width: 100%;
+      background: #fff2e9;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 40px;
+  }
+  .card-chutich-thongtin > span,
+  .card-phochutich-thongtin > span {
+      padding: 4px 8px;
+      width: 100%;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 18.2px;
+      letter-spacing: 0.0015em;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: #2e2e2e;
+  }
+  .card-phochutich-thoiky {
+      position: relative;
+      margin: unset;
+  }
+  .mb-card {
+      margin-bottom: 10%;
+  }
+  .card-phochutich-thongtin {
+      /* border: 1px solid #0078A7; */
+      width: 100%;
+      background: #69d5ff26;
+      display: flex;
+      /* flex-direction: column; */
+  }
+  .phochutich-right {
+      padding-left: 130px;
+  }
+  .phochutich-left {
+      padding-top: 6%;
+      padding-right: 130px;
+  }
+  .phochutich-right .card-phochutich-thoiky::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -20px;
+      transform: translate(-100%, -50%);
+      width: 110px;
+      height: 2px;
+      background-color: #777777;
+  }
+  .phochutich-left .card-phochutich-thoiky::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translate(100%, -50%);
+      width: 110px;
+      height: 2px;
+      background-color: #777777;
+  }
+  .line-center {
+      position: relative;
+  }
+  .line-center::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(-50%, -50%);
+      width: 1px;
+      height: 90%;
+      background-color: #777777;
+  }
+  .card-text {
+      height: 138px;
+      align-content: center;
+  }
+  .card-text span {
+      display: block;
+  }
+  .ct-btn-xemthem {
+      background: #db7100;
+      color: #ffffff;
+      font-family: Roboto;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 23.4px;
+      border-radius: 8px;
+      border: 1px solid #ffffff;
+      padding: 5px 10px;
+  }
+  .content-gt-uyvien {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: url("./imgs/bg-gt-chinhquyen.png") no-repeat center;
+  }
+  .tieude-tab-uyvien {
+      text-align: center;
+      font-family: Roboto;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 41.6px;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+  }
+  .ten-chutich {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #c95202;
+      padding: 10px 15px;
+  }
+  .ten-chutich > span {
+      color: #fff;
+      font-family: Roboto;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 28.6px;
+      letter-spacing: 0.0015em;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      text-transform: uppercase;
+  }
+  .ten-uyvien {
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #db7100;
+      padding: 10px 15px;
+  }
+  .ten-uyvien > span {
+      display: block;
+      color: #fff;
+      font-family: Roboto;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 28.6px;
+      letter-spacing: 0.0015em;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      text-transform: uppercase;
+  }
+  .card-canbo {
+      width: 469px;
+      display: flex;
+      flex-direction: column;
+  }
+  .expand-uyvien {
+      display: none;
+  }
+  .card-uyvien {
+      position: relative;
+      margin: unset;
+  }
+  .mb-card {
+      margin-bottom: 10%;
+  }
+  .card-uyvien-thongtin {
+      /* border: 1px solid #0078A7; */
+      width: 100%;
+      background: #fff2e9;
+      /* display: flex; */
+      /* flex-direction: column; */
+  }
+  .uyvien-right {
+      padding-left: 130px;
+  }
+  .uyvien-left {
+      padding-top: 6%;
+      padding-right: 130px;
+  }
+  .uyvien-right .card-uyvien::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -20px;
+      transform: translate(-100%, -50%);
+      width: 110px;
+      height: 2px;
+      background-color: #777777;
+  }
+  .uyvien-left .card-uyvien::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translate(100%, -50%);
+      width: 110px;
+      height: 2px;
+      background-color: #777777;
+  }
+  .line-center {
+      position: relative;
+  }
+  .line-center::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(-50%, -50%);
+      width: 1px;
+      height: 97%;
+      background-color: #777777;
+  }
+  .card-text {
+      height: 138px;
+      align-content: center;
+  }
+  .card-text span {
+      display: block;
+  }
+  .ct-btn-xemthem-uyvien {
+      background: #db7100;
+      color: #ffffff;
+      font-family: Roboto;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 23.4px;
+      border-radius: 8px;
+      border: 1px solid #ffffff;
+      padding: 5px 10px;
+  }
+
+  #icon-collapse-uyvien {
+      transform: rotate(180deg);
+      display: none;
+  }
+  .chucVu {
+      text-transform: uppercase;
+      margin: 0;
+      color: #ffffff;
+      font-family: Roboto;
+      font-size: 16px !important;
+      font-weight: 700;
+      line-height: 23.4px;
+      letter-spacing: 0.0015em;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+  }
+  @media screen and (min-width: 767px) and (max-width: 1368px) {
+      .card-canbo {
+          width: 410px;
+      }
+      .phochutich-right {
+          padding-left: 100px;
+      }
+      .phochutich-left {
+          padding-top: 6%;
+          padding-right: 100px;
+      }
+      .uyvien-right {
+          padding-left: 100px;
+      }
+      .uyvien-left {
+          padding-top: 6%;
+          padding-right: 100px;
+      }
+      .uyvien-left .card-uyvien::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: -20px;
+          transform: translate(100%, -50%);
+          width: 80px;
+          height: 2px;
+          background-color: #777777;
+      }
+      .uyvien-right .card-uyvien::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: -20px;
+          transform: translate(-100%, -50%);
+          width: 80px;
+          height: 2px;
+          background-color: #777777;
+      }
+      .phochutich-left .card-phochutich-thoiky::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: -20px;
+          transform: translate(100%, -50%);
+          width: 80px;
+          height: 2px;
+          background-color: #777777;
+      }
+      .phochutich-right .card-phochutich-thoiky::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: -20px;
+          transform: translate(-100%, -50%);
+          width: 80px;
+          height: 2px;
+          background-color: #777777;
+      }
+      .phochutich-left .card-phochutich::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: -20px;
+          transform: translate(100%, -50%);
+          width: 80px;
+          height: 2px;
+          background-color: #777777;
+      }
+      .phochutich-right .card-phochutich::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: -20px;
+          transform: translate(-100%, -50%);
+          width: 80px;
+          height: 2px;
+          background-color: #777777;
+      }
+  }
+  .card-pct-duongnhiem {
+      width: 241px !important;
+      padding: 10px !important;
+  }
+  .card-pct-duongnhiem .card-phochutich-thongtin {
+      height: 290px !important;
+  }
+  .card-pct-duongnhiem:first-child {
+      padding-left: 0 !important;
+  }
+  .card-pct-duongnhiem:last-child {
+      padding-right: 0 !important;
+  }
+  .card-pct-duongnhiem::after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translate(50%, -100%);
+      width: 2px;
+      height: 40px;
+      background-color: #777777;
+  }
+  .group-card-pct-duongnhiem {
+      position: relative;
+  }
+  .group-card-pct-duongnhiem::after {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: calc(50% + 2px);
+      transform: translateX(-50%);
+      width: calc(60% + 90px);
+      height: 2px;
+      background-color: #777777;
+  }
+
+  .card-pvm {
+      position: relative;
+      margin-bottom: 70px;
+  }
+  .card-pvm:after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translate(50%, 0%);
+      width: 2px;
+      height: 40px;
+      background-color: #777777;
+  }
+  @media (max-width: 1500px) {
+      .group-card-pct-duongnhiem::after {
+          content: "";
+          position: absolute;
+          top: -50px;
+          left: calc(50% + 2px);
+          transform: translateX(-50%);
+          width: calc(75% + 60px);
+          height: 2px;
+          background-color: #777777;
+      }
+  }
+  @media (max-width: 1300px) {
+      .group-card-pct-duongnhiem::after {
+          content: "";
+          position: absolute;
+          top: -50px;
+          left: calc(50% + 2px);
+          transform: translateX(-50%);
+          width: calc(80% + 50px);
+          height: 2px;
+          background-color: #777777;
+      }
+</style>
+
+<div class="button-container row mt-3">
+    <#assign indexLocal = 0/>
+    <#if entries?has_content>
+        <#assign navItems = entries />
+        <#list navItems as navItem>
+            <#if navItem.isBrowsable()>
+                <#assign nav_item_href_link = "href='${navItem.getURL()}' ${navItem.getTarget()}"
+                listChild = navItem.getBrowsableChildren()/>
+            </#if>
+            <#if listChild?has_content>
+                <#assign nav_item_href_link = "href='#'" />
+            </#if>
+            <#assign indexLocal = indexLocal + 1 />
+            <div class="active col-12 col-md-4 pb-3">
+                <div
+                class="w-100 h-100 nav-link-gt-chiquyen button col-12 thuong-truc-duong-nhiem"
+                data-content="thuongtrucduongnhiem"
+                >
+                ${navItem.getName()}
+                </div>
+            </div>
+            
+        </#list>
+    </#if>
+</div>
+<script>
+
+</script>

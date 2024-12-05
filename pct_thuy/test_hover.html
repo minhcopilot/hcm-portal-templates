@@ -1,0 +1,2434 @@
+<style>
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #f5f5f5;
+    color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  .button:hover {
+    background-color: #d66929;
+    color: #fff;
+    transform: translateY(-5px);
+  }
+  .button.active {
+    background-color: #ffedcc;
+    color: #d66929;
+  }
+  .content-gt-chinhquyen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: url("/documents/39403/318145/bg-gt-chinhquyen.png") no-repeat
+      center;
+  }
+  .tieude-tab-thuongtruc > p {
+    text-align: center !important;
+    font-family: Roboto !important;
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    line-height: 41.6px !important;
+    text-align: center !important;
+    text-underline-position: from-font !important;
+    text-decoration-skip-ink: none !important;
+    text-transform: uppercase !important;
+    margin-bottom: 40px !important;
+  }
+  .card-chutich {
+  }
+  .ten-chutich {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #c95202;
+    padding: 10px 15px;
+  }
+  .ten-chutich > span {
+    color: #fff;
+    font-family: Roboto;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28.6px;
+    letter-spacing: 0.0015em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    text-transform: uppercase;
+  }
+  .ten-phochutich {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #0078a7;
+    padding: 10px 15px;
+  }
+  .ten-phochutich span {
+    text-transform: uppercase;
+  }
+  .card-pct-duongnhiem .ten-phochutich > span {
+    color: #fff;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28.6px;
+    letter-spacing: 0.0015em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    text-transform: uppercase;
+  }
+  .card-canbo {
+    width: 384px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-chutich-thongtin {
+    border: 1px solid #c95202;
+    width: 100%;
+    background: #fff2e9;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+  .card-chutich-thongtin > span,
+  .card-phochutich-thongtin > span {
+    padding: 4px 8px;
+    width: 100%;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18.2px;
+    letter-spacing: 0.0015em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #2e2e2e;
+  }
+  .card-phochutich {
+    position: relative;
+  }
+  .mb-card-duongnhiem {
+    margin-bottom: 200px;
+  }
+  .card-phochutich:hover .card-phochutich-thongtin {
+    box-shadow: rgba(0, 0, 0, 0.5) -7px 7px 20px -5px;
+  }
+  .card-phochutich:hover .ten-phochutich {
+    box-shadow: rgba(0, 0, 0, 0.5) -7px 7px 20px -5px;
+  }
+  .card-chutich:hover .card-chutich-thongtin {
+    box-shadow: rgba(0, 0, 0, 0.5) -7px 7px 20px -5px;
+  }
+  .card-chutich:hover .ten-chutich {
+    box-shadow: rgba(0, 0, 0, 0.5) -7px 7px 20px -5px;
+  }
+  .card-phochutich-thongtin {
+    border: 1px solid #0078a7;
+    width: 100%;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+  }
+  .phochutich-right {
+    padding-left: 130px;
+  }
+  .phochutich-left {
+    padding-right: 130px;
+  }
+  .phochutich-right .card-phochutich::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translate(-100%, -50%);
+    width: 110px;
+    height: 2px;
+    background-color: #777777;
+  }
+  .phochutich-left .card-phochutich::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translate(100%, -50%);
+    width: 110px;
+    height: 2px;
+    background-color: #777777;
+  }
+  .line-center {
+    position: relative;
+  }
+  .line-center::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    width: 1px;
+    height: 90%;
+    background-color: #777777;
+  }
+  body {
+    font-family: "Roboto";
+  }
+  .container-1440px {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .introduce_donvi_bg {
+    background-image: url(/documents/39403/318145/bg-gt-chinhquyen.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .introduce_donvi {
+    height: 100%;
+  }
+  .introduce_donvi .introduce_donvi_title {
+    color: #2e2e2e;
+    font-size: 32px;
+    font-weight: 700;
+  }
+  .table-introduce .tr-introduce:hover {
+    background-color: transparent;
+    color: inherit;
+  }
+  .table-title-introduce {
+    background-color: #bce6fe;
+    color: #0d4c92;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .table-introduce td {
+    vertical-align: middle;
+  }
+  .table-introduce .tr-introduce {
+    height: 120px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  body {
+    font-family: "Roboto";
+  }
+  .container-1440px {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .introduce_donvi_bg {
+    background-image: url(/documents/39403/318145/bg-gt-chinhquyen.png);
+    background-size: cover;
+    background-position: center;
+    min-height: 280px;
+    background-repeat: no-repeat;
+  }
+  .introduce_donvi {
+    height: 100%;
+  }
+  .introduce_donvi .introduce_donvi_title {
+    color: #2e2e2e;
+    font-size: 32px;
+    font-weight: 700;
+  }
+  .table-introduce .tr-introduce:hover {
+    background-color: transparent;
+    color: inherit;
+  }
+  .table-title-introduce {
+    background-color: #bce6fe;
+    color: #0d4c92;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .table-introduce td {
+    vertical-align: middle;
+  }
+  .table-introduce .tr-introduce {
+    height: 120px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  body {
+    font-family: "Roboto";
+  }
+  .container-1440px {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .introduce_donvi_bg {
+    background-image: url(/documents/39403/318145/bg-gt-chinhquyen.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .introduce_donvi {
+    height: 100%;
+  }
+  .introduce_donvi .introduce_donvi_title {
+    color: #2e2e2e;
+    font-size: 32px;
+    font-weight: 700;
+  }
+  .table-introduce .tr-introduce:hover {
+    background-color: transparent;
+    color: inherit;
+  }
+  .table-title-introduce > tr > th {
+    background-color: #bce6fe;
+    color: #0d4c92;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .table-introduce td {
+    vertical-align: middle;
+  }
+  .table-introduce .tr-introduce {
+    height: 120px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .ct-btn-xemthem {
+    background: #db7100;
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23.4px;
+    border-radius: 8px;
+    border: 1px solid #ffffff;
+    padding: 5px 10px;
+  }
+  .card-text {
+    height: 138px;
+    align-content: center;
+  }
+  .card-text span {
+    display: block;
+    padding: 4px 8px;
+    width: 100%;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18.2px;
+    letter-spacing: 0.0015em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #2e2e2e;
+  }
+  .content-gt-chinhquyen-quacacthoiky {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: url("/documents/39403/318145/bg-gt-chinhquyen.png") no-repeat
+      center;
+  }
+  .tieude-tab-thoiky {
+    text-align: center !important;
+    margin-bottom: 40px !important;
+  }
+  .tieude-tab-thoiky > span {
+    text-align: center !important;
+    font-family: Roboto !important;
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    line-height: 41.6px !important;
+    text-underline-position: from-font !important;
+    text-decoration-skip-ink: none !important;
+    text-transform: uppercase !important;
+    margin-bottom: 40px !important;
+    color: #000000 !important;
+  }
+  .card-chutich {
+  }
+  .ten-chutich {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #c95202;
+    padding: 10px 15px;
+  }
+  .ten-chutich > span {
+    color: #fff;
+    font-family: Roboto;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28.6px;
+    letter-spacing: 0.0015em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    text-transform: uppercase;
+  }
+  .ten-phochutich {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #0078a7;
+    padding: 10px 15px;
+  }
+  .ten-phochutich > span {
+    color: #fff;
+    font-family: Roboto;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28.6px;
+    letter-spacing: 0.0015em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+  .card-canbo {
+    width: 469px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-chutich-thongtin {
+    border: 1px solid #c95202;
+    width: 100%;
+    background: #fff2e9;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+  .card-chutich-thongtin > span,
+  .card-phochutich-thongtin > span {
+    padding: 4px 8px;
+    width: 100%;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18.2px;
+    letter-spacing: 0.0015em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #2e2e2e;
+  }
+  .card-phochutich-thoiky {
+    position: relative;
+    margin: unset;
+  }
+  .mb-card {
+    margin-bottom: 10%;
+  }
+  .card-phochutich-thongtin {
+    /* border: 1px solid #0078A7; */
+    width: 100%;
+    background: #69d5ff26;
+    display: flex;
+    /* flex-direction: column; */
+  }
+  .phochutich-right {
+    padding-left: 130px;
+  }
+  .phochutich-left {
+    padding-top: 6%;
+    padding-right: 130px;
+  }
+  .phochutich-right .card-phochutich-thoiky::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translate(-100%, -50%);
+    width: 110px;
+    height: 2px;
+    background-color: #777777;
+  }
+  .phochutich-left .card-phochutich-thoiky::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translate(100%, -50%);
+    width: 110px;
+    height: 2px;
+    background-color: #777777;
+  }
+  .line-center {
+    position: relative;
+  }
+  .line-center::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    width: 1px;
+    height: 90%;
+    background-color: #777777;
+  }
+  .card-text {
+    height: 138px;
+    align-content: center;
+  }
+  .card-text span {
+    display: block;
+  }
+  .ct-btn-xemthem {
+    background: #db7100;
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23.4px;
+    border-radius: 8px;
+    border: 1px solid #ffffff;
+    padding: 5px 10px;
+  }
+  .content-gt-uyvien {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: url("./imgs/bg-gt-chinhquyen.png") no-repeat center;
+  }
+  .tieude-tab-uyvien {
+    text-align: center;
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41.6px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .ten-chutich {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #c95202;
+    padding: 10px 15px;
+  }
+  .ten-chutich > span {
+    color: #fff;
+    font-family: Roboto;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28.6px;
+    letter-spacing: 0.0015em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    text-transform: uppercase;
+  }
+  .ten-uyvien {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #db7100;
+    padding: 10px 15px;
+  }
+  .ten-uyvien > span {
+    display: block;
+    color: #fff;
+    font-family: Roboto;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28.6px;
+    letter-spacing: 0.0015em;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    text-transform: uppercase;
+  }
+  .card-canbo {
+    width: 469px;
+    display: flex;
+    flex-direction: column;
+  }
+  .expand-uyvien {
+    display: none;
+  }
+  .card-uyvien {
+    position: relative;
+    margin: unset;
+  }
+  .mb-card {
+    margin-bottom: 10%;
+  }
+  .card-uyvien-thongtin {
+    /* border: 1px solid #0078A7; */
+    width: 100%;
+    background: #fff2e9;
+    /* display: flex; */
+    /* flex-direction: column; */
+  }
+  .uyvien-right {
+    padding-left: 130px;
+  }
+  .uyvien-left {
+    padding-top: 6%;
+    padding-right: 130px;
+  }
+  .uyvien-right .card-uyvien::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translate(-100%, -50%);
+    width: 110px;
+    height: 2px;
+    background-color: #777777;
+  }
+  .uyvien-left .card-uyvien::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translate(100%, -50%);
+    width: 110px;
+    height: 2px;
+    background-color: #777777;
+  }
+  .line-center {
+    position: relative;
+  }
+  .line-center::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    width: 1px;
+    height: 97%;
+    background-color: #777777;
+  }
+  .card-text {
+    height: 138px;
+    align-content: center;
+  }
+  .card-text span {
+    display: block;
+  }
+  .ct-btn-xemthem-uyvien {
+    background: #db7100;
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23.4px;
+    border-radius: 8px;
+    border: 1px solid #ffffff;
+    padding: 5px 10px;
+  }
+
+  #icon-collapse-uyvien {
+    transform: rotate(180deg);
+    display: none;
+  }
+  .chucVu {
+    text-transform: uppercase;
+    margin: 0;
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 16px !important;
+    font-weight: 700;
+    line-height: 23.4px;
+    letter-spacing: 0.0015em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+  @media screen and (min-width: 767px) and (max-width: 1368px) {
+    .card-canbo {
+      width: 410px;
+    }
+    .phochutich-right {
+      padding-left: 100px;
+    }
+    .phochutich-left {
+      padding-top: 6%;
+      padding-right: 100px;
+    }
+    .uyvien-right {
+      padding-left: 100px;
+    }
+    .uyvien-left {
+      padding-top: 6%;
+      padding-right: 100px;
+    }
+    .uyvien-left .card-uyvien::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translate(100%, -50%);
+      width: 80px;
+      height: 2px;
+      background-color: #777777;
+    }
+    .uyvien-right .card-uyvien::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -20px;
+      transform: translate(-100%, -50%);
+      width: 80px;
+      height: 2px;
+      background-color: #777777;
+    }
+    .phochutich-left .card-phochutich-thoiky::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translate(100%, -50%);
+      width: 80px;
+      height: 2px;
+      background-color: #777777;
+    }
+    .phochutich-right .card-phochutich-thoiky::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -20px;
+      transform: translate(-100%, -50%);
+      width: 80px;
+      height: 2px;
+      background-color: #777777;
+    }
+    .phochutich-left .card-phochutich::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translate(100%, -50%);
+      width: 80px;
+      height: 2px;
+      background-color: #777777;
+    }
+    .phochutich-right .card-phochutich::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -20px;
+      transform: translate(-100%, -50%);
+      width: 80px;
+      height: 2px;
+      background-color: #777777;
+    }
+  }
+  .card-pct-duongnhiem {
+    width: 241px !important;
+    padding: 10px !important;
+  }
+  .card-pct-duongnhiem .card-phochutich-thongtin {
+    height: 290px !important;
+  }
+  .card-pct-duongnhiem:first-child {
+    padding-left: 0 !important;
+  }
+  .card-pct-duongnhiem:last-child {
+    padding-right: 0 !important;
+  }
+  .card-pct-duongnhiem::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translate(50%, -100%);
+    width: 2px;
+    height: 40px;
+    background-color: #777777;
+  }
+  .group-card-pct-duongnhiem {
+    position: relative;
+  }
+  .group-card-pct-duongnhiem::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: calc(50% + 2px);
+    transform: translateX(-50%);
+    width: calc(60% + 90px);
+    height: 2px;
+    background-color: #777777;
+  }
+
+  .card-pvm {
+    position: relative;
+    margin-bottom: 70px;
+  }
+  .card-pvm:after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translate(50%, 0%);
+    width: 2px;
+    height: 40px;
+    background-color: #777777;
+  }
+  @media (max-width: 1500px) {
+    .group-card-pct-duongnhiem::after {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: calc(50% + 2px);
+      transform: translateX(-50%);
+      width: calc(75% + 60px);
+      height: 2px;
+      background-color: #777777;
+    }
+  }
+  @media (max-width: 1300px) {
+    .group-card-pct-duongnhiem::after {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: calc(50% + 2px);
+      transform: translateX(-50%);
+      width: calc(80% + 50px);
+      height: 2px;
+      background-color: #777777;
+    }
+  }
+</style>
+
+<div class="button-container row mt-3 mx-0">
+  <div class="active col-12 col-md-4 pb-3">
+    <div
+      class="w-100 h-100 nav-link-gt-chiquyen button nav-link-gt-chiquyen col-12"
+      data-content="chinhquyen-duongnhiem"
+    >
+      THƯỜNG TRỰC UBND THÀNH PHỐ<br />ĐƯƠNG NHIỆM
+    </div>
+  </div>
+  <div class="col-12 col-md-4 pb-3">
+    <div
+      class="w-100 h-100 nav-link-gt-chiquyen button nav-link-gt-chiquyen col-12"
+      data-content="chinhquyen-quacacthoiky"
+    >
+      THƯỜNG TRỰC UBND THÀNH PHỐ<br />QUA CÁC THỜI KỲ
+    </div>
+  </div>
+  <div class="col-12 col-md-4 pb-3">
+    <div
+      class="w-100 h-100 nav-link-gt-chiquyen button nav-link-gt-chiquyen col-12"
+      data-content="chinhquyen-uyvienthanhpho"
+    >
+      ỦY VIÊN UBND THÀNH PHỐ
+    </div>
+  </div>
+  <div class="col-12 col-md-4 pb-3">
+    <div
+      class="w-100 h-100 nav-link-gt-chiquyen button nav-link-gt-chiquyen col-12"
+      data-content="chinhquyen-coquanchuyenmon"
+    >
+      CÁC CƠ QUAN CHUYÊN MÔN <br />
+      TRỰC THUỘC UBND THÀNH PHỐ
+    </div>
+  </div>
+  <div class="col-12 col-md-4 pb-3">
+    <div
+      class="w-100 h-100 nav-link-gt-chiquyen button nav-link-gt-chiquyen col-12"
+      data-content="chinhquyen-tpthuduc"
+    >
+      UBND QUẬN, HUYỆN VÀ THÀNH PHỐ<br />THỦ ĐỨC
+    </div>
+  </div>
+  <div class="col-12 col-md-4 pb-3">
+    <div
+      class="w-100 h-100 nav-link-gt-chiquyen button nav-link-gt-chiquyen col-12 active"
+      data-content="chinhquyen-caccoquandonvi"
+    >
+      CÁC CƠ QUAN, ĐƠN VỊ NGÀNH DỌC<br />TRÊN ĐỊA BÀN THÀNH PHỐ
+    </div>
+  </div>
+</div>
+<div
+  class="featured-gt-chiquyen content-gt-chinhquyen active my-3 mx-3"
+  id="chinhquyen-duongnhiem"
+  style="display: none"
+>
+  <div class="tieude-tab-thuongtruc">
+    <p>
+      Thường trực <br />
+      ubnd thành phố hồ chí minh
+    </p>
+  </div>
+  <div class="card-chutich card-canbo card-pvm">
+    <div class="mb-2 ten-chutich">
+      <p class="chucVu">Chủ tịch</p>
+      <span class="text-center"> Phan Văn Mãi</span>
+    </div>
+    <div class="card-chutich-thongtin">
+      <span>Năm sinh: 1973</span>
+      <span>Nơi sinh: Bến Tre</span>
+      <span>Trình độ: Thạc sĩ Quản lý Kinh tế, Cử nhân Anh văn</span>
+      <span
+        >Chức vụ: Phó Bí Thư Thành ủy, Trưởng Đoàn Đại biểu Quốc hội Thành phố,
+        Chủ tịch UBND Thành phố</span
+      >
+      <span>Thư điện tử: pvmai.ubnd@tphcm.gov.vn</span>
+      <span>Số điện thoại: (8428) 38291054 - 38291055 - 38291056</span>
+    </div>
+  </div>
+  <div class="w-100 d-flex justify-content-center group-card-pct-duongnhiem">
+    <div class="card-phochutich card-pct-duongnhiem card-canbo">
+      <div class="mb-2 ten-phochutich">
+        <p class="chucVu">Phó chủ tịch</p>
+        <span> Dương Ngọc Hải</span>
+      </div>
+      <div class="card-phochutich-thongtin">
+        <span>Năm sinh: 1967</span>
+        <span>Nơi sinh:&nbsp;Long An</span>
+        <span>Trình độ:&nbsp;Thạc sĩ Luật, Cử nhân Kinh tế</span>
+        <span>Chức vụ:&nbsp;Phó Chủ tịch UBND Thành phố</span>
+        <span>Thư điện tử:&nbsp;duongngochai@tphcm.gov.vn</span>
+        <span>Số điện thoại:&nbsp; (8428) 38291054 – 38291055 – 38291056</span>
+      </div>
+    </div>
+
+    <div class="card-phochutich card-pct-duongnhiem card-canbo pl-0">
+      <div class="mb-2 ten-phochutich">
+        <p class="chucVu">Phó chủ tịch</p>
+        <span> Võ Văn Hoan</span>
+      </div>
+      <div class="card-phochutich-thongtin">
+        <span>Năm sinh: 1965</span>
+        <span>Nơi sinh: Quảng Ngãi</span>
+        <span
+          >Trình độ:&nbsp;Thạc sĩ Quản lý công, Cử nhân Luật, Cử nhân Kinh
+          tế</span
+        >
+        <span>Chức vụ:&nbsp;Phó Chủ tịch UBND Thành phố</span>
+        <span>Thư điện tử:&nbsp;vvhoan.ubnd@tphcm.gov.vn</span>
+        <span>Số điện thoại:&nbsp; (8428) 38291054 – 38291055 – 38291056</span>
+      </div>
+    </div>
+
+    <div class="card-phochutich card-pct-duongnhiem card-canbo">
+      <div class="mb-2 ten-phochutich">
+        <p class="chucVu">Phó chủ tịch</p>
+        <span> Trần Thị Diệu Thúy</span>
+      </div>
+      <div class="card-phochutich-thongtin">
+        <span>Năm sinh: 1977</span>
+        <span>Nơi sinh:&nbsp;Thành phố Hồ Chí Minh</span>
+        <span
+          >Trình độ:&nbsp;Thạc sĩ xây dựng Đảng và chính quyền Nhà nước, Cử nhân
+          Kinh tế</span
+        >
+        <span>Chức vụ:&nbsp;Phó Chủ tịch UBND Thành phố</span>
+        <span>Thư điện tử:&nbsp;tranthidieuthuy@tphcm.gov.vn</span>
+        <span>Số điện thoại:&nbsp; (8428) 38291054 – 38291055 – 38291056</span>
+      </div>
+    </div>
+
+    <div class="card-phochutich card-pct-duongnhiem card-canbo">
+      <div class="mb-2 ten-phochutich">
+        <p class="chucVu">Phó chủ tịch</p>
+        <span> Nguyễn Văn Dũng</span>
+      </div>
+      <div class="card-phochutich-thongtin">
+        <span>Năm sinh: 1972</span>
+        <span>Nơi sinh:&nbsp;Thành phố Hồ Chí Minh</span>
+        <span>Trình độ:&nbsp;Cử nhân luật, Cử nhân kinh tế</span>
+        <span>Chức vụ:&nbsp;Phó Chủ tịch UBND Thành phố</span>
+        <span>Thư điện tử:&nbsp;nvdung.ubnd@tphcm.gov.vn</span>
+        <span>Số điện thoại:&nbsp; (8428) 38291054 – 38291055 – 38291056</span>
+      </div>
+    </div>
+
+    <div class="card-phochutich card-pct-duongnhiem card-canbo pr-0">
+      <div class="mb-2 ten-phochutich">
+        <p class="chucVu">Phó chủ tịch</p>
+        <span> Bùi Xuân Cường</span>
+      </div>
+      <div class="card-phochutich-thongtin">
+        <span>Năm sinh: 1975</span>
+        <span>Nơi sinh:&nbsp;Ninh Bình</span>
+        <span
+          >Trình độ:&nbsp;Tiến sĩ Xây dựng công trình, Thạc sĩ Kỹ thuật, Thạc sĩ
+          Quản lý Hành chính công, Kỹ sư Xây dựng cầu đường</span
+        >
+        <span>Chức vụ:&nbsp;Phó Chủ tịch UBND Thành phố</span>
+        <span>Thư điện tử:&nbsp;bxcuong.ubnd@tphcm.gov.vn</span>
+        <span>Số điện thoại:&nbsp; (8428) 38291054 – 38291055 – 38291056</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="featured-gt-chiquyen content-gt-chinhquyen-quacacthoiky my-3 mx-3"
+  style="display: none"
+  id="chinhquyen-quacacthoiky"
+>
+  <div class="tieude-tab-thoiky">
+    <span
+      >Thường trực <br />
+      ubnd thành phố qua các thời kỳ</span
+    >
+  </div>
+  <div class="w-100 d-flex justify-content-center">
+    <div
+      class="phochutich-left w-50 d-flex justify-content-center flex-column align-items-end line-center"
+    >
+      <div class="card-phochutich-thoiky card-canbo mb-card container-fluid">
+        <div class="mb-2 ten-phochutich">
+          <p class="chucVu">Chủ tịch</p>
+          <span> Vũ Đình Liệu</span>
+        </div>
+        <div
+          class="row flex-row card-phochutich-thongtin justify-content-center align-items-center mx-0"
+        >
+          <div class="col-4 align-self-center">
+            <img
+              src="/documents/39403/318145/vudinhlieu.png"
+              style="width: 120px"
+            />
+          </div>
+          <div class="col-8 pl-0 card-text">
+            <span>Nhiệm kỳ: 1/1977 - 3/1979</span>
+            <span>Năm sinh: 1919 - Năm mất: 2005</span>
+            <span>Quê quán: Xã Khánh Thôn, huyện Mỹ Lộc, tỉnh Nam Định</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-phochutich-thoiky card-canbo mb-card container-fluid">
+        <div class="mb-2 ten-phochutich">
+          <p class="chucVu">Chủ tịch</p>
+          <span> Phan Văn Khải</span>
+        </div>
+        <div
+          class="row flex-row card-phochutich-thongtin justify-content-center align-items-center mx-0"
+        >
+          <div class="col-4 align-self-center">
+            <img
+              src="/documents/39403/318145/phanvankhai.png"
+              style="width: 120px"
+            />
+          </div>
+          <div class="col-8 pl-0 card-text">
+            <span>Nhiệm kỳ: 6/1985 - 3/1989</span>
+            <span>Năm sinh: 1933 - Năm mất: 2018</span>
+            <span
+              >Quê quán: Xã Tân Thông Hội, huyện Củ Chi, thành phố Hồ Chí
+              Minh</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="card-phochutich-thoiky card-canbo mb-card container-fluid">
+        <div class="mb-2 ten-phochutich">
+          <p class="chucVu">Chủ tịch</p>
+          <span> Trương Tấn Sang</span>
+        </div>
+        <div
+          class="row flex-row card-phochutich-thongtin justify-content-center align-items-center mx-0"
+        >
+          <div class="col-4 align-self-center">
+            <img
+              src="/documents/39403/318145/truongtansan.png"
+              style="width: 120px"
+            />
+          </div>
+          <div class="col-8 pl-0 card-text">
+            <span>Nhiệm kỳ: 3/1992 - 7/1996</span>
+            <span>Năm sinh: 1949</span>
+            <span>Quê quán: Xã Mỹ Hạnh Nam, huyện Đức Hòa, tỉnh Long An</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-phochutich-thoiky card-canbo mb-card container-fluid">
+        <div class="mb-2 ten-phochutich">
+          <p class="chucVu">Chủ tịch</p>
+          <span> Lê Thanh Hải</span>
+        </div>
+        <div
+          class="row flex-row card-phochutich-thongtin justify-content-center align-items-center mx-0"
+        >
+          <div class="col-4 align-self-center">
+            <img
+              src="/documents/39403/318145/lethanhhai.png"
+              style="width: 120px"
+            />
+          </div>
+          <div class="col-8 pl-0 card-text">
+            <span>Nhiệm kỳ: 5/2001 - 7/2006</span>
+            <span>Năm sinh: 1950</span>
+            <span
+              >Quê quán: Xã Tam Hiệp, huyện Châu Thành, tỉnh Mỹ Tho (nay là tỉnh
+              Tiền Giang)</span
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="card-phochutich-thoiky card-canbo container-fluid expand"
+        style="display: none"
+      >
+        <div class="mb-2 ten-phochutich">
+          <p class="chucVu">Chủ tịch</p>
+          <span> Phan Văn Mãi</span>
+        </div>
+        <div
+          class="row flex-row card-phochutich-thongtin justify-content-center align-items-center mx-0"
+        >
+          <div class="col-4 align-self-center">
+            <img
+              src="/documents/39403/318145/phanvanmai.png"
+              style="width: 120px"
+            />
+          </div>
+          <div class="col-8 pl-0 card-text">
+            <span>Nhiệm kỳ: 24/8/2021</span>
+            <span>Năm sinh: 1973</span>
+            <span
+              >Quê quán: Xã Thạnh Phú Đông, huyện Giồng Trôm, tỉnh Bến Tre</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phochutich-right w-50 d-flex flex-column align-items-start">
+      <div class="card-phochutich-thoiky card-canbo mb-card container-fluid">
+        <div class="mb-2 ten-phochutich">
+          <p class="chucVu">Chủ tịch</p>
+          <span> Võ Văn Kiệt</span>
+        </div>
+        <div
+          class="row flex-row card-phochutich-thongtin justify-content-center align-items-center mx-0"
+        >
+          <div class="col-4 align-self-center">
+            <img
+              src="/documents/39403/318145/vovankiet.png"
+              style="width: 120px"
+            />
+          </div>
+          <div class="col-8 pl-0 card-text">
+            <span>Nhiệm kỳ: 2/7/1976 - 1/1977</span>
+            <span>Năm sinh: 1922 - Năm mất: 2008</span>
+            <span
+              >Quê quán: Ấp Bình Phụng, xã Trung Hiệp, huyện Vũng Liêm, tỉnh
+              Vĩnh Long</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card-phochutich-thoiky card-canbo mb-card container-fluid">
+        <div class="mb-2 ten-phochutich">
+          <p class="chucVu">Chủ tịch</p>
+          <span> Mai Chí Thọ</span>
+        </div>
+        <div
+          class="row flex-row card-phochutich-thongtin justify-content-center align-items-center mx-0"
+        >
+          <div class="col-4 align-self-center">
+            <img
+              src="/documents/39403/318145/maichitho.png"
+              style="width: 120px"
+            />
+          </div>
+          <div class="col-8 pl-0 card-text">
+            <span>Nhiệm kỳ: 3/1979 - 6/1985</span>
+            <span>Năm sinh: 1922 - Năm mất: 2007</span>
+            <span
+              >Quê quán: Thôn Địch Lễ, xã Nam Vân, huyện Nam Trực, tỉnh Nam
+              Định</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="card-phochutich-thoiky card-canbo mb-card container-fluid">
+        <div class="mb-2 ten-phochutich">
+          <p class="chucVu">Chủ tịch</p>
+          <span> Nguyễn Vĩnh Nghiệp</span>
+        </div>
+        <div
+          class="row flex-row card-phochutich-thongtin justify-content-center align-items-center mx-0"
+        >
+          <div class="col-4 align-self-center">
+            <img
+              src="/documents/39403/318145/nguyenvinhnghiep.png"
+              style="width: 120px"
+            />
+          </div>
+          <div class="col-8 pl-0 card-text">
+            <span>Nhiệm kỳ: 3/1989 - 3/1992</span>
+            <span>Năm sinh: 1930 - Năm mất: 2007</span>
+            <span>Quê quán: Thành phố Cà Mau, tỉnh Cà Mau</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-phochutich-thoiky card-canbo mb-card container-fluid">
+        <div class="mb-2 ten-phochutich">
+          <p class="chucVu">Chủ tịch</p>
+          <span> Võ Viết Thanh</span>
+        </div>
+        <div
+          class="row flex-row card-phochutich-thongtin justify-content-center align-items-center mx-0"
+        >
+          <div class="col-4 align-self-center">
+            <img
+              src="/documents/39403/318145/vovietthanh.png"
+              style="width: 120px"
+            />
+          </div>
+          <div class="col-8 pl-0 card-text">
+            <span>Nhiệm kỳ: 7/1996 - 5/2001</span>
+            <span>Năm sinh: 1943</span>
+            <span>Quê quán: Xã Lương Phú, huyện Giồng Trôm, tỉnh Bến Tre</span>
+          </div>
+        </div>
+      </div>
+      <div
+        class="card-phochutich-thoiky card-canbo mb-card container-fluid expand"
+        style="display: none"
+      >
+        <div class="mb-2 ten-phochutich">
+          <p class="chucVu">Chủ tịch</p>
+          <span> Nguyễn Thành Phong</span>
+        </div>
+        <div
+          class="row flex-row card-phochutich-thongtin justify-content-center align-items-center mx-0"
+        >
+          <div class="col-4 align-self-center">
+            <img
+              src="/documents/39403/318145/nguyenthanhphong.png"
+              style="width: 120px"
+            />
+          </div>
+          <div class="col-8 pl-0 card-text">
+            <span>Nhiệm kỳ: 12/2015 - 8/2021</span>
+            <span>Năm sinh: 1962</span>
+            <span>Quê quán: Xã Tam Phước, huyện Châu Thành, tỉnh Bến Tre</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-3">
+    <button class="ct-btn-xemthem">Xem thêm</button>
+  </div>
+  <div class="mt-3 mb-5" id="icon-expand">
+    <img src="/documents/39403/318145/icon_arrow-down.png" />
+  </div>
+  <div
+    class="mt-3 mb-5"
+    id="icon-collapse"
+    title="Thu lại"
+    style="cursor: pointer; transform: rotate(180deg); display: none"
+  >
+    <img src="/documents/39403/318145/icon_arrow-down.png" />
+  </div>
+</div>
+<div
+  class="featured-gt-chiquyen introduce_donvi_bg my-4 mx-3"
+  style="display: none"
+  id="chinhquyen-coquanchuyenmon"
+>
+  <div class="introduce_donvi">
+    <h2 class="introduce_donvi_title text-center mb-4">
+      CÁC CƠ QUAN CHUYÊN MÔN TRỰC THUỘC UBND THÀNH PHỐ
+    </h2>
+
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-bordered table-hover table-introduce">
+          <thead class="table-title-introduce">
+            <tr>
+              <th class="text-center" width="10%">STT</th>
+              <th class="text-center">ĐƠN VỊ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Cột bên trái -->
+            <tr class="tr-introduce">
+              <td class="text-center">01</td>
+              <td>
+                <strong>Sở Nội vụ</strong><br />
+                86B Lê Thánh Tôn, Quận 1, TpHCM<br />
+                ĐT: 38295110 - Fax: 38231489<br />
+                <a href="https://sonoivu.hochiminhcity.gov.vn"
+                  >https://sonoivu.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">02</td>
+              <td>
+                <strong>Sở Tư pháp</strong><br />
+                141-143 Pasteur, P6, Quận 3, Tp.HCM<br />
+                ĐT: 38290230 - 38225296 - 38221750 - 38297052 - Fax: 38243155<br />
+                <a href="https://sotuphap.hochiminhcity.gov.vn"
+                  >https://sotuphap.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">03</td>
+              <td>
+                <strong>Sở Kế hoạch và Đầu tư</strong><br />
+                32 Lê Thánh Tôn, Quận 1, TpHCM<br />
+                ĐT: 38297834 - 38272191 - Fax: 38295008 - 38290817<br />
+                <a href="http://www.dpi.hochiminhcity.gov.vn"
+                  >http://www.dpi.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">04</td>
+              <td>
+                <strong>Sở Tài chính</strong><br />
+                142 Nguyễn Thị Minh Khai, Quận 3, TpHCM<br />
+                ĐT: 39306572 - Fax: 39304663<br />
+                <a href="http://www.tcvg.hochiminhcity.gov.vn"
+                  >http://www.tcvg.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">05</td>
+              <td>
+                <strong>Sở Công Thương</strong><br />
+                163 Hai Bà Trưng, Quận 3, TpHCM<br />
+                ĐT: 38296322 - 38298018 - Fax: 38221778<br />
+                <a href="http://www.congthuong.hochiminhcity.gov.vn"
+                  >http://www.congthuong.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">06</td>
+              <td>
+                <strong>Sở Nông nghiệp và Phát triển nông thôn</strong><br />
+                176 Hai Bà Trưng, Quận 1, TpHCM<br />
+                ĐT: 38297652 - 38297614 - Fax: 38294764<br />
+                <a href="http://www.sonongnghiep.hochiminhcity.gov.vn"
+                  >http://www.sonongnghiep.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">07</td>
+              <td>
+                <strong>Sở Giao thông vận tải</strong><br />
+                63 Lý Tự Trọng, Quận 1, TpHCM<br />
+                ĐT: 38290451 - Fax: 38290458<br />
+                <a href="http://www.sgtvt.hochiminhcity.gov.vn"
+                  >http://www.sgtvt.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">08</td>
+              <td>
+                <strong>Sở Xây dựng</strong><br />
+                60 Trương Định, Quận 3, TpHCM<br />
+                ĐT: 39326214 - Fax: 39325269<br />
+                <a href="http://www.constructiondpt.hochiminhcity.gov.vn"
+                  >http://www.constructiondpt.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">09</td>
+              <td>
+                <strong>Sở Tài nguyên và Môi trường</strong><br />
+                63 Lý Tự Trọng, P.Bến Nghé, Quận 1, TpHCM<br />
+                ĐT: 38293661 - Fax: 38231806<br />
+                <a href="http://www.donre.hochiminhcity.gov.vn"
+                  >http://www.donre.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">10</td>
+              <td>
+                <strong>Sở Thông tin và Truyền Thông</strong><br />
+                59 Lý Tự Trọng, Phường Bến Nghé, Quận 1, TpHCM<br />
+                ĐT:(08)3520.2727 - (08)3520.2323 - Fax: (08)3520.2424 -
+                (08)3930.9498<br />
+                <a href="http://www.ict-hcm.gov.vn"
+                  >http://www.ict-hcm.gov.vn</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-6">
+        <table class="table table-bordered table-hover table-introduce">
+          <thead class="table-title-introduce">
+            <tr>
+              <th class="text-center" width="10%">STT</th>
+              <th class="text-center">ĐƠN VỊ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Cột bên phải -->
+            <tr class="tr-introduce">
+              <td class="text-center">11</td>
+              <td>
+                <strong>Sở Lao động - Thương binh và Xã hội</strong><br />
+                159 Pasteur, P6, Quận 3, TP.HCM<br />
+                ĐT: 38291302 - 38208508 - Fax: 38294032<br />
+                <a href="http://www.sldtbxh.hochiminhcity.gov.vn"
+                  >http://www.sldtbxh.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">12</td>
+              <td>
+                <strong>Sở Văn hóa, Thể thao và Du lịch</strong><br />
+                164 Đồng Khởi, Quận 1, Tp.HCM<br />
+                ĐT: 38224053 - 38292093 - Fax: 38223221<br />
+                <a href="http://www.svhtt.hochiminhcity.gov.vn"
+                  >http://www.svhtt.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">13</td>
+              <td>
+                <strong>Sở Khoa học và Công nghệ</strong><br />
+                244 Điện Biên Phủ, P7, Quận 3, Tp.HCM<br />
+                ĐT: 39327831 - 39325671 - Fax: 39325584<br />
+                <a href="https://dost.hochiminhcity.gov.vn"
+                  >https://dost.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">14</td>
+              <td>
+                <strong>Sở Giáo dục và Đào tạo</strong><br />
+                66 - 68 Lê Thánh Tôn, Quận 1<br />
+                ĐT: 38230074 - 38242133 - Fax: 38222136<br />
+                <a href="http://www.edu.hochiminhcity.gov.vn"
+                  >http://www.edu.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">15</td>
+              <td>
+                <strong>Sở Y tế</strong><br />
+                59 Nguyễn Thị Minh Khai, Quận 1, TpHCM<br />
+                ĐT: 39309431 - 39309912 - Fax: 39307035<br />
+                <a href="http://www.medinet.hochiminhcity.gov.vn"
+                  >http://www.medinet.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">16</td>
+              <td>
+                <strong>Thanh tra Thành phố Hồ Chí Minh</strong><br />
+                02 Phạm Ngũ Lão, P Phạm Ngũ Lão, TpHCM<br />
+                ĐT: 39256333 - 39257333 - Fax: 39255333<br />
+                <a href="http://www.thanhtra.hochiminhcity.gov.vn"
+                  >http://www.thanhtra.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">17</td>
+              <td>
+                <strong>Văn phòng Ủy ban nhân dân</strong><br />
+                Số 86 đường Lê Thánh Tôn, Quận 1, TP Hồ Chí Minh<br />
+                ĐT: (028)38291055 - Fax: (028)38295675<br />
+                <a href="https://vpub.hochiminhcity.gov.vn/"
+                  >https://vpub.hochiminhcity.gov.vn/</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">18</td>
+              <td>
+                <strong>Sở Ngoại vụ</strong><br />
+                6 Alaxadre De Rhodes, Quận 1, Tp.HCM<br />
+                ĐT: 38224224 - 38223055 - Fax: 38251436<br />
+                <a href="http://www.mofahcm.gov.vn"
+                  >http://www.mofahcm.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">19</td>
+              <td>
+                <strong>Ban Dân tộc</strong><br />
+                108, Ngô Quyền, Phường 8, Quận 5, TP Hồ Chí Minh<br />
+                ĐT: 38552621 - Fax: 38591516<br />
+                <a href="http://www.bandantoc.hochiminhcity.gov.vn"
+                  >http://www.bandantoc.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">20</td>
+              <td>
+                <strong>Sở Quy hoạch - Kiến trúc</strong><br />
+                168 Pasteur, Phường Bến Nghé, Quận 1, TpHCM<br />
+                ĐT: 38232917 - 113 - Fax: 38232918<br />
+                <a href="http://www.qhkt.hochiminhcity.gov.vn"
+                  >http://www.qhkt.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="featured-gt-chiquyen introduce_donvi_bg my-4 mx-3"
+  style=""
+  id="chinhquyen-caccoquandonvi"
+>
+  <div class="introduce_donvi">
+    <h2 class="introduce_donvi_title text-center mb-4">
+      CÁC CƠ QUAN, ĐƠN VỊ NGÀNH DỌC TRÊN ĐỊA BÀN THÀNH PHỐ
+    </h2>
+
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-bordered table-hover table-introduce">
+          <thead class="table-title-introduce">
+            <tr>
+              <th class="text-center" width="10%">STT</th>
+              <th class="text-center">ĐƠN VỊ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Cột bên trái -->
+            <tr class="tr-introduce">
+              <td class="text-center">01</td>
+              <td>
+                <strong>Công an Thành phố</strong><br />
+                230 Nguyễn Trãi, Quận 1, TpHCM<br />
+                ĐT: 38387344 - 39201150 - 39201605 - Fax: 38361761<br />
+                <a href="https://catphcm.bocongan.gov.vn"
+                  >https://catphcm.bocongan.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">02</td>
+              <td>
+                <strong>Cục Hải Quan thành phố Hồ Chí Minh</strong><br />
+                2 Hàm Nghi, P. Bến Nghé, Quận 1, TpHCM<br />
+                ĐT: 38291422 - Fax: 38290096 -38212062<br />
+                <a href="http://www.haiquan.hochiminhcity.gov.vn"
+                  >http://www.haiquan.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">03</td>
+              <td>
+                <strong>Cục Thuế thành phố Hồ Chí Minh</strong><br />
+                63 Vũ Tông Phan, Phường An Phú, Quận 2, TPHCM<br />
+                ĐT: 39305373-39303991 - Fax: 39304641-39303756<br />
+                <a href="http://tphcm.gdt.gov.vn">http://tphcm.gdt.gov.vn</a>
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">04</td>
+              <td>
+                <strong>Cục Thống kê</strong><br />
+                29 Hàn Thuyên, Quận 1, TpHCM<br />
+                ĐT: 38256484 - 38248865 - Fax: 38244734-38297669<br />
+                <a href="http://www.pso.hochiminhcity.gov.vn"
+                  >http://www.pso.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">05</td>
+              <td>
+                <strong>Cảnh sát Phòng cháy và Chữa cháy Thành phố</strong
+                ><br />
+                258 Trần Hưng Đạo, Quận 1, TPHCM<br />
+                ĐT: 38387230 - 38387477 - 38387975 - Fax: 38385312 - 38385313<br />
+                <a href="http://www.pccc.hochiminhcity.gov.vn"
+                  >http://www.pccc.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-6">
+        <table class="table table-bordered table-hover table-introduce">
+          <thead class="table-title-introduce">
+            <tr>
+              <th class="text-center" width="10%">STT</th>
+              <th class="text-center">ĐƠN VỊ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Cột bên phải -->
+
+            <tr class="tr-introduce">
+              <td class="text-center">06</td>
+              <td>
+                <strong>Kho bạc Nhà nước TPHCM</strong><br />
+                37 Nguyễn Huệ, Quận 1, TPHCM<br />
+                ĐT: 39151021 - 39151022 - 39151062 - Fax: 39151060<br />
+                <a href="http://www.khobac.hochiminhcity.gov.vn"
+                  >http://www.khobac.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">07</td>
+              <td>
+                <strong>Ủy ban Người Việt Nam ở nước ngoài</strong><br />
+                147 Nguyễn Đình Chiểu, P6, Quận 3, TpHCM<br />
+                ĐT: 39304522 - Fax: 39306737<br />
+                <a href="http://www.ubvk.hochiminhcity.gov.vn"
+                  >http://www.ubvk.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">08</td>
+              <td>
+                <strong>Tòa án nhân dân Thành phố Hồ Chí Minh</strong><br />
+                131 Nam Kỳ Khởi Nghĩa, Quận 1<br />
+                ĐT: 8292448 - 38241353 - Fax: 38292444 - 38249362<br />
+                <a href="http://www.tand.hochiminhcity.gov.vn"
+                  >http://www.tand.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">09</td>
+              <td>
+                <strong>Viện Kiểm sát nhân dân Thành phố</strong><br />
+                131 Nam Kỳ Khởi Nghĩa, Quận 1<br />
+                ĐT: 38291741 - Fax: 38241682<br />
+                <a href="http://www.vksnd.hochiminhcity.gov.vn"
+                  >http://www.vksnd.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="featured-gt-chiquyen introduce_donvi_bg my-4 mx-3"
+  style="display: none"
+  id="chinhquyen-tpthuduc"
+>
+  <div class="introduce_donvi">
+    <h2 class="introduce_donvi_title text-center mb-4">
+      UBND QUẬN, HUYỆN VÀ THÀNH PHỐ THỦ ĐỨC
+    </h2>
+
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-bordered table-hover table-introduce">
+          <thead class="table-title-introduce">
+            <tr>
+              <th class="text-center" width="10%">STT</th>
+              <th class="text-center">ĐƠN VỊ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Cột bên trái -->
+            <tr class="tr-introduce">
+              <td class="text-center">01</td>
+              <td>
+                <strong>UBND Huyện Bình Chánh</strong><br />
+                79 Tân Túc, Thị trấn Tân Túc, Huyện Bình Chánh, Tp.HCM<br />
+                ĐT: (028) 37602137 - Fax: 37602246<br />
+                <a href="https://binhchanh.hochiminhcity.gov.vn"
+                  >https://binhchanh.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">02</td>
+              <td>
+                <strong>UBND Huyện Hóc Môn</strong><br />
+                Số 1 Lý Nam Đế, Thị trấn Hóc Môn, Huyện Hóc Môn, Tp.HCM<br />
+                ĐT: (028) 38910404 - Fax: 38910403<br />
+                <a href="https://hocmon.gov.vn">https://hocmon.gov.vn</a>
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">03</td>
+              <td>
+                <strong>UBND Quận 3</strong><br />
+                99 Trần Quốc Thảo, Phường Võ Thị Sáu, Quận 3, Tp.HCM<br />
+                ĐT: (028) 39326868 - Fax: 38323783<br />
+                <a href="https://quan3.hochiminhcity.gov.vn"
+                  >https://quan3.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">04</td>
+              <td>
+                <strong>UBND Quận 6</strong><br />
+                107 Cao Văn Lầu, Phường 1, Quận 6, Tp.HCM<br />
+                ĐT: (028) 38552700 - Fax: 38551582<br />
+                <a href="http://www.quan6.hochiminhcity.gov.vn"
+                  >http://www.quan6.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">05</td>
+              <td>
+                <strong>UBND Quận 10</strong><br />
+                474 đường Ba Tháng Hai, Phường 14, Quận 10, Tp.HCM<br />
+                ĐT: (028) 38655750 - 38655907 - Fax: 38655909<br />
+                <a href="http://www.quan10.gov.vn">http://www.quan10.gov.vn</a>
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">06</td>
+              <td>
+                <strong>UBND Quận Bình Tân</strong><br />
+                521 Kinh Dương Vương, Phường An Lạc, Quận Bình Tân, Tp.HCM<br />
+                ĐT: (028) 38750307 - Fax: 38752855<br />
+                <a href="https://binhtan.hochiminhcity.gov.vn"
+                  >https://binhtan.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">07</td>
+              <td>
+                <strong>UBND Quận Phú Nhuận</strong><br />
+                155 Nguyễn Văn Trỗi, Phường 11, Quận Phú Nhuận, Tp.HCM<br />
+                ĐT: (028) 38443921 - 38475873 - 38443063 - Fax: 38475873<br />
+                <a href="http://www.phunhuan.hochiminhcity.gov.vn"
+                  >http://www.phunhuan.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">08</td>
+              <td>
+                <strong>UBND Quận Tân Bình</strong><br />
+                387A Trường Chinh, Phường 14, Quận Tân Bình<br />
+                ĐT: (028) 54341498 - 54341499 - Fax: 54341510<br />
+                <a href="https://tanbinh.hochiminhcity.gov.vn"
+                  >https://tanbinh.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">09</td>
+              <td>
+                <strong>UBND Huyện Cần Giờ</strong><br />
+                Đường Lương Văn Nho, Khu phố Giồng Ao, Thị trấn Cần Thạnh, Huyện
+                Cần Giờ, Tp.HCM<br />
+                ĐT: (028) 38740203 - Fax: 38740211<br />
+                <a href="https://cangio.hochiminhcity.gov.vn"
+                  >https://cangio.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">10</td>
+              <td>
+                <strong>UBND Huyện Nhà Bè</strong><br />
+                330 Nguyễn Bình, Ấp 1, Xã Phú Xuân, Huyện Nhà Bè, Tp.HCM<br />
+                ĐT: (028) 36222444 - Fax: 37828405<br />
+                <a href="https://nhabe.hochiminhcity.gov.vn"
+                  >https://nhabe.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">11</td>
+              <td>
+                <strong>UBND Quận 4</strong><br />
+                18 Đoàn Như Hài, Phường 13, Quận 4, Tp.HCM<br />
+                ĐT: (028) 39400437 - Fax: 39400064<br />
+                <a href="https://quan4.hochiminhcity.gov.vn"
+                  >https://quan4.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-6">
+        <table class="table table-bordered table-hover table-introduce">
+          <thead class="table-title-introduce">
+            <tr>
+              <th class="text-center" width="10%">STT</th>
+              <th class="text-center">ĐƠN VỊ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Cột bên phải -->
+            <tr class="tr-introduce">
+              <td class="text-center">12</td>
+              <td>
+                <strong>UBND Quận 7</strong><br />
+                7 Tân Phú, Phường Tân Phú, Quận 7, Tp.HCM<br />
+                ĐT: (028) 37852520 - Fax: 37851615<br />
+                <a href="https://quan7.hochiminhcity.gov.vn"
+                  >https://quan7.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">13</td>
+              <td>
+                <strong>UBND Quận 11</strong><br />
+                270 Bình Thới, Phường 10, Quận 11, Tp.HCM<br />
+                ĐT: (028) 39634490 - Fax: 39633101<br />
+                <a href="http://www.quan11.hochiminhcity.gov.vn"
+                  >http://www.quan11.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">14</td>
+              <td>
+                <strong>UBND Quận Bình Thạnh</strong><br />
+                6 Phan Đăng Lưu, Phường 14, Quận Bình Thạnh, Tp.HCM<br />
+                ĐT: (028) 35511888 - Fax: 38412366<br />
+                <a href="http://www.binhthanh.hochiminhcity.gov.vn"
+                  >http://www.binhthanh.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">15</td>
+              <td>
+                <strong>UBND Thành phố Thủ Đức</strong><br />
+                168 Trương Văn Bang, Khu phố 1, Phường Thạnh Mỹ Lợi, TP Thủ Đức,
+                Tp.HCM<br />
+                ĐT: (028) 37400509 - Fax: 37470225<br />
+                <a href="https://thuduc.hochiminhcity.gov.vn"
+                  >https://tpthuduc.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">16</td>
+              <td>
+                <strong>UBND Huyện Củ Chi</strong><br />
+                Số 77, Tỉnh lộ 8, Khu phố 7, Thị trấn Củ Chi, Huyện Củ Chi,
+                Tp.HCM<br />
+                ĐT: (028) 38920215 - Fax: 38920263<br />
+                <a href="http://www.cuchi.hochiminhcity.gov.vn"
+                  >http://www.cuchi.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">17</td>
+              <td>
+                <strong>UBND Quận 1</strong><br />
+                47 Lê Duẩn, phường Bến Nghé, Quận 1, Tp.HCM<br />
+                ĐT: (028) 38295288 - 38296314 - Fax: 38298327<br />
+                <a href="http://www.quan1.hochiminhcity.gov.vn"
+                  >http://www.quan1.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">18</td>
+              <td>
+                <strong>UBND Quận 5</strong><br />
+                203 An Dương Vương, Phường 8, Quận 5, Tp.HCM<br />
+                ĐT: (028) 38550250 - Fax: 38559895<br />
+                <a href="http://www.quan5.hochiminhcity.gov.vn"
+                  >http://www.quan5.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">19</td>
+              <td>
+                <strong>UBND Quận 8</strong><br />
+                4 Dương Quang Đông, Phường 5, Quận 8, Tp.HCM<br />
+                ĐT: (028) 54311366 - Fax: 54311388<br />
+                <a href="http://www.quan8.hochiminhcity.gov.vn"
+                  >http://www.quan8.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">20</td>
+              <td>
+                <strong>UBND Quận 12</strong><br />
+                01 Lê Thị Riêng, Phường Thới An, Quận 12<br />
+                ĐT: (028) 39826312 - Fax: 38917623<br />
+                <a href="http://www.quan12.hochiminhcity.gov.vn"
+                  >http://www.quan12.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">21</td>
+              <td>
+                <strong>UBND Quận Gò Vấp</strong><br />
+                19 Quang Trung, Phường 10, Quận Gò Vấp, Tp.HCM<br />
+                ĐT: (028) 38941929 - Fax: 38941929<br />
+                <a href="https://govap.hochiminhcity.gov.vn"
+                  >https://govap.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+            <tr class="tr-introduce">
+              <td class="text-center">22</td>
+              <td>
+                <strong>UBND Quận Tân Phú</strong><br />
+                70A Thoại Ngọc Hầu, Phường Hòa Thạnh, Quận Tân Phú, Tp.HCM<br />
+                ĐT: (028) 54088300 - 54088297 - Fax: 54088302<br />
+                <a href="http://www.tanphu.hochiminhcity.gov.vn"
+                  >http://www.tanphu.hochiminhcity.gov.vn</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="featured-gt-chiquyen introduce_donvi_bg my-4 mx-3"
+  style="display: none"
+  id="chinhquyen-uyvienthanhpho"
+>
+  <div class="content-gt-uyvien">
+    <div class="tieude-tab-thoiky">
+      <span
+        >ỦY VIÊN <br />
+        ubnd thành phố hồ chí minh</span
+      >
+    </div>
+    <div class="w-100 d-flex justify-content-center">
+      <div
+        class="uyvien-left w-50 d-flex justify-content-center flex-column align-items-end line-center"
+      >
+        <div class="card-uyvien card-canbo mb-card container-fluid">
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>NGUYỄN VĂN NAM</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/nguyenvannam.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: NGUYỄN VĂN NAM</span>
+              <span>Chức vụ: Tư lệnh Bộ Tư lệnh TP</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-uyvien card-canbo mb-card container-fluid">
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>LÊ HỒNG NAM</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/lehongnam.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: LÊ HỒNG NAM</span>
+              <span>Chức vụ: Giám đốc Công an TP</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-uyvien card-canbo mb-card container-fluid">
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>ĐẶNG QUỐC TOÀN</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/dangquoctoan.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: ĐẶNG QUỐC TOÀN</span>
+              <span>Chức vụ: Chánh Văn phòng UBND TP</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-uyvien card-canbo mb-card container-fluid">
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>LÊ THỊ HUỲNH MAI</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/lethihuynhmai.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: LÊ THỊ HUỲNH MAI</span>
+              <span>Chức vụ: Giám đốc Sở Kế hoạch và Đầu tư</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-uyvien card-canbo mb-card container-fluid">
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>nguyễn hoàng hải</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/nguyenhoanghai.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: NGUYỄN HOÀNG HẢI</span>
+              <span>Chức vụ: Giám đốc Sở Tài chính</span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="card-uyvien card-canbo mb-card container-fluid expand-uyvien"
+        >
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>BÙI TÁ HOÀNG VŨ</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/buitahoangvu.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: BÙI TÁ HOÀNG VŨ</span>
+              <span>Chức vụ: Giám đốc Sở Công thương</span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="card-uyvien card-canbo mb-card container-fluid expand-uyvien"
+        >
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>NGUYỄN THỊ ÁNH HOA</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/nguyenthianhhoa.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: NGUYỄN THỊ ÁNH HOA</span>
+              <span>Chức vụ: Giám đốc Sở Du lịch</span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="card-uyvien card-canbo mb-card container-fluid expand-uyvien"
+        >
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>ĐINH MINH HIỆP</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/dinhminhhiep.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: ĐINH MINH HIỆP</span>
+              <span
+                >Chức vụ: Giám đốc Sở Nông nghiệp và Phát triển nông thôn</span
+              >
+            </div>
+          </div>
+        </div>
+        <div
+          class="card-uyvien card-canbo mb-card container-fluid expand-uyvien"
+        >
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>NGUYỄN VIỆT DŨNG</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/nguyenvietdung.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: NGUYỄN VIỆT DŨNG</span>
+              <span>Chức vụ: Giám đốc Sở Khoa học và Công nghệ</span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="card-uyvien card-canbo mb-card container-fluid expand-uyvien"
+        >
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>TRẦN QUANG LÂM</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/tranquanglam.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: TRẦN QUANG LÂM</span>
+              <span>Chức vụ: Giám đốc Sở Giao thông và Vận tải</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="uyvien-right w-50 d-flex flex-column align-items-start">
+        <div class="card-uyvien card-canbo mb-card container-fluid">
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>NGUYỄN TOÀN THẮNG</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/nguyentoanthang.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: NGUYỄN TOÀN THẮNG</span>
+              <span>Chức vụ: Giám đốc Sở Tài nguyên và Môi trường</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-uyvien card-canbo mb-card container-fluid">
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>NGUYỄN THANH NHÃ</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/nguyenthanhnha.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: NGUYỄN THANH NHÃ</span>
+              <span>Chức vụ: Giám đốc Sở Quy hoạch - Kiến trúc</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-uyvien card-canbo mb-card container-fluid">
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>VÕ NGỌC QUỐC THUẬN</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/vongocquocthuan.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: VÕ NGỌC QUỐC THUẬN</span>
+              <span>Chức vụ: Giám đốc Sở Nội vụ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-uyvien card-canbo mb-card container-fluid">
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>TRẦN THẾ THUẬN</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/tranthethuan.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: TRẦN THẾ THUẬN</span>
+              <span>Chức vụ: Giám đốc Sở Văn hóa và Thể thao</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-uyvien card-canbo mb-card container-fluid">
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>LÊ VĂN THINH</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/levanthinh.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: LÊ VĂN THINH</span>
+              <span>Chức vụ: Giám đốc Sở Lao động – Thương binh và Xã hội</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-uyvien card-canbo mb-card container-fluid">
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>HUỲNH VĂN HẠNH</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/huynhvanhanh.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: HUỲNH VĂN HẠNH</span>
+              <span>Chức vụ: Giám đốc Sở Tư pháp</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="card-uyvien card-canbo mb-card container-fluid expand-uyvien"
+        >
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>NGUYỄN VĂN HIẾU</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/nguyenvanhieu.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: NGUYỄN VĂN HIẾU</span>
+              <span>Chức vụ: Giám đốc Sở Giáo dục và Đào tạo</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="card-uyvien card-canbo mb-card container-fluid expand-uyvien"
+        >
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>TĂNG CHÍ THƯỢNG</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/tangchithuong.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: TĂNG CHÍ THƯỢNG</span>
+              <span>Chức vụ: Giám đốc Sở Y tế</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="card-uyvien card-canbo mb-card container-fluid expand-uyvien"
+        >
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>TRẦN VĂN BẢY</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/tranvanbay.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: TRẦN VĂN BẢY</span>
+              <span>Chức vụ: Chánh Thanh tra Thành phố</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="card-uyvien card-canbo mb-card container-fluid expand-uyvien"
+        >
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>HUỲNH VĂN HỒNG NGỌC</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/huynhvanhongnngoc.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: HUỲNH VĂN HỒNG NGỌC</span>
+              <span>Chức vụ: Trưởng ban Dân tộc Thành phố</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="card-uyvien card-canbo mb-card container-fluid expand-uyvien"
+        >
+          <div class="mb-2 ten-uyvien">
+            <span class="chucVu">Ủy viên</span>
+            <span>PHẠM KHÁNH PHONG LAN</span>
+          </div>
+          <div class="card-uyvien-thongtin row mx-0">
+            <div class="col-4 align-self-center">
+              <img
+                src="/documents/39403/329727/phamkhanhphonglan.png"
+                style="width: 120px"
+              />
+            </div>
+            <div class="col-8 pl-0 card-text">
+              <span>Họ và tên: PHẠM KHÁNH PHONG LAN</span>
+              <span>Chức vụ: Giám đốc Sở An toàn thực phẩm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3">
+      <button class="ct-btn-xemthem-uyvien">Xem thêm</button>
+    </div>
+    <div class="mt-3 mb-5" id="icon-expand-uyvien">
+      <img src="/documents/39403/329727/icon_arrow-down.png" />
+    </div>
+    <div class="mt-3 mb-5" id="icon-collapse-uyvien">
+      <img src="/documents/39403/329727/icon_arrow-down.png" />
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    const $navLinks = $(".nav-link-gt-chiquyen");
+    const $contentSections = $(".featured-gt-chiquyen");
+
+    $navLinks.on("click", function (e) {
+      e.preventDefault();
+
+      // Remove active class from all links
+      $navLinks.removeClass("active");
+
+      // Add active class to clicked link
+      $(this).addClass("active");
+
+      // Hide all content sections
+      $contentSections.hide();
+
+      // Show the corresponding content section
+      const contentId = $(this).attr("data-content");
+      const $contentToShow = $("#" + contentId);
+      if ($contentToShow.length) {
+        $contentToShow.show();
+      } else {
+        console.error("Content section not found:", contentId);
+      }
+    });
+
+    var showAllButton = $(".ct-btn-xemthem");
+    var expand = $(".expand");
+    var iconExpand = $("#icon-expand");
+    var iconCollapse = $("#icon-collapse");
+    iconCollapse.hide();
+    expand.hide();
+    showAllButton.click(function () {
+      expand.css("display", "flex");
+      showAllButton.hide();
+      iconExpand.hide();
+      iconCollapse.show();
+    });
+
+    iconCollapse.click(function () {
+      expand.css("display", "none");
+      showAllButton.show();
+      iconExpand.show();
+      iconCollapse.hide();
+    });
+
+    //
+
+    var showAllButtonUv = $(".ct-btn-xemthem-uyvien");
+    var expandUv = $(".expand-uyvien");
+    var iconExpandUv = $("#icon-expand-uyvien");
+    var iconCollapseUv = $("#icon-collapse-uyvien");
+
+    showAllButtonUv.click(function () {
+      expandUv.css("display", "flex");
+      showAllButtonUv.hide();
+      iconExpandUv.hide();
+      iconCollapseUv.show();
+    });
+
+    iconCollapseUv.click(function () {
+      expandUv.css("display", "none");
+      showAllButtonUv.show();
+      iconExpandUv.show();
+      iconCollapseUv.hide();
+    });
+  });
+</script>

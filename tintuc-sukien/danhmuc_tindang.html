@@ -1,0 +1,977 @@
+<!-- Bootstrap CSS -->
+
+<style>
+    * {
+        font-family: "Roboto";
+    }
+
+    .top-0 {
+        top: 0 !important;
+    }
+
+    .start-0 {
+        left: 0 !important;
+    }
+
+    .gap-1 {
+        gap: 0.25rem;
+    }
+    .gap-2 {
+        gap: 0.5rem;
+    }
+    .gap-3 {
+        gap: 1rem;
+    }
+
+    .me-3 {
+        margin-right: 1rem !important;
+    }
+    .ms-3 {
+        margin-left: 1rem !important;
+    }
+    /* 3. Danh mục bài viết và tin đã đăng */
+    .category-news-container .newsSwiper swiper-slide {
+        height: auto;
+    }
+    /* Đảm bảo tất cả các card có chiều cao bằng nhau */
+    .category-news-container .newsSwiper .card {
+        display: flex;
+        flex-direction: column;
+    }
+    /* Wrapper cho ảnh với tỷ lệ cố định */
+    .category-news-container .card-img-wrapper {
+        position: relative;
+        padding-top: 80%;
+        /* Tỷ lệ 3:2 */
+        width: 100%;
+        overflow: hidden;
+    }
+
+    /* Định dạng ảnh bên trong wrapper */
+    .category-news-container .card-img-wrapper .card-img-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Đảm bảo phần nội dung card có thể mở rộng */
+    .category-news-container .card-body {
+        flex: 1;
+    }
+
+    /* Đảm bảo độ cao tiêu đề nhất quán */
+    .category-news-container .card-title-news {
+        min-height: 40px;
+        /* Điều chỉnh theo nhu cầu */
+        overflow: hidden;
+    }
+
+    .category-news-container {
+        padding: 30px 15px;
+        background-image: url(/documents/20121/40140/bg-news-category.png/92f58df9-0688-ed0e-8adc-dcc594e8b287?t=1731896735915);
+    }
+
+    .category-news-container .text-truncate-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-height: 78px;
+        font-size: 22px;
+    }
+
+    .category-news-container .nav-link {
+        border-radius: 0;
+        color: #000;
+        background-color: #fff;
+        padding: 10px;
+        white-space: nowrap;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .category-menu .nav-item {
+        width: 19.5%;
+    }
+
+    .category-menu .nav-link {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .category-news-container .nav-pills .nav-link:hover {
+        background-color: #db7100;
+        color: #fff;
+    }
+
+    .category-news-container .nav-link.active {
+        background-color: #db7100 !important;
+        color: white !important;
+    }
+
+    .tool-container .btn {
+        background-color: #0099d2;
+        color: #ffffff;
+    }
+
+    .tool-container .btn:hover {
+        background-color: #0d4c92;
+        color: #ffffff;
+    }
+
+    .slideshow-news-container .pagination-container {
+        right: 0;
+        bottom: -7px;
+        z-index: 2;
+    }
+
+    .slideshow-news-container .btn-orange {
+        background-color: #db7100;
+        color: #ffffff;
+        min-width: 142px;
+        padding: 7px 0;
+    }
+
+    .slideshow-news-container .btn-orange:hover {
+        background-color: #0d4c92;
+        color: #ffffff;
+    }
+
+    .category-news-container .search-container .form-control {
+        min-width: 200px;
+        max-width: 300px;
+        width: 312px;
+    }
+
+    .category-news-container .search-container {
+        position: relative;
+    }
+
+    .category-news-container .search-button {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: none;
+    }
+
+    .category-news-container .custom-select {
+        border-radius: 4px;
+        padding: 8px 12px;
+        border: 1px solid #ced4da;
+        min-width: 80px;
+        font-size: 14px;
+        height: 40px!important;
+    }
+
+    .category-news-container ::part(pagination) {
+        bottom: 0px;
+        text-align: left;
+        left: 80px;
+        right: auto;
+        padding-left: 15px;
+    }
+
+    .category-news-container ::part(bullet) {
+        width: 12px;
+        height: 10px;
+        border-radius: 4px;
+        padding-left: 6px;
+        padding-right: 6px;
+        background-color: #d9d9d9;
+        opacity: 1;
+        margin: 0 4px !important;
+    }
+
+    .category-news-container ::part(bullet-active) {
+        background-color: #db7100;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
+
+    .category-news-container .btn-detail {
+        background-color: #bce6fe;
+        min-width: 105px;
+        transition: all 0.3s ease;
+        color: #031739;
+        border: 1px solid transparent;
+        font-weight: 700;
+    }
+
+    .category-news-container .btn-detail:hover {
+        background-color: #e6e6e6;
+        color: #031739;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-news-container ::part(button-prev),
+    .category-news-container ::part(button-next) {
+        width: 32px;
+        height: 32px;
+        background-color: #db7100;
+        border-radius: 50%;
+        color: transparent;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 0;
+    }
+
+    .category-news-container ::part(button-prev) {
+
+        background-size: 18px;
+        left: -10px;
+    }
+
+    .category-news-container ::part(button-next) {
+
+        background-size: 18px;
+        right: 0;
+    }
+
+    .category-news-container ::part(button-prev):hover,
+    .category-news-container ::part(button-next):hover {
+        background-color: #ff8c1a;
+    }
+
+    .slideshow-news-container {
+        position: relative;
+    }
+
+    .slideshow-news-container .bage-slide {
+        background-color: #bce6fe;
+        padding: 7px;
+    }
+
+    .slideshow-news-container .card .card-body {
+        transition: background-color 0.3s ease;
+    }
+
+    .slideshow-news-container .card-content-container:hover .card-title-news {
+        color: #ffffff !important;
+    }
+
+    .slideshow-news-container .card-content-container:hover {
+        background-color: #0d4c92;
+        cursor: pointer;
+        color: #ffffff;
+    }
+
+    .slideshow-news-container .card-content-container:hover .text-muted,
+    .slideshow-news-container .card-content-container:hover .view-count-container,
+    .slideshow-news-container .card-content-container:hover .views-tindang {
+        color: #ffffff !important;
+    }
+
+    .slideshow-news-container .card-img-top {
+        transition: transform 0.3s ease;
+    }
+
+    .slideshow-news-container .card-img-top:hover {
+        transform: scale(1.05);
+    }
+
+    .slideshow-news-container .card {
+        overflow: hidden;
+    }
+
+    .custom-prev-btn,
+    .custom-next-btn{
+        width: 32px;
+        height: 32px;
+        background-color: #db7100;
+        border-radius: 50%;
+        border: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .custom-prev-btn {
+        left: -40px;
+    }
+
+    .custom-next-btn {
+        right: -40px;
+    }
+
+
+
+    .custom-prev-btn:hover,
+    .custom-next-btn:hover {
+        background-color: #ff8c1a;
+    }
+
+    .custom-prev-btn img,
+    .custom-next-btn img,
+    .custom-prev-btn-news-slideshow img,
+    .custom-next-btn-news-slideshow img {
+        width: 18px;
+        height: 18px;
+    }
+    .nav-bv-tin .nav-item .nav-link {
+        font-size: 16px;
+    }
+    .btn-view{
+        font-size: 18px;
+    }
+    /* Mobile (< 425px) */
+    @media screen and (max-width: 426px) {
+        .nav-bv-tin {
+            gap: 10px;
+        }
+        .category-menu .nav-item {
+            width: 100%;
+        }
+
+        .tool-container {
+            flex-direction: column;
+        }
+
+        .search-container {
+            width: 100%;
+        }
+
+        .search-container .form-control {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .custom-prev-btn {
+            left: -10px;
+        }
+
+        .custom-next-btn {
+            right: -10px;
+        }
+
+
+        /* Search container responsive */
+        .search-container {
+            width: 100%;
+            flex-direction: column;
+            align-items: stretch !important;
+        }
+
+        .search-container a {
+            width: 100%;
+        }
+
+        .search-container a button {
+            width: 100%;
+            margin-bottom: 10px;
+            background-color: #0099d2;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .search-container .form-control {
+            width: 100%;
+            padding-right: 40px;
+            font-size: 14px;
+        }
+
+        .search-container .search-button {
+            position: absolute;
+            right: 10px;
+            top: calc(65% + 15px);
+            transform: translateY(-50%);
+            padding: 6px 5px;
+        }
+
+        .search-container .search-button i {
+            font-size: 14px;
+        }
+        .card-content-container .btn-detail {
+            font-size: 14px;
+        }
+    }
+
+    /* Tablet (425px - 768px) */
+    @media screen and (min-width: 425px) and (max-width: 768px) {
+        .nav-bv-tin {
+            gap: 16px 4%;
+        }
+        .category-menu .nav-item {
+            width: 48%;
+        }
+
+        .tool-container {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .search-container {
+            width: 100%;
+        }
+
+        .search-container .form-control {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .custom-prev-btn {
+            left: -20px;
+        }
+
+        .custom-next-btn {
+            right: -20px;
+        }
+    }
+
+    /* Laptop (768px - 1024px) */
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        .nav-bv-tin {
+            gap: 10px 0.87%;
+        }
+        .category-menu .nav-item {
+            width: 19.3%;
+        }
+
+        .search-container .form-control {
+            width: 250px;
+        }
+
+        .custom-prev-btn {
+            left: -10px;
+        }
+
+        .custom-next-btn {
+            right: -10px;
+        }
+    }
+
+    /* Large Laptop (1024px - 1440px) */
+    @media screen and (min-width: 1024px) and (max-width: 1440px) {
+        .nav-bv-tin {
+            gap: 10px 0.86%;
+        }
+        .category-menu .nav-item {
+            width: 19.3%;
+        }
+
+        .search-container .form-control {
+            width: 300px;
+        }
+
+        .custom-prev-btn {
+            left: -35px;
+        }
+
+        .custom-next-btn {
+            right: -35px;
+        }
+
+    }
+    @media screen and (min-width: 1440px) and (max-width: 1824px) {
+        .nav-bv-tin {
+            gap: 12px 0.74%;
+        }
+        .category-menu .nav-item {
+            width: 19.4%!important;
+        }
+    }
+    @media screen and (min-width: 1824px) and (max-width: 2304px) {
+        .nav-bv-tin {
+            gap: 12px 0.6%;
+        }
+        .category-menu .nav-item {
+            width: 19.5%!important;
+        }
+    }
+    /*    lớn hơn 2305*/
+    @media screen and (min-width: 2305px) {
+        .nav-bv-tin {
+            gap: 12px 0.6%;
+        }
+        .category-menu .nav-item {
+            width: 19.5%!important;
+        }
+    }
+</style>
+<div class="category-news-container">
+    <div>
+        <div class="category-menu">
+            <!-- Menu chính -->
+            <ul class="nav-bv-tin nav nav-pills w-100 ">
+                <li class="nav-item">
+                    <a class="nav-link active text-center" href="javascript:void(0)">TẤT CẢ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="javascript:void(0)">CHÍNH TRỊ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="javascript:void(0)">KINH TẾ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="javascript:void(0)">VĂN HÓA - XÃ HỘI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="javascript:void(0)">ĐỐI NGOẠI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="javascript:void(0)"
+                    >KHOA GIÁO</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="javascript:void(0)">HẠ TẦNG - ĐÔ THỊ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="javascript:void(0)">AN NINH - TRẬT TỰ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="javascript:void(0)">TỔ CHỨC NHÂN SỰ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="javascript:void(0)">THÔNG TIN DOANH NGHIỆP</a>
+                </li>
+            </ul>
+            <!-- Thanh công cụ -->
+            <div
+                    class="tool-container d-flex justify-content-between align-items-center gap-3 flex-wrap my-4"
+            >
+                <!-- Phần bên trái -->
+                <div class="d-flex align-items-center gap-3">
+                    <select class="custom-select" id="yearSelect">
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+                    <select class="custom-select" id="monthSelect">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <button class="btn text-white px-4 btn-view">Xem</button>
+                </div>
+
+                <!-- Phần search bên phải -->
+                <div class="search-container d-flex align-items-center gap-2">
+                    <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Nhập nội dung tìm kiếm"
+                    />
+                    <button class="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="slideshow-news-container position-relative">
+            <!-- Thêm nút điều hướng tùy chỉnh -->
+            <button class="custom-prev-btn">
+
+                <img src="/documents/39403/310714/left-arrow.svg"
+                     alt="Previous"
+                />
+            </button>
+            <button class="custom-next-btn">
+                <img
+                        src="/documents/39403/310714/right-arrow.svg"
+                        alt="Next"
+                />
+            </button>
+
+            <!-- Định nghĩa mapping cho icons -->
+            <#assign categoryIcons = {
+            "KINH_TE": "/documents/39403/331149/ic_kt.png/618bcf29-7fbf-f158-f303-8a77ac7ade92?t=1732155565667",
+            "THONG_BAO": "/documents/39403/331149/ic_tb.png/4e4c2773-3b95-a073-7e4d-b0faba997d51?t=1732155565926",
+            "HA_TANG": "/documents/39403/331149/ic_ht.png/efcf15fa-7c8d-0461-3095-831796a669d8?t=1732155565437",
+            "VAN_HOA": "/documents/39403/331149/ic_vh.png/05543994-41a5-e16e-89b9-cee9a415e8f1?t=1732155566178",
+            "KHOA_GIAO":"/documents/39403/331149/khoa+gi%C3%A1o.png/100f8139-6dbd-6b6a-b441-0e51259b0807?t=1732155566411",
+            "DOI_NGOAI": "/documents/39403/331149/%C4%91%E1%BB%91i+ngo%E1%BA%A1i.png/e9278b95-d550-abbb-7a3c-bc0e6c7145bf?t=1732155565214",
+            "CHINH_TRI": "/documents/39403/331149/CH%C3%8DNH+TR%E1%BB%8A.png/aff1039f-cafc-1121-e49f-210645a54730?t=1732155564962",
+            "BUSINESS": "/documents/39403/331149/BUSINESS.png/8e06bae4-1c7e-aec4-c6b0-291439f12207?t=1732155564731",
+            "AN_NINH":"/documents/39403/331149/AN+NINH+TRAT+TU.png/adb2dc88-bb80-b5fe-c14a-c9f3b3b1e15e?t=1732155564481"
+            } />
+
+            <!-- Định nghĩa mảng các category -->
+            <#assign categories = ["KINH_TE", "THONG_BAO", "HA_TANG", "VAN_HOA","KHOA_GIAO","DOI_NGOAI","CHINH_TRI","BUSINESS","AN_NINH"] />
+            <#assign dateFormatDay = "dd" />
+            <#assign monthFormatDay = "MM" />
+            <#assign yearFormatDay = "yyyy" />
+            <#assign dateFormatTime = "HH:mm" />
+            <#assign indexLocal = 0/>
+            <swiper-container
+                    class="newsSwiper position-relative"
+                    pagination="true"
+                    pagination-clickable="true"
+                    space-between="20"
+                    slides-per-view="4"
+                    loop="true"
+                    initial-slide="0"
+                    navigation="false"
+                    pagination-dynamic-bullets="true"
+                    pagination-dynamic-main-bullets="3"
+            >
+                <#if entries?has_content>
+
+                    <#list entries as curEntry>
+                        <#assign
+                        renderer = curEntry.getAssetRenderer()
+                        className = renderer.getClassName()
+                        category = (indexLocal < categories?size)?then(categories[indexLocal], categories[0])
+                        iconUrl = categoryIcons[category]!""
+                        />
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 10>
+                            <#assign
+                            title = curEntry.getTitle(locale)
+                            article = renderer.getArticle()
+                            description = article.getDescription(locale)
+                            ddmTemplateKey = article.getDDMTemplateKey()
+                            createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                            createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                            createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                            createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                            curEntry = curEntry
+                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                            indexLocal = indexLocal + 1 />
+                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                            <#else>
+                                <#assign smallImageUrl = "" >
+                            </#if>
+                            <swiper-slide
+                            ><div class="card position-relative mb-5">
+                                    <!-- Phần hình ảnh -->
+                                    <div class="card-img-wrapper">
+                                        <img src="${smallImageUrl}"
+                                             class="card-img-top"
+                                             alt="Tin tức" />
+                                    </div>
+                                    <div class="bage-slide position-absolute top-0 start-0">
+                                        <img
+                                                src="${iconUrl}"
+                                                alt=""
+                                        />
+                                    </div>
+
+                                    <!-- Phần nội dung -->
+                                    <div class="card-content-container">
+                                        <div class="card-body py-4 px-3">
+                                            <h5 class="card-title-news text-truncate-3">
+                                                ${title}
+                                            </h5>
+
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <span class="me-3 text-muted">${createTime} | ${createDay}/${createMonth}/${createYear}</span>
+                                                <div
+                                                        class="d-flex align-items-center gap-1 view-count-container"
+                                                >
+                                                    <i class="fa fa-eye"></i>
+                                                    <span class="views-tindang">1,141</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Nút xem chi tiết -->
+                                        <div class="border-0 pb-3 ms-3">
+                                            <a href="${viewURL}" >
+                                                <button class="btn btn-detail rounded">
+                                                    Xem chi tiết
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div></swiper-slide
+                            >
+
+                        </#if>
+                    </#list>
+                </#if>
+
+            </swiper-container>
+            <div class="pagination-container position-absolute">
+                <a href="/tin-tuc-2">
+                    <button class="btn text-white text-nowrap btn-orange">
+                        Xem thêm
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+<script>
+    function initializeNewsSwiper() {
+        // Kiểm tra jQuery đã được load chưa
+        if (typeof jQuery === 'undefined') {
+            setTimeout(initializeNewsSwiper, 100);
+            return;
+        }
+
+        $(document).ready(function () {
+            // Đổi tên biến để tránh xung đột
+            const newsSwiper = $(".newsSwiper")[0];
+            if (newsSwiper && newsSwiper.swiper) {
+                const swiperNewsWrapper = newsSwiper.swiper;
+
+                // Xử lý nút Previous
+                $(".custom-prev-btn").off('click').on("click", () => {
+                    if (swiperNewsWrapper) swiperNewsWrapper.slidePrev();
+                });
+
+                // Xử lý nút Next
+                $(".custom-next-btn").off('click').on("click", () => {
+                    if (swiperNewsWrapper) swiperNewsWrapper.slideNext();
+                });
+
+                // Thêm xử lý cho menu chính và menu phụ
+                $(".nav-pills .nav-link").off('click').on("click", function (e) {
+                    e.preventDefault();
+
+                    // Remove active class from all links
+                    $(".nav-pills .nav-link").removeClass("active");
+                    // Add active class to clicked link
+                    $(this).addClass("active");
+
+                    // Xóa thông báo không có kết quả nếu tồn tại
+                    $(".no-results-message").remove();
+                    $(".btn-orange").show();
+
+                    const selectedCategory = $(this).text().trim();
+
+                    // Reset tất cả slide về trạng thái ẩn
+                    if (swiperNewsWrapper && swiperNewsWrapper.slides) {
+                        swiperNewsWrapper.slides.forEach((slide, index) => {
+                            slide.style.display = "none";
+                        });
+
+                        let visibleSlides = 0;
+
+                        if (selectedCategory === "TẤT CẢ") {
+                            // Hiển thị tất cả slides
+                            swiperNewsWrapper.slides.forEach((slide) => {
+                                slide.style.display = "block";
+                                visibleSlides++;
+                            });
+                        } else {
+                            // Lọc slides theo category
+                            swiperNewsWrapper.slides.forEach((slide) => {
+                                const slideCategory = $(slide).find(".bage-slide img").attr("src");
+                                // Map category name to icon URL
+                                const categoryIconUrl = getCategoryIconUrl(selectedCategory);
+                                
+                                if (slideCategory === categoryIconUrl) {
+                                    slide.style.display = "block";
+                                    visibleSlides++;
+                                }
+                            });
+                        }
+
+                        // Kiểm tra và xử lý hiển thị nút điều hướng
+                        const navigationButtons = $(".custom-prev-btn, .custom-next-btn");
+                        if (visibleSlides <= 4) {
+                            navigationButtons.hide();
+                        } else {
+                            navigationButtons.show();
+                        }
+
+                        // Hiển thị thông báo nếu không có kết quả
+                        if (visibleSlides === 0) {
+                            if (!$(".no-results-message").length) {
+                                const noResultsMessage = 
+                                    '<div class="no-results-message text-center py-5">' +
+                                    '<div class="mb-3">' +
+                                    '<i class="bi bi-search" style="font-size: 3rem; color: #ccc;"></i>' +
+                                    '</div>' +
+                                    '<h5 class="text-muted">Không tìm thấy bài viết nào</h5>' +
+                                    '<p class="text-muted">Không có bài viết nào thuộc danh mục ' + selectedCategory + '</p>' +
+                                    '</div>';
+                                $(".newsSwiper").after(noResultsMessage);
+                                $(".btn-orange").hide();
+                            }
+                        }
+
+                        // Update swiper
+                        swiperNewsWrapper.update();
+                        swiperNewsWrapper.slideTo(0);
+                    }
+                });
+
+                // Thêm hàm helper để map category name với icon URL
+                function getCategoryIconUrl(categoryName) {
+                    const categoryIconMap = {
+                        "CHÍNH TRỊ": "/documents/39403/331149/CH%C3%8DNH+TR%E1%BB%8A.png/aff1039f-cafc-1121-e49f-210645a54730?t=1732155564962",
+                        "KINH TẾ": "/documents/39403/331149/ic_kt.png/618bcf29-7fbf-f158-f303-8a77ac7ade92?t=1732155565667",
+                        "VĂN HÓA - XÃ HỘI": "/documents/39403/331149/ic_vh.png/05543994-41a5-e16e-89b9-cee9a415e8f1?t=1732155566178",
+                        "ĐỐI NGOẠI": "/documents/39403/331149/%C4%91%E1%BB%91i+ngo%E1%BA%A1i.png/e9278b95-d550-abbb-7a3c-bc0e6c7145bf?t=1732155565214",
+                        "KHOA GIÁO": "/documents/39403/331149/khoa+gi%C3%A1o.png/100f8139-6dbd-6b6a-b441-0e51259b0807?t=1732155566411",
+                        "HẠ TẦNG - ĐÔ THỊ": "/documents/39403/331149/ic_ht.png/efcf15fa-7c8d-0461-3095-831796a669d8?t=1732155565437",
+                        "AN NINH - TRẬT TỰ": "/documents/39403/331149/AN+NINH+TRAT+TU.png/adb2dc88-bb80-b5fe-c14a-c9f3b3b1e15e?t=1732155564481",
+                        "THÔNG TIN DOANH NGHIỆP": "/documents/39403/331149/BUSINESS.png/8e06bae4-1c7e-aec4-c6b0-291439f12207?t=1732155564731"
+                    };
+                    
+                    return categoryIconMap[categoryName] || null;
+                }
+
+                // Thêm xử lý cho nút Xem (lọc theo tháng/năm)
+                $(".tool-container .btn-view").off('click').on("click", function () {
+                    const selectedYear = $("#yearSelect").val();
+                    const selectedMonth = $("#monthSelect").val().padStart(2, "0");
+
+                    // Reset tất cả slide về trạng thái ẩn
+                    if (swiperNewsWrapper && swiperNewsWrapper.slides) {
+                        swiperNewsWrapper.slides.forEach((slide) => {
+                            slide.style.display = "none";
+                        });
+
+                        // Đếm số slide được hiển thị
+                        let visibleSlides = 0;
+
+                        // Lọc và hiển thị các slide phù hợp
+                        swiperNewsWrapper.slides.forEach((slide) => {
+                            const dateText = $(slide).find(".text-muted").text().trim();
+                            // Kiểm tra xem có tìm thấy phần tử có class text-muted không
+                            if (dateText) {
+                                // Tách chuỗi ngày tháng và xử lý
+                                const [time, date] = dateText.split("|").map((item) => item.trim());
+                                if (date) {
+                                    const [day, month, year] = date.split("/");
+                                    // So sánh tháng và năm
+                                    if (month === selectedMonth && year === selectedYear) {
+                                        slide.style.display = "block";
+                                        visibleSlides++;
+                                    }
+                                }
+                            }
+                        });
+
+                        // Kiểm tra và xử lý hiển thị nút điều hướng
+                        const navigationButtons = $(".custom-prev-btn, .custom-next-btn");
+                        if (visibleSlides <= 4) {
+                            navigationButtons.hide();
+                        } else {
+                            navigationButtons.show();
+                        }
+
+                        // Xử lý thông báo không có kết quả
+                        if (visibleSlides === 0) {
+                            if (!$(".no-results-message").length) {
+                                const noResultsMessage =
+                                    '<div class="no-results-message text-center py-5">' +
+                                    '<div class="mb-3">' +
+                                    '<i class="bi bi-search" style="font-size: 3rem; color: #ccc;"></i>' +
+                                    '</div>' +
+                                    '<h5 class="text-muted">Không tìm thấy bài viết nào</h5>' +
+                                    '<p class="text-muted">Không có bài viết nào trong tháng ' + selectedMonth + '/' + selectedYear + '</p>' +
+                                    '</div>';
+                                $(".newsSwiper").after(noResultsMessage);
+                                $(".btn-orange").hide();
+                            }
+                        } else {
+                            // Xóa thông báo không có kết quả
+                            $(".no-results-message").remove();
+                            $(".btn-orange").show();
+                        }
+
+                        // Update swiper
+                        swiperNewsWrapper.update();
+                        swiperNewsWrapper.slideTo(0);
+                    }
+                });
+
+                // Xử lý chuyển đổi nội dung đa phương tiện
+                $(".multimedia-link").off('click').on("click", function (e) {
+                    e.preventDefault();
+
+                    // Xóa active class từ tất cả các link và content
+                    $(".multimedia-link").removeClass("active");
+                    $(".multimedia-content, .multimedia-subcontent").removeClass("active");
+
+                    // Thêm active class cho link được click
+                    $(this).addClass("active");
+
+                    // Ẩn/hiện các span tương ứng
+                    $(".multimedia-link").each(function () {
+                        const normalText = $(this).find(".normal-text");
+                        const roundedText = $(this).find(".px-2");
+
+                        if ($(this).hasClass("active")) {
+                            normalText.addClass("d-none");
+                            roundedText.removeClass("d-none");
+                        } else {
+                            normalText.removeClass("d-none");
+                            roundedText.addClass("d-none");
+                        }
+                    });
+
+                    // Lấy ID của content cần hiển thị
+                    const contentId = $(this).data("content");
+
+                    // Hiển thị content và subcontent tương ứng
+                    $("#" + contentId).addClass("active");
+                    $("#" + contentId.replace("content", "subcontent")).addClass("active");
+                });
+
+                // Thêm cấu hình breakpoints cho newsSwiper
+                Object.assign(swiperNewsWrapper, {
+                    breakpoints: {
+                        320: {
+                            slidesPerView: 1,
+                            spaceBetween: 10,
+                        },
+                        480: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 20,
+                        },
+                        1440: {
+                            slidesPerView: 4,
+                            spaceBetween: 20,
+                        },
+                    },
+                });
+            }
+        });
+    }
+
+    // Khởi tạo khi document ready
+    $(document).ready(initializeNewsSwiper);
+
+    // Khởi tạo khi SPA navigation kết thúc
+    if (Liferay && Liferay.on) {
+        Liferay.on('endNavigate', initializeNewsSwiper);
+    }
+
+    // Khởi tạo khi window load
+    $(window).on('load', initializeNewsSwiper);
+</script>

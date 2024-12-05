@@ -1,0 +1,473 @@
+<style>
+  * {
+    font-family: Roboto;
+  }
+
+
+
+  .header-pct-anh-video {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 0;
+  }
+
+  .title-pct-anh-video {
+    color: #0d4c92;
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  .header-buttons-pct-anh-video {
+    display: flex;
+    gap: 10px;
+  }
+
+  .btn-pct-anh-video {
+    padding: 5px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  .btn-image-pct-anh-video {
+    background-color: #e0e0e0;
+  }
+
+  .btn-video-pct-anh-video {
+    background-color: #e0e0e0;
+  }
+
+  .gallery-container-pct-anh-video {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 15px;
+  }
+
+  .main-image-pct-anh-video {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-image-pct-anh-video img {
+    width: 100%;
+    height: 453px;
+    object-fit: cover;
+  }
+
+  .side-gallery-pct-anh-video {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    height: 556px; /* Chiều cao cố định để chứa 4 items */
+    overflow-y: auto; /* Thêm thanh cuộn dọc */
+    padding-right: 10px; /* Thêm padding để tránh nội dung bị che bởi thanh cuộn */
+  }
+
+  .side-gallery-pct-anh-video::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .side-gallery-pct-anh-video::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+
+  .side-gallery-pct-anh-video::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+  }
+
+  .side-gallery-pct-anh-video::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .gallery-item-pct-anh-video {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gallery-item-pct-anh-video img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .caption-pct-anh-video {
+    transition: all 0.9s ease;
+  }
+  .caption-text-row-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+  .main-image-pct-anh-video .caption-pct-anh-video {
+    font-size: 24px;
+    font-weight: 700;
+    background-color: #f2f2f2;
+    color: #0d4c92;
+    padding: 12px 16px;
+  }
+  .side-gallery-pct-anh-video .caption-pct-anh-video {
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #ffffff;
+    padding: 9.5px 10px;
+    color: #2e2e2e;
+  }
+  .play-button-pct-anh-video {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45px;
+    height: 45px;
+    background-color: #0066b3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .play-button-pct-anh-video::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 12px;
+    border-color: transparent transparent transparent #ffffff;
+    margin-left: 3px;
+  }
+
+  .gallery-item-pct-anh-video:hover .play-button-pct-anh-video,
+  .main-image-pct-anh-video:hover .play-button-pct-anh-video {
+    background-color: #0d4c92;
+  }
+
+  .gallery-item-pct-anh-video:hover .caption-pct-anh-video,
+  .main-image-pct-anh-video:hover .caption-pct-anh-video {
+    background-color: #0d4c92;
+    color: white;
+    cursor: pointer;
+  }
+  .wrapper-pct-anh-video {
+    background: url("/documents/1064288/1076388/bg_anh_video_pct.png/5a6f9764-0d28-3449-3460-4a8b9f13ca72?t=1732782685881")
+      no-repeat left top;
+    background-size: 36% 70%;
+    position: relative;
+    z-index: 5;
+    margin-bottom: 30px;
+  }
+  .content-pct-anh-video {
+    padding: 0 10%;
+  }
+
+  /* Thêm styles mới để ẩn/hiện gallery */
+  .gallery-video-tin-container-pct {
+    display: none;
+  }
+
+  .gallery-anh-tin-container-pct {
+    display: grid;
+  }
+
+  /* Style cho button active */
+  .btn-pct-anh-video.active {
+    background-color: #db7100;
+    color: white;
+  }
+
+  /* Responsive styles */
+  @media screen and (max-width: 425px) {
+    .content-pct-anh-video {
+      padding: 0 15px;
+    }
+    
+    .gallery-container-pct-anh-video {
+      grid-template-columns: 100%;
+    }
+    
+    .title-pct-anh-video {
+      font-size: 20px;
+    }
+    
+    .btn-pct-anh-video {
+      font-size: 16px;
+      padding: 5px 15px;
+    }
+    
+    .main-image-pct-anh-video .caption-pct-anh-video {
+      font-size: 18px;
+      padding: 8px 12px;
+    }
+    
+    .side-gallery-pct-anh-video {
+      height: auto;
+      grid-template-columns: 100%;
+    }
+   
+  }
+
+  @media screen and (min-width: 426px) and (max-width: 768px) {
+    .content-pct-anh-video {
+      padding: 0 20px;
+    }
+    
+    .gallery-container-pct-anh-video {
+      grid-template-columns: 100%;
+    }
+    
+    .side-gallery-pct-anh-video {
+      grid-template-columns: repeat(2, 1fr);
+      height: auto;
+    }
+    
+    .title-pct-anh-video {
+      font-size: 22px;
+    }
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .content-pct-anh-video {
+      padding: 0 5%;
+    }
+    
+    .wrapper-pct-anh-video {
+      background-size: 45% 60%;
+    }
+    
+    .main-image-pct-anh-video .caption-pct-anh-video {
+      font-size: 20px;
+    }
+  }
+
+  @media screen and (min-width: 1025px) and (max-width: 1324px) {
+    .content-pct-anh-video {
+      padding: 0 6%;
+    }
+    
+    .wrapper-pct-anh-video {
+      background-size: 40% 65%;
+    }
+
+  }
+
+  @media screen and (min-width: 1325px) and (max-width: 1440px) {
+    .content-pct-anh-video {
+      padding: 0 7.5%;
+    }
+    
+    .wrapper-pct-anh-video {
+      background-size: 38% 68%;
+    }
+
+  }
+
+  @media screen and (min-width: 1440px) and (max-width: 1824px) {
+    .content-pct-anh-video {
+      padding: 0 8.5%;
+    }
+    
+    .wrapper-pct-anh-video {
+      background-size: 38% 68%;
+    }
+
+  }
+
+  @media screen and (min-width: 1825px) and (max-width: 2304px) {
+    .content-pct-anh-video {
+      padding: 0 10%;
+      margin-bottom: 0;
+    }
+    
+    .wrapper-pct-anh-video {
+      background-size: 34% 72%;
+    }
+    
+  .main-image-pct-anh-video img {
+    height: 447px;
+  }
+  }
+
+  @media screen and (min-width: 2305px) {
+    .content-pct-anh-video {
+      padding: 0 14%;
+    }
+    
+    .wrapper-pct-anh-video {
+      background-size: 32% 75%;
+    }
+    
+    
+    .main-image-pct-anh-video .caption-pct-anh-video {
+      font-size: 28px;
+    }
+    
+    .side-gallery-pct-anh-video .caption-pct-anh-video {
+      font-size: 18px;
+    }
+     .main-image-pct-anh-video img {
+    height: 447px;
+  }
+  }
+</style>
+
+<div class="wrapper-pct-anh-video">
+  <div class="content-pct-anh-video">
+    <div class="header-pct-anh-video">
+      <h1 class="title-pct-anh-video">ẢNH - VIDEO</h1>
+      <div class="header-buttons-pct-anh-video">
+        <button class="btn-pct-anh-video btn-image-pct-anh-video">Ảnh</button>
+        <button class="btn-pct-anh-video btn-video-pct-anh-video">Video</button>
+      </div>
+    </div>
+
+    <div class="container-pct-anh-video">
+      <!-- Danh mục video -->
+      <div
+        class="gallery-container-pct-anh-video gallery-video-tin-container-pct"
+      >
+        <#assign indexLocal = 0/>
+        <#if entries?has_content>
+          <#list entries as curEntry>
+            <#assign
+              renderer = curEntry.getAssetRenderer()
+              className = renderer.getClassName()
+            />
+            <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale)>
+              <#assign
+                title = curEntry.getTitle(locale)
+                article = renderer.getArticle()
+                description = article.getDescription(locale)
+                viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest)!""
+                indexLocal = indexLocal + 1
+              />
+              
+              <#if indexLocal == 1>
+                <!-- Hiển thị ảnh chính -->
+                 <a href="${viewURL}">
+                  <div class="main-image-pct-anh-video">
+                    <img src="${smallImageUrl}" alt="${title}" />
+                    <div class="play-button-pct-anh-video"></div>
+                    <div class="caption-pct-anh-video">
+                      <div class="caption-text-row-2">${title}</div>
+                    </div>
+                    </div>
+                  </a>
+                <!-- Khởi tạo container cho các ảnh phụ -->
+                <div class="side-gallery-pct-anh-video">
+              <#else>
+                <!-- Hiển thị các ảnh phụ -->
+                 <a href="${viewURL}">
+                <div class="gallery-item-pct-anh-video">
+                  <img src="${smallImageUrl}" alt="${title}" />
+                  <div class="play-button-pct-anh-video"></div>
+                  <div class="caption-pct-anh-video">
+                    <div class="caption-text-row-2">${title}</div>
+                  </div>
+                </div>
+                </a>
+              </#if>
+            </#if>
+          </#list>
+
+          <#if indexLocal gt 0>
+            </div>
+          </#if>
+        </#if>
+      </div>
+      <!-- Danh mục ảnh -->
+       <div
+        class="gallery-container-pct-anh-video gallery-anh-tin-container-pct"
+      >
+        <#assign indexLocal = 0/>
+        <#if entries?has_content>
+          <#list entries as curEntry>
+            <#assign
+              renderer = curEntry.getAssetRenderer()
+              className = renderer.getClassName()
+            />
+            <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale)>
+              <#assign
+                title = curEntry.getTitle(locale)
+                article = renderer.getArticle()
+                description = article.getDescription(locale)
+                viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest)!""
+                indexLocal = indexLocal + 1
+              />
+              
+              <#if indexLocal == 1>
+                <!-- Hiển thị ảnh chính -->
+                <a href="${viewURL}">
+                <div class="main-image-pct-anh-video">
+                  <img src="${smallImageUrl}" alt="${title}" />
+                  <div class="caption-pct-anh-video">
+                    <div class="caption-text-row-2">${title}</div>
+                  </div>
+                </div>
+                </a>
+
+                <!-- Khởi tạo container cho các ảnh phụ -->
+                <div class="side-gallery-pct-anh-video">
+              <#else>
+                <!-- Hiển thị các ảnh phụ -->
+                <a href="${viewURL}">
+                <div class="gallery-item-pct-anh-video">
+                  <img src="${smallImageUrl}" alt="${title}" />
+                  <div class="caption-pct-anh-video">
+                    <div class="caption-text-row-2">${title}</div>
+                  </div>
+                </div>
+                </a>
+              </#if>
+            </#if>
+          </#list>
+
+          <#if indexLocal gt 0>
+            </div>
+          </#if>
+        </#if>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    const $btnImage = $(".btn-image-pct-anh-video");
+    const $btnVideo = $(".btn-video-pct-anh-video");
+    const $galleryImage = $(".gallery-anh-tin-container-pct");
+    const $galleryVideo = $(".gallery-video-tin-container-pct");
+
+    // Set trạng thái mặc định
+    $btnImage.addClass("active");
+    $btnVideo.removeClass("active");
+
+    $btnImage.on("click", function () {
+      $galleryImage.css("display", "grid");
+      $galleryVideo.css("display", "none");
+      $btnImage.addClass("active");
+      $btnVideo.removeClass("active");
+    });
+
+    $btnVideo.on("click", function () {
+      $galleryVideo.css("display", "grid");
+      $galleryImage.css("display", "none");
+      $btnVideo.addClass("active");
+      $btnImage.removeClass("active");
+    });
+  });
+</script>

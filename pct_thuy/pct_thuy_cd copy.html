@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chỉ đạo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+      integrity="sha512-XJ3ntWHl40opEiE+6dGhfK9NAKOCELrpjiBRQKtu6uJf9Pli8XY+Hikp7rlFzY4ElLSFtzjx9GGgHql7PLSeog=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        font-family: Roboto;
+      }
+
+      .header-pct-cd {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+
+      .header-images-pct-cd {
+        position: relative;
+        width: 66px;
+        height: 60px;
+        margin-right: 10px;
+      }
+
+      .header-images-pct-cd img:first-child {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .header-images-pct-cd img:last-child {
+        position: absolute;
+        width: 60%;
+        height: 60%;
+        right: 7px;
+        bottom: 11px;
+      }
+
+      .header-title-pct-cd {
+        font-size: 28px;
+        font-weight: 700;
+        color: #0d4c92;
+        margin: 0;
+      }
+
+      .news-list-pct-cd {
+        list-style: none;
+      }
+
+      .news-item-pct-cd {
+        padding: 15px 0;
+      }
+
+      .news-link-pct-cd {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+      }
+      .news-link-pct-cd:hover .news-title-pct-cd {
+        color: #0d4c92;
+      }
+      .news-link-pct-cd:hover .dot-pct-cd {
+        content: url("./images/dot_active.png");
+      }
+
+      .news-title-pct-cd {
+        font-size: 18px;
+        font-weight: 700;
+        margin-left: 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .view-more-pct-cd {
+        margin-left: auto;
+      }
+
+      .view-more-pct-cd a {
+        color: #db7100;
+        text-decoration: none;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .container-pct-cd {
+        position: relative;
+      }
+      .floating-image-pct-cd-1,
+      .floating-image-pct-cd-2,
+      .floating-image-pct-cd-3 {
+        position: absolute;
+      }
+      .floating-image-pct-cd-1 {
+        z-index: 1;
+        top: 24%;
+        right: 7%;
+      }
+      .floating-image-pct-cd-2 {
+        z-index: 2;
+        bottom: -50%;
+        right: 0;
+      }
+      .floating-image-pct-cd-3 {
+        z-index: 3;
+        top: 12%;
+        right: 0;
+      }
+      .wrapper-pct-cd-content {
+        width: 75%;
+      }
+
+      .dot-pct-cd {
+        width: 17px;
+        height: 16px;
+        object-fit: contain;
+      }
+
+      /* Responsive styles */
+      @media screen and (max-width: 426px) {
+        .wrapper-pct-cd-content {
+          width: 100%;
+          padding: 0 15px;
+        }
+        .header-title-pct-cd {
+          font-size: 20px;
+        }
+        .news-title-pct-cd {
+          font-size: 16px;
+        }
+        .floating-image-pct-cd-1 {
+          width: 60px;
+          right: 2%;
+        }
+        .floating-image-pct-cd-2 {
+          width: 80px;
+        }
+        .floating-image-pct-cd-3 {
+          width: 70px;
+        }
+        .container-pct-cd {
+          margin-left: 0;
+        }
+      }
+
+      @media screen and (min-width: 426px) and (max-width: 768px) {
+        .wrapper-pct-cd-content {
+          width: 90%;
+        }
+        .floating-image-pct-cd-1 {
+          width: 80px;
+          right: 3%;
+        }
+        .floating-image-pct-cd-2 {
+          width: 100px;
+        }
+        .floating-image-pct-cd-3 {
+          width: 90px;
+        }
+        .container-pct-cd {
+          margin-left: 5%;
+        }
+      }
+
+      @media screen and (min-width: 769px) and (max-width: 1024px) {
+        .wrapper-pct-cd-content {
+          width: 85%;
+        }
+        .floating-image-pct-cd-1 {
+          width: 100px;
+          right: 4%;
+        }
+        .floating-image-pct-cd-2 {
+          width: 120px;
+        }
+        .floating-image-pct-cd-3 {
+          width: 110px;
+        }
+      }
+
+      @media screen and (min-width: 1025px) and (max-width: 1324px) {
+        .floating-image-pct-cd-1 {
+          width: 120px;
+          right: 5%;
+        }
+        .floating-image-pct-cd-2 {
+          width: 140px;
+        }
+        .floating-image-pct-cd-3 {
+          width: 130px;
+        }
+      }
+
+      @media screen and (min-width: 1325px) and (max-width: 1440px) {
+        .floating-image-pct-cd-1 {
+          width: 140px;
+          right: 6%;
+        }
+        .floating-image-pct-cd-2 {
+          width: 160px;
+        }
+        .floating-image-pct-cd-3 {
+          width: 150px;
+        }
+      }
+
+      @media screen and (min-width: 1441px) and (max-width: 1824px) {
+        .floating-image-pct-cd-1 {
+          width: 160px;
+        }
+        .floating-image-pct-cd-2 {
+          width: 180px;
+        }
+        .floating-image-pct-cd-3 {
+          width: 170px;
+        }
+      }
+
+      @media screen and (min-width: 1825px) and (max-width: 2304px) {
+        .floating-image-pct-cd-1 {
+          width: 180px;
+        }
+        .floating-image-pct-cd-2 {
+          width: 200px;
+        }
+        .floating-image-pct-cd-3 {
+          width: 190px;
+        }
+      }
+
+      @media screen and (min-width: 2305px) {
+        .floating-image-pct-cd-1 {
+          width: 200px;
+        }
+        .floating-image-pct-cd-2 {
+          width: 220px;
+        }
+        .floating-image-pct-cd-3 {
+          width: 210px;
+        }
+        .wrapper-pct-cd-content {
+          width: 70%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-pct-cd">
+      <img
+        class="floating-image-pct-cd-1"
+        src="./img_cd/ic_right_1.png"
+        alt="Floating image 1"
+      />
+      <img
+        class="floating-image-pct-cd-2"
+        src="./img_cd/ic_right_2.png"
+        alt="Floating image 2"
+      />
+      <img
+        class="floating-image-pct-cd-3"
+        src="./img_cd/ic_right_3.png"
+        alt="Floating image 3"
+      />
+      <div class="wrapper-pct-cd-content">
+        <div class="header-pct-cd">
+          <div class="header-images-pct-cd">
+            <img src="./images/ic_hoat_dong.png" alt="Chỉ đạo" />
+            <img src="./images/ic_write.png" alt="Chỉ đạo" />
+          </div>
+          <h1 class="header-title-pct-cd">CHỈ ĐẠO</h1>
+          <div class="view-more-pct-cd">
+            <a href="#">Xem thêm <i class="fa fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <ul class="news-list-pct-cd">
+          <li class="news-item-pct-cd">
+            <a href="#" class="news-link-pct-cd">
+              <img src="./images/dot.png" alt="dot" class="dot-pct-cd" />
+              <div class="news-title-pct-cd">
+                TPHCM: Phân công nhiệm vụ các đồng chí lãnh đạo chủ chốt
+              </div>
+            </a>
+          </li>
+          <li class="news-item-pct-cd">
+            <a href="#" class="news-link-pct-cd">
+              <img src="./images/dot.png" alt="dot" class="dot-pct-cd" />
+              <div class="news-title-pct-cd">
+                Phó Chủ tịch UBND TPHCM Trần Thị Diệu Thúy giữ nhiệm vụ Phó Chủ
+                tịch Thường trực Hội đồng Hiệu trưởng các trường đại học trên
+                địa bàn TPHCM
+              </div>
+            </a>
+          </li>
+          <li class="news-item-pct-cd">
+            <a href="#" class="news-link-pct-cd">
+              <img src="./images/dot.png" alt="dot" class="dot-pct-cd" />
+              <div class="news-title-pct-cd">
+                Phó Chủ tịch UBND TP.HCM Trần Thị Diệu Thúy: Kênh truyền thông
+                uy tín, tin cậy của mỗi nhà trường, cán bộ, giáo viên, học sinh
+                và phụ huynh
+              </div>
+            </a>
+          </li>
+          <li class="news-item-pct-cd">
+            <a href="#" class="news-link-pct-cd">
+              <img src="./images/dot.png" alt="dot" class="dot-pct-cd" />
+              <div class="news-title-pct-cd">
+                Phó Chủ tịch UBND TP. HCM Trần Thị Diệu Thúy thăm, chúc mừng
+                Trung tâm Báo chí
+              </div>
+            </a>
+          </li>
+          <li class="news-item-pct-cd">
+            <a href="#" class="news-link-pct-cd">
+              <img src="./images/dot.png" alt="dot" class="dot-pct-cd" />
+              <div class="news-title-pct-cd">
+                Ông Dương Ngọc Hải và bà Trần Thị Diệu Thúy làm Phó Chủ tịch
+                UBND Thành phố Hồ Chí Minh
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

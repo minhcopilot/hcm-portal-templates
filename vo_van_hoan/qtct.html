@@ -1,0 +1,448 @@
+<style type="text/css">
+  .info-president {
+    display: flex;
+    width: 100%;
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    border-radius: 8px;
+    background: #f3f3f3;
+  }
+  .line {
+    background: rgba(229, 229, 229, 1);
+    height: 1px;
+    width: 100%;
+    margin-left: 15px;
+  }
+
+  .info-president-item {
+    width: 100%;
+  }
+
+  .president-item-title {
+    color: #383838;
+    font-family: Roboto;
+    font-size: 18px;
+    text-align: left;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-right: 0;
+  }
+
+  .president-item-detail {
+    color: #383838;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    text-align: left;
+  }
+
+  ul.president-item-detail {
+    margin-left: 20px;
+  }
+
+  .president-item-detail > li {
+    list-style-type: disc;
+  }
+
+  .title-work {
+    color: #000;
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 33.6px */
+  }
+
+  .custom-border {
+    padding-left: 16px;
+  }
+
+  .custom-border:after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    background-color: rgba(13, 76, 146, 1);
+    top: 76px;
+    bottom: 76px;
+    left: 15px;
+  }
+
+  .line-circle {
+    margin-bottom: 43px;
+  }
+
+  .line-circle:last-child {
+    margin-bottom: 0;
+  }
+
+  .line-circle > p {
+    color: #000 !important;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+  }
+
+  .time-line:before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(13, 76, 146, 1);
+    border-radius: 50%;
+    border: none;
+    left: -21px;
+    transform: translateY(50%);
+    z-index: 1;
+  }
+
+  .time-line {
+    position: relative;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    color: rgba(13, 76, 146, 1);
+  }
+
+  .history-childitems {
+    margin-left: 22px;
+    color: #040404;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .time {
+    color: rgba(13, 76, 146, 1);
+    text-align: right;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-right: 10px;
+  }
+
+  .list-item {
+    position: relative;
+    margin-right: 10px;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(13, 76, 146, 1);
+    border: none;
+  }
+
+  .list-item:before {
+    width: 46px;
+    height: 1px;
+    content: "";
+    background-color: rgba(13, 76, 146, 1);
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%); /* Đảo ngược để căn giữa chính xác */
+    z-index: 1;
+  }
+
+  @media only screen and (max-width: 457px) {
+    .custom-border:after {
+      top: 72px;
+      bottom: 128px;
+    }
+  }
+
+  @media only screen and (min-width: 458px) and (max-width: 717px) {
+    .custom-border:after {
+      top: 74px;
+      bottom: 100px;
+    }
+  }
+
+  @media only screen and (min-width: 717px) and (max-width: 767px) {
+    .custom-border:after {
+      top: 74px;
+      bottom: 76px;
+    }
+  }
+
+  @media only screen and (min-width: 767px) and (max-width: 826px) {
+    .custom-border:after {
+      top: 76px;
+      bottom: 124px;
+    }
+  }
+
+  @media only screen and (min-width: 827px) and (max-width: 991px) {
+    .custom-border:after {
+      top: 76px;
+      bottom: 94px;
+    }
+  }
+
+  @media only screen and (min-width: 991px) and (max-width: 1158px) {
+    .custom-border:after {
+      bottom: 100px;
+    }
+  }
+
+  @media only screen and (min-width: 1200px) and (max-width: 1299px) {
+    .custom-border:after {
+      bottom: 100px;
+    }
+  }
+</style>
+<div class="row text-center" id="tieu-su">
+  <div class="col-12 col-md-5 col-xs-5 col-lg-5 pr-lg-3 mt-2 pt-3 pt-lg-4">
+    <div class="info-president">
+      <div class="info-president-item row">
+        <div class="col-6">
+          <p class="president-item-title">Họ và tên</p>
+        </div>
+
+        <div class="col-6">
+          <p class="president-item-detail">
+            <style type="text/css">
+              <!--td {border: 1px solid #cccccc;}br {mso-data-placement:same-cell;}-->
+            </style>
+            Võ Văn Hoan
+          </p>
+        </div>
+
+        <div class="line"> </div>
+      </div>
+
+      <div class="info-president-item row">
+        <div class="col-6">
+          <p class="president-item-title">Ngày sinh</p>
+        </div>
+
+        <div class="col-6">
+          <p class="president-item-detail">
+            <style type="text/css">
+              <!--td {border: 1px solid #cccccc;}br {mso-data-placement:same-cell;}-->
+            </style>
+            28/01/1965
+          </p>
+        </div>
+
+        <div class="line"> </div>
+      </div>
+
+      <div class="info-president-item row">
+        <div class="col-6">
+          <p class="president-item-title">Giới tính</p>
+        </div>
+
+        <div class="col-6">
+          <p class="president-item-detail">Nam</p>
+        </div>
+
+        <div class="line"> </div>
+      </div>
+
+      <div class="info-president-item row">
+        <div class="col-6">
+          <p class="president-item-title">Quê quán</p>
+        </div>
+
+        <div class="col-6">
+          <p class="president-item-detail">
+            <style type="text/css">
+              <!--td {border: 1px solid #cccccc;}br {mso-data-placement:same-cell;}-->
+            </style>
+            Đức Thạnh, Mộ Đức, Quảng Ngãi
+          </p>
+        </div>
+
+        <div class="line"> </div>
+      </div>
+
+      <div class="info-president-item row">
+        <div class="col-6">
+          <p class="president-item-title">Dân tộc</p>
+        </div>
+
+        <div class="col-6">
+          <p class="president-item-detail">Kinh</p>
+        </div>
+
+        <div class="line"> </div>
+      </div>
+
+      <div class="info-president-item row">
+        <div class="col-6">
+          <p class="president-item-title">Ngày vào Đảng</p>
+        </div>
+
+        <div class="col-6">
+          <p class="president-item-detail">
+            <style type="text/css">
+              <!--td {border: 1px solid #cccccc;}br {mso-data-placement:same-cell;}-->
+            </style>
+            09/09/1997
+          </p>
+        </div>
+
+        <div class="line"> </div>
+      </div>
+
+      <div class="info-president-item row">
+        <div class="col-6">
+          <p class="president-item-title">Trình độ lý luận chính trị</p>
+        </div>
+
+        <div class="col-6">
+          <p class="president-item-detail">Cao cấp</p>
+        </div>
+
+        <div class="line"> </div>
+      </div>
+
+      <div class="info-president-item row">
+        <div class="col-6">
+          <p class="president-item-title">Trình độ chuyên môn</p>
+        </div>
+
+        <div class="col-6">
+          <p class="president-item-detail">
+            <style type="text/css">
+              <!--td {border: 1px solid #cccccc;}br {mso-data-placement:same-cell;}-->
+            </style>
+            Thạc sĩ Quản lý công, Cử nhân Luật, Cử nhân Kinh tế
+          </p>
+        </div>
+
+        <div class="line"> </div>
+      </div>
+
+      <div class="info-president-item row">
+        <div class="col-12 col-lg-6">
+          <p class="president-item-title">Chức vụ</p>
+        </div>
+
+        <div class="col-12 col-lg-6">
+          <ul class="text-left president-item-detail">
+            <li>
+              Phó chủ tịch Uỷ ban Nhân dân Thành phố Hồ Chí Minh (24/06/2021)
+            </li>
+          </ul>
+        </div>
+
+        <div class="line"> </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-left col-12 col-xs-7 col-md-7 col-lg-7 pt-3 pt-lg-4 mt-2">
+    <div>
+      <h3 class="title-work">Tóm tắt quá trình công tác</h3>
+    </div>
+
+    <div class="custom-border">
+      <div class="line-circle">
+        <span class="time-line">2/11/2010</span>
+
+        <p>
+          Trưởng phòng Tổng hợp - Kế hoạch thuộc Văn phòng Ủy ban nhân dân Thành
+          phố Hồ Chí Minh, sau khi được cải chính lý lịch, được Ủy ban nhân dân
+          Thành phố bổ nhiệm chức vụ Phó Chánh Văn phòng Ủy ban nhân dân Thành
+          phố Hồ Chí Minh. Trước khi Đại hội Đảng bộ Đảng Cộng sản Việt Nam ở
+          Thành phố Hồ Chí Minh khóa 10 nhiệm kỳ 2015-2020 diễn ra, ông Hoan
+          được điều động về làm Chủ tịch Ủy ban nhân dân Quận 6, Thành phố Hồ
+          Chí Minh.
+        </p>
+      </div>
+
+      <div class="line-circle">
+        <span class="time-line">25/8/2015</span>
+
+        <p>
+          Thôi giữ chức Phó Bí thư Quận ủy Quận 6, Thành phố Hồ Chí Minh nhiệm
+          kỳ 2015-2020, thôi giữ chức Chủ tịch Ủy ban nhân dân Quận 6, thôi tham
+          gia Ban Chấp hành Đảng bộ quận 6 để chuẩn bị giữ chức vụ mới. Sau đó,
+          trúng cử Ban Chấp hành Đảng bộ Đảng Cộng sản Việt Nam Thành phố Hồ Chí
+          Minh khóa 10 (họp từ ngày 13 đến ngày 17 tháng 10 năm 2015).
+        </p>
+      </div>
+
+      <div class="line-circle">
+        <p><span class="time-line"> 13/11/2015</span></p>
+
+        <p>
+          Được Chủ tịch Ủy ban nhân dân Thành phố Hồ Chí Minh Lê Hoàng Quân bổ
+          nhiệm giữ chức vụ Chánh Văn phòng Ủy ban nhân dân Thành phố Hồ Chí
+          Minh thời hạn 5 năm.
+        </p>
+
+        <p class="history-childitems"> </p>
+      </div>
+
+      <div class="line-circle">
+        <span class="time-line"> 11/05/2019</span>
+
+        <p>
+          Tại kỳ họp thứ 14 (kỳ họp bất thường) của Hội đồng nhân dân Thành phố
+          Hồ Chí Minh khoá 9, được bầu giữ chức vụ Phó chủ tịch Ủy ban nhân dân
+          Thành phố Hồ Chí Minh nhiệm kỳ 2016-2021 phụ trách lĩnh vực kinh tế.
+        </p>
+      </div>
+
+      <div class="line-circle">
+        <span class="time-line"> 2020 - 2025</span>
+
+        <p>
+          Tại Đại hội Đảng bộ Thành phố Hồ Chí Minh (tổ chức từ ngày 14 đến ngày
+          18 tháng 10 năm 2020), được bầu vào danh sách 61 ủy viên Ban chấp hành
+          Đảng bộ Thành phố Hồ Chí Minh nhiệm kỳ 2020 - 2025. Theo Quyết định số
+          4747/QĐ-UBND ngày 23 tháng 12 năm 2020, phụ trách công tác cải cách
+          hành chính; tổ chức bộ máy; công tác thi đua, khen thưởng; kế hoạch
+          phát triển kinh tế - xã hội hàng tháng, quý, năm; trực tiếp chỉ đạo
+          các lĩnh vực gồm: Quản lý công chức, viên chức; văn hóa, thể dục, thể
+          thao; lao động thương binh xã hội; công tác giảm nghèo; công nghiệp,
+          công nghiệp hỗ trợ; nông nghiệp và phát triển nông thôn; thủy lợi,
+          phòng, chống lụt bão, thiên tai; khu vực kinh tế có vốn đầu tư nước
+          ngoài; hội nhập kinh tế quốc tế; khu vực kinh tế tư nhân, đăng ký kinh
+          doanh, quản lý doanh nghiệp sau đăng ký; kinh tế tập thể. Ngoài ra còn
+          trực tiếp chỉ đạo Văn phòng Ủy ban nhân dân Thành phố, Sở Nông nghiệp
+          và Phát triển nông thôn, Sở Văn hóa – Thể thao, Sở Lao động thương
+          binh xã hội; Ban Quản lý các Khu chế xuất và công nghiệp (Hepza), Ban
+          quản lý Khu công nghệ cao (SHTP)...; theo dõi, chỉ đạo quận 3, 6, 10
+          và Tân Phú. Từ cuối tháng 2 năm 2021, phụ trách thêm chương trình kích
+          cầu đầu tư trên các lĩnh vực và công tác giáo dục nghề nghiệp.
+        </p>
+      </div>
+
+      <div class="line-circle">
+        <span class="time-line"> 24/06/2021</span>
+
+        <p>
+          HĐND TPHCM khóa X, nhiệm kỳ 2021 - 2026 đã khai mạc kỳ họp thứ nhất,
+          tiếp tục bầu làm Phó Chủ tịch UBND Thành phố.
+        </p>
+      </div>
+
+      <div class="line-circle">
+        <span class="time-line"> 18/11/2024</span>
+
+        <p>
+          Làm Phó trưởng ban thường trực Ban Chỉ đạo Cải cách hành chính, Chuyển
+          đổi số và Đề án 06 của Thành phố Hồ Chí Minh.
+        </p>
+      </div>
+
+      <div class="line-circle"> </div>
+    </div>
+  </div>
+</div>
+
+<div class="mb-3"> </div>

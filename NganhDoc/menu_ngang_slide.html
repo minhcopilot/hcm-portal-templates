@@ -1,0 +1,301 @@
+<style>
+  .title-chutruong {
+            font-family: Roboto;
+            font-size: 28px!important;
+            font-weight: 700;
+            line-height: 32.81px;
+            letter-spacing: 0.15000000596046448px;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color: #0D4C92 !important;
+        }
+
+        .ct-border {
+            border-bottom: 1px solid #777777;
+        }
+        .custom-carousel-item-dv {
+            flex: 0 0 20%;
+            max-width: 20%;
+            padding: 10px;
+        }
+
+        .custom-carousel-inner-dv {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .custom-carousel-control-prev,
+        .custom-carousel-control-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .custom-carousel-control-prev {
+            left: -20px;
+        }
+
+        .custom-carousel-control-next {
+            right: -20px; 
+        }
+        .ct-btn-carousel-2 {
+            background-color: #D3D3D3;
+            border-radius: 50%;
+            width: 40px !important;
+            height: 40px !important;
+            border: unset !important;
+        }
+
+        .ct-btn-carousel-2:hover {
+            background-color: #DB7100 !important;
+
+            img {
+                transition: filter 0s ease;
+                filter: invert(100%) brightness(200%);
+            }
+        }
+        .carousel-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .custom-carousel-container {
+            position: relative;
+            width: 100%;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .custom-carousel-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .icon-head {
+            height: 167px;
+            padding: 24px 5px;
+            gap: 24px;
+            border-radius: 20px;
+        }
+
+        .icon-head span {
+            font-family: Roboto;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 24.61px;
+            letter-spacing: 0.15000000596046448px;
+            text-align: center;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color: black;
+        }
+
+        .icon-head:hover {
+            box-shadow: 8px -3px 10px 0px #2E2E2E4D inset;
+
+            span {
+                color: #0D4C92;
+            }
+        }
+
+        .icon-head:active {
+            background-color: #BCE6FE;
+        }
+
+        @media (max-width: 1200px) {
+            .custom-carousel-item-dv {
+                flex: 0 0 25%;
+                max-width: 25%;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .custom-carousel-item-dv {
+                flex: 0 0 33.33%;
+                max-width: 33.33%;
+            }
+        }
+        @media (max-width: 768px) {
+            .custom-carousel-item-dv {
+                flex: 0 0 50%; /* 2 items */
+                max-width: 50%;
+            }
+        }
+        @media (max-width: 480px) {
+            .custom-carousel-item-dv {
+                flex: 0 0 100%; /* 1 item */
+                max-width: 100%;
+            }
+        }
+	.child-menu-slide {
+		display: none;
+        height: 167px;
+        padding: 24px 24px;
+        border-radius: 20px;
+        text-align: center;
+        width: 100%;
+        gap: 19px;
+	}
+	.icon-head.text-center > img {
+		width: 33%;
+	}
+	.ct-rotate {
+		transform: rotate(180deg);
+	}
+	.has_child:hover > .child-menu-slide {
+        display: inline-grid;
+    }
+    .has_child:hover > a {
+        display: none;
+    }
+    .icon-head-left {
+        display: flex;
+        gap: 5px;
+    }
+    .icon-head-left > img {
+        width: 25px;
+    }
+    .child-menu-slide:hover {
+        box-shadow: 8px -3px 10px 0px #2E2E2E4D inset;
+    }
+    .icon-head-left:hover{
+        color: #DB7100;   
+    }
+    
+    .icon-head-left:hover > img{
+        transition: filter 0s ease;
+        filter: invert(203%) brightness(100%);   
+    }
+</style>
+    <div class="d-flex align-items-center justify-content-center position-relative container" id="carouselDV">
+    <div class="custom-carousel-control-prev" id="prevButtonDV">
+            <span class="ct-btn-carousel-2 d-flex align-items-center justify-content-center">
+                       <img src="/documents/39403/307879/left.svg" width="8px" height="19px">
+                   </span>
+    </div>
+    <div class="custom-carousel-container">
+        <div class="custom-carousel-inner-dv" style="transform: translateX(0%);">
+			<#if entries?has_content>
+				<#assign navItems = entries />
+				<#list navItems as navItem>
+					<#if navItem.isBrowsable()>
+						<#assign nav_item_href_link = "href='${navItem.getURL()}' ${navItem.getTarget()}"
+							listChild = navItem.getBrowsableChildren()
+							has_child = ""
+						/>
+					</#if>
+					<#if listChild?has_content>
+						<#assign nav_item_href_link = "href='#'" />
+						<#assign has_child = "has_child" />
+					</#if>
+					<div class="custom-carousel-item-dv ${has_child}">
+						<a ${nav_item_href_link} class="text-decoration-none">
+							<div class="icon-head text-center">
+								<img src="${navItem.iconURL()}">
+								<span class="w-100 d-block mt-3 text-nowrap">${navItem.getName()}</span>
+							</div>
+						</a>
+						<div class="child-menu-slide">
+						<#list navItem.getBrowsableChildren() as childNavigationItem>						
+							<a href="${childNavigationItem.getURL()}" target="_blank" class="child-a">
+								<div class="icon-head-left text-center">
+									<img src="${childNavigationItem.iconURL()}">
+									<b>${childNavigationItem.getName()}</b>
+								</div>
+							</a>						
+						</#list>
+						</div>
+					</div>					
+				</#list>
+			</#if>           
+        </div>
+    </div>
+    <div class="custom-carousel-control-next" id="nextButtonDV">
+              <span class="ct-btn-carousel-2 d-flex align-items-center justify-content-center">
+                       <img class="ct-rotate" src="/documents/39403/307879/left.svg" width="8px" height="19px">
+                   </span>
+    </div>
+</div>
+<script>
+ $(document).ready(function() {
+        console.log(1)
+        const prevButtonDV = document.getElementById('prevButtonDV');
+        const nextButtonDV = document.getElementById('nextButtonDV');
+        const carouselInnerDV = document.querySelector('.custom-carousel-inner-dv');
+        const itemsDV = document.querySelectorAll('.custom-carousel-item-dv');
+        let currentIndexDV = 0;
+
+        function getItemsPerSlide() {
+            if (window.innerWidth <= 480) {
+                return 1;
+            } else if (window.innerWidth <= 768) {
+                return 2;
+            } else if (window.innerWidth <= 991) {
+                return 3;
+            } else if (window.innerWidth <= 1200) {
+                return 4;
+            } else {
+                return 5;
+            }
+        }
+
+        let itemsPerSlideDV = getItemsPerSlide();
+        let carouselInterval;
+
+        window.addEventListener('resize', function () {
+            itemsPerSlideDV = getItemsPerSlide();
+        });
+
+        if (prevButtonDV && nextButtonDV && carouselInnerDV && itemsDV.length > 0) {
+            nextButtonDV.addEventListener('click', function () {
+                if (currentIndexDV < itemsDV.length - itemsPerSlideDV) {
+                    currentIndexDV++;
+                } else {
+                    currentIndexDV = 0;
+                }
+                updateCarouselPositionDV();
+            });
+
+            prevButtonDV.addEventListener('click', function () {
+                if (currentIndexDV > 0) {
+                    currentIndexDV--;
+                } else {
+                    currentIndexDV = itemsDV.length - itemsPerSlideDV;
+                }
+                updateCarouselPositionDV();
+            });
+
+            function updateCarouselPositionDV() {
+                const offset = -currentIndexDV * (100 / itemsPerSlideDV);
+                carouselInnerDV.style.transform = 'translateX(' + offset + '%)';
+            }
+
+            function startCarousel() {
+                carouselInterval = setInterval(function() {
+                    if (currentIndexDV < itemsDV.length - itemsPerSlideDV) {
+                        currentIndexDV++;
+                    } else {
+                        currentIndexDV = 0;
+                    }
+                    updateCarouselPositionDV();
+                }, 5000);
+            }
+
+            function stopCarousel() {
+                clearInterval(carouselInterval);
+            }
+
+            startCarousel();
+
+            carouselInnerDV.addEventListener('mouseenter', stopCarousel);
+
+            carouselInnerDV.addEventListener('mouseleave', startCarousel);
+        }
+    });
+</script>

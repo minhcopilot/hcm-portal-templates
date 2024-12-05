@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tin Nổi Bật</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Roboto;
+      }
+
+      .container-ct-hd {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .news-section-ct-hd h1 {
+        color: #003366;
+        font-size: 24px;
+        padding: 10px 0;
+        border-bottom: 2px solid #003366;
+        margin-bottom: 20px;
+      }
+
+      .news-grid-ct-hd {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        align-items: stretch;
+      }
+
+      .main-news-ct-hd,
+      .side-news-ct-hd {
+        height: 100%;
+      }
+
+      .main-news-ct-hd img {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+      }
+
+      .main-news-ct-hd h2 {
+        margin-top: 10px;
+        font-size: 20px;
+        color: #003366;
+      }
+
+      .news-meta-ct-hd {
+        color: #666;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+
+      .side-news-ct-hd {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .news-item-ct-hd {
+        display: flex;
+        flex-direction: column;
+        height: calc(50% - 10px);
+      }
+
+      .news-item-ct-hd img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
+
+      .news-item-ct-hd h3 {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      a:hover {
+        color: #0066cc;
+      }
+
+      .search-container-ct-hd {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .search-box-ct-hd {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border: 2px solid #003366;
+        border-radius: 25px;
+        padding: 5px 15px;
+        width: 300px;
+      }
+
+      .search-box-ct-hd input {
+        border: none;
+        outline: none;
+        width: 100%;
+        padding: 5px;
+        font-size: 14px;
+      }
+
+      .search-box-ct-hd button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        color: #003366;
+      }
+
+      .search-box-ct-hd button:hover {
+        color: #0066cc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-ct-hd">
+      <div class="search-container-ct-hd">
+        <div class="search-box-ct-hd">
+          <input type="text" placeholder="Tìm kiếm..." />
+          <button>
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+      <section class="news-section-ct-hd">
+        <h1>TIN NỔI BẬT</h1>
+        <div class="news-grid-ct-hd">
+          <div class="main-news-ct-hd">
+            <a href="#">
+              <img src="./news_main.png" alt="Tin chính" />
+              <h2>
+                'Cán bộ TP Hồ Chí Minh không giàu như doanh nhân nhưng lương
+                phải đủ sống'
+              </h2>
+              <div class="news-meta-ct-hd">09:00 | 09/10/2023</div>
+            </a>
+          </div>
+          <div class="side-news-ct-hd">
+            <div class="news-item-ct-hd">
+              <a href="#">
+                <img src="./new_secondary.png" alt="Tin phụ 1" />
+                <h3>
+                  Phó Chủ tịch UBND TP. HCM Trần Thị Diệu Thủy thăm, chúc mừng
+                  Trung tâm Báo chí
+                </h3>
+              </a>
+            </div>
+            <div class="news-item-ct-hd">
+              <a href="#">
+                <img src="./news_secondaray1.png" alt="Tin phụ 2" />
+                <h3>
+                  Phó Chủ tịch UBND TPHCM Trần Thị Diệu Thủy giữ nhiệm vụ Phó
+                  Chủ tịch Thường trực Hội đồng Hiệp thương
+                </h3>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
