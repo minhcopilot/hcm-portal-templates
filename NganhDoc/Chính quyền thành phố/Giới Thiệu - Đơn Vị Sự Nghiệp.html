@@ -50,7 +50,10 @@
 
     <div class="row">
       <div class="col-md-6">
-        <table class="table table-bordered table-hover table-introduce">
+        <table
+          id="left-table"
+          class="table table-bordered table-hover table-introduce"
+        >
           <thead class="table-title-introduce">
             <tr>
               <th class="text-center" width="10%">STT</th>
@@ -151,7 +154,10 @@
       </div>
 
       <div class="col-md-6">
-        <table class="table table-bordered table-hover table-introduce">
+        <table
+          id="right-table"
+          class="table table-bordered table-hover table-introduce"
+        >
           <thead class="table-title-introduce">
             <tr>
               <th class="text-center" width="10%">STT</th>
@@ -252,3 +258,21 @@
     </div>
   </div>
 </div>
+<script>
+  function setEqualTableHeight() {
+    const leftTable = document.getElementById("left-table");
+    const rightTable = document.getElementById("right-table");
+
+    const leftHeight = leftTable.offsetHeight;
+    const rightHeight = rightTable.offsetHeight;
+
+    const maxHeight = Math.max(leftHeight, rightHeight);
+
+    leftTable.style.height = maxHeight + "px";
+    rightTable.style.height = maxHeight + "px";
+  }
+
+  // Gọi hàm khi trang đã load xong và khi thay đổi kích thước cửa sổ
+  window.addEventListener("load", setEqualTableHeight);
+  window.addEventListener("resize", setEqualTableHeight);
+</script>
