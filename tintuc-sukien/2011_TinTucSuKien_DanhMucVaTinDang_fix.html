@@ -391,7 +391,6 @@
         .search-container .search-button {
             position: absolute;
             right: 10px;
-            top: calc(65% + 15px);
             transform: translateY(-50%);
             padding: 6px 5px;
         }
@@ -605,7 +604,7 @@
             <!-- Định nghĩa mapping cho icons -->
             <#assign categoryIcons = {
             "KINH_TE": "/documents/39403/331149/ic_kt.png/618bcf29-7fbf-f158-f303-8a77ac7ade92?t=1732155565667",
-            "THONG_BAO": "/documents/39403/331149/ic_tb.png/4e4c2773-3b95-a073-7e4d-b0faba997d51?t=1732155565926",
+            "TO_CHUC_NHAN_SU": "/documents/39403/331149/ic_tb.png/4e4c2773-3b95-a073-7e4d-b0faba997d51?t=1732155565926",
             "HA_TANG": "/documents/39403/331149/ic_ht.png/efcf15fa-7c8d-0461-3095-831796a669d8?t=1732155565437",
             "VAN_HOA": "/documents/39403/331149/ic_vh.png/05543994-41a5-e16e-89b9-cee9a415e8f1?t=1732155566178",
             "KHOA_GIAO":"/documents/39403/331149/khoa+gi%C3%A1o.png/100f8139-6dbd-6b6a-b441-0e51259b0807?t=1732155566411",
@@ -616,7 +615,7 @@
             } />
 
             <!-- Định nghĩa mảng các category -->
-            <#assign categories = ["KINH_TE", "THONG_BAO", "HA_TANG", "VAN_HOA","KHOA_GIAO","DOI_NGOAI","CHINH_TRI","BUSINESS","AN_NINH"] />
+            <#assign categories = ["KINH_TE", "TO_CHUC_NHAN_SU", "HA_TANG", "VAN_HOA","KHOA_GIAO","DOI_NGOAI","CHINH_TRI","BUSINESS","AN_NINH"] />
             <#assign dateFormatDay = "dd" />
             <#assign monthFormatDay = "MM" />
             <#assign yearFormatDay = "yyyy" />
@@ -824,6 +823,7 @@
                 function getCategoryIconUrl(categoryName) {
                     const categoryIconMap = {
                         "CHÍNH TRỊ": "/documents/39403/331149/CH%C3%8DNH+TR%E1%BB%8A.png/aff1039f-cafc-1121-e49f-210645a54730?t=1732155564962",
+                        "TỔ CHỨC NHÂN SỰ": "/documents/39403/331149/ic_tb.png/4e4c2773-3b95-a073-7e4d-b0faba997d51?t=1732155565926",
                         "KINH TẾ": "/documents/39403/331149/ic_kt.png/618bcf29-7fbf-f158-f303-8a77ac7ade92?t=1732155565667",
                         "VĂN HÓA - XÃ HỘI": "/documents/39403/331149/ic_vh.png/05543994-41a5-e16e-89b9-cee9a415e8f1?t=1732155566178",
                         "ĐỐI NGOẠI": "/documents/39403/331149/%C4%91%E1%BB%91i+ngo%E1%BA%A1i.png/e9278b95-d550-abbb-7a3c-bc0e6c7145bf?t=1732155565214",
@@ -936,7 +936,7 @@
                 });
 
                 // Thêm cấu hình breakpoints cho newsSwiper
-                Object.assign(swiperNewsWrapper, {
+                Object.assign(newsSwiper, {
                     breakpoints: {
                         320: {
                             slidesPerView: 1,

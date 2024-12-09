@@ -1,0 +1,47 @@
+<div class="component-tabs-custom container wrapper nav-multimedia ${configuration.customClass}">
+    <nav class="custom-nav navbar navbar-collapse-absolute navbar-expand-md navbar-underline navigation-bar">
+        <div class="navbar-collapse ui_kit_tab nav-flex-start" id="navigationBarCollapse">
+            <ul class="navbar-nav nav nav-tabs2" role="tablist">
+                <li style="display: flex; align-items: center;">
+                    <${configuration.headingLevel} class="mb-0 title2-custom" data-lfr-editable-id="element-text"
+                    data-lfr-editable-type="text">
+                    Heading Example
+                </${configuration.headingLevel}>
+                </li>
+            </ul>
+        </div>
+        <div class="" >
+            <ul class="navbar-nav nav nav-tabs2" role="tablist">
+                [#list 0..configuration.numberOfTabs-1 as i]
+                    <li class="nav-item" role="presentation">
+                        <button
+                                aria-controls="tabPanel${i+1}"
+                                aria-selected="false"
+                                class="nav-link"
+                                data-fragment-namespace="${fragmentEntryLinkNamespace}"
+                                id="tab${i+1}"
+                                role="tab"
+                        >
+                            <p
+                                    class="navbar-text-truncate"
+                                    data-lfr-editable-id="title${i+1}"
+                                    data-lfr-editable-type="text"
+                                    tabindex="-1"
+                            >
+                                Tab ${i+1}
+                            </p>
+                        </button>
+                    </li>
+                [/#list]
+            </ul>
+        </div>
+    </nav>
+
+    <div class="tab-panel d-block custom-nav">
+        [#list 0..configuration.numberOfTabs-1 as i]
+            <div aria-labelledby="tab${i+1}" class="tab-panel-item d-none" data-fragment-namespace="${fragmentEntryLinkNamespace}" id="tabPanel${i+1}" role="tabpanel" tabindex="0">
+                <lfr-drop-zone></lfr-drop-zone>
+            </div>
+        [/#list]
+    </div>
+</div>

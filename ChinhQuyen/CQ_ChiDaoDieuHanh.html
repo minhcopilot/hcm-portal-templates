@@ -1,0 +1,328 @@
+<div class="container">
+    <div class="d-flex align-items-center justify-content-center position-relative" id="carousel1">
+        <div class="custom-carousel-control-prev" id="prevButton1">
+            <span class="ct-btn-carousel-2 d-flex align-items-center justify-content-center">
+                <img src="/documents/39403/307879/left.svg" width="8px" height="19px">
+            </span>
+        </div>
+        <div class="custom-carousel-container">
+            <div class="custom-carousel-inner">
+                <#assign indexLocal = 0 />
+                <#assign totalEntries = entries?size />
+                <#list entries as curEntry>
+                <#assign renderer = curEntry.getAssetRenderer() />
+                <#assign className = renderer.getClassName() />
+                    <#if className == "com.liferay.journal.model.JournalArticle" 
+                      && curEntry.getAvailableLanguageIds()?seq_contains(locale) 
+                      && indexLocal < totalEntries>
+                        <#assign title = curEntry.getTitle(locale) />
+                        <#assign article = renderer.getArticle() />
+                        <#assign description = article.getDescription(locale) />
+                        <#assign ddmTemplateKey = article.getDDMTemplateKey() />
+                        <#assign viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}" />
+                        <#assign indexLocal = indexLocal + 1 />
+
+                        <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                            <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) />
+                        <#else>
+                            <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
+                        </#if>
+
+                        <div class="custom-carousel-item-thongbao">
+                            <div class="thongcao d-flex align-items-center justify-content-center">
+                                <img src="${smallImageUrl}" class="img-thongcao">
+                                <div class="p-3 ct-backgound-thongcao">
+                                    <p class="title-thongcao text-clamp-4 mb-1">${title}</p>
+                                    <div class="date-thongcao d-flex align-items-center justify-content-between">
+                                        <span>09/10/2023</span>
+                                        <span class="ml-auto">
+                                            <img class="mr-1" src="/documents/39403/307879/icon_view.svg">1,141
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </#if>
+                </#list>
+            </div>
+        </div>
+        <div class="custom-carousel-control-next" id="nextButton1">
+            <span class="ct-btn-carousel-2 d-flex align-items-center justify-content-center">
+                <img class="ct-rotate" src="/documents/39403/307879/left.svg" width="8px" height="19px">
+            </span>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        const prevButton = document.getElementById('prevButton1');
+        const nextButton = document.getElementById('nextButton1');
+        const carouselInner = document.querySelector('.custom-carousel-inner');
+        const items = document.querySelectorAll('.custom-carousel-item-thongbao');
+        let currentIndex = 0;
+
+        // Hàm xác định số item hiển thị dựa trên kích thước màn hình
+        function getItemsPerSlide() {
+            if (window.innerWidth <= 480) {
+                return 1; // Hiển thị 1 item trên màn hình nhỏ
+            } else if (window.innerWidth <= 768) {
+                return 2; // Hiển thị 2 item trên màn hình vừa
+            } else {
+                return 3; // Hiển thị tối đa 3 item trên màn hình lớn
+            }
+        }
+
+        let itemsPerSlide = getItemsPerSlide();
+        let carouselInterval;
+
+        // Cập nhật số item khi kích thước màn hình thay đổi
+        window.addEventListener('resize', function () {
+            itemsPerSlide = getItemsPerSlide();
+            updateCarouselPosition(); // Cập nhật vị trí khi số item thay đổi
+        });
+
+        if (prevButton && nextButton && carouselInner && items.length > 0) {
+            // Sự kiện click nút "Next"
+            nextButton.addEventListener('click', function () {
+                if (currentIndex < items.length - itemsPerSlide) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0; // Quay lại đầu
+                }
+                updateCarouselPosition();
+            });
+
+            // Sự kiện click nút "Prev"
+            prevButton.addEventListener('click', function () {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = items.length - itemsPerSlide; // Chuyển đến cuối
+                }
+                updateCarouselPosition();
+            });
+
+            // Cập nhật vị trí carousel
+            function updateCarouselPosition() {
+                const offset = -currentIndex * (100 / itemsPerSlide);
+                carouselInner.style.transform = 'translateX(' + offset + '%)';
+            }
+
+            // Tự động chuyển slide
+            function startCarousel() {
+                carouselInterval = setInterval(function() {
+                    if (currentIndex < items.length - itemsPerSlide) {
+                        currentIndex++;
+                    } else {
+                        currentIndex = 0;
+                    }
+                    updateCarouselPosition();
+                }, 5000); // Thời gian chuyển slide
+            }
+
+            // Dừng carousel khi di chuột vào
+            function stopCarousel() {
+                clearInterval(carouselInterval);
+            }
+
+            // Khởi động carousel
+            startCarousel();
+
+            // Lắng nghe sự kiện dừng/chạy khi di chuột vào/ra carousel
+            carouselInner.addEventListener('mouseenter', stopCarousel);
+            carouselInner.addEventListener('mouseleave', startCarousel);
+        }
+    });
+</script>
+
+<style>
+        .custom-carousel-item a {
+            font-family: Roboto;
+            text-decoration: none !important;
+        }
+
+        #nav-thongtin a {
+            font-family: Roboto;
+            text-decoration: none !important;
+        }
+        .thongtin-child p, .thongtin-child p span {
+            font-family: Roboto;
+            margin-top: 10px !important;
+            font-size: 18px !important;
+            font-weight: 500 !important;
+            line-height: 23.4px !important;
+            text-align: center !important;
+            text-underline-position: from-font !important;
+            text-decoration-skip-ink: none !important;
+            color: #02397A !important;
+            text-transform: uppercase !important;
+        }
+
+        .btn-baocao p {
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+
+        .carousel-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .custom-carousel-container {
+            position: relative;
+            width: 100%;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .custom-carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+
+        .custom-carousel-item-thongbao {
+            flex: 0 0 33.33%;
+            max-width: 33.33%;
+            padding: 10px;
+        }
+
+        .custom-carousel-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .custom-carousel-control-prev,
+        .custom-carousel-control-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .custom-carousel-control-prev {
+            left: -50px;
+        }
+
+        .custom-carousel-control-next {
+            right: -50px;
+        }
+
+        .ct-btn-carousel-2 {
+            background-color: #FFF9EA;
+            border-radius: 50%;
+            width: 40px !important;
+            height: 40px !important;
+            border: unset !important;
+        }
+
+        .ct-btn-carousel-2:hover {
+            background-color: #DB7100 !important;
+
+            img {
+                transition: filter 0s ease;
+                filter: invert(100%) brightness(200%);
+            }
+        }
+
+        .img-thongcao {
+            width: 221px !important;
+            height: 155px !important;
+        }
+
+        .title-thongcao, .ct-backgound-thongcao p {
+            font-family: Roboto;
+            font-size: 18px !important;
+            font-weight: 700 !important;
+            line-height: 23.4px !important;
+            letter-spacing: 0.0015em !important;
+            text-align: left !important;
+            text-underline-position: from-font !important;
+            text-decoration-skip-ink: none !important;
+        }
+
+        .ct-backgound-thongcao {
+            background-color: #E0E0E0;
+            height: 155px;
+        }
+
+        .text-clamp-4 {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+            max-height: 6.5em;
+            text-align: justify-all;
+        }
+
+        .date-thongcao {
+            font-family: Roboto;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 18.2px;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+        }
+
+        .thongcao:hover {
+            span img {
+                transition: filter 0s ease;
+                filter: invert(100%) brightness(200%);
+            }
+
+            cursor: pointer !important;
+            background-color: #02397A !important;
+            color: #fefefe !important;
+
+            .ct-backgound-thongcao {
+                background-color: #02397A !important;
+            }
+
+            span {
+                color: #fefefe !important;
+            }
+            .title-thongcao, .ct-backgound-thongcao p{
+                color:white!important;
+            }
+        }
+        .title-thongcao, .ct-backgound-thongcao p{
+            color:black!important;
+        }
+/* Responsive */
+    @media (max-width: 1200px) {
+        .custom-carousel-item-thongbao {
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .custom-carousel-item-thongbao {
+            flex: 0 0 33.33%;
+            max-width: 33.33%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .custom-carousel-item-thongbao {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .custom-carousel-item-thongbao {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+    </style>

@@ -1,0 +1,515 @@
+<head></head>
+    <style>
+        /* 1. Slideshow Header */
+        .slideshow-header-container {
+            position: relative;
+        }
+        .slideshow-header-container swiper-container {
+            width: 100%;
+            height: auto;
+            background: #ecfaff;
+            padding: 0 60px 30px 60px;
+        }
+
+        .slideshow-header-container swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 480px;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .slideshow-header-container swiper-slide img {
+            display: block;
+            object-fit: cover;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .slideshow-header-container .swiper-slide-prev img,
+        .slideshow-header-container .swiper-slide-next img {
+            width: 243px;
+            height: 324px;
+        }
+
+        .slideshow-header-container .swiper-slide-active img {
+            width: 300px;
+            height: 440px;
+            box-shadow: -4px 4px 10px 0px rgba(0, 0, 0, 0.25);
+        }
+        .slideshow-header-container swiper-slide:hover img {
+            box-shadow: -4px 4px 10px 0px rgba(0, 0, 0, 0.25);
+            transform: scale(1.05) translateY(-10px);
+
+            /* Hiệu ứng 2: Thêm glow effect */
+            filter: brightness(1.1) contrast(1.1);
+
+            /* Hiệu ứng 3: Border light */
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+        }
+        .slideshow-header-container ::part(button-prev),
+        .slideshow-header-container ::part(button-next) {
+            width: 32px;
+            height: 32px;
+            background-color: #db7100;
+            border-radius: 50%;
+            color: transparent;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .slideshow-header-container ::part(pagination) {
+            bottom: 7px;
+        }
+
+        .slideshow-header-container ::part(bullet) {
+            width: 12px;
+            height: 10px;
+            border-radius: 4px;
+            padding-left: 6px;
+            padding-right: 6px;
+            background-color: #d9d9d9;
+            opacity: 1;
+            margin: 0 4px !important;
+        }
+
+        .slideshow-header-container ::part(bullet-active) {
+            background-color: #db7100;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+
+        .custom-prev-btn-news-slideshow,
+        .custom-next-btn-news-slideshow {
+            width: 32px;
+            height: 32px;
+            background-color: #db7100;
+            border-radius: 50%;
+            border: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .custom-next-btn-news-slideshow {
+            right: 30px;
+        }
+        .custom-prev-btn-news-slideshow {
+            left: 30px;
+        }
+        .custom-prev-btn-news-slideshow:hover,
+        .custom-next-btn-news-slideshow:hover {
+            background-color: #ff8c1a;
+        }
+
+        .custom-prev-btn img,
+        .custom-next-btn img,
+        .custom-prev-btn-news-slideshow img,
+        .custom-next-btn-news-slideshow img {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Mobile (< 425px) */
+        @media screen and (max-width: 426px) {
+            .slideshow-header-container swiper-slide {
+                height: 300px;
+            }
+
+            .slideshow-header-container .swiper-slide-active img {
+                width: 180px;
+                height: 240px;
+            }
+
+            .slideshow-header-container .swiper-slide-prev img,
+            .slideshow-header-container .swiper-slide-next img {
+                width: 120px;
+                height: 160px;
+            }
+
+            .custom-next-btn-news-slideshow {
+                right: 25px;
+            }
+            .custom-prev-btn-news-slideshow {
+                left: 25px;
+            }
+
+        }
+
+        /* Tablet (425px - 768px) */
+        @media screen and (min-width: 425px) and (max-width: 768px) {
+
+            .custom-prev-btn-news-slideshow {
+                left: 25px;
+            }
+            .custom-next-btn-news-slideshow {
+                right: 25px;
+            }
+
+        }
+
+        /* Laptop (768px - 1024px) */
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+            .custom-next-btn-news-slideshow {
+                right: 30px;
+            }
+            .custom-prev-btn-news-slideshow {
+                left: 30px;
+            }
+            .slideshow-header-container ::part(pagination) {
+                bottom: 0;
+            }
+            .slideshow-header-container .swiper-slide-active img{
+                height: 425px;
+            }
+        }
+        @media screen and (min-width: 1024px) and (max-width: 1124px) {
+
+            .custom-prev-btn-news-slideshow {
+                left: -4px;
+            }
+            .custom-next-btn-news-slideshow {
+                right: -4px;
+            }
+            .slideshow-header-container swiper-slide
+            {
+                height: 518px;
+            }
+            .slideshow-header-container .swiper-slide-prev img,
+            .slideshow-header-container .swiper-slide-next img {
+                width: 93%!important;
+                height: 425px!important;
+            }
+        }
+        @media screen and (min-width: 1124px) and (max-width: 1224px) {
+
+            .custom-prev-btn-news-slideshow {
+                left: -3px;
+            }
+            .custom-next-btn-news-slideshow {
+                right: -3px;
+            }
+            .slideshow-header-container swiper-slide
+            {
+                height: 570px;
+            }
+            .slideshow-header-container .swiper-slide-prev img,
+            .slideshow-header-container .swiper-slide-next img {
+                width: 93%!important;
+                height: 470px!important;
+            }
+        }
+        @media screen and (min-width: 1224px) and (max-width: 1324px) {
+
+            .custom-prev-btn-news-slideshow {
+                left: -32px;
+            }
+            .custom-next-btn-news-slideshow {
+                right: -32px;
+            }
+            .slideshow-header-container swiper-slide
+            {
+                height: 584px;
+            }
+            .slideshow-header-container .swiper-slide-prev img,
+            .slideshow-header-container .swiper-slide-next img {
+                width: 93%!important;
+                height: 486px!important;
+            }
+        }
+        @media screen and (min-width: 1324px) and (max-width: 1440px) {
+
+            .custom-prev-btn-news-slideshow {
+                left: -36px;
+            }
+            .custom-next-btn-news-slideshow {
+                right: -36px;
+            }
+            .slideshow-header-container swiper-slide
+            {
+                height: 612px;
+            }
+            .slideshow-header-container .swiper-slide-prev img,
+            .slideshow-header-container .swiper-slide-next img {
+                width: 93%!important;
+                height: 514px!important;
+            }
+        }
+        /* Large Laptop (1024px - 1440px) */
+        @media screen and (min-width: 1024px) and (max-width: 1440px) {
+
+            .slideshow-header-container ::part(pagination) {
+                bottom: 0;
+            }
+            .slideshow-header-container .swiper-slide-active img{
+                height: 90%;
+                width: 100%;
+            }
+            .slideshow-header-container swiper-container{
+                padding: 20px 0 30px 0;
+            }
+
+        }
+        /* Styles cho màn hình laptop 1440px đến 1824px */
+        @media screen and (min-width: 1440px) and (max-width: 1824px) {
+            .slideshow-header-container{
+                padding-right: 8px;
+            }
+            .slideshow-header-container swiper-slide img {
+                width: 86% !important;
+                height: 170px !important;
+            }
+
+            .slideshow-header-container .swiper-slide-prev img,
+            .slideshow-header-container .swiper-slide-next img {
+                width: 240px !important;
+                height: 300px !important;
+            }
+            .slideshow-header-container .swiper-slide-next img {
+                margin: 0 0 0 8%;
+            }
+            .slideshow-header-container .swiper-slide-prev img {
+                margin: 0 8% 0 0;
+            }
+            .slideshow-header-container .swiper-slide-active img {
+                width: 270px !important;
+                height: 400px !important;
+            }
+            .slideshow-header-container swiper-container {
+                padding: 0 0 30px 0;
+            }
+            .custom-prev-btn-news-slideshow {
+                left: -40px;
+            }
+            .custom-next-btn-news-slideshow {
+                right: -40px;
+            }
+            .slideshow-header-container .swiper-slide-active {
+                width: 257px !important;
+            }
+        }
+        /* Styles cho màn hình laptop 1824px */
+        @media screen and (min-width: 1824px) and (max-width: 2304px) {
+
+            .slideshow-header-container swiper-slide {
+                height: 540px;
+            }
+            .slideshow-header-container swiper-slide img {
+                width: 88% !important;
+                height: 38% !important;
+            }
+
+            .slideshow-header-container .swiper-slide-prev img,
+            .slideshow-header-container .swiper-slide-next img {
+                width: 95% !important;
+                height: 65% !important;
+            }
+            .slideshow-header-container .swiper-slide-next img {
+                margin: 0 0 0 7%;
+            }
+            .slideshow-header-container .swiper-slide-prev img {
+                margin: 0 7% 0 0;
+            }
+            .slideshow-header-container .swiper-slide-active img {
+                width: 100% !important;
+                height: 85% !important;
+            }
+            .slideshow-header-container swiper-container {
+                padding: 0 0 30px 0;
+            }
+            .custom-prev-btn-news-slideshow {
+                left: -32px;
+            }
+            .custom-next-btn-news-slideshow {
+                right: -28px;
+            }
+            .slideshow-header-container .swiper-slide-active {
+                width: 300px !important;
+            }
+        }
+        @media screen and (min-width: 2304px) and (max-width: 2560px) {
+
+            .slideshow-header-container swiper-slide {
+                height: 550px;
+            }
+            .slideshow-header-container swiper-slide img {
+                width: 85% !important;
+                height: 47% !important;
+            }
+
+            .slideshow-header-container .swiper-slide-prev img,
+            .slideshow-header-container .swiper-slide-next img {
+                width: 95% !important;
+                height: 70% !important;
+            }
+            .slideshow-header-container .swiper-slide-next img {
+                margin: 0 0 0 7%;
+            }
+            .slideshow-header-container .swiper-slide-prev img {
+                margin: 0 7% 0 0;
+            }
+            .slideshow-header-container .swiper-slide-active img {
+                width: 100% !important;
+                height: 86% !important;
+            }
+            .custom-prev-btn-news-slideshow{
+                left: 16px;
+            }
+            .custom-next-btn-news-slideshow{
+                left: 16px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+<div class="slideshow-header-container">
+    <button class="custom-prev-btn-news-slideshow">
+        <img src="/documents/39403/310714/left-arrow.svg"
+             alt="Previous" />
+    </button>
+    <button class="custom-next-btn-news-slideshow">
+        <img src="/documents/39403/310714/right-arrow.svg"
+             alt="Next" />
+    </button>
+    <swiper-container class="news-slideshow" pagination="true" slide-to-clicked-slide="true"
+                      pagination-clickable="true" space-between="0" slides-per-view="5" centered-slides="true" initial-slide="2"
+                      navigation="false" loop="true" watch-slides-progress="true"
+                      pagination-dynamic-bullets="true"
+                      pagination-dynamic-main-bullets="3"
+    >
+        <#if entries?has_content>
+            <#assign imageMimeTypes=propsUtil.getArray("dl.file.entry.preview.image.mime.types") />
+            <#assign entries=entries?sort_by("modifiedDate")?reverse />
+            <#list entries as entry>
+                <#if imageMimeTypes?seq_contains(entry.getMimeType())>
+                    <swiper-slide>
+                        <img src="${dlUtil.getPreviewURL(entry, entry.getFileVersion(), themeDisplay, "")}"
+                             alt="" />
+                    </swiper-slide>
+                </#if>
+            </#list>
+        </#if>
+    </swiper-container>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+<script >
+    $(document).ready(function () {
+        // Đổi tên biến để tránh xung đột
+        const headerSwiper = $(".news-slideshow")[0];
+        let headerSwiperInstance = headerSwiper?.swiper;
+
+        if (!headerSwiperInstance) return;
+
+        // Thêm xử lý hover cho từng slide
+        $(".news-slideshow").find("swiper-slide").each(function (index) {
+            let hoverTimeout;
+
+            $(this).on({
+                mouseenter: function () {
+                    if (hoverTimeout) clearTimeout(hoverTimeout);
+                    hoverTimeout = setTimeout(() => {
+                        if (index !== headerSwiperInstance.realIndex) {
+                            const currentIndex = headerSwiperInstance.realIndex;
+                            const totalSlides = headerSwiperInstance.slides.length;
+
+                            const moveToIndex = (currentIndex, targetIndex) => {
+                                const forwardDistance = (targetIndex - currentIndex + totalSlides) % totalSlides;
+                                const backwardDistance = (currentIndex - targetIndex + totalSlides) % totalSlides;
+                                return forwardDistance <= backwardDistance ? "next" : "prev";
+                            };
+
+                            const direction = moveToIndex(currentIndex, index);
+                            const moveSlide = () => {
+                                if (headerSwiperInstance.realIndex !== index) {
+                                    if (direction === "next") {
+                                        headerSwiperInstance.slideNext(500);
+                                    } else {
+                                        headerSwiperInstance.slidePrev(500);
+                                    }
+                                }
+                            };
+                            moveSlide();
+                        }
+                    }, 200);
+                },
+                mouseleave: function () {
+                    if (hoverTimeout) clearTimeout(hoverTimeout);
+                },
+            });
+        });
+
+        // Xử lý nút điều hướng
+        $(".custom-prev-btn-news-slideshow").on("click", () => {
+            if (headerSwiperInstance) headerSwiperInstance.slidePrev();
+        });
+
+        $(".custom-next-btn-news-slideshow").on("click", () => {
+            if (headerSwiperInstance) headerSwiperInstance.slideNext();
+        });
+
+        // Thêm cấu hình breakpoints cho headerSwiper
+        if (headerSwiper) {
+            Object.assign(headerSwiper, {
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    },
+                    480: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    },
+                    1440: {
+                        slidesPerView: 5,
+                        spaceBetween: 0,
+                    },
+                    1824: {
+                        slidesPerView: 5,
+                        spaceBetween: 0,
+                    },
+                },
+            });
+        }
+
+        // Thêm observer để theo dõi thay đổi DOM
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    headerSwiperInstance = headerSwiper?.swiper;
+                }
+            });
+        });
+
+        if (headerSwiper) {
+            observer.observe(headerSwiper, { childList: true, subtree: true });
+        }
+    });
+</script>
+</body>
