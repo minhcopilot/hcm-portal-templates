@@ -1,0 +1,1445 @@
+<style>
+    .liferayckevideo.video-container video {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .social-buttons {
+        display: flex;
+    }
+
+    .article-head {
+        margin-bottom: 0;
+    }
+
+    .botting-border {
+        color: #292a32;
+        background: unset;
+        font-family: "Roboto";
+        text-transform: unset;
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 15px;
+        border-bottom: 3px solid #d1d2d4;
+    }
+
+    .buttonIn {
+        position: relative;
+    }
+
+    .btnsend {
+        color: #FFF;
+        border-color: #f70000;
+        padding: 3px 0.75rem;
+        border: none;
+        height: 42px;
+        cursor: pointer;
+        border-radius: 6px;
+        background: #C8392B;
+        margin-top: 17px;
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%; /* 18.2px */
+        letter-spacing: 0.021px;
+    }
+
+    .button-dt {
+        color: #FFF;
+        background-color: #f70000;
+        border-color: #f70000;
+        padding: 3px 0.75rem;
+        border-radius: 5px;
+        margin: 2px;
+    }
+
+    .button-dt-close {
+        color: #FFF;
+        background-color: #f70000;
+        border-color: #f70000;
+        padding: 3px 0.75rem;
+        border-radius: 5px;
+        margin: 2px;
+    }
+
+    .md-textarea {
+        width: 100%;
+    }
+
+    .comment {
+        display: inline-block;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    .comment-text {
+        padding-left: 51px;
+        margin-top: -9px;
+        font-size: 14px;
+    }
+
+    .comment-child {
+        margin-left: 35px;
+    }
+
+
+    .modal-thongtin {
+        display: none;
+        position: fixed;
+        z-index: 1111;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, .4);
+    }
+
+    .modal-thongtin-reply {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, .4);
+    }
+
+
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .btnreply {
+        color: #FFF;
+        background-color: #f70000;
+        border-color: #f70000;
+        padding: 3px 0.75rem;
+        border-radius: 5px;
+        height: 28px;
+        border: none;
+        float: right;
+    }
+
+    .autofit-float.autofit-row.portlet-header {
+        display: none;
+    }
+
+    .breadcrumb > li.active {
+        color: #f70000;
+    }
+
+    .zalo-share-button {
+        width: 158px !important;
+    }
+
+    iframe {
+        min-width: 92px;
+    }
+
+    @media only screen and (min-width: 768px) {
+        .other-imgs {
+            height: 60px;
+        }
+
+        .modal-thongtin-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .pagination2 a {
+            cursor: pointer;
+            color: black;
+            padding: 3px 8px;
+            text-decoration: none;
+            transition: background-color .3s;
+            margin: 0px;
+            border-radius: 5px;
+            background: #ddd;
+        }
+
+        .curPage-title {
+            display: none;
+        }
+
+        h3.title-divvv {
+            text-align: justify;
+            margin-top: 16px;
+            color: var(--darkdefault-212529, #212529);
+            font-family: Roboto;
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: -0.28px;
+        }
+
+        #contentText iframe {
+            width: 100% !important;
+        }
+
+        .detail-social > a:hover {
+            cursor: pointer;
+        }
+
+        .article-head .article-info {
+            margin-bottom: 0;
+            padding: 4px 0 8px 0;
+            font-size: 14px;
+            height: 59px !important;
+        }
+
+        .modal-thongtin-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 100%;
+        }
+    }
+
+    span.sticker-overlay {
+        background: var(--main-color-background);
+        color: var(--main-color-text);
+        opacity: 0.8;
+    }
+
+
+
+
+    .detail__flex {
+        display: flex;
+    }
+
+    .sp-dislaydate {
+        color: var(--darkdefault-212529, #212529);
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        letter-spacing: 0.08px;
+        border-left: 3px solid #212529;
+        margin-bottom: 18.5px;
+        padding-left: 12px;
+        margin-top: 40px;
+    }
+
+    .title-divvv {
+        text-align: justify;
+        margin-top: 16px;
+        color: var(--darkdefault-212529, #212529);
+        font-family: Roboto;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: -0.28px;
+    }
+
+    #contentText table {
+        width: 100% !important;
+        text-align: center;
+    }
+
+    #contentText table {
+        width: 100% !important;
+        text-align: center;
+    }
+
+    #contentText p {
+        text-align: justify;
+        color: #000;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        letter-spacing: 0.08px;
+    }
+
+    #contentText > .text-summary > p {
+        color: #000;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: italic;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    #contentText > p:has(img) {
+        text-align: center;
+    }
+
+    .text-dgbv {
+        display: flex;
+        flex-direction: row;
+        color: #000;
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-top: 8px;
+    }
+
+    .like-fb-custom {
+        margin-top: 6px;
+        max-width: 90px;
+    }
+
+    .text-trangchu-ctbv {
+        color: var(--darkdefault-212529, #212529);
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        letter-spacing: 0.08px;
+    }
+
+    .text-gioithieu-ctbv {
+        color:#0D4C92;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 130%;
+        letter-spacing: 0.08px;
+    }
+
+    .ctbv-right {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .title-content-vni {
+        color: var(--Dark-primary-000000, #000);
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0.03px;
+    }
+
+    .line {
+        background: #777;
+        height: 1px;
+        width: 100%;
+        margin: 32px 0;
+    }
+
+    .line-tlq {
+        background: #777;
+        height: 1px;
+        width: 100%;
+        margin: 26px 18px 15px 15px;
+    }
+
+    .text-readmore-tlq {
+        color: var(--cpredc-8392-b, #C8392B);
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 130%;
+        letter-spacing: 0.175px;
+        margin-top: 16px;
+    }
+
+    .text-des-tlq > p {
+        color: var(--signinupfont-3777777, #777);
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%; /* 18.2px */
+        letter-spacing: 0.035px;
+    }
+
+    .text-title-tlq {
+        color: var(--darkdefault-212529, #212529);
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0.024px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .text-title-tlq-img {
+        color: var(--darkdefault-212529, #212529);
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0.024px;
+        margin-top: 32px;
+    }
+
+    .title-content-tlq {
+        color: var(--Dark-primary-000000, #000);
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0.03px;
+        margin-top: 22px;
+    }
+
+    .box-tlq {
+        border-radius: 8px;
+        border: 1px solid #C7C7C7;
+        background: #FAFAFA;
+    }
+
+    .limit-title-1 {
+        display: block;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 3em;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+
+    .border-item {
+        border-radius: 8px;
+        border: 1px solid var(--stroke-777777, rgba(119, 119, 119, 0.50));
+        margin: 0px 17px;
+    }
+
+    .tin-slide-img-left {
+        border-radius: 8px 0px 0px 8px;
+    }
+
+    .sdt-list-tlq-items {
+        color: var(--darkdefault-212529, #212529);
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0.024px;
+    }
+    .sdt-list-tlq-items:hover > a{
+        color: #0D4C92!important;
+    }
+    .sdt-list-tlq-items:hover::before {
+    background: #0D4C92;
+}
+    .sdt-list-tlq-items::before {
+        position: absolute;
+        top: 7px;
+        left: 0;
+        content: "";
+        height: 6px;
+        width: 6px;
+        border-radius: 8px;
+        background: #D9D9D9;
+        margin-right: 5px;
+    }
+
+    .text-border {
+        color: #000;
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        letter-spacing: 0.027px;
+        border-bottom: 3px solid #f70000;
+    }
+
+    .form-chitiet {
+        border-radius: 6px;
+        background: #F2F2F2;
+        border-color: #F2F2F2;
+    }
+
+    .form-chitiet::placeholder {
+        color: rgba(119, 119, 119, 0.50);
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        letter-spacing: 0.021px;
+    }
+
+    .lbl-blyk {
+        color: #000;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 130%;
+        letter-spacing: 0.024px;
+    }
+
+    .align-right {
+        text-align: right;
+        border: 0;
+    }
+
+    @media only screen and (max-width: 576px) {
+        .detail__sticky {
+            display: none;
+        }
+        .h-img-ctbv {
+            height: 100%;
+        }
+
+        .text-title-tlq-img {
+            margin-top: 10px;
+        }
+    }
+
+    @media only screen and (min-width: 576px) {
+        .h-img-ctbv {
+            height: 181px;
+        }
+    }
+
+    .gg-custom {
+        margin-top: 10px;
+    }
+
+    .avatar {
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin-right: 13px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .item {
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+        display: flex;
+        border-bottom: 1px solid rgba(119, 119, 119, 0.30);
+    }
+    .user-name {
+        color: #000;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0.024px;
+    }
+    .text-comment {
+        color: #4D4D4D;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        letter-spacing: 0.08px;
+    }
+    .btnmorecmt {
+        width: 285px;
+        padding: 12px 50px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 8px;
+        border: 1px solid #000;
+        color: #000;
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%; /* 18.2px */
+        letter-spacing: 0.021px;
+        background: none;
+    }
+    .content-left-tlq{
+        padding: 0!important;
+    }
+    .content-right-tlq{
+        padding-left: 32px!important;
+    }
+    .content-right-tlq:hover,
+    .content-right-tlq:hover ~ .content-left-tlq {
+        background-color: #0D4C92;
+    }
+    .content-right-tlq:hover .text-title-tlq-img,
+    .content-right-tlq:hover .text-des-tlq > p,
+    .content-right-tlq:hover .text-readmore-tlq{
+        color: #ffffff!important;
+    }
+
+
+</style>
+<style>
+
+    .star {
+        position: relative;
+        display: inline-block;
+        transition: color 0.2s ease;
+        color: #ebebeb;
+    }
+
+    .star:before {
+        content: '\2605';
+        width: 30px;
+        height: 30px;
+        font-size: 30px;
+    }
+
+    .star:hover,
+    .star.selected,
+    .star:hover ~ .star,
+    .star.selected ~ .star {
+        transition: color 0.8s ease;
+        color: #FDE16D;
+    }
+    .ratings-wrapper {
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+
+    .ratings {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .ratings span {
+        cursor: pointer;
+        transition: color 0.8s ease;
+        font-size: 50px;
+    }
+
+    .ratings span:hover {
+        transition: color 0.8s ease;
+        color: #FDE16D;
+    }
+
+    .ratings span:hover ~ span {
+        transition: color 0.8s ease;
+        color: #FDE16D;
+    }
+
+    .ratings span[data-clicked] {
+        color: #FDE16D;
+    }
+
+    .ratings span[data-clicked] ~ span {
+        color: #FDE16D;
+    }
+
+    .reset {
+        font-size: 18px;
+        text-decoration: none;
+        background-color: #4f5a78;
+        padding: 15px 50px;
+        display: inline-block;
+        margin-top: 20px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    .reset:hover {
+        filter: brightness(1.2);
+    }
+</style>
+<#assign AssetEntryLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetEntryLocalService" )>
+<#assign JournalArticleLocalService = serviceLocator.findService("com.liferay.journal.service.JournalArticleLocalService")>
+
+<#assign currentArticle = JournalArticleLocalService.getArticle(getterUtil.getLong(groupId),.vars['reserved-article-id'].data)>
+<#assign currentArticleResourcePrimKey = currentArticle.getResourcePrimKey()>
+
+<#assign currentArticleAssetEntry = AssetEntryLocalService.getEntry("com.liferay.journal.model.JournalArticle", currentArticleResourcePrimKey)/>
+
+<#assign articlePrimKey = currentArticle.resourcePrimKey>
+<#assign DDMStructureKey = currentArticle.DDMStructureKey>
+
+<#assign catLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetCategoryLocalService")>
+<#assign articleCatId = catLocalService.getCategoryIds("com.liferay.journal.model.JournalArticle", getterUtil.getLong(articlePrimKey))>
+
+<#assign assetEntryQueryService = objectUtil('com.liferay.asset.kernel.service.AssetEntryLocalServiceUtil')>
+
+<#assign assetEntryQuery = objectUtil('com.liferay.asset.kernel.service.persistence.AssetEntryQuery')>
+
+
+<#assign search = assetEntryQuery.setAnyCategoryIds(articleCatId)>
+<#assign search = assetEntryQuery.setOrderByCol1("publishDate")/>
+<#assign search = assetEntryQuery.setStart(0)/>
+<#assign search = assetEntryQuery.setEnd(10)/>
+<#assign search = assetEntryQuery.setOrderByType1("DESC")/>
+
+<#assign teste = assetEntryQueryService.getEntries(assetEntryQuery)
+totalPage = 0/>
+
+<#assign
+title = .vars['reserved-article-title'].data
+portalURL = themeDisplay.getPortalURL()
+currentUrl = portalURL + themeDisplay.getURLCurrent()
+imageUrl = portalURL + .vars['reserved-article-small-image-url'].data
+srcfb = "https://www.facebook.com/plugins/like.php?href=${currentUrl}&width=92&layout=button_count&locale=vi_VN&action=like&size=small&share=false&height=28&appId=252861586372350"
+
+displayDate = .vars['reserved-article-display-date'].data
+summary = .vars['reserved-article-description'].data/>
+
+<#assign scopeId = themeDisplay.getScopeGroupId()>
+<#assign contentId = .vars['reserved-article-id'].data>
+<#assign originalLocale = .locale>
+<#setting locale = localeUtil.getDefault()>
+<#assign displayDate = displayDate?datetime("EEE, d MMM yyyy HH:mm:ss Z")>
+<#assign locale = originalLocale>
+<#assign displayDate = displayDate?string("EEEE, dd/MM/yyyy, HH:mm a ")>
+<#assign listLayoutDHD = [5474,5512,179]>
+<#assign layo = themeDisplay.getPlid() />
+
+<#list articleCatId as a>
+    <a name="articleCatId" property="og:title" content="${a}"/>
+</#list>
+<@liferay_util["html-top"]>
+    <meta name="title" property="og:title" content="${title}"/>
+    <meta name="assetEntryQuery" property="og:title" content="${assetEntryQuery}"/>
+
+    <meta name="image" property="og:image" content="${imageUrl}"/>
+    <meta name="imageurl" property="og:image:url" content="${imageUrl}"/>
+    <meta name="description" property="og:description" content="${summary}"/>
+    <meta name="url" property="og:url" content="${currentUrl}"/>
+</@>
+<#assign
+theme_display = themeDisplay
+images_folder = theme_display.getPathThemeImages()
+/>
+
+<script>
+    $(document).ready(function () {
+        $(".hrefShareFb").attr("href", "https://www.facebook.com/sharer/sharer.php?u=" + window.location.href);
+        $("#hrefShareEmail").attr("href", "mailto:?subject=I wanted you to see this site&amp;body=Check out this site " + window.location.href);
+        $("#hrefShareSkype").attr("href", "https://web.skype.com/share?url=" + window.location.href);
+        $("#trigger_zalo").attr("data-href", "" + window.location.href);
+        $(".hrefShareTwitter").attr("href", "https://twitter.com/intent/tweet?text=" + window.location.href);
+        var modal = $('.modal-thongtin');
+        var btn = $('.btnsend');
+        var button_dt = $('.button-dt');
+        var button_dt_close = $('.button-dt-close');
+        var span = $('.close');
+        var baiVietId = $('#baiVietId');
+        var tieuDe = $('#tieuDe');
+        var commentContent = $('#commentContent');
+        var commentName = $('#commentName');
+        var commentAddress = $('#commentAddress');
+        var commentEmail = $('#commentEmail');
+
+        /*btn.click(function () {
+            if (commentContent.val().length == 0) {
+                alert('Vui lòng nhập nội dung ý kiến!');
+            } else {
+                modal.show();
+                btn.hide();
+            }
+        });*/
+
+
+        button_dt.click(function () {
+            const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (commentName.val().length == 0) {
+                commentName.css('border-color', 'red');
+                commentName.focus();
+            } else if (commentAddress.val().length == 0) {
+                commentAddress.css('border-color', 'red');
+                commentAddress.focus();
+            } else if (commentEmail.val().length == 0) {
+                commentEmail.css('border-color', 'red');
+                commentEmail.focus();
+            } else if (!valid.test(commentEmail.val())) {
+                commentEmail.css('border-color', 'red');
+                commentEmail.focus();
+                alert('Vui lòng nhập đúng email!');
+            } else {
+                comment(baiVietId.val(), tieuDe.val(), commentContent.val(), commentName.val(), commentAddress.val(), commentEmail.val(), ${groupId});
+                commentContent.val('');
+                commentName.val('');
+                commentAddress.val('');
+                commentEmail.val('');
+                modal.hide();
+                btn.show();
+            }
+        });
+
+        button_dt_close.click(function () {
+            commentContent.val('');
+            commentName.val('');
+            commentAddress.val('');
+            commentEmail.val('');
+            commentName.css('border-color', '#ccc');
+            commentAddress.css('border-color', '#ccc');
+            commentEmail.css('border-color', '#ccc');
+            modal.hide();
+            btn.show();
+
+        });
+
+        span.click(function () {
+            commentContent.val('');
+            commentName.val('');
+            commentAddress.val('');
+            commentEmail.val('');
+            modal.hide();
+            $('.replyBox').hide();
+            btn.show();
+
+            $('.inputReplyContent').val('');
+            commentNameReply.val('');
+            commentAddressReply.val('');
+            commentEmailReply.val('');
+            modal_reply.hide();
+            $('.replyBox').hide();
+            btnreply.show();
+        });
+
+        $(window).on('click', function (e) {
+            if ($(e.target).is('.modal-thongtin')) {
+                commentContent.val('');
+                commentName.val('');
+                commentAddress.val('');
+                commentEmail.val('');
+                modal.hide();
+                btn.show();
+            }
+            if ($(e.target).is('.modal-thongtin-reply')) {
+                $('.inputReplyContent').val('');
+                commentNameReply.val('');
+                commentAddressReply.val('');
+                commentEmailReply.val('');
+                modal_reply.hide();
+                btnreply.show();
+            }
+        });
+
+
+        var modal_reply = $('.modal-thongtin-reply');
+        var btnreply = $('.btnreply');
+        var button_dt_reply = $('.button-dt-reply');
+        var button_dt_reply_close = $('.button-dt-reply-close');
+        var span = $('.close');
+        var commentNameReply = $('#commentNameReply');
+        var commentAddressReply = $('#commentAddressReply');
+        var commentEmailReply = $('#commentEmailReply');
+
+        function submitreply() {
+            var commentId = $('#commentId').val();
+            if ($('#inputReplyContent' + commentId).val().length == 0) {
+                alert('Vui lòng nhập nội dung ý kiến!');
+            } else {
+                modal_reply.show();
+                $('#commentContentReply').val($('#inputReplyContent' + commentId).val());
+                btnreply.hide();
+            }
+        }
+
+        button_dt_reply.click(function () {
+            if (commentNameReply.val().length == 0) {
+                commentNameReply.css('border-color', 'red');
+            } else if (commentAddressReply.val().length == 0) {
+                commentAddressReply.css('border-color', 'red');
+            } else if (commentEmailReply.val().length == 0) {
+                commentEmailReply.css('border-color', 'red');
+            } else {
+                replyComment($('#commentId').val(), baiVietId.val(), tieuDe.val(), $('#commentContentReply').val(), commentNameReply.val(), commentAddressReply.val(), commentEmailReply.val());
+                $('.inputReplyContent').val('');
+                commentNameReply.val('');
+                commentAddressReply.val('');
+                commentEmailReply.val('');
+                modal_reply.hide();
+            }
+        });
+
+        button_dt_reply_close.click(function () {
+            $('.inputReplyContent').val('');
+            commentNameReply.val('');
+            commentAddressReply.val('');
+            commentEmailReply.val('');
+            modal_reply.hide();
+
+        });
+    });
+
+    $(function () {
+        var star = '.star',
+            selected = '.selected';
+        $(star).on('click', function () {
+            $(selected).each(function () {
+                $(this).removeClass('selected');
+            });
+            $(this).addClass('selected');
+        });
+    });
+
+    function submitreply() {
+        var commentId = $('#commentId').val();
+        if ($('#inputReplyContent' + commentId).val().length == 0) {
+            alert('Vui lòng nhập nội dung ý kiến!');
+        } else {
+            $('.modal-thongtin-reply').show();
+            $('#commentContentReply').val($('#inputReplyContent' + commentId).val());
+            $('.btnreply').hide();
+        }
+    }
+
+    function changePageSize() {
+        var pageSize = $('#pageSize').val();
+        var pageIndex = $('#pageIndex').val();
+        paginate(pageIndex, pageSize);
+    }
+
+    function changePageIndex() {
+        var pageSize = $('#pageSize').val();
+        var pageIndex = $('#pageIndex').val();
+        $('#curPage').val(pageIndex);
+        paginate(pageIndex, pageSize);
+    }
+
+    function gotoPage(i) {
+        $('a[name="gotoPage"]').removeClass("active");
+        $('#gotoPage' + i).addClass("active");
+        $('.list-unstyled').css("display", "none");
+        $('ul[name="list-unstyled-' + i + '"]').css("display", "grid");
+        $('#currentPage').val(i);
+    }
+
+    function previousPage() {
+        var i = $('#currentPage').val();
+        if (i > 1) {
+            gotoPage(Number(i) - 1);
+        }
+    }
+
+    function nextPage() {
+        var i = $('#currentPage').val();
+        var totalPage = $('#totalPages').val();
+        console.log(i);
+        console.log(totalPage);
+        if (i < totalPage) {
+            gotoPage(Number(i) + 1);
+        }
+    }
+
+
+</script>
+<div id="fb-root"></div>
+<div class="detail__flex">
+    <div class="detail__sticky">
+        <div class="detail__scroll-action">
+            <div class="detail-social">
+                <a onclick="fontMinus();" href="javascript:void(0);" title="Giảm cỡ chữ" data-toggle="tooltip">
+				<span class="icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+						<circle cx="14" cy="14" r="13.5" stroke="#777777"/>
+						<path d="M17.5 15.5L13.75 11.75L10 15.5" stroke="#777777" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</span>
+                </a>
+                <a onclick="fontPlus();" href="javascript:void(0);" title="Tăng cỡ chữ" data-toggle="tooltip">
+				<span class="icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+						<circle cx="14" cy="14" r="13.5" transform="rotate(-180 14 14)" stroke="#777777"/>
+						<path d="M10 12L13.75 15.75L17.5 12" stroke="#777777" stroke-width="1.5" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+					</svg>
+				</span>
+                </a>
+                <a onclick="voiceSpeak('contentText','voiceSex')" href="javascript:void(0);" data-toggle="tooltip"
+                   title="Đọc bài viết">
+				<span class="icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+					<path d="M17.1145 3.14453C16.9531 3.14453 16.7891 3.18828 16.6387 3.28945L6.94531 9.625H2.46094C2.22031 9.625 2.02344 9.82188 2.02344 10.0625V17.9375C2.02344 18.1781 2.22031 18.375 2.46094 18.375H6.94531L16.6387 24.7105C16.7891 24.809 16.9559 24.8555 17.1145 24.8555C17.5711 24.8555 17.9922 24.4918 17.9922 23.9777V4.02227C17.9922 3.5082 17.5711 3.14453 17.1145 3.14453ZM16.0234 21.957L8.02266 16.7262L7.53047 16.4062H3.99219V11.5938H7.53047L8.01992 11.2738L16.0234 6.04297V21.957ZM25.5391 13.0156H22.0391C21.7984 13.0156 21.6016 13.2125 21.6016 13.4531V14.5469C21.6016 14.7875 21.7984 14.9844 22.0391 14.9844H25.5391C25.7797 14.9844 25.9766 14.7875 25.9766 14.5469V13.4531C25.9766 13.2125 25.7797 13.0156 25.5391 13.0156ZM24.3934 20.1742L21.3773 18.4324C21.3278 18.404 21.2731 18.3857 21.2165 18.3785C21.1599 18.3712 21.1023 18.3752 21.0472 18.3902C20.9921 18.4052 20.9405 18.4309 20.8954 18.4658C20.8502 18.5007 20.8123 18.5442 20.784 18.5938L20.2398 19.5371C20.1195 19.7449 20.1906 20.0129 20.3984 20.1332L23.4145 21.875C23.464 21.9034 23.5187 21.9217 23.5753 21.929C23.6319 21.9362 23.6894 21.9322 23.7445 21.9172C23.7996 21.9023 23.8513 21.8766 23.8964 21.8416C23.9416 21.8067 23.9794 21.7632 24.0078 21.7137L24.552 20.7703C24.6723 20.5625 24.5984 20.2945 24.3934 20.1742ZM20.7812 9.40625C20.8096 9.45581 20.8475 9.49929 20.8926 9.53422C20.9378 9.56915 20.9894 9.59484 21.0445 9.60982C21.0996 9.6248 21.1571 9.62878 21.2138 9.62153C21.2704 9.61428 21.3251 9.59595 21.3746 9.56758L24.3906 7.82578C24.5984 7.70547 24.6695 7.4375 24.5492 7.22969L24.0078 6.28906C23.9794 6.23951 23.9416 6.19602 23.8964 6.16109C23.8513 6.12616 23.7996 6.10048 23.7445 6.0855C23.6894 6.07051 23.6319 6.06653 23.5753 6.07378C23.5187 6.08103 23.464 6.09936 23.4145 6.12773L20.3984 7.86953C20.2986 7.92775 20.2258 8.02314 20.1961 8.13484C20.1664 8.24655 20.1821 8.36548 20.2398 8.46563L20.7812 9.40625Z"
+                          fill="#777777"/>
+					</svg>
+				</span>
+                </a>
+                <a id="void-pause" onclick="voicePause()" href="javascript:void(0);" style="display:none;"
+                   data-toggle="tooltip"
+                   title="Tạm dừng đọc">
+				<span class="icon">
+					<i class="fa fa-pause" style="vertical-align: middle;opacity: 1;color: dimgray;"/>
+				</span>
+                </a>
+                <a id="void-resume" onclick="voiceResume()" href="javascript:void(0);" style="display:none;"
+                   data-toggle="tooltip"
+                   title="Tiếp tục đọc">
+                    <i class="icon fa fa-repeat" style="vertical-align: middle;opacity: 1;color: dimgray;"></i>
+                </a>
+                <a id="void-stop" onclick="voiceCancel()" href="javascript:void(0);" style="display:none;"
+                   data-toggle="tooltip"
+                   title="Dừng đọc">
+                    <i class="icon fa fa-stop" style="vertical-align: middle;opacity: 1;color: dimgray;"/>
+                </a>
+
+                <a onclick="giamTuongPhan();" href="javascript:void(0);"
+                   data-toggle="tooltip" title="Giảm tương phản">
+					<span class="icon">
+						<img src="/o/portal-home-theme/icons/trothinh/trothinh_bright-down-btn.png"
+                             style="vertical-align: middle;opacity: 1;"/>
+					</span>
+                </a>
+                <a onclick="tangTuongPhan();" href="javascript:void(0);"
+                   data-toggle="tooltip" title="Tăng tương phản">
+					<span class="icon">
+						<img src="/o/portal-home-theme/icons/trothinh/trothinh_bright-up-btn.png"
+                             style="vertical-align: middle;opacity: 1;"/>
+					</span>
+                </a>
+                <a target="_blank" title="Chia sẻ Facebook" class="hrefShareFb">
+                    <span class="icon">
+                        <img src="${images_folder}/icons/iconfacebookvni.png">
+                    </span>
+                </a>
+
+                <a target="_blank" title="Chia sẻ Twitter" class="hrefShareTwitter">
+                    <span class="icon">
+                        <img src="${images_folder}/icons/twittershare.png">
+                    </span>
+                </a>
+
+                <a class="" title="Chia sẻ Zalo" onclick="load_js_zalo();" href="javascript:void(0);">
+				<span class="icon">
+					<img src="${images_folder}/icons/iconzlvni.png">
+				</span>
+                </a>
+                <span id="trigger_zalo" style="position: absolute;" href="javascript:void(0);" class="zalo-share-button"
+                      data-oaid="3853758560685742933" data-layout="2" data-color="blue" data-customize="true"
+                      title="Chia sẻ Zalo"></span>
+            </div>
+        </div>
+    </div>
+    <div class="detail__main">
+        <span class="text-trangchu-ctbv">TRANG CHỦ / <span class="text-gioithieu-ctbv">TIN TỨC</span></span>
+        <div class="main-content main_blog_post_content">
+            <div class="panel mbp_thumb_post" id="main-body">
+                <div class="shortcode-content hreview">
+                    <div style="margin:10px 0px;">
+                        <h3 class="title-divvv">${title}</h3>
+                    </div>
+                    <div class="article-head">
+                        <div class="article-info" style="border-top: 0px;border-bottom: 0px; height: 33px;">
+                            <div class="social-buttons left" style="float: left!important;">
+                                <ul class="blog_sp_post_meta">
+                                    <li class="list-inline-item">
+                                        <span class="sp-dislaydate">${displayDate}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <input type="hidden" id="voiceSex" value="Vietnamese Female"></input>
+                            <input type="hidden" id="tuongphan" value="3"></input>
+                            <input type="hidden" id="DDMStructureKey" name="DDMStructureKey"
+                                   value="${DDMStructureKey}"></input>
+                            <input type="hidden" id="baiVietId" name="baiVietId" value="${articlePrimKey}"></input>
+                            <input type="hidden" id="commentId" name="commentId" value=""></input>
+                            <input type="hidden" id="tieuDe" name="tieuDe" value="${title?html}"></input>
+                            <input type="hidden" value="1" id="curPage"/>
+                            <input type="hidden" value="0" id="totalRelated"/>
+                            <input type="hidden" value="${currentUrl}" id="currentURL"/>
+                        </div>
+                    </div>
+                </div>
+                <div id="contentText" style="margin:10px 0px;">
+                    <b style="text-align: justify;" class="text-summary">${summary}</b>
+                    <#assign sanitizedContent = noiDung.getData()?replace("<script>", "<p class='d-none'>")?replace("</script>", "</p>")>
+                    ${sanitizedContent}
+                </div>
+                <div class="article-info">
+                    <div class="row social-buttons">
+                        <div class="col-lg-9 d-flex">
+                            <iframe class="like-fb-custom" src="${srcfb}" width="92" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                            <div style="display: contents;">
+                                <p class="text-dgbv">Đánh giá bài viết:</p>
+                                <div class="ratings-wrapper">
+                                    <div data-productid="39" class="ratings">
+                                        <span class="star" data-rating="5"></span>
+                                        <span class="star" data-rating="4"></span>
+                                        <span class="star" data-rating="3"></span>
+                                        <span class="star" data-rating="2"></span>
+                                        <span class="star" data-rating="1"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 ctbv-right">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <p class="title-content-vni">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+                        <path d="M31.5337 15.445L25.8262 6.89125C25.6445 6.61728 25.3978 6.39252 25.1082 6.23702C24.8185 6.08151 24.4949 6.00008 24.1662 6H5.70117C5.17074 6 4.66203 6.21071 4.28696 6.58579C3.91189 6.96086 3.70117 7.46957 3.70117 8V24C3.70117 24.5304 3.91189 25.0391 4.28696 25.4142C4.66203 25.7893 5.17074 26 5.70117 26H24.1662C24.4947 25.9994 24.818 25.9179 25.1075 25.7626C25.397 25.6074 25.6439 25.3833 25.8262 25.11L31.5299 16.555C31.6401 16.391 31.6993 16.1981 31.7 16.0006C31.7006 15.803 31.6428 15.6097 31.5337 15.445ZM24.1662 24H5.70117V8H24.1662L29.4987 16L24.1662 24Z"
+                              fill="#DA251C"/>
+                    </svg>
+                    Từ khoá
+                </p>
+                <div class="menu-tags">
+                    <#list currentArticleAssetEntry.getTags() as tag>
+                        <div class="tags"><p class="tag">${tag.name}</p></div>
+                    </#list>
+                </div>
+
+                <#--<div class="line"></div>-->
+
+                <#--<p class="title-content-vni">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
+                        <path d="M7.31069 6.92885V6.64314C7.31069 5.50649 7.76222 4.41641 8.56594 3.61268C9.36967 2.80895 10.4598 2.35742 11.5964 2.35742H23.5964C25.3393 2.35742 27.0107 3.04977 28.2431 4.28215C29.4755 5.51453 30.1678 7.186 30.1678 8.92885V16.9174C30.1678 17.4802 30.057 18.0375 29.8416 18.5575C29.6262 19.0775 29.3105 19.5499 28.9126 19.9479C28.5146 20.3458 28.0422 20.6615 27.5222 20.8769C27.0022 21.0923 26.4449 21.2031 25.8821 21.2031H25.5964V21.4889C25.5964 22.6255 25.1449 23.7156 24.3411 24.5193C23.5374 25.323 22.4473 25.7746 21.3107 25.7746H14.457L9.60554 29.4717C8.66497 30.1883 7.31069 29.5174 7.31069 28.3357V25.7746H7.02497C5.88833 25.7746 4.79824 25.323 3.99451 24.5193C3.19079 23.7156 2.73926 22.6255 2.73926 21.4889V11.2146C2.73926 10.0779 3.19079 8.98784 3.99451 8.18411C4.79824 7.38038 5.88833 6.92885 7.02497 6.92885H7.31069ZM9.02497 6.64314V6.92885H21.3107C22.4473 6.92885 23.5374 7.38038 24.3411 8.18411C25.1449 8.98784 25.5964 10.0779 25.5964 11.2146V19.4889H25.8821C26.5641 19.4889 27.2182 19.2179 27.7004 18.7357C28.1826 18.2535 28.4535 17.5994 28.4535 16.9174V8.92885C28.4535 7.64066 27.9418 6.40522 27.0309 5.49433C26.12 4.58344 24.8846 4.07171 23.5964 4.07171H11.5964C10.9144 4.07171 10.2604 4.34263 9.77813 4.82486C9.29589 5.3071 9.02497 5.96115 9.02497 6.64314ZM4.45354 11.2146V21.4889C4.45354 22.1708 4.72446 22.8249 5.2067 23.3071C5.68893 23.7894 6.34299 24.0603 7.02497 24.0603H8.16783C8.39516 24.0603 8.61318 24.1506 8.77392 24.3113C8.93467 24.4721 9.02497 24.6901 9.02497 24.9174V27.7586L13.649 24.2363C13.798 24.1224 13.9803 24.0606 14.1678 24.0603H21.3107C21.9927 24.0603 22.6467 23.7894 23.129 23.3071C23.6112 22.8249 23.8821 22.1708 23.8821 21.4889V11.2146C23.8821 10.5326 23.6112 9.87853 23.129 9.39629C22.6467 8.91405 21.9927 8.64314 21.3107 8.64314H7.02497C6.34299 8.64314 5.68893 8.91405 5.2067 9.39629C4.72446 9.87853 4.45354 10.5326 4.45354 11.2146Z"
+                              fill="#DA251C"/>
+                    </svg>
+                    Bình luận
+                </p>
+                <h2 class="botting-border"><span class="text-border">Bình luận, ý kiến của bạn</span></h2>
+                <section class="form-gradient">
+                    &lt;#&ndash;<form action="?" method="POST" class="needs-validation" novalidate="novalidate" onsubmit="return submitUserForm();">&ndash;&gt;
+                    <div style="padding-bottom: 1px" class="buttonIn">
+                        <div class="row">
+                            <div class="col-lg-12 align-self-center">
+                                <label for="commentName" class="mb-1 lbl-blyk">Tên
+                                    <red style="color: red;">*</red>
+                                </label>
+                                <input type="text" id="commentName" class="form-control form-chitiet"
+                                       placeholder="Nhập tên" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 align-self-center">
+                                <label for="email" class="mb-1 lbl-blyk">Email
+                                    <red style="color: red;">*</red>
+                                </label>
+                                <input type="text" id="email" regex="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"  class="form-control form-chitiet" placeholder="Nhập email"
+                                       required>
+                            </div>
+
+                            <div class="col-lg-6 align-self-center">
+                                <label for="soDienThoai" class="mb-1 lbl-blyk">Số điện thoại
+                                    <red style="color: red;">*</red>
+                                </label>
+                                <input type="tel" max="12" id="soDienThoai" class="form-control form-chitiet"
+                                       placeholder="Nhập số điện thoại" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 align-self-center">
+                                <label for="binhLuanGopY" class="mb-1 lbl-blyk">Bình luận, góp ý
+                                    <red style="color: red;">*</red>
+                                </label>
+                                <textarea id="commentContent" class="form-control form-chitiet" rows="4" required
+                                          placeholder="Nhập bình luận, ý kiến..."></textarea>
+                            </div>
+                        </div>
+                        <div class="g-recaptcha gg-custom"
+                             data-sitekey="6LdJn8wUAAAAAMvr7BbFYRPvKU8CJh8eppjhQVrp" data-callback="verifyCaptcha">
+                        </div>
+
+                        <div id="g-recaptcha-error"></div>
+                        <div class="align-right">
+                            <button type="submit" class="btnsend" onclick="sendFeedback()" >Gửi bình luận
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17"
+                                     fill="none">
+                                    <path d="M9.45353 8.27001L6.15353 4.97001L7.0962 4.02734L11.3389 8.27001L7.0962 12.5127L6.15353 11.5693L9.45353 8.26934L9.45353 8.27001Z"
+                                          fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                    </div>-->
+                <#--</form>-->
+
+                </section>
+                <div id="comment-list"></div>
+                <div class="line"></div>
+                <#assign indexLocal = 0/>
+                <div class="col-lg-12 col-xl-12 box-tlq">
+                    <#if teste?has_content>
+                        <h1 class="title-content-tlq font-merri mb-3">Tin liên quan</h1>
+                        <div class="row">
+                            <#list teste?filter(curEntryyy -> curEntryyy.getEntryId() != currentArticleAssetEntry.getEntryId()) as  curEntryyy>
+                                <#if curEntryyy?? && curEntryyy.getAssetRenderer()??>
+									<#assign
+									renderer = curEntryyy.getAssetRenderer()
+									className = renderer.getClassName() />
+									<#if className == "com.liferay.journal.model.JournalArticle" && indexLocal &lt; 6>
+										<#assign
+										title = curEntryyy.getTitle(locale)
+										article = renderer.getArticle()
+										SmallImageID  = article.getSmallImageId()
+										SmallImage  = article.getSmallImageURL()
+										description = article.getDescription(locale)
+										curEntryyy = curEntryyy
+										viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+										indexLocal = indexLocal + 1 />
+										<#if SmallImage ?? && SmallImage?length !=0 >
+											<#assign smallImageUrl = SmallImage>
+										<#elseif SmallImageID ?? && SmallImageID != 0>
+											<#assign smallImageUrl = "/image/journal/article?img_id=${SmallImageID}">
+										<#else>
+											<#assign smallImageUrl = "https://congthongtin-eng.qtsc.com.vn/documents/60205/77945/no-image.jpg/e9f6989a-ae19-74fb-5701-1069f7823edb?t=1691030280750" >
+										</#if>
+										<#list curEntryyy.getCategories() as categoryList>
+											<#list currentArticleAssetEntry.getCategories() as cateId>
+												<#if categoryList.getCategoryId() == cateId.getCategoryId()>
+													<#if indexLocal  == 1>
+														<div class="col-12 d-flex p-0 mb-16" idx="${indexLocal}" style="height: 100% !important;">
+															<a href="${viewURL}" class="d-flex w-100 border-item">
+																<div class="col-4 pl-0 content-left-tlq">
+																	<img id="tin-slide-img-left"
+																		 class="tin-slide-img-left img-34-left col-4 p-0 h-img-ctbv"
+																		 src="${smallImageUrl}" alt="" width="100%">
+																</div>
+																<div class="col-8 content-right-tlq">
+																	<p class="limit-title-1 text-title-tlq-img">${title}</p>
+																	<div class="text-left limit-description-3 text-des-tlq">${description}</div>
+																	<p class="text-readmore-tlq d-mobile-none">Đọc thêm
+																		<i class="fa fa-angle-right"></i>
+																	</p>
+																</div>
+															</a>
+														</div>
+														<div class="line-tlq"></div>
+													<#else>
+														<div class="col-lg-12" idx="${indexLocal}" style="margin-left: 15px;">
+															<li class="sdt-list-tlq-items"><a href="${viewURL}">${title}</a></li>
+														</div>
+													</#if>
+												</#if>
+											</#list>
+										</#list>
+									</#if>
+								</#if>
+                            </#list>
+                        </div>
+                    </#if>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        getFeedback(10);
+        let stars = document.querySelectorAll(".ratings span");
+        let products = document.querySelectorAll(".ratings");
+        let ratings = [];
+
+        for(let star of stars){
+            star.addEventListener("click", function(){
+                let children = 	star.parentElement.children;
+                for(let child of children){
+                    if(child.getAttribute("data-clicked")){
+                        return false;
+                    }
+                }
+
+                this.setAttribute("data-clicked","true");
+                let rating = this.dataset.rating;
+                let productId = this.parentElement.dataset.productid;
+                let data = {
+                    "rating": rating,
+                    "product-id": productId,
+                }
+                ratings.push(data);
+                localStorage.setItem("rating", JSON.stringify(ratings));
+            });
+        }
+
+        if(localStorage.getItem("rating")){
+            ratings = JSON.parse(localStorage.getItem("rating"));
+            for(let rating of ratings){
+                for(let product of products){
+                    if(rating["product-id"] == product.dataset.productid){
+                        let reverse = Array.from(product.children).reverse();
+                        let index = parseInt(rating["rating"]) - 1;
+                        reverse[index].setAttribute("data-clicked", "true");
+                    }
+                }
+            }
+        }
+    });
+    /*function submitUserForm() {
+        var response = grecaptcha.getResponse();
+        if (response.length == 0) {
+            $("#g-recaptcha-error").html("<span style='color:red;'>This field is required.</span>");
+            return false;
+        }
+        return true;
+    };
+*/
+    function verifyCaptcha() {
+        $("#g-recaptcha-error").html("");
+    }
+
+    function sendFeedback() {
+        let isValid = true;
+        var response = grecaptcha.getResponse();
+        if (response.length == 0) {
+            $("#g-recaptcha-error").html("<span style='color:red;'>This field is required.</span>");
+            return false;
+        }
+        $('[required]').each(function () {
+            if ($(this).val().toString().trim().length == 0) {
+                isValid = false;
+                alert('Vui lòng nhập thông tin '+$(this).attr('title'));
+                return false;
+            } else if ($(this).attr("regex") != undefined){
+                if (new RegExp($(this).attr('regex')).test($(this).val())) {
+                    isValid = true;
+                } else {
+                    alert('Vui lòng nhập đúng định dạng '+$(this).attr('title'))
+                    isValid = false;
+                    return false;
+                }
+
+            } else {
+                isValid = true;
+            }
+        });
+        const param = JSON.stringify({
+            baiVietId: '${currentArticle.id}',
+            noiDung: $("#commentContent").val(),
+            ten : $("#commentName").val(),
+            mail : $("#email").val(),
+            soDienThoai : $("#soDienThoai").val(),
+            tieuDeBaiViet :'${currentArticle.title}',
+            tenTacGia :'${currentArticle.userName}',
+        });
+        console.log(param)
+        $.ajax({
+            url: location.origin+'/api/v1/public/tuongtacbaiviet/themBinhLuan',
+            type: 'POST',
+            cache : false,
+            dataType:"json",
+            contentType:"application/json",
+            data:param,
+            success: function () {
+                alert("Đã gửi thành công");
+                $("#commentContent").val('');
+                $("#commentName").val('');
+                $("#email").val('');
+                $("#soDienThoai").val('');
+            },
+            error: function (er) {
+                alert("Gửi bình luận thất bại");
+            }
+        });
+    }
+
+    function getFeedback(sizecmt) {
+        $('#comment-list').empty();
+        const param = JSON.stringify({
+            baiVietId: '${currentArticle.id}'
+        });
+        $.ajax({
+            url: location.origin+'/api/v1/public/tuongtacbaiviet/truyCapBaiViet',
+            type: 'POST',
+            cache : false,
+            dataType:"json",
+            contentType:"application/json",
+            data: param,
+        }).done(function (data) {
+            var dsBinhLuan = data.msg.thongTinBinhLuans;
+            var count = data.msg.thongTinBinhLuans.length;
+            var htmlYKien = '';
+            if (dsBinhLuan.length > 0) {
+                htmlYKien += '<h2 class="botting-border"><span class="text-border">Bình luận, ý kiến của bạn đọc ('+count+')</span></h2>';
+                for (var i = 0 ; i < dsBinhLuan.length ; i++) {
+                    var obj = dsBinhLuan[i];
+                    htmlYKien += '<div class="item box_cm">';
+                    htmlYKien += '<a href="javascript:void(0)" class="avatar">\n' +
+                        '                <img src="${images_folder}/icons/iconuser.png">\n' +
+                        '            </a>';
+                    htmlYKien += '<div class="item-content">';
+                    htmlYKien += '<span class="user-name">' + obj.ten + '</span>'+' <span class="date-cmt">'+ obj.thoiGianBinhLuan+'</span></br>';
+                    htmlYKien += '<span class="text-comment">' + obj.noiDungHienThi + '</span>';
+                    htmlYKien += '</div>';
+                    htmlYKien += '</div>';
+                }
+                if (count > sizecmt) {
+                    htmlYKien += '<div class="text-center">\n' +
+                        '<button type="submit" class="btnmorecmt" onclick="getFeedback('+(sizecmt+10)+')" >Xem thêm bình luận, ý kiến\n' +
+                        '</button>\n' +
+                        '</div>';
+                }
+                $('#comment-list').append(htmlYKien);
+            };
+        });
+    }
+</script>
+<script src="https://sp.zalo.me/plugins/sdk.js"></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=25hFfRt0"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v17.0" nonce="vuMxJ4dq"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+<#macro getMetadataField
+fieldName
+>
+    <#if stringUtil.split(metadataFields)?seq_contains(fieldName)>
+        <span class="metadata-entry metadata-${fieldName}">
+ 			<#assign dateFormat = "dd MMM yyyy - HH:mm:ss" />
+
+            <#if stringUtil.equals(fieldName, "author")>
+                <@liferay.language key="by" /> ${htmlUtil.escape(portalUtil.getUserName(assetRenderer.getUserId(), assetRenderer.getUserName()))}
+            <#elseif stringUtil.equals(fieldName, "categories")>
+                <@liferay_asset["asset-categories-summary"]
+                className=curEntry.getClassName()
+                classPK=curEntry.getClassPK()
+                portletURL=renderResponse.createRenderURL()
+                />
+            <#elseif stringUtil.equals(fieldName, "create-date")>
+                ${dateUtil.getDate(curEntry.getCreateDate(), dateFormat, locale)}
+            <#elseif stringUtil.equals(fieldName, "expiration-date")>
+                ${dateUtil.getDate(curEntry.getExpirationDate(), dateFormat, locale)}
+            <#elseif stringUtil.equals(fieldName, "modified-date")>
+                ${dateUtil.getDate(curEntry.getModifiedDate(), dateFormat, locale)}
+            <#elseif stringUtil.equals(fieldName, "priority")>
+                ${curEntry.getPriority()}
+            <#elseif stringUtil.equals(fieldName, "publish-date")>
+                ${dateUtil.getDate(curEntry.getPublishDate(), dateFormat, locale)}
+            <#elseif stringUtil.equals(fieldName, "tags")>
+                <@liferay_asset["asset-tags-summary"]
+                className=curEntry.getClassName()
+                classPK=curEntry.getClassPK()
+                portletURL=renderResponse.createRenderURL()
+                />
+            <#elseif stringUtil.equals(fieldName, "view-count")>
+                ${curEntry.getViewCount()}
+            </#if>
+ 		</span>
+    </#if>
+</#macro>

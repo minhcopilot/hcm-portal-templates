@@ -1,11 +1,4 @@
 <style>
-
-    /* 4. Tin sở ngành */
-    .news-category-section  {
-        padding-right: 15px;
-        padding-left: 15px;
-    }
-
     .news-category-section .news-title-snqh {
         max-width: 460px; /* Điều chỉnh độ dài tối đa của tiêu đề */
         white-space: nowrap;
@@ -346,7 +339,7 @@
     }
     @media screen and (min-width: 1324px) and (max-width: 1440px) {
         .news-category-section .category-title{
-            font-size: 32px;
+            font-size: 31px;
         }
         .news-category-section .news-title-snqh {
             max-width: 396px;
@@ -383,77 +376,55 @@
 
 </style>
 <div class="news-category-section pt-5 pb-4">
-    <#assign newsItems = []/>
-    <#assign dateFormatDay = "dd" />
-    <#assign monthFormatDay = "MM" />
-    <#assign yearFormatDay = "yyyy" />
-    <#assign dateFormatTime = "HH:mm" />
-    <#if entries?has_content>
-        <#list entries as curEntry>
-            <#assign
-            renderer = curEntry.getAssetRenderer()
-            className = renderer.getClassName() />
-            <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale)>
-                <#assign
-                title = curEntry.getTitle(locale)
-                article = renderer.getArticle()
-                ddmTemplateKey = article.getDDMTemplateKey()
-                createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
-                createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
-                createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
-                createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
-                curEntry = curEntry
-                viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
-                smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest)!""
-                newsItem = {"title": title, "url": viewURL, "image": smallImageUrl} />
-
-                <#assign newsItems = newsItems + [newsItem]/>
-            </#if>
-        </#list>
-    </#if>
-
     <div class="row">
         <!-- Cột tin tức ngành -->
-        <div class="col-lg-6 col-12">
+        <div class="col-lg-12 col-12">
             <div class="category-header">
                 <h2 class="category-title">SỞ NGÀNH</h2>
                 <a href="/tin-tuc-su-kien-3" class="view-more">Xem thêm <i class="fa fa-arrow-right"></i></a>
             </div>
             <div class="news-list">
-                <#if newsItems?has_content>
-                    <#list newsItems?chunk(5)[0] as item>
-                        <div class="news-item">
-                            <i class="fa fa-newspaper-o me-3"></i>
-                            <div class="news-date">${createDay}/${createMonth}/${createYear}</div>
-                            <div class="news-content">
-                                <a href="${item.url}" class="news-title-snqh">${item.title}</a>
-                                <span class="view-count"><i class="fa fa-eye me-1"></i>1,141</span>
-                            </div>
-                        </div>
-                    </#list>
-                </#if>
-            </div>
-        </div>
+                <#assign dateFormatDay = "dd" />
+            <#assign monthFormatDay = "MM" />
+            <#assign yearFormatDay = "yyyy" />
+            <#assign dateFormatTime = "HH:mm" />
+        <#assign indexLocal = 0/>
+        <#if entries?has_content>
+            <#list entries as curEntry>
+                <#assign
+                renderer = curEntry.getAssetRenderer()
+                className = renderer.getClassName() />
+                <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 5>
+                    <#assign
+                    title = curEntry.getTitle(locale)
+                    article = renderer.getArticle()
+                    description = article.getDescription(locale)
+                    ddmTemplateKey = article.getDDMTemplateKey()
+                    createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                    createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                    createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                    createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                    curEntry = curEntry
+                    viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                    indexLocal = indexLocal + 1 />
 
-        <!-- Cột tin quận huyện -->
-        <div class="col-lg-6 col-12">
-            <div class="category-header">
-                <h2 class="category-title">QUẬN, HUYỆN VÀ TP. THỦ ĐỨC</h2>
-                <a href="/tin-tuc-su-kien-3" class="view-more">Xem thêm <i class="fa fa-arrow-right"></i></a>
-            </div>
-            <div class="news-list">
-                <#if newsItems?has_content>
-                    <#list newsItems?chunk(5)[0] as item>
-                        <div class="news-item">
-                            <i class="fa fa-newspaper-o me-3"></i>
-                            <div class="news-date">${createDay}/${createMonth}/${createYear}</div>
-                            <div class="news-content">
-                                <a href="${item.url}" class="news-title-snqh">${item.title}</a>
-                                <span class="view-count"><i class="fa fa-eye me-1"></i>1,141</span>
-                            </div>
+                    <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                        <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                    <#else>
+                        <#assign smallImageUrl = "" >
+                    </#if>
+                    <div class="news-item">
+                        <i class="fa fa-newspaper-o me-3"></i>
+                        <div class="news-date">${createDay}/${createMonth}/${createYear}</div>
+                        <div class="news-content">
+                            <a href="${viewURL}" class="news-title-snqh">${title}</a>
+                            <span class="view-count"><i class="fa fa-eye me-1"></i>1,141</span>
                         </div>
-                    </#list>
+                    </div>
                 </#if>
+            </#list>
+        </#if>
+
             </div>
         </div>
     </div>

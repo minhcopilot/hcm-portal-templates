@@ -142,7 +142,10 @@
     <h2 class="news-new-title pb-3">TIN MỚI</h2>
 
     <div class="list-group">
-
+        <#assign dateFormatDay = "dd" />
+            <#assign monthFormatDay = "MM" />
+            <#assign yearFormatDay = "yyyy" />
+            <#assign dateFormatTime = "HH:mm" />
         <#assign indexLocal = 0/>
         <#if entries?has_content>
             <#list entries as curEntry>
@@ -155,6 +158,10 @@
                     article = renderer.getArticle()
                     description = article.getDescription(locale)
                     ddmTemplateKey = article.getDDMTemplateKey()
+                    createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                    createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                    createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                    createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
                     curEntry = curEntry
                     viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
                     indexLocal = indexLocal + 1 />
@@ -168,7 +175,7 @@
                     <div class="list-group-item border-0 px-0 mt-2">
                         <div class="d-flex align-items-center gap-3">
                             <div class="news-number-minh active-news">${indexLocal}</div>
-                            <div class="news-time">09:00 | 09/10/2023</div>
+                            <div class="news-time">${createTime} | ${createDay}/${createMonth}/${createYear}</div>
                             <div class="flex-grow-1">
                                 <a href="${viewURL}" class="news-title-ttsk">${title}</a>
                             </div>

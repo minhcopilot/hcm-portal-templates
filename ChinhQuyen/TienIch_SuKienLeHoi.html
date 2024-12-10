@@ -1,0 +1,388 @@
+<div class="mt-4">
+	
+    <div class="d-flex align-items-center justify-content-between ct-border">
+        <p class="title-chutruong"> SỰ KIỆN - LỄ HỘI</p>
+        <a class="ct-xemthem" href="https://congthongtin-demo.qtsc.com.vn/ds-tin-lien-quan">Xem thêm <img src="/documents/39403/310275/arrow-right.svg" class="ml-1"></a>
+    </div>
+</div>
+
+<div id="carouselExampleIndicators" class="carousel slide mt-4" data-ride="carousel">
+    <div class="carousel-inner">
+        <#assign indexLocal = 0 />
+        <#assign totalEntries = entries?size />
+        <#assign groupSize = 4 />
+
+        <#if entries?has_content>
+            <#list entries as curEntry>
+                <#assign renderer = curEntry.getAssetRenderer() />
+                <#assign className = renderer.getClassName() />
+
+                <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal < totalEntries>
+                    <#assign title = curEntry.getTitle(locale) />
+                    <#assign article = renderer.getArticle() />
+                    <#assign description = article.getDescription(locale) />
+                    <#assign ddmTemplateKey = article.getDDMTemplateKey() />
+                    <#assign viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}" />
+                    <#assign indexLocal = indexLocal + 1 />
+
+                    <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                        <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) />
+                    <#else>
+                        <#assign smallImageUrl = "" />
+                    </#if>
+
+                    <#if indexLocal % groupSize == 1>
+                        <div class="carousel-item <#if indexLocal == 1>active</#if>">
+                            <div class="row">
+                    </#if>
+						<div class="col-3">
+							<div class="card">
+								<img src="${smallImageUrl}" class="card-img-top" alt="...">
+								<div class="card-body position-relative">
+									<h5 class="card-title text-clamp-3">${title}</h5>
+									${description}
+									<p class="text-ngaythang d-flex align-items-center justify-content-between"><span>09:00 | 09/10/2023</span>
+										<span><img class="mb-1" src="/documents/39403/310275/icon_view.svg"> 1,141</span></p>
+									<a href="${viewURL}" class="btn position-absolute ct-position">Xem chi tiết</a>
+								</div>
+							</div>
+						</div>
+                    <#if indexLocal % groupSize == 0 || indexLocal == totalEntries>
+                        </div>
+                    </div>
+                    </#if>
+                </#if>
+            </#list>
+        </#if>
+    </div>
+
+    <a class="custom-carousel-control-prev ct-carousel-left ct-carousel-left" href="#carouselExampleIndicators" role="button"
+       data-slide="prev">
+        <span class="ct-btn-carousel d-flex align-items-center justify-content-center">
+            <img src="/documents/39403/310275/left.svg" width="8px" height="19px">
+        </span>
+    </a>
+    <a class="custom-carousel-control-next ct-carousel-right" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="ct-btn-carousel d-flex align-items-center justify-content-center">
+            <img class="ct-rotate" src="/documents/39403/310275/left.svg" width="8px" height="19px">
+        </span>
+    </a>
+</div>
+
+ <style>
+ .card-body{
+     height : 345px;
+ }
+ .ct-position{
+     bottom : 30px;
+ }
+        .ct-margin {
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+
+        .title-chutruong {
+            font-family: Roboto;
+            font-size: 32px !important;
+            font-weight: 700 !important;
+            line-height: 37.5px !important;
+            letter-spacing: 0.15000000596046448px !important;
+            text-align: left !important;
+            text-underline-position: from-font !important;
+            text-decoration-skip-ink: none !important;
+            color: #0D4C92 !important;
+        }
+
+        .ct-xemthem {
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 18.75px;
+            letter-spacing: 0.15000000596046448px;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            text-decoration: none !important;
+            color: #DB7100;
+        }
+
+        .ct-xemthem:hover {
+            color: #DB7100;
+        }
+
+        .ct-border {
+            border-bottom: 1px solid #777777;
+        }
+
+        .ct-background-item:hover {
+            box-shadow: 8px -3px 10px 0px #2E2E2E4D inset;
+        }
+
+        .ct-background-item {
+            background-image: url('/documents/39403/310275/nen.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100px;
+            border-radius: 10px;
+        }
+
+        .ct-content-item, .ct-content-item span {
+            font-family: Roboto;
+            font-size: 26px !important;
+            font-weight: 700 !important;
+            line-height: 30.47px !important;
+            letter-spacing: 0.15000000596046448px;
+            text-align: center !important;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color: #C8392B !important;
+        }
+
+        .carousel-item {
+            display: flex;
+        }
+
+        .carousel-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .custom-carousel-control-prev,
+        .custom-carousel-control-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .custom-carousel-control-prev {
+            left: -50px;
+        }
+
+        .custom-carousel-control-next {
+            right: -50px;
+        }
+
+        .ct-rotate {
+            transform: rotate(180deg);
+        }
+
+        .text-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+            max-height: 4.4em;
+        }
+
+        .text-clamp-6 {
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+            max-height: 7.5em;
+        }
+
+        .ct-carousel-left {
+            font-family: Roboto;
+            left: -50px !important;
+        }
+
+        .ct-carousel-right {
+            font-family: Roboto;
+            right: -50px !important;
+        }
+        .card-body p {
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+            max-height: 7.5em;
+        }
+        .ct-btn-carousel {
+            font-family: Roboto;
+            border-radius: 50%;
+            background-color: lightgray !important;
+            width: 40px !important;
+            height: 40px !important;
+        }
+
+        .ct-btn-carousel:hover {
+            background-color: #DB7100 !important;
+
+            img {
+                transition: filter 0s ease;
+                filter: invert(100%) brightness(200%);
+            }
+        }
+
+        .ct-rotate {
+            transform: rotate(180deg);
+        }
+
+        .card-img-top {
+            border-radius: 50% !important;
+            width: 100% !important;
+            aspect-ratio: 1;
+            border: 10px solid #C4ECFF;
+        }
+
+        .card {
+            border: unset !important;
+        }
+
+        .card-body {
+            margin-top: -70px !important;
+            border-radius: 15px;
+            background-color: #fefefe;
+			z-index: 1;
+			position: relative;
+        }
+
+        .card-title {
+            border-radius: 12px;
+            background-color: #0D4C92;
+            padding: 10px;
+            font-family: Roboto;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 28.6px;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color: #FFFFFF;
+        }
+
+        .card-text {
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20.8px;
+            letter-spacing: 0.005em;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color: #2E2E2E;
+        }
+
+        .text-ngaythang {
+            font-family: Roboto;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 18.2px;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color: #686868;
+        }
+
+        .card-body a {
+            padding: 7px 11px;
+            gap: 30px;
+            border-radius: 8px;
+            border: 1px solid #FFFFFF;
+            background-color: #BCE6FE;
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20.8px;
+            letter-spacing: 0.0125em;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color: #031739;
+        }
+
+        .card:hover {
+            .card-img-top {
+                border: 10px solid #FFFFFF;
+            }
+
+            .card-body {
+                background-color: #0D4C92;
+            }
+
+            .card-title {
+                background-color: #FFFFFF;
+                color: #0D4C92;
+            }
+
+            .card-text, p , h4{
+                color: #FFFFFF!important;
+            }
+
+            .card-body img {
+                transition: filter 0s ease;
+                filter: invert(100%) brightness(200%);
+            }
+			.text-ngaythang span{
+				color: #FFFFFF!important;
+			}
+        }
+
+        .card-body a:hover {
+            background-color: #fefefe;
+        }
+        
+       .carousel-item {
+            position: relative; 
+             transition: transform 0.5s ease, opacity 0.5s ease;
+            z-index: 1; 
+        }
+        
+        .carousel-item.active {
+            z-index: 10; 
+         
+        }
+         .carousel-item {
+            display: none;  
+        }
+         
+        .carousel-item.active {
+            display: block;  
+        }
+      
+        .title-chutruong {
+            font-family: Roboto;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 32.81px;
+            letter-spacing: 0.15000000596046448px;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color: #0D4C92 !important;
+        }
+       .ct-breadcrum span{
+			font-family: Roboto;
+			font-size: 16px;
+			font-weight: 500;
+			line-height: 20.8px;
+			letter-spacing: 0.0015em;
+			text-align: left;
+			text-underline-position: from-font;
+			text-decoration-skip-ink: none;
+			color:#ABABAB;
+	   }
+	   .ct-breadcrum-active{
+			color:#0D4C92!important;
+	   }
+    </style>
+<script>
+    $(document).ready(function () {
+        $("img.img-3x4").each(function () {
+            $(this).outerHeight($(this).width() * 0.6);
+        });
+    })
+</script>
