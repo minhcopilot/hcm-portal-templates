@@ -1,0 +1,190 @@
+<div class="d-flex mt-3 container">
+  <!-- Vòng lặp tạo các tab -->
+  [#list 0..configuration.numberOfTabs-1 as i]
+  <button
+    class="nav-link h-100 nav-link-gt-chiquyen button thuong-truc-duong-nhiem pt-0 pb-0 pl-0"
+    data-content="thuongtrucduongnhiem"
+    aria-controls="tabPanel${i+1}"
+    aria-selected="false"
+    data-fragment-namespace="${fragmentEntryLinkNamespace}"
+    id="tab${i+1}"
+    role="tab"
+  >
+    <div
+      class="component-html mb-0"
+      data-lfr-editable-id="title${i+1}"
+      data-lfr-editable-type="html"
+      tabindex="-1"
+    >
+      Tab ${i+1}
+    </div>
+  </button>
+
+  <!-- Hiển thị dấu phân cách cho tab đầu tiên -->
+  [#if i == 0]
+  <span class="ct-sp pr-3">|</span>
+  [/#if] [/#list]
+  <!-- Phần "Xem thêm" -->
+  <div class="view-more-cddh" style="display: none; margin-left: auto">
+    <a href="/tin-tuc-su-kien-3">Xem thêm <i class="fa fa-arrow-right"></i></a>
+  </div>
+</div>
+
+<div class="tab-panel d-block custom-nav">
+  <!-- Vòng lặp tạo các tab panel -->
+  [#list 0..configuration.numberOfTabs-1 as i]
+  <div
+    aria-labelledby="tab${i+1}"
+    class="tab-panel-item d-none"
+    data-fragment-namespace="${fragmentEntryLinkNamespace}"
+    id="tabPanel${i+1}"
+    role="tabpanel"
+    tabindex="0"
+  >
+    <lfr-drop-zone></lfr-drop-zone>
+  </div>
+  [/#list]
+</div>
+
+<style>
+  .view-more-cddh a {
+    color: #db7100;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .button {
+    text-align: left !important;
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 37.5px;
+    letter-spacing: 0.15000000596046448px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    background-color: unset !important;
+    box-shadow: unset !important;
+    color: #777777;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  .button.active {
+    color: #0d4c92;
+  }
+  .ct-sp {
+    text-align: left !important;
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 37.5px;
+    letter-spacing: 0.15000000596046448px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #777777;
+  }
+</style>
+<script>
+  const dropdown = fragmentElement.querySelector(".navbar-collapse");
+  const editMode = document.body.classList.contains("has-edit-mode-menu");
+  const tabItems = [].slice.call(
+    fragmentElement.querySelectorAll(
+      '[data-fragment-namespace="' + fragmentNamespace + '"].nav-link'
+    )
+  );
+  const tabPanelItems = [].slice.call(
+    fragmentElement.querySelectorAll(
+      '[data-fragment-namespace="' + fragmentNamespace + '"].tab-panel-item'
+    )
+  );
+  const viewMoreElement = fragmentElement.querySelector(".view-more-cddh");
+
+  // Hàm ẩn/hiện phần tử view-more-cddh dựa trên tab được chọn
+  function toggleViewMore(index) {
+    if (index === 1) {
+      // Tab thứ hai
+      viewMoreElement.style.display = "block";
+    } else {
+      viewMoreElement.style.display = "none";
+    }
+  }
+
+  function activeTab(item) {
+    tabItems.forEach(function (tabItem) {
+      tabItem.setAttribute("aria-selected", false);
+      tabItem.classList.remove("active");
+    });
+    item.setAttribute("aria-selected", true);
+    item.classList.add("active");
+  }
+
+  function activeTabPanel(item) {
+    tabPanelItems.forEach(function (tabPanelItem) {
+      if (!tabPanelItem.classList.contains("d-none")) {
+        tabPanelItem.classList.add("d-none");
+      }
+    });
+    item.classList.remove("d-none");
+  }
+
+  function openTabPanel(event, i) {
+    const currentTarget = event.currentTarget;
+    const target = event.target;
+    const isEditable =
+      target.hasAttribute("data-lfr-editable-id") ||
+      target.hasAttribute("contenteditable");
+
+    if (!isEditable || !editMode) {
+      currentTarget.focus();
+
+      activeTab(currentTarget, i);
+      activeTabPanel(tabPanelItems[i]);
+
+      // Gọi hàm toggleViewMore để hiển thị hoặc ẩn phần tử view-more-cddh
+      toggleViewMore(i);
+
+      this.tabIndex = i;
+    }
+  }
+
+  function main() {
+    const initialState = !this.tabIndex || this.tabIndex >= tabItems.length;
+    let tabItemSelected = tabItems[0];
+
+    if (initialState) {
+      tabItems.forEach(function (item, i) {
+        if (!i) {
+          activeTab(item);
+        }
+        item.addEventListener("click", function (event) {
+          openTabPanel(event, i);
+        });
+      });
+      tabPanelItems.forEach(function (item, i) {
+        if (!i) {
+          activeTabPanel(item);
+        }
+      });
+      // Đảm bảo trạng thái hiển thị ban đầu cho view-more-cddh
+      toggleViewMore(0); // Tab đầu tiên (index 0) không hiển thị
+    } else {
+      tabItemSelected = tabItems[this.tabIndex];
+      tabItems.forEach(function (item, i) {
+        activeTab(tabItems[this.tabIndex]);
+        item.addEventListener("click", function (event) {
+          openTabPanel(event, i);
+        });
+      });
+      tabPanelItems.forEach(function () {
+        activeTabPanel(tabPanelItems[this.tabIndex]);
+      });
+      toggleViewMore(this.tabIndex); // Hiển thị đúng trạng thái dựa trên tabIndex
+    }
+  }
+
+  main();
+</script>

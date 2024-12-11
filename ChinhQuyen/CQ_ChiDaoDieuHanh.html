@@ -7,6 +7,10 @@
         </div>
         <div class="custom-carousel-container">
             <div class="custom-carousel-inner">
+                <#assign dateFormatDay = "dd" />
+                <#assign monthFormatDay = "MM" />
+                <#assign yearFormatDay = "yyyy" />
+                <#assign dateFormatTime = "HH:mm" />
                 <#assign indexLocal = 0 />
                 <#assign totalEntries = entries?size />
                 <#list entries as curEntry>
@@ -19,6 +23,10 @@
                         <#assign article = renderer.getArticle() />
                         <#assign description = article.getDescription(locale) />
                         <#assign ddmTemplateKey = article.getDDMTemplateKey() />
+                        <#assign createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale) />
+                        <#assign createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale) />
+                        <#assign createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale) />
+                        <#assign createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale) />
                         <#assign viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}" />
                         <#assign indexLocal = indexLocal + 1 />
 
@@ -34,7 +42,7 @@
                                 <div class="p-3 ct-backgound-thongcao">
                                     <p class="title-thongcao text-clamp-4 mb-1">${title}</p>
                                     <div class="date-thongcao d-flex align-items-center justify-content-between">
-                                        <span>09/10/2023</span>
+                                        <span>${createDay}/${createMonth}/${createYear}</span>
                                         <span class="ml-auto">
                                             <img class="mr-1" src="/documents/39403/307879/icon_view.svg">1,141
                                         </span>

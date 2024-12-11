@@ -106,19 +106,29 @@ portlet_title = htmlUtil.escape(portlet_display.getTitle()) />
     .wrapper-content-cttt{
         padding: 12px;
     }
-    .wrapper-content-cttt:hover{
+	.container-ctbv-tnb {
+	padding: 0;
+    transition: all 0.9s ease;
+	}
+	.container-ctbv-tnb .display-date,
+	.container-ctbv-tnb .text-title-tnbdt,
+	.container-ctbv-tnb .text-readmore-tnb,
+	.container-ctbv-tnb .display-month {
+		transition: all 0.9s ease;
+	}
+    .container-ctbv-tnb:hover{
         background-color: #0D4C92;
         color: #ffffff;
         
     }
-    .wrapper-content-cttt:hover .display-date{
+    .container-ctbv-tnb:hover .display-date{
         color: #0D4C92;
     }
-    .wrapper-content-cttt:hover .text-title-tnbdt,
-    .wrapper-content-cttt:hover .text-readmore-tnb{
+    .container-ctbv-tnb:hover .text-title-tnbdt,
+    .container-ctbv-tnb:hover .text-readmore-tnb{
         color: #ffffff;
     }
-    .wrapper-content-cttt:hover .display-month{
+    .container-ctbv-tnb:hover .display-month{
         background-color: #BCE6FE;
     }
     .mb-14-lg{
@@ -155,7 +165,7 @@ portlet_title = htmlUtil.escape(portlet_display.getTitle()) />
 						<#break>
 					  </#if>
 					</#list>
-					<div class="col-lg-12 mb-14-lg carousel-box h350">
+					<div class="col-lg-12 mb-14-lg carousel-box h350 container-ctbv-tnb">
 						<div class="position-relative px-sm-0 px-lg-0 pe-sm-0 mx-sm-0">
 							<div>
 								<a href="${viewURL}" class="d-flex">

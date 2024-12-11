@@ -1,0 +1,183 @@
+<#assign theme_display = themeDisplay images_folder =
+theme_display.getPathThemeImages() />
+<style>
+  @media only screen and (max-width: 576px) {
+    .cds-img-gtl {
+      margin-bottom: 15px;
+    }
+    .icon-cds-gtl > img {
+      height: 120px;
+    }
+  }
+
+  .gtl-top {
+    border-radius: 9px;
+    border: 1px solid var(--dashboardfont-4999999, #999);
+  }
+
+  .text-item-gtl::before {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    content: "";
+    height: 8px;
+    width: 8px;
+    border-radius: 30px;
+    background: var(--stroke-777777, rgba(119, 119, 119, 0.5));
+    margin-right: 5px;
+  }
+
+  .text-gtl-top {
+    color: var(--gray-scale-900, #1b1a17);
+    font-family: Merriweather;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: 0.08px;
+  }
+
+  .text-gtl-top-child {
+    color: var(--gray-scale-900, #1b1a17);
+    font-family: Merriweather;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: 0.08px;
+  }
+  .box-gtl-top {
+    border-bottom: 1px dashed #c2c2c9;
+  }
+  .box-gtl-top:last-child {
+    border-bottom: none;
+  }
+  .mt-18 {
+    margin-top: 18px;
+  }
+  .mt-10 {
+    margin-top: 10px;
+  }
+  .mb-10 {
+    margin-bottom: 10px;
+  }
+  .active a > p.text-gtl-top {
+    color: red;
+  }
+  div .active > a > p {
+    color: red;
+  }
+  p {
+    margin: 10px;
+  }
+</style>
+
+<style>
+  .dropdown-content-gtl {
+    margin-left: 20px;
+  }
+
+  .dropdown-content-gtl a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  .text-trangchu-tphcm {
+    margin-top: 30px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20.8px;
+    letter-spacing: 0.0015em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: rgba(171, 171, 171, 1);
+  }
+  .text-gioithieu-tphcm {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20.8px;
+    letter-spacing: 0.0015em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: rgba(13, 76, 146, 1);
+  }
+
+  .nav-menu .nav-menu-link {
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 37.5px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: rgba(119, 119, 119, 1);
+  }
+
+  .nav-menu .nav-menu-link:hover {
+    color: rgba(13, 76, 146, 1);
+  }
+
+  .nav-menu .nav-menu-link.active {
+    color: rgba(13, 76, 146, 1);
+    background: none;
+  }
+  .line {
+    background: #777;
+    height: 1px;
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  .nav-menu-link.gioi-thieu-tphcm::after {
+    content: "|";
+    margin: 0 30px;
+    color: #ccc;
+    font-weight: bold;
+  }
+
+  .nav.nav-menu {
+    flex-direction: row;
+  }
+</style>
+<html>
+  <body>
+    <div class="menu-gioithieu-container-top">
+      <section class="row news-categories-menu">
+        <div>
+          <ul class="nav nav-menu nav-fill mb-3">
+            <li class="btn-lich-su-hinh-thanh">
+              <a
+                class="nav-menu-link p-0 pl-3 gioi-thieu-tphcm"
+                href="/gioi-thieu-tphcm"
+                >THÀNH PHỐ HỒ CHÍ MINH</a
+              >
+            </li>
+            <li class="btn-dia-gioi-hanh-chinh">
+              <a
+                class="nav-menu-link p-0 chinhquyen-thanh-pho"
+                href="/chinhquyen-thanh-pho"
+                >CHÍNH QUYỀN THÀNH PHỐ</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+      <div class="line"></div>
+    </div>
+  </body>
+</html>
+<script>
+  $(document).ready(function () {
+    var link = location.pathname.split("/");
+    link = link[link.length - 1];
+    var arrayLink = ["gioi-thieu-tphcm", "chinhquyen-thanh-pho"];
+    $("." + link).addClass("active");
+  });
+</script>

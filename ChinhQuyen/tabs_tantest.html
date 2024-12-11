@@ -1,0 +1,156 @@
+<div class="d-flex mt-3 container">
+  [#list 0..configuration.numberOfTabs-1 as i]
+  <button
+    class="nav-link h-100 nav-link-gt-chiquyen button thuong-truc-duong-nhiem pt-0 pb-0 pl-0"
+    data-content="thuongtrucduongnhiem"
+    aria-controls="tabPanel${i+1}"
+    aria-selected="false"
+    data-fragment-namespace="${fragmentEntryLinkNamespace}"
+    id="tab${i+1}"
+    role="tab"
+  >
+    <div
+      class="component-html mb-0"
+      data-lfr-editable-id="title${i+1}"
+      data-lfr-editable-type="html"
+      tabindex="-1"
+    >
+      Tab ${i+1}
+    </div>
+  </button>
+
+  [#if i == 0]
+  <span class="ct-sp pr-3">|</span>
+  [/#if] [/#list]
+</div>
+<div class="tab-panel d-block custom-nav">
+  [#list 0..configuration.numberOfTabs-1 as i]
+  <div
+    aria-labelledby="tab${i+1}"
+    class="tab-panel-item d-none"
+    data-fragment-namespace="${fragmentEntryLinkNamespace}"
+    id="tabPanel${i+1}"
+    role="tabpanel"
+    tabindex="0"
+  >
+    <lfr-drop-zone></lfr-drop-zone>
+  </div>
+  [/#list]
+</div>
+<style>
+  .button {
+    text-align: left !important;
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 37.5px;
+    letter-spacing: 0.15000000596046448px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    background-color: unset !important;
+    box-shadow: unset !important;
+    color: #777777;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  .button.active {
+    color: #0d4c92;
+  }
+  .ct-sp {
+    text-align: left !important;
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 37.5px;
+    letter-spacing: 0.15000000596046448px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #777777;
+  }
+</style>
+<script>
+  const dropdown = fragmentElement.querySelector(".navbar-collapse");
+  const editMode = document.body.classList.contains("has-edit-mode-menu");
+  const tabItems = [].slice.call(
+    fragmentElement.querySelectorAll(
+      '[data-fragment-namespace="' + fragmentNamespace + '"].nav-link'
+    )
+  );
+  const tabPanelItems = [].slice.call(
+    fragmentElement.querySelectorAll(
+      '[data-fragment-namespace="' + fragmentNamespace + '"].tab-panel-item'
+    )
+  );
+
+  function activeTab(item) {
+    tabItems.forEach(function (tabItem) {
+      tabItem.setAttribute("aria-selected", false);
+      tabItem.classList.remove("active");
+    });
+    item.setAttribute("aria-selected", true);
+    item.classList.add("active");
+  }
+
+  function activeTabPanel(item) {
+    tabPanelItems.forEach(function (tabPanelItem) {
+      if (!tabPanelItem.classList.contains("d-none")) {
+        tabPanelItem.classList.add("d-none");
+      }
+    });
+    item.classList.remove("d-none");
+  }
+
+  function openTabPanel(event, i) {
+    const currentTarget = event.currentTarget;
+    const target = event.target;
+    const isEditable =
+      target.hasAttribute("data-lfr-editable-id") ||
+      target.hasAttribute("contenteditable");
+
+    if (!isEditable || !editMode) {
+      currentTarget.focus();
+
+      activeTab(currentTarget, i);
+      activeTabPanel(tabPanelItems[i]);
+
+      this.tabIndex = i;
+    }
+  }
+
+  function main() {
+    const initialState = !this.tabIndex || this.tabIndex >= tabItems.length;
+    let tabItemSelected = tabItems[0];
+
+    if (initialState) {
+      tabItems.forEach(function (item, i) {
+        if (!i) {
+          activeTab(item);
+        }
+        item.addEventListener("click", function (event) {
+          openTabPanel(event, i);
+        });
+      });
+      tabPanelItems.forEach(function (item, i) {
+        if (!i) {
+          activeTabPanel(item);
+        }
+      });
+    } else {
+      tabItemSelected = tabItems[this.tabIndex];
+      tabItems.forEach(function (item, i) {
+        activeTab(tabItems[this.tabIndex]);
+        item.addEventListener("click", function (event) {
+          openTabPanel(event, i);
+        });
+      });
+      tabPanelItems.forEach(function () {
+        activeTabPanel(tabPanelItems[this.tabIndex]);
+      });
+    }
+  }
+
+  main();
+</script>
