@@ -22,16 +22,18 @@
                 <#assign className = renderer.getClassName() />
 
                 <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal < totalEntries>
-                    <#assign title = curEntry.getTitle(locale) />
-                    <#assign article = renderer.getArticle() />
-                    <#assign description = article.getDescription(locale) />
-                    <#assign ddmTemplateKey = article.getDDMTemplateKey() />
-                    <#assign createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale) />
-                    <#assign createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale) />
-                    <#assign createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale) />
-                    <#assign createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale) />
-                    <#assign viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}" />
-                    <#assign indexLocal = indexLocal + 1 />
+                    <#assign title = curEntry.getTitle(locale) 
+                    article = renderer.getArticle() 
+                    description = article.getDescription(locale) 
+                    ddmTemplateKey = article.getDDMTemplateKey() 
+                    createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale) 
+                    createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale) 
+                    createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale) 
+                    createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                    curEntry = curEntry
+                    viewCount = curEntry.getViewCount()
+                    viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}" 
+                    indexLocal = indexLocal + 1 />
 
                     <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
                         <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) />
@@ -50,7 +52,7 @@
 									<h5 class="card-title text-clamp-3 mb-2">${title}</h5>
 									${description} 
 									<p class="text-ngaythang d-flex align-items-center justify-content-between"><span>${createTime} | ${createDay}/${createMonth}/${createYear}</span>
-										<span><img class="mb-1" src="/documents/39403/310275/icon_view.svg"> 1,141</span></p>
+										<span><img class="mb-1" src="/documents/39403/310275/icon_view.svg">${viewCount}</span></p>
 									<a href="${viewURL}" class="btn position-absolute ct-position">Xem chi tiết</a>
 								</div>
 							</div>

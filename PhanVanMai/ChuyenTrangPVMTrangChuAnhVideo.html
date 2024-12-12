@@ -1,0 +1,487 @@
+<div>
+    <section class="news-categories">
+        <div class="d-flex justify-content-between col-12">
+            <div>
+                <span class="text-anh-video">ẢNH - VIDEO</span>
+            </div>
+            <ul class="d-flex ">
+                <li class="nav-link-anh-video btn-anh active" data-content="chi-dao-content">
+                    <a class="" href="#!" id="chi-dao-dieu-hanh active" >Ảnh</a>
+                </li>
+                <li class="nav-link-anh-video ml-3 btn-video" data-content="van-hoa-content">
+                    <a class="" href="#!" id="van-hoa-xa-hoi" >Video</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div id="chi-dao-content" class="news-category-content p-3 active bg-main">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mb-4 mb-lg-0 h-auto">
+                <#assign indexLocal = 0/>
+                <#if entries?has_content>
+                    <#list entries as curEntry>
+                        <#assign
+                        renderer = curEntry.getAssetRenderer()
+                        className = renderer.getClassName() />
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 1>
+                            <#assign
+                            title = curEntry.getTitle(locale)
+                            article = renderer.getArticle()
+                            description = article.getDescription(locale)
+                            ddmTemplateKey = article.getDDMTemplateKey()
+                            curEntry = curEntry
+                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                            indexLocal = indexLocal + 1 />
+                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                            <#else>
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
+                            </#if>
+                            <div class="main-news position-relative h-100 pb-3 img-hover h-100">
+                                <div class="position-relative px-sm-0 px-lg-0 pe-sm-0 mx-sm-0 h-85">
+                                    <a href="${viewURL}" class="h-100">
+                                        <img src="${smallImageUrl}" id="img-main" alt="Main news image" class="w-100 h-100 d-block object-fit-cover" />
+                                    </a>
+                                </div>
+                                <div class="custom-left-new-tinnoibat w-100 pt-3 home-tinnoibat-tinmoi-news-left border-bottom-1px h-15">
+                                    <a class="position-relative m-0 top-5 text-2dong" id="div-a-main" title="${title}" href="${viewURL}">
+                                        ${title}
+                                    </a>
+                                </div>
+                            </div>
+                        </#if>
+                    </#list>
+                </#if>
+            </div>
+            <div class="col-12 col-md-6 mb-4 mb-lg-0 row m-0 p-0">
+                <#assign indexLocal = 1/>
+                <#if entries?has_content>
+                    <#list entries as curEntry>
+                        <#assign
+                        renderer = curEntry.getAssetRenderer()
+                        className = renderer.getClassName() />
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 5>
+                            <#assign
+                            title = curEntry.getTitle(locale)
+                            article = renderer.getArticle()
+                            description = article.getDescription(locale)
+                            ddmTemplateKey = article.getDDMTemplateKey()
+                            curEntry = curEntry
+                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                            indexLocal = indexLocal + 1 />
+                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                            <#else>
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
+                            </#if>
+                            <div class="col-md-6 pb-3 pl-md-0 ">
+                                <div class="w-100 h-100 border-bottom-1px home-tinnoibat-tinmoi-news bg-custom-gray-tinnoibat text-decoration-none text-black d-flex flex-column"
+                                     data-title="${title}" data-image="${smallImageUrl}">
+                                    <img src="${smallImageUrl}" id="img-main" alt="Main news image" class="w-100 h-75 d-block object-fit-cover img-main-right position-relative" />
+                                    <a class="text-2dong pt-3 px-2 home-tinnoibat-tinmoi-news-a h-25 text-dark" title="${title}" href="${viewURL}">
+                                        ${title}
+                                    </a>
+                                </div>
+                            </div>
+                        </#if>
+                    </#list>
+                </#if>
+            </div>
+        </div>
+    </div>
+    <div id="van-hoa-content" class="news-category-content p-3" style="display: none">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mb-4 mb-lg-0 h-auto bg-main">
+                <#assign indexLocal = 0/>
+                <#if entries?has_content>
+                    <#list entries as curEntry>
+                        <#assign
+                        renderer = curEntry.getAssetRenderer()
+                        className = renderer.getClassName() />
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 1>
+                            <#assign
+                            title = curEntry.getTitle(locale)
+                            article = renderer.getArticle()
+                            description = article.getDescription(locale)
+                            ddmTemplateKey = article.getDDMTemplateKey()
+                            curEntry = curEntry
+                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                            indexLocal = indexLocal + 1 />
+                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                            <#else>
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
+                            </#if>
+                            <div class="main-news position-relative h-100 pb-3">
+
+                                <div class="position-relative px-sm-0 px-lg-0 pe-sm-0 mx-sm-0 h-85">
+                                    <img src="${smallImageUrl}"  alt="Main news image" class="w-100 h-100 d-block object-fit-cover" />
+                                    <img src="/documents/58202/1035722/icon-play-video.png"  alt="Main news image" class="w-100 d-block object-fit-cover icon-play-left" />
+                                </div>
+                                <div class="custom-left-new-tinnoibat w-100 h-15 pt-3 home-tinnoibat-tinmoi-news-left border-bottom-1px">
+                                    <a class="position-relative m-0 top-5 pt-2 text-2dong h-100" id="div-a-main" title="${title}" href="${viewURL}">
+                                        ${title}
+                                    </a>
+                                </div>
+                            </div>
+                        </#if>
+                    </#list>
+                </#if>
+            </div>
+            <div class="col-12 col-md-6 mb-4 mb-lg-0 row m-0 p-0 scroll-box">
+                <#assign indexLocal = 1/>
+                <#if entries?has_content>
+                    <#list entries as curEntry>
+                        <#assign
+                        renderer = curEntry.getAssetRenderer()
+                        className = renderer.getClassName() />
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) >
+                            <#assign
+                            title = curEntry.getTitle(locale)
+                            article = renderer.getArticle()
+                            description = article.getDescription(locale)
+                            ddmTemplateKey = article.getDDMTemplateKey()
+                            curEntry = curEntry
+                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                            indexLocal = indexLocal + 1 />
+                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                            <#else>
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
+                            </#if>
+                            <div class="col-md-6 pb-3 pl-md-0 bg-main">
+                                <div class="w-100 h-100 border-bottom-1px home-tinnoibat-tinmoi-news bg-custom-gray-tinnoibat text-decoration-none text-black d-flex flex-column"
+                                     data-title="${title}" data-image="${smallImageUrl}">
+                                    <div class="position-relative h-75">
+                                        <img src="${smallImageUrl}"  alt="Main news image" class="w-100 h-100 d-block object-fit-cover img-main-right " />
+                                        <img src="/documents/58202/1035722/icon-play-video.png"  alt="Main news image" class="w-100 d-block object-fit-cover icon-play" />
+                                    </div>
+                                    <a class="text-2dong pt-3 px-2 home-tinnoibat-tinmoi-news-a h-25 text-b text-dark" title="${title}" href="${viewURL}">
+                                        ${title}
+                                    </a>
+                                </div>
+                            </div>
+                        </#if>
+                    </#list>
+                </#if>
+            </div>
+        </div>
+    </div >
+</div>
+<style>
+    .icon-play {
+        position: absolute;
+        width: 50px !important;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .icon-play-left {
+        position: absolute;
+        width: 80px !important;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .bg-main {
+        background: #F8F9FA !important;
+    }
+    /*.home-tinnoibat-tinmoi-news-a {*/
+    /*    background: #FFFFFF !important;*/
+    /*}*/
+
+    .nav-link-anh-video {
+        background: #E0E0E0;
+        color: #000000;
+    }
+    .nav-link-anh-video.active{
+        background: #DB7100;
+        color: #FFF !important;
+    }
+    .nav-link-anh-video.active > a{
+        color: #FFF !important;
+    }
+    .btn-anh {
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 23.44px;
+        letter-spacing: 0.15000000596046448px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+    }
+    .btn-video  {
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 23.44px;
+        letter-spacing: 0.15000000596046448px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+    }
+    .text-anh-video {
+        font-family: Roboto;
+        font-size: 26px;
+        font-weight: 700;
+        line-height: 30.47px;
+        letter-spacing: 0.15000000596046448px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #0D4C92;
+    }
+    .custom-by-portal-hcm .custom-left-new-tinnoibat {
+        display: block;
+        padding: 10px;
+        bottom: 0;
+    }
+    .custom-by-portal-hcm .custom-left-new-tinnoibat {
+        color: #02397A;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 23.4px;
+        letter-spacing: 0.024px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    /*.img-main-right {*/
+    /*    height: 220px;*/
+    /*}*/
+    .h-85 {
+        height: 85% !important;
+    }
+    .h-15 {
+        height: 15% !important;
+    }
+    .h-75 {
+        height: 75% !important;
+    }
+    .h-25 {
+        height: 25% !important;
+    }
+    .home-tinnoibat-tinmoi-news-left {
+        transition: background-color 1.5s ease, color 1.5s ease;
+        background: rgba(224, 224, 224, 30%);
+        color: #0D4C92 !important;
+    }
+    .img-hover:hover .home-tinnoibat-tinmoi-news-left {
+        background-color: #0D4C92 !important;
+        color: #FFF !important;
+    }
+    .img-hover:hover .home-tinnoibat-tinmoi-news-left > a {
+        color: #FFF !important;
+    }
+    .home-tinnoibat-tinmoi-news-left:hover {
+        background-color: #0D4C92 !important;
+        color: #FFF !important;
+    }
+
+    .home-tinnoibat-tinmoi-news,
+    .home-tinnoibat-tinmoi-news > a,
+    .home-tinnoibat-tinmoi-news > span,
+    .home-tinnoibat-tinmoi-news > span > p {
+        transition: background-color 1.5s ease, color 1.5s ease;
+    }
+    .home-tinnoibat-tinmoi-news:hover {
+        background-color: #0D4C92 !important;
+    }
+    .home-tinnoibat-tinmoi-news-left:hover > a,
+    .home-tinnoibat-tinmoi-news:hover > a,
+    .home-tinnoibat-tinmoi-news:hover > span,
+    .home-tinnoibat-tinmoi-news:hover > span > p {
+        color: #FFF !important;;
+    }
+    .boder-r::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 1em;
+        border-right: 1px solid #777777;
+    }
+    .top-5 {
+        top: -5px;
+    }
+    .top-10 {
+        top: -10px;
+    }
+    .border-bottom-b-1px {
+        border-bottom: 1px solid rgba(13, 76, 146, 30%)
+    }
+    .left-0 {
+        left: 0;
+    }
+    .bgr-opacity-40 {
+        background: #000;
+        opacity: 40%;
+    }
+    .text-custom-primary-bg {
+        background: rgba(13, 76, 146, 1);
+        font-family: Roboto;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 28.6px;
+        letter-spacing: 0.0125em;
+        text-align: left;
+
+    }
+    .text-2dong {
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-height: unset !important;
+    }
+    .text-3dong {
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        line-height: unset !important;
+    }
+    .text-4dong > p {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .home-tinnoibat-tinmoi-news-left > a {
+        font-family: Roboto;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 28.6px;
+        letter-spacing: 0.0125em;
+        text-align: left;
+        color: #0D4C92;
+    }
+    .home-tinnoibat-tinmoi-news > a {
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 23.4px;
+        letter-spacing: 0.0125em;
+        text-align: left;
+        color: #0D4C92;
+    }
+    .home-tinnoibat-tinmoi-news > span {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18.2px;
+        letter-spacing: 0.005em;
+        text-align: left;
+        color: #2E2E2E;
+    }
+    .news-category-content{
+        background-color: #FFFFFF;
+    }
+
+    .btn-tin-moi{
+    }
+
+    .btn-tin-noi-bat{
+    }
+
+    .home-tinnoibat-tinmoi {
+        background: linear-gradient(#BCE6FE 80%, #FFFFFF 75%);
+    }
+
+    /* navbar news-categories */
+
+    .nav-pills .nav-link.active {
+        color: #0D4C92;
+        font-family: Roboto;
+        font-size: 16px;
+        line-height: 23.4px;
+        letter-spacing: 0.0015em;
+        text-align: left;
+        background: #BCE6FE ;
+        font-weight: 700;
+    }
+
+    .nav-pills .nav-link {
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 23.4px;
+        letter-spacing: 0.0015em;
+        text-align: center;
+        color: #777777;
+        background: #BCE6FE ;
+    }
+
+    /* section news-categories */
+    .red-background-container {
+        background-color: #720101;
+        height: 400px;
+
+    }
+
+    .content-section-news {
+        margin-bottom: 150px;
+    }
+
+    .bg-custom-gray-tinnoibat {
+        background: rgba(224, 224, 224, 30%);
+    }
+
+    .featured-news .bg-custom-gray-tinnoibat {
+        background: rgba(224, 224, 224, 30%);
+    }
+
+    .w-12 {
+        width: 12% !important;
+    }
+    .w-76 {
+        width: 75% !important;
+    }
+    .scroll-box {
+        height: 620px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: #f9f9f9;
+        border-radius: 5px; /* Góc bo tròn */
+        scrollbar-width: thin; /* Tùy chỉnh độ dày thanh cuộn (Firefox) */
+        scrollbar-color: #B6BECD #f9f9f9; /* Màu thanh cuộn (Firefox) */
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        $('.home-tinnoibat-tinmoi-news').hover(function(e) {
+            document.getElementById("img-main").src = $(this).attr("data-image");
+            document.getElementById("div-a-main").textContent = $(this).attr("data-title");
+        });
+        const $navLinks = $('.nav-link-anh-video');
+        const $contentSections = $('.news-category-content');
+
+        $navLinks.on('click', function(e) {
+            e.preventDefault();
+            $navLinks.removeClass('active');
+            $(this).addClass('active');
+            $contentSections.hide();
+            const contentId = $(this).attr('data-content');
+            const $contentToShow = $('#' + contentId);
+            if ($contentToShow.length) {
+                $contentToShow.show();
+            } else {
+                console.error('Content section not found:', contentId);
+            }
+        });
+    });
+</script>

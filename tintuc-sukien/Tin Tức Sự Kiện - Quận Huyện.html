@@ -29,6 +29,7 @@
                     createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
                     createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
                     curEntry = curEntry
+                    viewCount = curEntry.getViewCount()
                     viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
                     indexLocal = indexLocal + 1 />
 
@@ -42,7 +43,7 @@
                         <div class="news-date">${createDay}/${createMonth}/${createYear}</div>
                         <div class="news-content">
                             <a href="${viewURL}" class="news-title-snqh">${title}</a>
-                            <span class="view-count"><i class="fa fa-eye me-1"></i>1,141</span>
+                            <span class="view-count"><i class="fa fa-eye me-1"></i>${viewCount}</span>
                         </div>
                     </div>
                 </#if>

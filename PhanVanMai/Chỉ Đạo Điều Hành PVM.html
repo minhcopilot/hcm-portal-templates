@@ -1,0 +1,293 @@
+<style>
+  .box1 {
+    position: relative;
+    z-index: 2;
+  }
+
+  .box2 {
+    top: 0px;
+    position: absolute;
+  }
+
+  .bg-lucgiac {
+    background-image: url("/documents/39403/1077501/bg-nen.svg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .title-chidao {
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 35.16px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #0d4c92;
+    text-transform: uppercase;
+  }
+  td:hover {
+    color: #0d4c92;
+    font-weight: bold;
+  }
+  .ct-lich {
+    background-color: #0d4c92;
+    border-radius: 10px;
+  }
+  .ct-border {
+    border-bottom: 1px solid #ffffff;
+  }
+  .ct-title {
+    font-family: Roboto;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 30.47px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #ffffff;
+  }
+  .ct-child {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21.09px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #ffffff;
+  }
+  .ct-btn {
+    padding: 5px 11px;
+    gap: 30px;
+    border-radius: 8px;
+    border: 1px solid #ffffff;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23.4px;
+    letter-spacing: 0.0125em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #ffffff;
+    background-color: #db7100;
+  }
+  .child:hover {
+    background-color: #ffffff26;
+  }
+  .ct-btn:hover {
+    background-color: #0d4c92;
+  }
+
+  .position-relative {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .box1,
+  .box2 {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .row {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .col-md-12,
+  .col-lg-8,
+  .col-lg-4 {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  @media (max-width: 991px) {
+    .ct-h1,
+    .ct-h2 {
+      height: 50% !important;
+    }
+  }
+
+  .cadre-table-scroll {
+    display: inline-block;
+    overflow-y: scroll;
+  }
+
+  .table-scroll thead th {
+    position: sticky;
+    top: -1px;
+  }
+
+  .table-scroll tfoot td {
+    position: sticky;
+    bottom: 0;
+  }
+
+  th {
+    text-align: center;
+    white-space: nowrap;
+    padding: 16px 36px 16px 36px;
+    gap: 10px;
+    border: 1px solid #e0e0e0;
+    background-color: #a4e6ff;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20.8px;
+    letter-spacing: 0.0015em;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #031739;
+  }
+
+  td {
+    padding: 7px 12px 7px 12px;
+    gap: 10px;
+    border: 1px solid #e0e0e0;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.8px;
+    letter-spacing: 0.0015em;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #2e2e2e;
+  }
+
+  .cadre-table-scroll::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .cadre-table-scroll::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+  }
+
+  .cadre-table-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  .cadre-table-scroll {
+    display: inline-block;
+    height: 360px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+  }
+
+  .cadre-table-scroll::-moz-scrollbar {
+    width: 6px;
+  }
+
+  .cadre-table-scroll::-moz-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+  }
+
+  .cadre-table-scroll::-moz-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  .cadre-table-scroll::-webkit-scrollbar-button {
+    display: none;
+  }
+  .ct-scroll {
+    height: 260px;
+    overflow-y: scroll;
+  }
+  .ct-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .ct-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .table-scroll {
+    border-collapse: collapse;
+  }
+  .content-cddh-ct {
+    margin-left: 11%;
+    padding: 0 6px 0 16px;
+  }
+</style>
+<div class="position-relative w-100">
+  <div class="box1 w-100 box-shadow-main">
+    <div class="m-0 h-100">
+      <div class="h-100 mb-4 mt-auto content-cddh-ct box-shadow-left-15pt">
+        <p class="title-chidao mb-4 pt-5">Chỉ đạo, điều hành</p>
+        <div class="cadre-table-scroll mb-4">
+          <table class="table-scroll">
+            <thead>
+              <tr>
+                <th scope="col">Số/ Ký hiệu</th>
+                <th scope="col">Ngày ban hành</th>
+                <th scope="col">Trích yếu</th>
+                <th scope="col">Tài liệu đính kèm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-left">Số: 79/2024/QĐ- UBND</td>
+                <td class="text-center">21/10/2024</td>
+                <td class="text-left">
+                  UBND TP.Hồ Chí Minh vừa ban hành Quyết định sửa đổi, bổ sung
+                  Quyết định số 02/2020/QĐ-UBND ngày 16 tháng 01 năm 2020 của Ủy
+                  ban nhân dân thành phố quy định về Bảng giá đất trên địa bàn
+                  Thành phố Hồ Chí Minh
+                </td>
+                <td class="text-center">
+                  <img src="/documents/39403/1077501/dow_chidao.png" />&nbsp;
+                  Tải về
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Số: 78/2024/QĐ-UBND</td>
+                <td class="text-center">21/10/2024</td>
+                <td class="text-left">
+                  Ban hành đơn giá bồi thường cây trồng trên địa bàn Thành phố
+                  Hồ Chí Minh
+                </td>
+                <td class="text-center">
+                  <img src="/documents/39403/1077501/dow_chidao.png" />&nbsp;
+                  Tải về
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Số: 4567/QĐ-UBND</td>
+                <td class="text-center">21/10/2024</td>
+                <td class="text-left">
+                  Công nhận làng nghề trồng mai vàng tại xã Bình Lợi, huyện Bình
+                  Chánh
+                </td>
+                <td class="text-center">
+                  <img src="/documents/39403/1077501/dow_chidao.png" />
+                  &nbsp;Tải về
+                </td>
+              </tr>
+              <tr>
+                <td class="text-left">Số: 4542/QĐ-UBND</td>
+                <td class="text-center">21/10/2024</td>
+                <td class="text-left">
+                  Quy chế quản lý và sử dụng viện trợ không thuộc hỗ trợ phát
+                  triển chính thức của các cơ quan, tổ chức, cá nhân nước ngoài
+                </td>
+                <td class="text-center">
+                  <img src="/documents/39403/1077501/dow_chidao.png" />&nbsp;
+                  Tải về
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

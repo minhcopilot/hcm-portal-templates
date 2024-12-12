@@ -1,0 +1,368 @@
+<style>
+    .profile-container-pct {
+        background-image: url("/documents/58202/1035722/bg-chuyentrang-pvm-banner.png");
+        background-size: 40% auto;
+        background-position: left;
+        background-repeat: no-repeat;
+        background-color: #F8F9FA !important;
+    }
+
+    .profile-left-pct {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .profile-title-pct {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        text-align: left;
+    }
+
+    .position-pct,
+    .city-pct {
+        color: #0066cc;
+        margin: 5px 0;
+        font-size: 26px;
+        font-weight: 700;
+    }
+
+    .name-pct {
+        color: #0066cc;
+        font-size: 60px;
+        font-weight: 700;
+        margin: 10px 0;
+    }
+
+    .profile-image-pct {
+        position: relative;
+        height: 370px;
+        text-align: right;
+    }
+
+    .profile-image-pct .profile-image-pct-img {
+        height: 100%;
+        object-fit: contain;
+        position: relative;
+        z-index: 4;
+    }
+
+    .sub-image-pct-1 {
+        position: absolute;
+        z-index: 1;
+        left: -30%;
+        top: 0;
+    }
+    .sub-image-pct-2 {
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        top: 53%;
+    }
+    .sub-image-pct-3 {
+        position: absolute;
+        z-index: 3;
+        left: 0;
+        top: 22%;
+    }
+
+    .profile-right-pct {
+        padding: 20px;
+    }
+
+    .activities-header-pct {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .activities-icon-pct {
+        width: 66px;
+        height: 60px;
+        margin-right: 15px;
+    }
+
+    .icon-wrapper-pct {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .icon-wrapper-pct img:first-child {
+        width: 100%;
+        height: 100%;
+    }
+
+    .overlay-icon-pct {
+        position: absolute;
+        top: 44%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 35px; /* Có thể điều chỉnh kích thước này */
+        height: 35px;
+    }
+
+    .activities-title-pct {
+        color: #0d4c92;
+        margin: 0;
+        flex-grow: 1;
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .view-more-pct {
+        color: #ff6600;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .activities-list-pct {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .activity-item-pct {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .activity-item-pct .activity-item-text-pct {
+
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .activity-item-pct:hover .activity-item-text-pct {
+        color: #0e4e94;
+    }
+
+    .activity-item-pct:hover .activity-item-dot-pct {
+        content: url("/documents/58202/1035722/dot_active.png");
+    }
+
+    .activity-item-pct .activity-item-dot-pct {
+        width: 17px;
+        height: 16px;
+    }
+
+    .activity-item-pct .activity-item-text-pct {
+        margin: 0;
+        color: #333;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    @media screen and (max-width: 425px) {
+        .profile-right-pct {
+            padding: 0;
+        }
+        .profile-container-pct {
+            background: none;
+        }
+        .name-pct {
+            font-size: 46px;
+        }
+        .profile-title-pct {
+            padding-top: 25px;
+        }
+    }
+    @media screen and (min-width: 426px) and (max-width: 768px) {
+        .profile-container-pct {
+            background: none;
+        }
+        .name-pct {
+            font-size: 46px;
+        }
+        .profile-title-pct {
+            padding-top: 25px;
+        }
+        .profile-right-pct {
+            padding: 0;
+        }
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+        .profile-container-pct {
+            background: none;
+        }
+        .name-pct {
+            font-size: 53px;
+        }
+        .profile-right-pct {
+            padding: 0;
+        }
+    }
+
+    @media screen and (min-width: 1025px) and (max-width: 1324px) {
+        .profile-container-pct {
+            background: none;
+        }
+    }
+
+    @media screen and (min-width: 1325px) and (max-width: 1440px) {
+
+    }
+
+    @media screen and (min-width: 1441px) and (max-width: 1824px) {
+
+    }
+    @media screen and (min-width: 1825px) {
+
+    }
+    .box-shadow-main {
+        box-shadow: rgba(0, 0, 0, 0.15) 0 0.5rem 1rem;
+    }
+</style>
+<#assign dateFormatDay = "dd" />
+<#assign monthFormatDay = "MM" />
+<#assign yearFormatDay = "yyyy" />
+<#assign dateFormatTime = "HH:mm" />
+<#assign indexLocal = 0/>
+
+<div class="profile-container-pct">
+    <div class="container box-shadow-main">
+        <div class="row m-0">
+            <div class="d-none d-md-block col-12 col-md-5 pt-0 pt-md-5">
+                <div class="profile-left-pct pr-0">
+                    <div class="profile-title-pct">
+                        <h3 class="position-pct text-center text-md-left">CHỦ TỊCH UBND</h3>
+                        <h3 class="city-pct text-center text-md-left">THÀNH PHỐ HỒ CHÍ MINH</h3>
+                        <h2 class="name-pct text-center text-md-left">PHAN VĂN MÃI</h2>
+                    </div>
+                    <div class="profile-image-pct d-none d-md-block pr-md-5">
+                        <img
+                                class="profile-image-pct-img mr-md-5"
+                                src="/documents/58202/1035722/chuyentrang-avt-pvm.png"
+                                alt="Ảnh lãnh đạo"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="baner-content col-12 col-md-7 pb-0 row pt-md-5 pt-3 m-0">
+                <!-- Giới thiệu hoạt động -->
+                <div class="profile-right-pct col-12 ">
+                    <div class="activities-header-pct">
+                        <div class="activities-icon-pct">
+                            <div class="icon-wrapper-pct">
+                                <img src="/documents/58202/1035722/ic_hoat_dong.png" alt="Hoạt động" />
+                                <img
+                                        src="/documents/58202/1035722/icons_pct.png"
+                                        alt="icon"
+                                        class="overlay-icon-pct"
+                                />
+                            </div>
+                        </div>
+                        <h2 class="activities-title-pct">HOẠT ĐỘNG</h2>
+                        <a href="javascript:void(0)" class="view-more-pct"
+                        >Xem thêm <i class="fa fa-arrow-right"></i
+                            ></a>
+                    </div>
+
+                    <div class="activities-list-pct">
+                        <#if entries?has_content>
+                            <#list entries as curEntry>
+                                <#assign
+                                renderer = curEntry.getAssetRenderer()
+                                className = renderer.getClassName() />
+                                <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 3>
+                                    <#assign
+                                    title = curEntry.getTitle(locale)
+                                    article = renderer.getArticle()
+                                    description = article.getDescription(locale)
+                                    ddmTemplateKey = article.getDDMTemplateKey()
+                                    createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                                    createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                                    createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                                    createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                                    curEntry = curEntry
+                                    viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                                    indexLocal = indexLocal + 1 />
+                                    <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                        <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                                    <#else>
+                                        <#assign smallImageUrl = "" >
+                                    </#if>
+                                    <div class="activity-item-pct">
+                                        <img
+                                                class="activity-item-dot-pct"
+                                                src="/documents/58202/1035722/dot.png"
+                                                alt=""
+                                        />
+                                        <p class="activity-item-text-pct" onclick="location.href='${viewURL}'">
+                                            ${title}
+                                        </p>
+                                    </div>
+                                </#if>
+                            </#list>
+                        </#if>
+                    </div>
+                </div>
+                <!-- Giới thiệu Chỉ đạo -->
+                <div class="profile-right-pct col-12 pt-0">
+                    <div class="activities-header-pct">
+                        <div class="activities-icon-pct">
+                            <div class="icon-wrapper-pct">
+                                <img src="/documents/58202/1035722/ic_hoat_dong.png" alt="Hoạt động" />
+                                <img
+                                        src="/documents/58202/1035722/ic-chidao.png"
+                                        alt="icon"
+                                        class="overlay-icon-pct"
+                                />
+                            </div>
+                        </div>
+                        <h2 class="activities-title-pct">CHỈ ĐẠO</h2>
+                        <a href="javascript:void(0)" class="view-more-pct"
+                        >Xem thêm <i class="fa fa-arrow-right"></i
+                            ></a>
+                    </div>
+                    <#assign indexLocal = 3/>
+                    <div class="activities-list-pct">
+                        <#if entries?has_content>
+                            <#list entries as curEntry>
+                                <#assign
+                                renderer = curEntry.getAssetRenderer()
+                                className = renderer.getClassName() />
+                                <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 6>
+                                    <#assign
+                                    title = curEntry.getTitle(locale)
+                                    article = renderer.getArticle()
+                                    description = article.getDescription(locale)
+                                    ddmTemplateKey = article.getDDMTemplateKey()
+                                    createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                                    createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                                    createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                                    createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                                    curEntry = curEntry
+                                    viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                                    indexLocal = indexLocal + 1 />
+                                    <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                        <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                                    <#else>
+                                        <#assign smallImageUrl = "" >
+                                    </#if>
+                                    <div class="activity-item-pct">
+                                        <img
+                                                class="activity-item-dot-pct"
+                                                src="/documents/58202/1035722/dot.png"
+                                                alt=""
+                                        />
+                                        <p class="activity-item-text-pct" onclick="location.href='${viewURL}'">
+                                            ${title}
+                                        </p>
+                                    </div>
+                                </#if>
+                            </#list>
+                        </#if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

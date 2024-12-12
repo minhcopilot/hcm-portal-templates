@@ -1,6 +1,7 @@
 <!-- Bootstrap CSS -->
 
 <style>
+
     .top-0 {
         top: 0 !important;
     }
@@ -334,11 +335,12 @@
             gap: 10px;
         }
         .category-menu .nav-item {
-            width: 100%;
+            width: 48%;
         }
 
         .tool-container {
             flex-direction: column;
+            gap: 15px;
         }
 
         .search-container {
@@ -387,6 +389,7 @@
         .search-container .search-button {
             position: absolute;
             right: 10px;
+            top: calc(65% + 15px);
             transform: translateY(-50%);
             padding: 6px 5px;
         }
@@ -400,7 +403,7 @@
     }
 
     /* Tablet (425px - 768px) */
-    @media screen and (min-width: 425px) and (max-width: 768px) {
+    @media screen and (min-width: 426px) and (max-width: 768px) {
         .nav-bv-tin {
             gap: 16px 4%;
         }
@@ -649,6 +652,7 @@
                             createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
                             createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
                             curEntry = curEntry
+                            viewCount = curEntry.getViewCount()
                             viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
                             indexLocal = indexLocal + 1 />
                             <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
@@ -684,7 +688,7 @@
                                                         class="d-flex align-items-center gap-1 view-count-container"
                                                 >
                                                     <i class="fa fa-eye"></i>
-                                                    <span class="views-tindang">1,141</span>
+                                                    <span class="views-tindang">${viewCount}</span>
                                                 </div>
                                             </div>
                                         </div>

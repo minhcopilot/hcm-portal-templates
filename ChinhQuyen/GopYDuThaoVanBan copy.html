@@ -1,0 +1,793 @@
+<style>
+  .nav .ct-navlink-solieu {
+    background-color: #e0e0e0 !important;
+  }
+  .nav-link {
+    font-family: Roboto;
+    outline: none !important;
+    border: none !important;
+  }
+
+  .nav-link:focus,
+  .nav-link.active {
+    outline: none !important;
+    border: none !important;
+  }
+
+  .custom-carousel-item a {
+    font-family: Roboto;
+    text-decoration: none !important;
+  }
+
+  #nav-thongtin a {
+    font-family: Roboto;
+    text-decoration: none !important;
+  }
+
+  .title-chutruong {
+    font-family: Roboto;
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    line-height: 37.5px !important;
+    letter-spacing: 0.15000000596046448px !important;
+    text-align: left !important;
+    text-underline-position: from-font !important;
+    text-decoration-skip-ink: none !important;
+    color: #0d4c92 !important;
+  }
+
+  .ct-rotate {
+    transform: rotate(180deg);
+  }
+
+  .carousel-item img {
+    z-index: 10;
+  }
+
+  .text-clamp-2 {
+    font-family: Roboto;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-align: left !important;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+    max-height: 3.5em;
+  }
+
+  .dautu {
+    font-family: Roboto;
+    background-color: #fff3d3;
+    margin-top: 80px;
+  }
+
+  .ct-backgound {
+    background-image: url("/documents/39403/307879/background_quyhoach.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .pl-100 {
+    padding-left: 100px !important;
+  }
+
+  .pr-100 {
+    padding-right: 100px !important;
+  }
+
+  .span-active {
+    font-family: Roboto;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    line-height: 25.78px !important;
+    color: #db7100 !important;
+  }
+
+  .span-dautu span {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23.44px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #0d4c92;
+    margin-right: 15px;
+    white-space: nowrap;
+  }
+
+  .span-dautu {
+    font-family: Roboto;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .list-dautu {
+    font-family: Roboto;
+    height: 170px;
+    overflow-y: auto;
+  }
+
+  .list-dautu::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .list-dautu::-webkit-scrollbar-thumb {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+  }
+
+  .text-clamp-1-row {
+    font-family: Roboto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .text-clamp-1-row:hover {
+    font-weight: 700 !important;
+    color: #0d4c92 !important;
+  }
+  .title-quyhoach,
+  .ct-backgound .title-quyhoach {
+    font-family: Roboto;
+    font-size: 32px !important;
+    font-weight: 700 !important;
+    line-height: 37.5px !important;
+    letter-spacing: 0.15000000596046448px !important;
+    text-align: left !important;
+    text-underline-position: from-font !important;
+    text-decoration-skip-ink: none !important;
+    color: #ffffff !important;
+  }
+
+  .o-quyhoach span {
+    color: unset !important;
+  }
+
+  .o-quyhoach span {
+    font-family: unset !important;
+    font-style: unset !important;
+    font-weight: unset !important;
+    font-size: unset !important;
+    line-height: unset !important;
+    letter-spacing: unset !important;
+  }
+
+  .o-quyhoach {
+    font-family: Roboto;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    line-height: 25.78px !important;
+    letter-spacing: 0.15000000596046448px !important;
+    text-align: left !important;
+    text-underline-position: from-font !important;
+    text-decoration-skip-ink: none;
+    color: #db7100 !important;
+    text-transform: uppercase !important;
+    background-color: #fefefe !important;
+    border-radius: 10px !important;
+    padding: 20px 10px 20px 20px !important;
+  }
+
+  .o-quyhoach:hover {
+    border: 2px solid #db7100;
+  }
+
+  .o-1 {
+    width: 100%;
+    height: 40%;
+  }
+
+  .o-2 {
+    width: 100%;
+    height: 60%;
+  }
+
+  .o-3 {
+    width: 100%;
+    height: 60%;
+  }
+
+  .o-4 {
+    width: 100%;
+    height: 40%;
+  }
+
+  .o-tong {
+    width: 100%;
+    height: 70%;
+  }
+
+  .ct-thongtin {
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 37.5px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    text-transform: uppercase;
+    color: #777777;
+  }
+
+  .ct-thongtin:hover {
+    color: #0d4c92 !important;
+  }
+
+  .nav-tabs .nav-item.show .nav-link,
+  .nav-tabs .nav-link.active {
+    color: #0d4c92 !important;
+    padding-right: 16px;
+  }
+
+  .ct-bo {
+    border-right: 1px solid #777777;
+    height: 25px !important;
+    margin-bottom: 11px;
+  }
+
+  .thongtin-child {
+    width: 170px;
+    height: 150px;
+    padding: 20px;
+    gap: 14px;
+    border-radius: 10px;
+  }
+
+  .thongtin-child:hover {
+    box-shadow: 8px -3px 10px 0px #2e2e2e4d inset;
+  }
+
+  .thongtin-child p,
+  .thongtin-child p span {
+    font-family: Roboto;
+    margin-top: 10px !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 23.4px !important;
+    text-align: center !important;
+    text-underline-position: from-font !important;
+    text-decoration-skip-ink: none !important;
+    color: #02397a !important;
+    text-transform: uppercase !important;
+  }
+
+  .btn-baocao p {
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .bieudo {
+    height: 338px;
+    gap: 0px;
+    border-radius: 10px;
+    background-color: #fff2e5;
+    padding: 35px 23px 35px 23px;
+  }
+
+  .ngaythang {
+    font-family: Roboto;
+    width: 100%;
+    height: 54px;
+    gap: 0px;
+    border-radius: 20px;
+    color: #02397a;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28.13px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    background-color: #ffffff;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bieudo:hover {
+    background-color: #02397a;
+  }
+
+  .btn-xemthem {
+    width: 113px;
+    height: 35px;
+    padding: 5px 19px 5px 19px;
+    gap: 10px;
+    border-radius: 8px;
+    color: #fefefe;
+    background-color: #db7100;
+    border: unset;
+    transition: background-color 0.5s ease, color 0.2s ease;
+  }
+
+  .btn-xemthem:hover {
+    background-color: #02397a;
+    color: #fefefe;
+  }
+
+  .ct-table {
+    border-collapse: collapse !important;
+  }
+  .ct-table th {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.0043em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #0d4c92;
+    background-color: #bce6fe;
+    padding: 12px 10px 12px 10px;
+    gap: 10px;
+  }
+
+  .ct-table th,
+  .ct-table td {
+    border: 1px solid #e0e0e0;
+  }
+
+  .ct-table td {
+    padding: 12px 10px 12px 10px;
+    gap: 10px;
+  }
+
+  .carousel-item img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .custom-carousel-container {
+    position: relative;
+    width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+  }
+
+  .custom-carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .custom-carousel-item {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: 10px;
+  }
+
+  .custom-carousel-item-thongbao {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding: 10px;
+  }
+
+  .custom-carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .custom-carousel-control-prev,
+  .custom-carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .custom-carousel-control-prev {
+    left: -50px;
+  }
+
+  .custom-carousel-control-next {
+    right: -50px;
+  }
+
+  .ct-back {
+    background-color: #fff9ea;
+  }
+
+  .ct-btn-carousel-2 {
+    background-color: #fff9ea;
+    border-radius: 50%;
+    width: 40px !important;
+    height: 40px !important;
+    border: unset !important;
+  }
+
+  .ct-btn-carousel-2:hover {
+    background-color: #db7100 !important;
+
+    img {
+      transition: filter 0s ease;
+      filter: invert(100%) brightness(200%);
+    }
+  }
+
+  .nen {
+    background-image: url("/documents/39403/307879/nen.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    padding: 10px 20px;
+  }
+
+  .nen:hover {
+    box-shadow: 8px -3px 10px 0px #2e2e2e4d inset;
+  }
+
+  .nen p,
+  .nen span {
+    font-family: Roboto;
+    font-size: 26px !important;
+    font-weight: 700 !important;
+    line-height: 30.47px !important;
+    letter-spacing: 0.15000000596046448px !important;
+    text-align: center !important;
+    text-underline-position: from-font !important;
+    text-decoration-skip-ink: none !important;
+    color: #c8392b !important;
+  }
+
+  .nen img {
+    width: 51px;
+    height: 54px;
+  }
+
+  .ct-detail:hover,
+  .ct-dow:hover,
+  .ct-list:hover {
+    cursor: pointer;
+  }
+
+  .nav-tabs .nav-link {
+    border: unset !important;
+  }
+
+  .nav-tabs {
+    border: unset !important;
+  }
+
+  .img-thongcao {
+    width: 221px !important;
+    height: 155px !important;
+  }
+
+  .title-thongcao,
+  .ct-backgound-thongcao p {
+    font-family: Roboto;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 23.4px !important;
+    letter-spacing: 0.0015em !important;
+    text-align: left !important;
+    text-underline-position: from-font !important;
+    text-decoration-skip-ink: none !important;
+  }
+
+  .ct-backgound-thongcao {
+    background-color: #e0e0e0;
+    height: 155px;
+  }
+
+  .text-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+    max-height: 6.5em;
+    text-align: justify-all;
+  }
+
+  .date-thongcao {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18.2px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+
+  .thongcao:hover {
+    span img {
+      transition: filter 0s ease;
+      filter: invert(100%) brightness(200%);
+    }
+
+    cursor: pointer !important;
+    background-color: #02397a !important;
+    color: #fefefe !important;
+
+    .ct-backgound-thongcao {
+      background-color: #02397a !important;
+    }
+
+    span {
+      color: #fefefe !important;
+    }
+  }
+
+  .nen:hover {
+    cursor: pointer;
+  }
+
+  .span-dautu span {
+    transition: 0.5s ease;
+  }
+
+  .span-dautu span:hover {
+    font-family: Roboto;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    line-height: 25.78px !important;
+    color: #db7100 !important;
+  }
+
+  .nav-pills .nav-link.active,
+  .nav-pills .show > .nav-link {
+    background-color: #ffeedc !important;
+    border-radius: unset !important;
+    color: #db7100 !important;
+    background-color: #db7100 !important;
+    border-radius: unset !important;
+    color: #fefefe !important;
+    .ct-text-btn {
+      background-color: #db7100 !important;
+      color: #fefefe !important;
+    }
+  }
+
+  .nav-pills .nav-link:hover {
+    background-color: #db7100 !important;
+    border-radius: unset !important;
+    color: #fefefe !important;
+    .ct-text-btn {
+      background-color: #db7100 !important;
+      color: #fefefe !important;
+    }
+  }
+  .ct-text-btn {
+    color: black;
+    font-family: Roboto !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 20.8px !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    background-color: #e0e0e0 !important;
+  }
+
+  .nav-pills .nav-link {
+    font-family: Roboto;
+    width: 233.75px !important;
+    height: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20.8px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    text-transform: uppercase;
+    border-radius: unset !important;
+    margin-right: 10px !important;
+  }
+
+  .o-quyhoach span {
+    width: 100% !important;
+  }
+
+  .ct-ngaythang {
+    color: #db7100 !important;
+  }
+
+  .ct-table {
+    table-layout: auto;
+  }
+
+  .ct-xemthem {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18.75px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    text-decoration: none !important;
+    color: #db7100;
+  }
+
+  .ct-xemthem:hover {
+    color: #db7100;
+  }
+
+  .text-0 {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.8px;
+    letter-spacing: 0.005em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #2e2e2e;
+  }
+
+  .text-0:hover {
+    color: #0d4c92;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .text-1 {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.8px;
+    letter-spacing: 0.005em;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #00a1f2;
+  }
+
+  .text-1:hover {
+    font-weight: 700;
+    color: #0d4c92;
+    cursor: pointer;
+  }
+  .animation:hover .img-hover {
+    content: url("/documents/39403/307879/icon_dow_hover.png");
+  }
+  .mail-hover:hover .img-mail-hover {
+    content: url("/documents/39403/307879/icon_mail_hover.png");
+  }
+</style>
+
+<div class="ct-margin mt-4">
+  <p class="title-chutruong">GÓP Ý DỰ THẢO VĂN BẢN</p>
+  <table width="100%" class="ct-table">
+    <tbody>
+      <tr>
+        <td align="center" style="width: 15%" class="text-0 animation">
+          <a href="/van-ban-du-thao">
+            <img
+              class="img-hover"
+              src="/documents/39403/307879/icon_dow_clound.png"
+              width="34px"
+              height="24px"
+            />
+            <p class="mt-1">Tải xuống</p>
+          </a>
+        </td>
+        <td style="white-space: normal" class="text-left text-0">
+          Dự thảo hồ sơ xây dựng Quyết định ban hành Quy chế phối hợp trong quản
+          lý nhà nước về giám định tư pháp trên địa bàn Thành phố Hồ Chí Minh
+        </td>
+        <td
+          align="center"
+          style="width: 15%"
+          onclick="location.href=''"
+          class="text-1"
+        >
+          Xem toàn văn
+        </td>
+        <td align="center" style="width: 15%" class="text-1 mail-hover">
+          <img
+            class="img-mail-hover"
+            src="/documents/39403/307879/icon_mail.png"
+            width="20px"
+            height="16px"
+          />
+          Gửi góp ý
+        </td>
+      </tr>
+      <tr>
+        <td align="center" style="width: 15%" class="text-0 animation">
+          <a href="/van-ban-du-thao"></a>
+          <img
+            class="img-hover"
+            src="/documents/39403/307879/icon_dow_clound.png"
+            width="34px"
+            height="24px"
+          />
+          <p class="mt-1">Tải xuống</p>
+        </td>
+        <td style="white-space: normal" class="text-left text-0">
+          Dự thảo Tờ trình và Quyết định bãi bỏ Quyết định số 20/2017/QĐ-UBND
+          ngày 24 tháng 3 năm 2017 của Ủy ban nhân dân Thành phố (lần 4) – nhắc
+          lần 2
+        </td>
+        <td align="center" style="width: 15%" class="text-1">Xem toàn văn</td>
+
+        <td align="center" style="width: 15%" class="text-1 mail-hover">
+          <img
+            class="img-mail-hover"
+            src="/documents/39403/307879/icon_mail.png"
+            width="20px"
+            height="16px"
+          />
+          Gửi góp ý
+        </td>
+      </tr>
+      <tr>
+        <td align="center" style="width: 15%" class="text-0 animation">
+          <a href="/van-ban-du-thao"></a>
+          <img
+            class="img-hover"
+            src="/documents/39403/307879/icon_dow_clound.png"
+            width="34px"
+            height="24px"
+          />
+          <p class="mt-1">Tải xuống</p>
+        </td>
+        <td style="white-space: normal" class="text-left text-0">
+          Dự thảo Quyết định ban hành Quy định chức năng, nhiệm vụ, quyền hạn và
+          cơ cấu tổ chức của Sở Công Thương Thành phố (lần 5)
+        </td>
+        <td align="center" style="width: 15%" class="text-1">Xem toàn văn</td>
+
+        <td align="center" style="width: 15%" class="text-1 mail-hover">
+          <img
+            class="img-mail-hover"
+            src="/documents/39403/307879/icon_mail.png"
+            width="20px"
+            height="16px"
+          />
+          Gửi góp ý
+        </td>
+      </tr>
+      <tr>
+        <td align="center" style="width: 15%" class="text-0 animation">
+          <a href="/van-ban-du-thao"></a>
+          <img
+            class="img-hover"
+            src="/documents/39403/307879/icon_dow_clound.png"
+            width="34px"
+            height="24px"
+          />
+          <p class="mt-1">Tải xuống</p>
+        </td>
+        <td style="white-space: normal" class="text-left text-0">
+          Dự thảo Nghị quyết của Hội đồng nhân dân Thành phố ban hành quy định
+          mức chi cho Hội đồng tư vấn khoa học và công nghệ; lấy ý kiến tổ chức,
+          chuyên gia tư vấn độc lập trong các dự án đầu tư trên địa bàn Thành
+          phố Hồ Chí Minh
+        </td>
+        <td align="center" style="width: 15%" class="text-1">Xem toàn văn</td>
+        <td align="center" style="width: 15%" class="text-1 mail-hover">
+          <img
+            class="img-mail-hover"
+            src="/documents/39403/307879/icon_mail.png"
+            width="20px"
+            height="16px"
+          />
+          Gửi góp ý
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="mt-4 text-center">
+    <button class="btn-xemthem" onclick="location.href='/van-ban-du-thao'">
+      Xem thêm
+    </button>
+  </div>
+</div>

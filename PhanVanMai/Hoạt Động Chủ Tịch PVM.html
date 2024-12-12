@@ -1,0 +1,72 @@
+<#assign dateFormatDay = "dd" />
+<#assign monthFormatDay = "MM" />
+<#assign yearFormatDay = "yyyy" />
+<#assign dateFormatTime = "HH:mm" />
+<#assign indexLocal = 0/>
+
+<div class="bg-F8F9FA mr-15pt box-shadow-right-15pt">
+    <div class="row m-0">
+        <div class="baner-content col-12 col-md-12 pb-0 row pt-md-5 pt-3 m-0">
+            <!-- Giới thiệu hoạt động -->
+            <div class="profile-right-pct col-12 ">
+                <div class="activities-header-pct">
+                    <div class="activities-icon-pct">
+                        <div class="icon-wrapper-pct">
+                            <img src="/documents/58202/1035722/ic_hoat_dong.png" alt="Hoạt động" />
+                            <img
+                                    src="/documents/58202/1035722/icons_pct.png"
+                                    alt="icon"
+                                    class="overlay-icon-pct"
+                            />
+                        </div>
+                    </div>
+                    <h2 class="activities-title-pct">HOẠT ĐỘNG</h2>
+                    <a href="javascript:void(0)" class="view-more-pct"
+                    >Xem thêm <i class="fa fa-arrow-right"></i
+                        ></a>
+                </div>
+    
+                <div class="activities-list-pct">
+                    <#if entries?has_content>
+                        <#list entries as curEntry>
+                            <#assign
+                            renderer = curEntry.getAssetRenderer()
+                            className = renderer.getClassName() />
+                            <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 3>
+                                <#assign
+                                title = curEntry.getTitle(locale)
+                                article = renderer.getArticle()
+                                description = article.getDescription(locale)
+                                ddmTemplateKey = article.getDDMTemplateKey()
+                                createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                                createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                                createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                                createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                                curEntry = curEntry
+                                viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                                indexLocal = indexLocal + 1 />
+                                <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                    <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                                <#else>
+                                    <#assign smallImageUrl = "" >
+                                </#if>
+                                <div class="activity-item-pct">
+                                    <img
+                                            class="activity-item-dot-pct"
+                                            src="/documents/58202/1035722/dot.png"
+                                            alt=""
+                                    />
+                                    <p class="activity-item-text-pct" onclick="location.href='${viewURL}'">
+                                        ${title}
+                                    </p>
+                                </div>
+                            </#if>
+                        </#list>
+                    </#if>
+                </div>
+            </div>
+    
+            
+        </div>
+    </div>
+</div>

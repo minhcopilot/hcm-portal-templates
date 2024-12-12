@@ -17,7 +17,7 @@
                 <#assign
                 renderer = curEntry.getAssetRenderer()
                 className = renderer.getClassName() />
-                <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 5>
+                <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale)>
                     <#assign
                     title = curEntry.getTitle(locale)
                     article = renderer.getArticle()
@@ -28,6 +28,7 @@
                     createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
                     createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
                     curEntry = curEntry
+                    viewCount = curEntry.getViewCount()
                     viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
                     indexLocal = indexLocal + 1 />
 
@@ -37,16 +38,17 @@
                         <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
                     </#if>
 
-                    <div class="list-group-item border-0 px-0 mt-2">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="news-number-minh active-news">${indexLocal}</div>
-                            <div class="news-time">${createTime} | ${createDay}/${createMonth}/${createYear}</div>
-                            <div class="flex-grow-1">
-                                <a href="${viewURL}" class="news-title-ttsk">${title}</a>
-                            </div>
-                            <div class="d-flex align-items-center gap-1 view-count-container">
-                                <i class="fa fa-eye"></i>
-                                <span class="news-views">1,141</span>
+                    <div class="custom-carousel-item-thongbao">
+                        <div onclick="location.href='${viewURL}'" class="thongcao d-flex align-items-center justify-content-center">
+                            <img src="${smallImageUrl}" class="img-thongcao">
+                            <div class="p-3 ct-backgound-thongcao">
+                                <p class="title-thongcao text-clamp-4 mb-1">${title}</p>
+                                <div class="date-thongcao d-flex align-items-center justify-content-between">
+                                    <span>${createDay}/${createMonth}/${createYear}</span>
+                                    <span class="ml-auto">
+                                        <img class="mr-1" src="/documents/39403/307879/icon_view.svg">${viewCount}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -54,51 +56,7 @@
                 </#if>
             </#list>
         </#if>
-                <#assign dateFormatDay = "dd" />
-                <#assign monthFormatDay = "MM" />
-                <#assign yearFormatDay = "yyyy" />
-                <#assign dateFormatTime = "HH:mm" />
-                <#assign indexLocal = 0 />
-                <#assign totalEntries = entries?size />
-                <#list entries as curEntry>
-                <#assign renderer = curEntry.getAssetRenderer() />
-                <#assign className = renderer.getClassName() />
-                    <#if className == "com.liferay.journal.model.JournalArticle" 
-                      && curEntry.getAvailableLanguageIds()?seq_contains(locale) 
-                      && indexLocal < totalEntries>
-                        <#assign title = curEntry.getTitle(locale) />
-                        <#assign article = renderer.getArticle() />
-                        <#assign description = article.getDescription(locale) />
-                        <#assign ddmTemplateKey = article.getDDMTemplateKey() />
-                        <#assign createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale) />
-                        <#assign createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale) />
-                        <#assign createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale) />
-                        <#assign createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale) />
-                        <#assign viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}" />
-                        <#assign indexLocal = indexLocal + 1 />
-
-                        <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
-                            <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) />
-                        <#else>
-                            <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
-                        </#if>
-
-                        <div class="custom-carousel-item-thongbao">
-                            <div onclick="location.href='${viewURL}'" class="thongcao d-flex align-items-center justify-content-center">
-                                <img src="${smallImageUrl}" class="img-thongcao">
-                                <div class="p-3 ct-backgound-thongcao">
-                                    <p class="title-thongcao text-clamp-4 mb-1">${title}</p>
-                                    <div class="date-thongcao d-flex align-items-center justify-content-between">
-                                        <span>${createDay}/${createMonth}/${createYear}</span>
-                                        <span class="ml-auto">
-                                            <img class="mr-1" src="/documents/39403/307879/icon_view.svg">1,141
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </#if>
-                </#list>
+                
             </div>
         </div>
         <div class="custom-carousel-control-next" id="nextButton1">
