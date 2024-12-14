@@ -451,7 +451,12 @@
         line-height: 130%;
         letter-spacing: 0.024px;
     }
-
+    .sdt-list-tlq-items:hover > a{
+        color: #0D4C92!important;
+    }
+    .sdt-list-tlq-items:hover::before {
+    background: #0D4C92;
+}
     .sdt-list-tlq-items::before {
         position: absolute;
         top: 7px;
@@ -579,7 +584,29 @@
         letter-spacing: 0.021px;
         background: none;
     }
+    .content-left-tlq{
+        padding: 0!important;
+    }
+    .content-right-tlq{
+        padding-left: 32px!important;
+    }
+    .content-right-tlq:hover,
+    .content-right-tlq:hover ~ .content-left-tlq {
+        background-color: #0D4C92;
+    }
 
+    .content-right-tlq:hover .text-title-tlq-img,
+    .content-right-tlq:hover .text-des-tlq > p,
+    .content-right-tlq:hover .text-readmore-tlq{
+        color: #ffffff!important;
+    }
+    .content-right-tlq,
+    .content-left-tlq,
+    .content-right-tlq .text-title-tlq-img,
+    .content-right-tlq .text-des-tlq > p,
+    .content-right-tlq .text-readmore-tlq {
+        transition: all 0.9s ease;
+    }
 
 </style>
 <style>
@@ -1195,20 +1222,16 @@ images_folder = theme_display.getPathThemeImages()
 													<#if indexLocal  == 1>
 														<div class="col-12 d-flex p-0 mb-16" idx="${indexLocal}" style="height: 100% !important;">
 															<a href="${viewURL}" class="d-flex w-100 border-item">
-																<div class="col-4 pl-0">
+																<div class="col-4 pl-0 content-left-tlq">
 																	<img id="tin-slide-img-left"
 																		 class="tin-slide-img-left img-34-left col-4 p-0 h-img-ctbv"
 																		 src="${smallImageUrl}" alt="" width="100%">
 																</div>
-																<div class="col-8">
+																<div class="col-8 content-right-tlq">
 																	<p class="limit-title-1 text-title-tlq-img">${title}</p>
 																	<div class="text-left limit-description-3 text-des-tlq">${description}</div>
 																	<p class="text-readmore-tlq d-mobile-none">Đọc thêm
-																		<svg xmlns="http://www.w3.org/2000/svg" width="7"
-																			 height="12" viewBox="0 0 7 12" fill="none">
-																			<path d="M0.433984 11.7628C0.283984 11.6047 0.208984 11.4175 0.208984 11.2013C0.208984 10.9854 0.283984 10.7984 0.433984 10.6403L4.82898 6.00791L0.418984 1.35968C0.278984 1.21212 0.208984 1.02767 0.208984 0.806324C0.208984 0.58498 0.283984 0.395257 0.433984 0.237154C0.583984 0.0790514 0.761584 0 0.966784 0C1.17158 0 1.34898 0.0790514 1.49898 0.237154L6.53898 5.56522C6.59898 5.62846 6.64158 5.69697 6.66678 5.77075C6.69158 5.84453 6.70398 5.92358 6.70398 6.00791C6.70398 6.09223 6.69158 6.17128 6.66678 6.24506C6.64158 6.31884 6.59898 6.38735 6.53898 6.45059L1.48398 11.7787C1.34398 11.9262 1.17158 12 0.966784 12C0.761584 12 0.583984 11.9209 0.433984 11.7628Z"
-																				  fill="#C8392B"/>
-																		</svg>
+																		<i class="fa fa-angle-right"></i>
 																	</p>
 																</div>
 															</a>

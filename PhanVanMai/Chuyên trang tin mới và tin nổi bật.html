@@ -1,0 +1,272 @@
+<div class="home-tinnoibat-tinmoi mb-5">
+    <div class="container p-0">
+        <div class="row p-0">
+            <div class="col-lg-8 col-md-12 mb-4 mb-lg-0 img-hover p-0">
+                <#assign dateFormatDay = "dd" />
+                <#assign monthFormatDay = "MM" />
+                <#assign yearFormatDay = "dd/MM/yyyy" />
+                <#assign dateFormatTime = "HH:mm" />
+                <#assign indexLocal = 0/>
+                <#if entries?has_content>
+                    <#list entries as curEntry>
+                        <#assign
+                        renderer = curEntry.getAssetRenderer()
+                        className = renderer.getClassName() />
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 1>
+                            <#assign
+                            title = curEntry.getTitle(locale)
+                            article = renderer.getArticle()
+                            description = article.getDescription(locale)
+                            ddmTemplateKey = article.getDDMTemplateKey()
+                            curEntry = curEntry
+                            createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                            datehhmm = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                            createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                            createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                            indexLocal = indexLocal + 1 />
+                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                            <#else>
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
+                            </#if>
+                            <div class="h-100 main-tin-noi-bat-pct" onclick="location.href= '${viewURL}'">
+                                <div class="col-12 anh-chinh-tin-nb">
+                                    <img id="tin-slide-img-left" class="tin-slide-img-left h-100 img-34-left p-0"
+                                         src="${smallImageUrl}" alt="" width="100%">
+                                </div>
+                                <div class="col-12 limit-tin-desc-news-3 anh-phu-tin-nb">
+                                    <div class="hoat-dong-moi-nhat-left">
+                                        <div class="limit-tin-desc-2">
+                                            <p class="makeshortnews makeshortnews-main-title-pctt asset-publisher-title font-merri mb-1 font-weight-bold mb-2 limit-tin-desc-2 limit-tin-desc-2-dong">${title}</p>
+                                        </div>
+                                        <p class="text-ngaythang d-flex align-items-center justify-content-between">
+                                            <span  style="color: #686868;">${datehhmm} | ${createYear}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </#if>
+                    </#list>
+                </#if>
+            </div>
+            <div class="col-md-4 mb-4 mb-lg-0 row m-0 p-0">
+                <#assign indexLocal = 0/>
+                <#if entries?has_content>
+                    <#list entries as curEntry>
+                        <#assign
+                        renderer = curEntry.getAssetRenderer()
+                        className = renderer.getClassName() />
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale)>
+                            <#assign
+                            title = curEntry.getTitle(locale)
+                            article = renderer.getArticle()
+                            description = article.getDescription(locale)
+                            ddmTemplateKey = article.getDDMTemplateKey()
+                            curEntry = curEntry
+                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}" />
+                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                            <#else>
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
+                            </#if>
+                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                                <#if indexLocal gte 1>
+                                    <a href="${viewURL}" class="w-100 same-height img-hover ">
+                                        <div class="col-12 ">
+                                            <img id="tin-slide-img-left" class="tin-slide-img-left img-34-left p-0"
+                                                 src="${smallImageUrl}" alt="" width="100%">
+                                        </div>
+                                        <div class="col-12 limit-tin-desc-news-3">
+                                            <div class="hoat-dong-moi-nhat-right ">
+                                                <div class="limit-tin-desc-2 second-color-pct">
+                                                    <p class="makeshortnews asset-publisher-title font-merri mb-1 font-weight-bold mb-2 limit-tin-desc-2 limit-tin-desc-2-dong">${title}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </#if>
+                                <#assign indexLocal = indexLocal + 1 >
+                            </#if>
+                        </#if>
+                    </#list>
+                </#if>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .home-tinnoibat-tinmoi{
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .img-hover:first-child {
+        margin-bottom: 15px;
+    }
+    .anh-chinh-tin-nb{
+        height: 100%;
+        position: relative;
+    }
+    .anh-phu-tin-nb{
+        position: absolute;
+        bottom: 0;
+    }
+    .second-color-pct > p{
+        color: #2E2E2E !important;
+    }
+    .limit-tin-desc-2-dong{
+        line-height: 1.2;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .makeshortnews-main-title-pctt{
+        font-size: 24px;
+        color: #0D4C92 !important;
+    }
+    .main-tin-noi-bat-pct{
+        cursor: pointer;
+    }
+    .hoat-dong-moi-nhat-left {
+        height: 100%;
+        background: #F6F6F6;
+        padding: 14px;
+        display:block;
+    }
+    .hoat-dong-moi-nhat-right {
+        height: 100%;
+        padding: 10px;
+        display:block;
+    }
+    .img-hover:hover .hoat-dong-moi-nhat-left,
+    .img-hover:hover .hoat-dong-moi-nhat-right{
+        background-color: #0D4C92;
+        color: #FFF !important;
+    }
+    .img-hover:hover .asset-publisher-title,
+    .img-hover:hover .text-ngaythang > span,
+    .img-hover:hover .limit-tin-descc-news > p {
+        color: #FFF !important;
+    }
+    .img-hover:hover .text-ngaythang > span,
+    .img-hover:hover .limit-tin-descc-news > p {
+        color: #FFF !important;
+    }
+
+    .title-header {
+        padding: 20px 0 12px 0;
+    }
+
+    .title-header > p {
+        color: #031739;
+        font-family: Roboto;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        border-left: 3px solid rgba(13, 76, 146, 1);
+        padding-left: 16px;
+    }
+
+    .custom-by-portal-hcm .custom-left-new-tinnoibat {
+        display: block;
+        padding: 10px;
+        bottom: 0;
+    }
+
+    .custom-by-portal-hcm .custom-left-new-tinnoibat {
+        color: #02397A;
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 23.4px;
+        letter-spacing: 0.024px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .home-tinnoibat-hoatdongmoinhat-news-left:hover > a,
+    .home-tinnoibat-hoatdongmoinhat-news:hover > a,
+    .home-tinnoibat-hoatdongmoinhat-news:hover > span,
+    .home-tinnoibat-hoatdongmoinhat-news:hover > span > p {
+        color: #FFF;
+    }
+
+    .boder-r::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 1em;
+        border-right: 1px solid #777777;
+    }
+    .text-4dong > p {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .home-tinnoibat-hoatdongmoinhat-news-left > a {
+        font-family: Roboto;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 28.6px;
+        letter-spacing: 0.0125em;
+        text-align: left;
+        color: #0D4C92;
+    }
+
+    .home-tinnoibat-hoatdongmoinhat-news > a {
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 23.4px;
+        letter-spacing: 0.0125em;
+        text-align: left;
+        color: #0D4C92;
+    }
+
+    .home-tinnoibat-hoatdongmoinhat-news > span {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18.2px;
+        letter-spacing: 0.005em;
+        text-align: left;
+        color: #2E2E2E;
+    }
+
+    .nav-pills .nav-link.active {
+        color: #0D4C92;
+        font-family: Roboto;
+        font-size: 18px;
+        line-height: 23.4px;
+        letter-spacing: 0.0015em;
+        text-align: left;
+        background: #BCE6FE;
+        font-weight: 700;
+    }
+
+    .nav-pills .nav-link {
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 23.4px;
+        letter-spacing: 0.0015em;
+        text-align: center;
+        color: #777777;
+        background: #BCE6FE;
+    }
+
+    .featured-news .bg-custom-gray-tinnoibat {
+        background: rgba(224, 224, 224, 30%);
+    }
+</style>

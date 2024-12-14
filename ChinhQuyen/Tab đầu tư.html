@@ -1,0 +1,185 @@
+<div class="container-cq-dautu">
+  <div class="header-container-dautu">
+    <h1 class="title-content-tlq my-3">ĐẦU TƯ</h1>
+  </div>
+  <div class="button-container-dautu">
+    [#list 0..configuration.numberOfTabs-1 as i]
+    <div
+      class="button-child-dautu"
+      style="flex: 1 1 calc(${configuration.withOfButton} - 16px)"
+    >
+      <button
+        class="nav-link w-100 h-100 nav-link-gt-chiquyen button-style2-dautu col-12 thuong-truc-duong-nhiem"
+        data-content="thuongtrucduongnhiem"
+        aria-controls="tabPanel${i+1}"
+        aria-selected="false"
+        data-fragment-namespace="${fragmentEntryLinkNamespace}"
+        id="tab${i+1}"
+        role="tab"
+      >
+        <div
+          class="component-html mb-0 title-tab-dautu"
+          data-lfr-editable-id="title${i+1}"
+          data-lfr-editable-type="html"
+          tabindex="-1"
+        >
+          Tab ${i+1}
+        </div>
+      </button>
+    </div>
+    [/#list]
+  </div>
+  <div class="tab-panel d-block custom-nav">
+    [#list 0..configuration.numberOfTabs-1 as i]
+    <div
+      aria-labelledby="tab${i+1}"
+      class="tab-panel-item d-none"
+      data-fragment-namespace="${fragmentEntryLinkNamespace}"
+      id="tabPanel${i+1}"
+      role="tabpanel"
+      tabindex="0"
+    >
+      <lfr-drop-zone></lfr-drop-zone>
+    </div>
+    [/#list]
+  </div>
+</div>
+<style>
+  .container-cq-dautu {
+    margin-left: 16%;
+    margin-right: 3%;
+    margin-top: 50px;
+  }
+  .header-container-dautu {
+    margin-bottom: 10px;
+  }
+  .title-content-tlq {
+    color: #0d4c92;
+    font-size: 32px;
+    font-weight: 700;
+  }
+  .button-container-dautu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  .button-child-dautu {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    max-width: 215px;
+    max-height: 58px;
+  }
+  .button-child-dautu .title-tab-dautu {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .button-style2-dautu {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #f5f5f5;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  .button-style2-dautu.active {
+    background-color: #db7100;
+    color: #ffffff;
+  }
+
+  .button-style2-dautu:hover {
+    background-color: #db7100;
+    color: #ffffff;
+  }
+</style>
+<script>
+  const dropdown = fragmentElement.querySelector(".navbar-collapse");
+  const editMode = document.body.classList.contains("has-edit-mode-menu");
+  const tabItems = [].slice.call(
+    fragmentElement.querySelectorAll(
+      '[data-fragment-namespace="' + fragmentNamespace + '"].nav-link'
+    )
+  );
+  const tabPanelItems = [].slice.call(
+    fragmentElement.querySelectorAll(
+      '[data-fragment-namespace="' + fragmentNamespace + '"].tab-panel-item'
+    )
+  );
+
+  function activeTab(item) {
+    tabItems.forEach(function (tabItem) {
+      tabItem.setAttribute("aria-selected", false);
+      tabItem.classList.remove("active");
+    });
+    item.setAttribute("aria-selected", true);
+    item.classList.add("active");
+  }
+
+  function activeTabPanel(item) {
+    tabPanelItems.forEach(function (tabPanelItem) {
+      if (!tabPanelItem.classList.contains("d-none")) {
+        tabPanelItem.classList.add("d-none");
+      }
+    });
+    item.classList.remove("d-none");
+  }
+
+  function openTabPanel(event, i) {
+    const currentTarget = event.currentTarget;
+    const target = event.target;
+    const isEditable =
+      target.hasAttribute("data-lfr-editable-id") ||
+      target.hasAttribute("contenteditable");
+
+    if (!isEditable || !editMode) {
+      currentTarget.focus();
+
+      activeTab(currentTarget, i);
+      activeTabPanel(tabPanelItems[i]);
+
+      this.tabIndex = i;
+    }
+  }
+
+  function main() {
+    const initialState = !this.tabIndex || this.tabIndex >= tabItems.length;
+    let tabItemSelected = tabItems[0];
+
+    if (initialState) {
+      tabItems.forEach(function (item, i) {
+        if (!i) {
+          activeTab(item);
+        }
+        item.addEventListener("click", function (event) {
+          openTabPanel(event, i);
+        });
+      });
+      tabPanelItems.forEach(function (item, i) {
+        if (!i) {
+          activeTabPanel(item);
+        }
+      });
+    } else {
+      tabItemSelected = tabItems[this.tabIndex];
+      tabItems.forEach(function (item, i) {
+        activeTab(tabItems[this.tabIndex]);
+        item.addEventListener("click", function (event) {
+          openTabPanel(event, i);
+        });
+      });
+      tabPanelItems.forEach(function () {
+        activeTabPanel(tabPanelItems[this.tabIndex]);
+      });
+    }
+  }
+
+  main();
+</script>

@@ -1,0 +1,129 @@
+<style>
+    .title-news-row2 {
+        min-height: 51px;
+    }
+    .title-news-row2 > p {
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 9em;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        margin: 0;
+    }
+</style>
+<div class="row danhsach-tin-1-cot">
+    <div class="col-12">
+        <#assign portlet_display = portletDisplay
+        portlet_title = htmlUtil.escape(portlet_display.getTitle()) />
+        <#assign indexLocal = 0/>
+        <#if entries?has_content>
+
+        <#list entries as curEntry>
+            <#assign
+            renderer = curEntry.getAssetRenderer()
+            className = renderer.getClassName() />
+            <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale)>
+                <#assign
+                title = curEntry.getTitle(locale)
+                article = renderer.getArticle()
+                description = article.getDescription(locale)
+                ddmTemplateKey = article.getDDMTemplateKey()
+                curEntry = curEntry
+                viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                indexLocal = indexLocal + 1 />
+                <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                    <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                <#else>
+                    <#assign smallImageUrl = "" >
+                </#if>
+
+                <#if indexLocal  == 1>
+                    <a href="${viewURL}">
+                        <img src="${smallImageUrl}" class="w-100 img-3x4" alt="">
+                        <div  class="m-0 py-1 title-news-custom">
+                            <p class="m-0 pt-2" title="${title}">${title}</p>
+                        </div>
+                    </a>
+                    <hr class="mt-1 line">
+                <#else>
+                    <a href="${viewURL}" class="row custom-title-news">
+                        <div class="col-4 col-sm-4 col-xs-12 px-0">
+                            <img src="${smallImageUrl}" class="w-100 img-fluid sdt-img-max-height img-3x4" alt="">
+                        </div>
+                        <div class="col-8 col-sm-8 col-xs-12 pd-4-6">
+                            <p title="${title}">${title}</p>
+                        </div>
+                    </a>
+                </#if>
+            </#if>
+        </#list>
+        </ul>
+    </div>
+    </#if>
+</div>
+</div>
+<style>
+    .custom-by-portal-hcm .title-news-custom {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .custom-by-portal-hcm .title-news-custom > p {
+        color: var(--cpblue-031379, #031739);
+        /* Subtitle 2-16px */
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        /* 20.8px */
+        letter-spacing: 0.024px;
+    }
+
+    .custom-by-portal-hcm .danhsach-tin-1-cot a.custom-title-news {
+        background: var(--cpgreyf-9-f-9-f-9, #f9f9f9);
+        color: var(--cpblue-182940, #182940);
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        letter-spacing: 0.035px;
+        margin-bottom: 10px;
+        margin-left: 0px;
+        width: 100%;
+    }
+    .custom-by-portal-hcm .danhsach-tin-1-cot a.custom-title-news p {
+        color: var(--cpblue-182940, #182940);
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        letter-spacing: 0.035px;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 5em;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        margin: 0;
+    }
+    .custom-by-portal-hcm .pd-4-0-4-6 {
+        padding: 4px 0px 4px 6px !important;
+    }
+
+    .custom-by-portal-hcm .pd-4-6 {
+        padding: 4px 6px;
+    }
+
+</style>
+<script>
+    $(document).ready(function () {
+        $("img.img-3x4").each(function () {
+            $(this).outerHeight($(this).width() * 0.6);
+        });
+    })
+</script>
