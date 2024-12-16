@@ -380,137 +380,139 @@
     </style>
 </head>
 <body>
-<div class="slideshow-header-container">
-    <button class="custom-prev-btn-news-slideshow">
-        <img src="/documents/39403/310714/left-arrow.svg"
-             alt="Previous" />
-    </button>
-    <button class="custom-next-btn-news-slideshow">
-        <img src="/documents/39403/310714/right-arrow.svg"
-             alt="Next" />
-    </button>
-    <swiper-container class="news-slideshow" pagination="true" slide-to-clicked-slide="true"
-                      pagination-clickable="true" space-between="0" slides-per-view="5" centered-slides="true" initial-slide="2"
-                      navigation="false" loop="true" watch-slides-progress="true"
-                      pagination-dynamic-bullets="true"
-                      pagination-dynamic-main-bullets="3"
-    >
-        <#if entries?has_content>
-            <#assign imageMimeTypes=propsUtil.getArray("dl.file.entry.preview.image.mime.types") />
-            <#assign entries=entries?sort_by("modifiedDate")?reverse />
-            <#list entries as entry>
-                <#if imageMimeTypes?seq_contains(entry.getMimeType())>
-                    <swiper-slide >
-                        <img src="${dlUtil.getPreviewURL(entry, entry.getFileVersion(), themeDisplay, "")}"
-                             alt="" /> 
-                    </swiper-slide>
-                </#if>
-            </#list>
-        </#if>
-    </swiper-container>
+    <div class="slideshow-header-container">
+        <button class="custom-prev-btn-news-slideshow">
+            <img src="/documents/39403/310714/left-arrow.svg" alt="Previous" />
+        </button>
+        <button class="custom-next-btn-news-slideshow">
+            <img src="/documents/39403/310714/right-arrow.svg" alt="Next" />
+        </button>
+        <swiper-container class="news-slideshow" pagination="true" slide-to-clicked-slide="true"
+            pagination-clickable="true" space-between="0" slides-per-view="5" centered-slides="true"
+            initial-slide="2" navigation="false" loop="true" watch-slides-progress="true"
+            pagination-dynamic-bullets="true" pagination-dynamic-main-bullets="3">
+            <#if entries?has_content>
+                <#assign imageMimeTypes=propsUtil.getArray("dl.file.entry.preview.image.mime.types") />
+                <#assign entries=entries?sort_by("modifiedDate")?reverse />
+                <#list entries as entry>
+                    <#if imageMimeTypes?seq_contains(entry.getMimeType())>
+                        <#assign imageUrl = dlUtil.getPreviewURL(entry, entry.getFileVersion(), themeDisplay, "") />
+                        <#assign specialImageUrl="/documents/39403/328978/30-4+D%E1%BB%8CC.jpg/4369e91a-5013-c8b2-c516-9cb5c0c5ffd6"/>
+                       <swiper-slide
+                           <#if imageUrl?contains(specialImageUrl)>
+                           onclick="window.location.href = '/tin-tuc-su-kien-3'"
+                           </#if>
+                       >
+                            <img src="${imageUrl}" alt="" />
+                        </swiper-slide>
+                    </#if>
+                </#list>
+            </#if>
+        </swiper-container>
+    </div>
 
-</div>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-<script >
-    $(document).ready(function () {
-        // Đổi tên biến để tránh xung đột
-        const headerSwiper = $(".news-slideshow")[0];
-        let headerSwiperInstance = headerSwiper?.swiper;
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Đổi tên biến để tránh xung đột
+            const headerSwiper = $(".news-slideshow")[0];
+            let headerSwiperInstance = headerSwiper?.swiper;
 
-        if (!headerSwiperInstance) return;
+            if (!headerSwiperInstance) return;
 
-        // Thêm xử lý hover cho từng slide
-        $(".news-slideshow").find("swiper-slide").each(function (index) {
-            let hoverTimeout;
+            // Thêm xử lý hover cho từng slide
+            $(".news-slideshow").find("swiper-slide").each(function (index) {
+                let hoverTimeout;
 
-            $(this).on({
-                mouseenter: function () {
-                    if (hoverTimeout) clearTimeout(hoverTimeout);
-                    hoverTimeout = setTimeout(() => {
-                        if (index !== headerSwiperInstance.realIndex) {
-                            const currentIndex = headerSwiperInstance.realIndex;
-                            const totalSlides = headerSwiperInstance.slides.length;
+                $(this).on({
+                    mouseenter: function () {
+                        if (hoverTimeout) clearTimeout(hoverTimeout);
+                        hoverTimeout = setTimeout(() => {
+                            if (index !== headerSwiperInstance.realIndex) {
+                                const currentIndex = headerSwiperInstance.realIndex;
+                                const totalSlides = headerSwiperInstance.slides.length;
 
-                            const moveToIndex = (currentIndex, targetIndex) => {
-                                const forwardDistance = (targetIndex - currentIndex + totalSlides) % totalSlides;
-                                const backwardDistance = (currentIndex - targetIndex + totalSlides) % totalSlides;
-                                return forwardDistance <= backwardDistance ? "next" : "prev";
-                            };
+                                const moveToIndex = (currentIndex, targetIndex) => {
+                                    const forwardDistance = (targetIndex - currentIndex + totalSlides) % totalSlides;
+                                    const backwardDistance = (currentIndex - targetIndex + totalSlides) % totalSlides;
+                                    return forwardDistance <= backwardDistance ? "next" : "prev";
+                                };
 
-                            const direction = moveToIndex(currentIndex, index);
-                            const moveSlide = () => {
-                                if (headerSwiperInstance.realIndex !== index) {
-                                    if (direction === "next") {
-                                        headerSwiperInstance.slideNext(500);
-                                    } else {
-                                        headerSwiperInstance.slidePrev(500);
+                                const direction = moveToIndex(currentIndex, index);
+                                const moveSlide = () => {
+                                    if (headerSwiperInstance.realIndex !== index) {
+                                        if (direction === "next") {
+                                            headerSwiperInstance.slideNext(500);
+                                        } else {
+                                            headerSwiperInstance.slidePrev(500);
+                                        }
                                     }
-                                }
-                            };
-                            moveSlide();
-                        }
-                    }, 200);
-                },
-                mouseleave: function () {
-                    if (hoverTimeout) clearTimeout(hoverTimeout);
-                },
+                                };
+                                moveSlide();
+                            }
+                        }, 200);
+                    },
+                    mouseleave: function () {
+                        if (hoverTimeout) clearTimeout(hoverTimeout);
+                    },
+                });
             });
-        });
 
-        // Xử lý nút điều hướng
-        $(".custom-prev-btn-news-slideshow").on("click", () => {
-            if (headerSwiperInstance) headerSwiperInstance.slidePrev();
-        });
-
-        $(".custom-next-btn-news-slideshow").on("click", () => {
-            if (headerSwiperInstance) headerSwiperInstance.slideNext();
-        });
-
-        // Thêm cấu hình breakpoints cho headerSwiper
-        if (headerSwiper) {
-            Object.assign(headerSwiper, {
-                breakpoints: {
-                    320: {
-                        slidesPerView: 1,
-                        spaceBetween: 10,
-                    },
-                    480: {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                    },
-                    768: {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                    },
-                    1024: {
-                        slidesPerView: 3,
-                        spaceBetween: 20,
-                    },
-                    1440: {
-                        slidesPerView: 5,
-                        spaceBetween: 0,
-                    },
-                    1824: {
-                        slidesPerView: 5,
-                        spaceBetween: 0,
-                    },
-                },
+            // Xử lý nút điều hướng
+            $(".custom-prev-btn-news-slideshow").on("click", () => {
+                if (headerSwiperInstance) headerSwiperInstance.slidePrev();
             });
-        }
 
-        // Thêm observer để theo dõi thay đổi DOM
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                    headerSwiperInstance = headerSwiper?.swiper;
-                }
+            $(".custom-next-btn-news-slideshow").on("click", () => {
+                if (headerSwiperInstance) headerSwiperInstance.slideNext();
             });
-        });
 
-        if (headerSwiper) {
-            observer.observe(headerSwiper, { childList: true, subtree: true });
-        }
-    });
-</script>
+             // Thêm cấu hình breakpoints cho headerSwiper
+             if (headerSwiper) {
+                Object.assign(headerSwiper, {
+                    breakpoints: {
+                        320: {
+                            slidesPerView: 1,
+                            spaceBetween: 10,
+                        },
+                        480: {
+                            slidesPerView: 1,
+                            spaceBetween: 20,
+                        },
+                        768: {
+                            slidesPerView: 1,
+                            spaceBetween: 20,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 20,
+                        },
+                        1440: {
+                            slidesPerView: 5,
+                            spaceBetween: 0,
+                        },
+                        1824: {
+                            slidesPerView: 5,
+                            spaceBetween: 0,
+                        },
+                    },
+                });
+            }
+
+            // Thêm observer để theo dõi thay đổi DOM
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                        headerSwiperInstance = headerSwiper?.swiper;
+                    }
+                });
+            });
+
+            if (headerSwiper) {
+                observer.observe(headerSwiper, { childList: true, subtree: true });
+            }
+
+        });
+    </script>
 </body>
