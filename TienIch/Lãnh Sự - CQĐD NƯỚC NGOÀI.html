@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Combined Search and Consulate</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <style>
+      .search-container-ls {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        max-width: 1300px;
+        margin: 0 10px;
+      }
+      .search-label {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20.8px;
+        letter-spacing: 0.0015em;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        width: 70px;
+        height: 21px;
+        color: #2e2e2e;
+        flex-shrink: 0;
+      }
+      .search-input-ls {
+        height: 40px;
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 1px solid #e0e0e0;
+        outline: none;
+        box-sizing: border-box;
+        flex-grow: 1;
+        min-width: 100px;
+      }
+
+      .search-button-ls {
+        width: 121px;
+        height: 40px;
+        border-radius: 8px;
+        border: none;
+        color: #ffffff;
+        background: #0099d2;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+        flex-shrink: 0;
+      }
+      .advanced-search-button {
+        width: 221px;
+        height: 40px;
+        padding: 14px 22px;
+        border-radius: 6px;
+        border: none;
+        background: #db7100;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 500;
+        flex-shrink: 0;
+      }
+      .advanced-search-button > i {
+        margin-right: 4px;
+      }
+      .flag-container {
+        width: 127px;
+        height: 80px;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .flag-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      /* Responsive cho màn hình nhỏ hơn 425px */
+      @media (max-width: 425px) {
+        .search-container-ls {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .search-input-ls {
+          width: 100%;
+        }
+        .search-button-ls,
+        .advanced-search-button {
+          width: 100%;
+          height: 40px;
+        }
+        .flag-container {
+          width: 80px;
+          height: 50px;
+        }
+      }
+
+      /* Responsive cho màn hình từ 426px đến 768px */
+      @media (min-width: 426px) and (max-width: 768px) {
+        .search-container-ls {
+          flex-wrap: wrap;
+        }
+        .search-input-ls {
+          flex-grow: 1;
+        }
+        .search-button-ls {
+          width: 100px;
+          font-size: 16px;
+        }
+        .advanced-search-button {
+          width: 210px;
+          font-size: 16px;
+        }
+        .flag-container {
+          width: 100px;
+          height: 60px;
+        }
+      }
+
+      /* Responsive cho màn hình từ 769px đến 1024px */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .search-container-ls {
+          gap: 16px;
+        }
+        .search-input-ls {
+          /*  Input chiếm phần lớn chiều ngang còn lại */
+          width: 850px;
+        }
+
+        .search-button-ls {
+          width: 110px;
+          font-size: 17px;
+        }
+        .advanced-search-button {
+          width: 210px;
+          font-size: 17px;
+        }
+        .flag-container {
+          width: 120px;
+          height: 70px;
+        }
+      }
+
+      /* Responsive cho màn hình từ 1025px đến 1330px */
+      @media (min-width: 1025px) and (max-width: 1330px) {
+        .search-container-ls {
+          gap: 16px;
+        }
+        .search-input-ls {
+          width: 430px;
+        }
+        .search-button-ls {
+          width: 115px;
+        }
+        .advanced-search-button {
+          width: 222px;
+        }
+        .flag-container {
+          width: 127px;
+          height: 80px;
+        }
+      }
+      /* Responsive cho màn hình từ 1331px đến 1440px */
+      @media (min-width: 1331px) and (max-width: 1440px) {
+        .search-input-ls {
+          width: 500px;
+        }
+        .flag-container {
+          width: 127px;
+          height: 80px;
+        }
+      }
+
+      /* Responsive cho màn hình từ 1441px đến 1824px */
+      @media (min-width: 1441px) and (max-width: 1824px) {
+        .search-input-ls {
+          width: 500px;
+        }
+        .flag-container {
+          width: 127px;
+          height: 80px;
+        }
+      }
+
+      /* Responsive cho màn hình từ 1825px đến 2304px */
+      @media (min-width: 1825px) and (max-width: 2304px) {
+        .search-container-ls {
+          gap: 22px;
+        }
+        .search-input-ls {
+          width: 500px;
+        }
+
+        .search-button-ls {
+          width: 130px;
+          font-size: 19px;
+        }
+        .advanced-search-button {
+          width: 230px;
+          font-size: 19px;
+        }
+      }
+      .consulate-container {
+        max-width: 1300px;
+        margin: 20px auto;
+        padding: 10px;
+      }
+
+      .consulate-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .consulate-total {
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 23.4px;
+        letter-spacing: 0.0125em;
+        color: #2e2e2e;
+      }
+
+      .consulate-count {
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 28.6px;
+        letter-spacing: 0.0125em;
+        color: #0d4c92;
+        padding: 10px;
+      }
+
+      .consulate-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 18px;
+      }
+      .consulate-item {
+        overflow: hidden;
+      }
+      .consulate-title {
+        width: 100%;
+        height: 50px;
+        background-color: #de8d14;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        justify-content: center;
+        margin-bottom: 12px;
+      }
+      .consulate-title-text {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20.8px;
+        letter-spacing: 0.0015em;
+        color: #ffffff;
+        text-align: center;
+      }
+      .consulate-info {
+        background-color: #fff2e0;
+        padding: 20px 6px;
+        display: flex;
+        align-items: center;
+      }
+      .flag-container {
+        width: 127px;
+        height: 80px;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .flag-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+      .consulate-details {
+        display: flex;
+        flex-direction: column;
+      }
+      .consulate-address,
+      .consulate-phone {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18.2px;
+        letter-spacing: 0.0015em;
+        color: #2e2e2e;
+        margin: 5px 0;
+      }
+
+      /* panigation */
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .pagination-button {
+        background-color: #f4f4f4;
+        border: none;
+        border-radius: 5px;
+        margin: 0 4px;
+        color: #333;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: 14px;
+        width: 35px;
+        height: 35px;
+      }
+
+      .pagination-button.active {
+        background-color: #0d4c92;
+        color: white;
+      }
+
+      .pagination-button:hover {
+        background-color: #0d4c92;
+        color: #ffffff;
+      }
+
+      .pagination-button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="search-container-ls">
+      <span class="search-label">Từ khoá:</span>
+      <input type="text" placeholder="Nhập từ khóa" class="search-input-ls" />
+      <button class="search-button-ls">Tìm kiếm</button>
+      <button class="advanced-search-button">
+        <i class="fa fa-plus"></i> Tìm kiếm nâng cao
+      </button>
+    </div>
+
+    <div class="consulate-container">
+      <div class="consulate-header">
+        <span class="consulate-total">Tổng số:</span>
+        <span class="consulate-count">44</span>
+      </div>
+      <div class="consulate-grid">
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN LÀO</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Flag_of_Laos.svg/2560px-Flag_of_Laos.svg.png"
+                alt="Lao Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 93 Pasteur. Phường Bến Nghé, Quận 1</span
+              >
+              <span class="consulate-phone"
+                >Điện thoại cơ quan: (028) 8297667</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >TỔNG LÃNH SỰ QUÁN INDONESIA</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Indonesia.svg/2560px-Flag_of_Indonesia.svg.png"
+                alt="Indonesian Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 18. Phùng Khắc Khoan, P Đa Kao, Quận 1</span
+              >
+              <span class="consulate-phone"
+                >Điện thoại cơ quan: 8251888 - 8223799</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >THƯƠNG VỤ TỔNG LÃNH SỰ QUÁN PHÁP</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%29.svg/2560px-Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%29.svg.png"
+                alt="French Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 162 Pasteur (Lầu 10), PBN, Quận 1</span
+              >
+              <span class="consulate-phone">Điện thoại cơ quan: 8222942</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN ROMANIA</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flag_of_Romania.svg/2560px-Flag_of_Romania.svg.png"
+                alt="Romania Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 33/6 Đặng Văn Ngữ, Quận Phú Nhuận</span
+              >
+              <span class="consulate-phone">Điện thoại cơ quan: 9911204</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN MEXICO</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/2560px-Flag_of_Mexico.svg.png"
+                alt="Mexico Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 215A-B Hoàng Văn Thụ, Quận Phú Nhuận</span
+              >
+              <span class="consulate-phone">Điện thoại cơ quan: 8445520</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >TỔNG LÃNH SỰ QUÁN CỘNG HÒA CZECH</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_Czech_Republic.svg/2560px-Flag_of_the_Czech_Republic.svg.png"
+                alt="Czech Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 28 Mạc Đĩnh Chi, Quận 1</span
+              >
+              <span class="consulate-phone">Điện thoại cơ quan: 8290585</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN ANH</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/2560px-Flag_of_the_United_Kingdom_%283-5%29.svg.png"
+                alt="UK Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 25 Lê Duẩn, P Bến Nghé, Quận 1</span
+              >
+              <span class="consulate-phone"
+                >Điện thoại cơ quan: (028) 38298433</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN HOA KỲ</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png"
+                alt="US Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 04 Lê Duẩn, P Bến Nghé, Quận 1</span
+              >
+              <span class="consulate-phone"
+                >Điện thoại cơ quan: (028) 8229433</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >TỔNG LÃNH SỰ QUÁN NEW ZEALAND</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_New_Zealand.svg/2560px-Flag_of_New_Zealand.svg.png"
+                alt="New Zealand Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 41 Nguyễn Thị Minh Khai (lầu 5), P Bến Nghé, Quận
+                1</span
+              >
+              <span class="consulate-phone"
+                >Điện thoại cơ quan: (028) 8226907</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >TỔNG LÃNH SỰ QUÁN SINGAPORE</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Flag_of_Singapore.svg/2560px-Flag_of_Singapore.svg.png"
+                alt="Singapore Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 65 Lê Lợi (Saigon Centre lầu 8), P. Bến Nghé, Quận
+                1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 8225173</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >VĂN PHÒNG KINH TẾ - THƯƠNG MẠI<br />
+              ĐẠI SỨ QUÁN TÂY BAN NHA</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/2560px-Flag_of_Spain.svg.png"
+                alt="Spain Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 25 Phùng Khắc Khoan, P.Đa Kao, Q1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 8250173</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">THƯƠNG VỤ TỔNG LÃNH SỰ ÚC</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/2560px-Flag_of_Australia_%28converted%29.svg.png"
+                alt="Australia Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 5B Tôn Đức Thắng, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 8299387</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >THƯƠNG VỤ ITALIA – PHÂN BỐ<br />
+              PHÁT TRIỂN THƯƠNG MẠI SỨ QUÁN ITALIA</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/2560px-Flag_of_Italy.svg.png"
+                alt="Italy Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 17 Lê Duẩn (P.903, lầu 9), P.Bến Nghé, Q1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 8298721</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN NA UY</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/2560px-Flag_of_Norway.svg.png"
+                alt="Norway Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 21-23 Nguyễn Thị Minh khai</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 8296869 - 8296870</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN BRAZIL</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/2560px-Flag_of_Brazil.svg.png"
+                alt="Brazil Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 48 Trường Sơn, Quận Tân Bình</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 8486090</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN HÀ LAN</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/2560px-Flag_of_the_Netherlands.svg.png"
+                alt="Netherlands Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 29 Lê Duẩn, P Bến Nghé, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 8235932</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN HÀN QUỐC</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/2560px-Flag_of_South_Korea.svg.png"
+                alt="South Korea Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 107. Nguyễn Du, P Bến Nghé, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 8225757</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN MALAYSIA</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Flag_of_Malaysia.svg/2560px-Flag_of_Malaysia.svg.png"
+                alt="Malaysia Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 02 Ngô Đức Kế (Melinh Point Tower) P.Bến Nghé, Quận
+                1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 8299023</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >THƯƠNG VỤ ĐẠI SỨ QUÁN TÂY BAN NHA</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/2560px-Flag_of_Spain.svg.png"
+                alt="Spain Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 25 Phùng Khắc Khoan, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 8250173</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >THƯƠNG VỤ ĐẠI SỨ QUÁN ĐAN MẠCH</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Flag_of_Denmark.svg/2560px-Flag_of_Denmark.svg.png"
+                alt="Denmark Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 115 Nguyễn Huệ, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 8219372</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">THƯƠNG VỤ ĐẠI SỨ QUÁN BỈ</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/2560px-Flag_of_Belgium.svg.png"
+                alt="Belgium Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 115 Nguyễn Huệ, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 8219228</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >THƯƠNG VỤ TỔNG LÃNH SỰ QUÁN HÀN QUỐC</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/2560px-Flag_of_South_Korea.svg.png"
+                alt="South Korea Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 34 Lê Duẩn (lầu 7). P Bến Nghé, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 8223950</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >THƯƠNG VỤ TỔNG LÃNH SỰ QUÁN ITALIA</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/2560px-Flag_of_Italy.svg.png"
+                alt="Italy Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 17 Lê Duẩn (lầu 9), P.BN, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 8298726</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN THỤY SĨ</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/2560px-Flag_of_Switzerland.svg.png"
+                alt="Switzerland Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: Tầng 37, Tòa nhà Bitexco, số 2, Hải Triều, Quận
+                1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 62991200</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >TỔNG LÃNH SỰ QUÁN LIÊN BANG NGA</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/2560px-Flag_of_Russia.svg.png"
+                alt="Russia Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: F3-4, Số 40 Bà Huyện Thanh Quan, Q. 3, Tp.Hồ Chí
+                Minh</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (84-8) 393 30923</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN HUNGGARI</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Flag_of_Hungary.svg/2560px-Flag_of_Hungary.svg.png"
+                alt="Hungary Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 22. Phùng Khắc Khoan, P Đa Kao, Quận 1</span
+              >
+              <span class="consulate-phone"
+                >ĐT cơ quan: (028) 8251888 - 8223799</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN PHÁP</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%29.svg/2560px-Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931974%29.svg.png"
+                alt="France Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 27 Nguyễn Thị Minh Khai, P.Bến Nghé, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 8297231</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >TỔNG LÃNH SỰ QUÁN THỤY ĐIỂN</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Flag_of_Sweden.svg/2560px-Flag_of_Sweden.svg.png"
+                alt="Sweden Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 8A/11D1 (lầu 5) Thái Văn Lung, P.Bến Nghé, Quận
+                1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 8236800</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >TỔNG LÃNH SỰ QUÁN AUSTRALIA</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/2560px-Flag_of_Australia_%28converted%29.svg.png"
+                alt="Australia Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 5B Tôn Đức Thắng, P. Bến Nghé, Quận 1</span
+              >
+              <span class="consulate-phone"
+                >ĐT cơ quan: (028) 8296035 hoặc (028) 8226205</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN ĐAN MẠCH</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Flag_of_Denmark.svg/2560px-Flag_of_Denmark.svg.png"
+                alt="Denmark Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 20 Phùng Khắc Khoan, P. Đa Kao, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 8228289</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN CHLB ĐỨC</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/2560px-Flag_of_Germany.svg.png"
+                alt="Germany Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 126 Nguyễn Đình Chiểu, Phường 6, Quận 3</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 38291967</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >Tổng Lãnh Sự Quán Cộng Hòa Ba Lan</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/2560px-Flag_of_Germany.svg.png"
+                alt="Germany Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 65 Lê Lợi, Quận 1, TP HCM</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 9142883</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN CUBA</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Flag_of_Cuba.svg/2560px-Flag_of_Cuba.svg.png"
+                alt="Cuba Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 45 Phùng Khắc Khoan, P Đa Kao, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 8297350</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN NHẬT BẢN</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/2560px-Flag_of_Japan.svg.png"
+                alt="Japan Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 13-17 Nguyễn Huệ. P Bến Nghé. Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 8291341</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN PANAMA</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Flag_of_Panama.svg/2560px-Flag_of_Panama.svg.png"
+                alt="Panama Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 7A Lê Thánh Tôn, P. Bến Nghé, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 8250334</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN THÁI LAN</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_Thailand.svg/2560px-Flag_of_Thailand.svg.png"
+                alt="Thailand Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 77 Trần Quốc Thảo, P7, Quận 3</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 8327638</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >TỔNG LÃNH SỰ QUÁN TRUNG QUỐC</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/2560px-Flag_of_the_People%27s_Republic_of_China.svg.png"
+                alt="China Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 39 Nguyễn Thị Minh Khai, P.Bến Nghé, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 8292457</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >TỔNG LÃNH SỰ QUÁN VƯƠNG QUỐC CAMPUCHIA</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_Cambodia.svg/2560px-Flag_of_Cambodia.svg.png"
+                alt="Cambodia Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 41 Phùng Khắc Khoan, P. Đa Kao, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 8292751</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >THƯƠNG VỤ TỔNG LÃNH SỰ QUÁN THÁI LAN</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_Thailand.svg/2560px-Flag_of_Thailand.svg.png"
+                alt="Thailand Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 65 Lê Lợi (lầu 8, phòng 4), P Bến Nghé, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 9141838</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text"
+              >THƯƠNG VỤ TỔNG LÃNH SỰ QUÁN CAMPUCHIA</span
+            >
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_Cambodia.svg/2560px-Flag_of_Cambodia.svg.png"
+                alt="Cambodia Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 180 Điện Biên Phủ, P6, Quận 3</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 8296814</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN CHILE</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/2560px-Flag_of_Chile.svg.png"
+                alt="Chile Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 79/1/1 Phan Kế Bính, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: 9102903</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN ẤN ĐỘ</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/2560px-Flag_of_India.svg.png"
+                alt="India Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 55 Nguyễn Đình Chiểu, P 6, Quận 3, TP Hồ Chí
+                Minh</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 39304114</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN BỈ</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flag_of_Belgium.svg/2560px-Flag_of_Belgium.svg.png"
+                alt="Belgium Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 115 Nguyễn Huệ (Phòng 1707), P. Bến Nghé, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 38219354</span>
+            </div>
+          </div>
+        </div>
+        <div class="consulate-item">
+          <div class="consulate-title">
+            <span class="consulate-title-text">TỔNG LÃNH SỰ QUÁN CANADA</span>
+          </div>
+          <div class="consulate-info">
+            <div class="flag-container">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Canada.svg/2560px-Flag_of_Canada.svg.png"
+                alt="Canada Flag"
+                class="flag-image"
+              />
+            </div>
+            <div class="consulate-details">
+              <span class="consulate-address"
+                >Địa chỉ: 235 Đồng Khởi, P. Bến Nghé, Quận 1</span
+              >
+              <span class="consulate-phone">ĐT cơ quan: (028) 38294528</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <button class="pagination-button" data-page="prev-group" disabled>
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </button>
+        <button class="pagination-button" data-page="prev" disabled>
+          <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+        </button>
+
+        <button class="pagination-button active" data-page="1">1</button>
+        <button class="pagination-button" data-page="2">2</button>
+        <button class="pagination-button" data-page="3">3</button>
+        <button class="pagination-button" data-page="next">
+          <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+        </button>
+        <button class="pagination-button" data-page="next-group">
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+      integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        const itemsPerPage = 21;
+        const $consulateGrid = $(".consulate-grid");
+        const $pagination = $(".pagination");
+        const $consulateItems = $(".consulate-item");
+        const totalItems = $consulateItems.length;
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        let currentPage = 1;
+
+        function displayItems(page) {
+          $consulateItems.hide();
+          const startIndex = (page - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+          $consulateItems.slice(startIndex, endIndex).show();
+        }
+
+        function updatePaginationButtons() {
+          $pagination.find(".pagination-button").removeClass("active");
+          $pagination
+            .find(`.pagination-button[data-page="${currentPage}"]`)
+            .addClass("active");
+          $pagination
+            .find(".pagination-button[data-page='prev']")
+            .prop("disabled", currentPage === 1);
+          $pagination
+            .find(".pagination-button[data-page='prev-group']")
+            .prop("disabled", currentPage === 1);
+
+          $pagination
+            .find(".pagination-button[data-page='next']")
+            .prop("disabled", currentPage === totalPages);
+          $pagination
+            .find(".pagination-button[data-page='next-group']")
+            .prop("disabled", currentPage === totalPages);
+        }
+
+        function renderPagination() {
+          let paginationHTML = `
+              <button class="pagination-button" data-page="prev-group" disabled>
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+              </button>
+              <button class="pagination-button" data-page="prev" disabled>
+                <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+              </button>
+              `;
+
+          let startPage = Math.max(1, currentPage - 1);
+          let endPage = Math.min(totalPages, currentPage + 1);
+
+          if (currentPage <= 2) {
+            endPage = Math.min(totalPages, 3);
+          }
+          if (currentPage >= totalPages - 1) {
+            startPage = Math.max(1, totalPages - 2);
+          }
+          for (let i = startPage; i <= endPage; i++) {
+            paginationHTML += `<button class="pagination-button ${
+              i === currentPage ? "active" : ""
+            }" data-page="${i}">${i}</button>`;
+          }
+
+          paginationHTML += `
+              <button class="pagination-button" data-page="next">
+                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+              </button>
+              <button class="pagination-button" data-page="next-group">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </button>
+              `;
+
+          $pagination.html(paginationHTML);
+        }
+
+        $pagination.on("click", ".pagination-button", function () {
+          const page = $(this).data("page");
+
+          if (page === "next" && currentPage < totalPages) {
+            currentPage++;
+          } else if (page === "prev" && currentPage > 1) {
+            currentPage--;
+          } else if (page === "next-group") {
+            currentPage = totalPages;
+          } else if (page === "prev-group") {
+            currentPage = 1;
+          } else if (typeof page === "number") {
+            currentPage = page;
+          }
+          displayItems(currentPage);
+          renderPagination();
+          updatePaginationButtons();
+        });
+
+        displayItems(currentPage);
+        renderPagination();
+        updatePaginationButtons();
+      });
+    </script>
+  </body>
+</html>

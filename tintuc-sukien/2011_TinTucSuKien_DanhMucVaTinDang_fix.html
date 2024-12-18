@@ -1,6 +1,9 @@
 <!-- Bootstrap CSS -->
 
 <style>
+    * {
+        font-family: "Roboto";
+    }
 
     .top-0 {
         top: 0 !important;
@@ -335,12 +338,11 @@
             gap: 10px;
         }
         .category-menu .nav-item {
-            width: 48%;
+            width: 100%;
         }
 
         .tool-container {
             flex-direction: column;
-            gap: 15px;
         }
 
         .search-container {
@@ -403,7 +405,7 @@
     }
 
     /* Tablet (425px - 768px) */
-    @media screen and (min-width: 426px) and (max-width: 768px) {
+    @media screen and (min-width: 425px) and (max-width: 768px) {
         .nav-bv-tin {
             gap: 16px 4%;
         }
@@ -508,40 +510,7 @@
     <div>
         <div class="category-menu">
             <!-- Menu chính -->
-            <ul class="nav-bv-tin nav nav-pills w-100 ">
-                <li class="nav-item">
-                    <a class="nav-link active text-center" href="javascript:void(0)">TẤT CẢ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="javascript:void(0)">CHÍNH TRỊ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="javascript:void(0)">KINH TẾ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="javascript:void(0)">VĂN HÓA - XÃ HỘI</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="javascript:void(0)">ĐỐI NGOẠI</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="javascript:void(0)"
-                    >KHOA GIÁO</a
-                    >
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="javascript:void(0)">HẠ TẦNG - ĐÔ THỊ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="javascript:void(0)">AN NINH - TRẬT TỰ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="javascript:void(0)">TỔ CHỨC NHÂN SỰ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-center" href="javascript:void(0)">THÔNG TIN DOANH NGHIỆP</a>
-                </li>
-            </ul>
+
             <!-- Thanh công cụ -->
             <div
                     class="tool-container d-flex justify-content-between align-items-center gap-3 flex-wrap my-4"
@@ -587,34 +556,28 @@
         </div>
         <div class="slideshow-news-container position-relative">
             <!-- Thêm nút điều hướng tùy chỉnh -->
-            <button class="custom-prev-btn">
-
-                <img src="/documents/39403/310714/left-arrow.svg"
-                     alt="Previous"
-                />
+            <button class="custom-prev-btn" onclick="document.querySelector('.newsSwiper').swiper.slidePrev()">
+                <img src="/documents/39403/310714/left-arrow.svg" alt="Previous"/>
             </button>
-            <button class="custom-next-btn">
-                <img
-                        src="/documents/39403/310714/right-arrow.svg"
-                        alt="Next"
-                />
+            <button class="custom-next-btn" onclick="document.querySelector('.newsSwiper').swiper.slideNext()">
+                <img src="/documents/39403/310714/right-arrow.svg" alt="Next"/>
             </button>
 
             <!-- Định nghĩa mapping cho icons -->
             <#assign categoryIcons = {
             "KINH_TE": "/documents/39403/331149/ic_kt.png/618bcf29-7fbf-f158-f303-8a77ac7ade92?t=1732155565667",
-            "TO_CHUC_NHAN_SU": "/documents/39403/331149/ic_tb.png/4e4c2773-3b95-a073-7e4d-b0faba997d51?t=1732155565926",
+            "THONG_BAO": "/documents/39403/331149/ic_tb.png/4e4c2773-3b95-a073-7e4d-b0faba997d51?t=1732155565926",
             "HA_TANG": "/documents/39403/331149/ic_ht.png/efcf15fa-7c8d-0461-3095-831796a669d8?t=1732155565437",
             "VAN_HOA": "/documents/39403/331149/ic_vh.png/05543994-41a5-e16e-89b9-cee9a415e8f1?t=1732155566178",
             "KHOA_GIAO":"/documents/39403/331149/khoa+gi%C3%A1o.png/100f8139-6dbd-6b6a-b441-0e51259b0807?t=1732155566411",
-            "DOI_NGOAI": "/documents/39403/331149/%C4%91%E1%BB%91i+ngo%E1%BA%A1i.png/e9278b95-d550-abbb-7a3c-bc0e6c7145bf?t=1732155565214",
+            "DOI_NGOAI": "/documents/39403/331149/ic_hdld.png/be3c1e71-1ec8-7435-0ca3-6c54c099131a?t=1734416957414",
             "CHINH_TRI": "/documents/39403/331149/CH%C3%8DNH+TR%E1%BB%8A.png/aff1039f-cafc-1121-e49f-210645a54730?t=1732155564962",
             "BUSINESS": "/documents/39403/331149/BUSINESS.png/8e06bae4-1c7e-aec4-c6b0-291439f12207?t=1732155564731",
             "AN_NINH":"/documents/39403/331149/AN+NINH+TRAT+TU.png/adb2dc88-bb80-b5fe-c14a-c9f3b3b1e15e?t=1732155564481"
             } />
 
             <!-- Định nghĩa mảng các category -->
-            <#assign categories = ["KINH_TE", "TO_CHUC_NHAN_SU", "HA_TANG", "VAN_HOA","KHOA_GIAO","DOI_NGOAI","CHINH_TRI","BUSINESS","AN_NINH"] />
+            <#assign categories = ["KINH_TE", "THONG_BAO", "HA_TANG", "VAN_HOA","KHOA_GIAO","DOI_NGOAI","CHINH_TRI","BUSINESS","AN_NINH"] />
             <#assign dateFormatDay = "dd" />
             <#assign monthFormatDay = "MM" />
             <#assign yearFormatDay = "yyyy" />
@@ -635,77 +598,78 @@
                 <#if entries?has_content>
 
                     <#list entries as curEntry>
-                        <#assign
-                        renderer = curEntry.getAssetRenderer()
-                        className = renderer.getClassName()
-                        category = (indexLocal < categories?size)?then(categories[indexLocal], categories[0])
-                        iconUrl = categoryIcons[category]!""
-                        />
-                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale)>
-                            <#assign
-                            title = curEntry.getTitle(locale)
-                            article = renderer.getArticle()
-                            description = article.getDescription(locale)
-                            ddmTemplateKey = article.getDDMTemplateKey()
-                            createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
-                            createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
-                            createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
-                            createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
-                            curEntry = curEntry
-                            viewCount = curEntry.getViewCount()
-                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
-                            indexLocal = indexLocal + 1 />
-                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
-                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
-                            <#else>
-                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
-                            </#if>
-                            <swiper-slide
-                            ><div class="card position-relative mb-5">
-                                    <!-- Phần hình ảnh -->
-                                    <div class="card-img-wrapper">
-                                        <img src="${smallImageUrl}"
-                                             class="card-img-top"
-                                             alt="Tin tức" />
-                                    </div>
-                                    <div class="bage-slide position-absolute top-0 start-0">
-                                        <img
-                                                src="${iconUrl}"
-                                                alt=""
-                                        />
-                                    </div>
+						<#if  curEntry?? && curEntry.getAssetRenderer()?exists>
+							<#assign
+							renderer = curEntry.getAssetRenderer()
+							className = renderer.getClassName()
+							category = (indexLocal < categories?size)?then(categories[indexLocal], categories[0])
+							iconUrl = categoryIcons[category]!""
+							/>
+							<#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 10>
+								<#assign
+								title = curEntry.getTitle(locale)
+								article = renderer.getArticle()
+								description = article.getDescription(locale)
+								ddmTemplateKey = article.getDDMTemplateKey()
+								createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+								createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+								createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+								createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+								curEntry = curEntry
+								viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+								indexLocal = indexLocal + 1 />
+								<#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+									<#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+								<#else>
+									<#assign smallImageUrl = "" >
+								</#if>
+								<swiper-slide
+								><div class="card position-relative mb-5">
+										<!-- Phần hình ảnh -->
+										<div class="card-img-wrapper">
+											<img src="${smallImageUrl}"
+												 class="card-img-top"
+												 alt="Tin tức" />
+										</div>
+										<div class="bage-slide position-absolute top-0 start-0">
+											<img
+													src="${iconUrl}"
+													alt=""
+											/>
+										</div>
 
-                                    <!-- Phần nội dung -->
-                                    <div class="card-content-container">
-                                        <div class="card-body py-4 px-3">
-                                            <h5 class="card-title-news text-truncate-3">
-                                                ${title}
-                                            </h5>
+										<!-- Phần nội dung -->
+										<div class="card-content-container">
+											<div class="card-body py-4 px-3">
+												<h5 class="card-title-news text-truncate-3">
+													${title}
+												</h5>
 
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <span class="me-3 text-muted">${createTime} | ${createDay}/${createMonth}/${createYear}</span>
-                                                <div
-                                                        class="d-flex align-items-center gap-1 view-count-container"
-                                                >
-                                                    <i class="fa fa-eye"></i>
-                                                    <span class="views-tindang">${viewCount}</span>
-                                                </div>
-                                            </div>
-                                        </div>
+												<div class="d-flex align-items-center justify-content-between">
+													<span class="me-3 text-muted">${createTime} | ${createDay}/${createMonth}/${createYear}</span>
+													<div
+															class="d-flex align-items-center gap-1 view-count-container"
+													>
+														<i class="fa fa-eye"></i>
+														<span class="views-tindang">1,141</span>
+													</div>
+												</div>
+											</div>
 
-                                        <!-- Nút xem chi tiết -->
-                                        <div class="border-0 pb-3 ms-3">
-                                            <a href="${viewURL}" >
-                                                <button class="btn btn-detail rounded">
-                                                    Xem chi tiết
-                                                </button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div></swiper-slide
-                            >
+											<!-- Nút xem chi tiết -->
+											<div class="border-0 pb-3 ms-3">
+												<a href="${viewURL}" >
+													<button class="btn btn-detail rounded">
+														Xem chi tiết
+													</button>
+												</a>
+											</div>
+										</div>
+									</div></swiper-slide
+								>
 
-                        </#if>
+							</#if>
+						</#if>
                     </#list>
                 </#if>
 
@@ -720,10 +684,9 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
 <script>
-    function initializeNewsSwiper() {
+function initializeNewsSwiper() {
         // Kiểm tra jQuery đã được load chưa
         if (typeof jQuery === 'undefined') {
             setTimeout(initializeNewsSwiper, 100);
@@ -746,95 +709,7 @@
                     if (swiperNewsWrapper) swiperNewsWrapper.slideNext();
                 });
 
-                // Thêm xử lý cho menu chính và menu phụ
-                $(".nav-pills .nav-link").off('click').on("click", function (e) {
-                    e.preventDefault();
-
-                    // Remove active class from all links
-                    $(".nav-pills .nav-link").removeClass("active");
-                    // Add active class to clicked link
-                    $(this).addClass("active");
-
-                    // Xóa thông báo không có kết quả nếu tồn tại
-                    $(".no-results-message").remove();
-                    $(".btn-orange").show();
-
-                    const selectedCategory = $(this).text().trim();
-
-                    // Reset tất cả slide về trạng thái ẩn
-                    if (swiperNewsWrapper && swiperNewsWrapper.slides) {
-                        swiperNewsWrapper.slides.forEach((slide, index) => {
-                            slide.style.display = "none";
-                        });
-
-                        let visibleSlides = 0;
-
-                        if (selectedCategory === "TẤT CẢ") {
-                            // Hiển thị tất cả slides
-                            swiperNewsWrapper.slides.forEach((slide) => {
-                                slide.style.display = "block";
-                                visibleSlides++;
-                            });
-                        } else {
-                            // Lọc slides theo category
-                            swiperNewsWrapper.slides.forEach((slide) => {
-                                const slideCategory = $(slide).find(".bage-slide img").attr("src");
-                                // Map category name to icon URL
-                                const categoryIconUrl = getCategoryIconUrl(selectedCategory);
-                                
-                                if (slideCategory === categoryIconUrl) {
-                                    slide.style.display = "block";
-                                    visibleSlides++;
-                                }
-                            });
-                        }
-
-                        // Kiểm tra và xử lý hiển thị nút điều hướng
-                        const navigationButtons = $(".custom-prev-btn, .custom-next-btn");
-                        if (visibleSlides <= 4) {
-                            navigationButtons.hide();
-                        } else {
-                            navigationButtons.show();
-                        }
-
-                        // Hiển thị thông báo nếu không có kết quả
-                        if (visibleSlides === 0) {
-                            if (!$(".no-results-message").length) {
-                                const noResultsMessage = 
-                                    '<div class="no-results-message text-center py-5">' +
-                                    '<div class="mb-3">' +
-                                    '<i class="bi bi-search" style="font-size: 3rem; color: #ccc;"></i>' +
-                                    '</div>' +
-                                    '<h5 class="text-muted">Không tìm thấy bài viết nào</h5>' +
-                                    '<p class="text-muted">Không có bài viết nào thuộc danh mục ' + selectedCategory + '</p>' +
-                                    '</div>';
-                                $(".newsSwiper").after(noResultsMessage);
-                                $(".btn-orange").hide();
-                            }
-                        }
-
-                        // Update swiper
-                        swiperNewsWrapper.update();
-                        swiperNewsWrapper.slideTo(0);
-                    }
-                });
-
-                // Thêm hàm helper để map category name với icon URL
-                function getCategoryIconUrl(categoryName) {
-                    const categoryIconMap = {
-                        "CHÍNH TRỊ": "/documents/39403/331149/CH%C3%8DNH+TR%E1%BB%8A.png/aff1039f-cafc-1121-e49f-210645a54730?t=1732155564962",
-                        "TỔ CHỨC NHÂN SỰ": "/documents/39403/331149/ic_tb.png/4e4c2773-3b95-a073-7e4d-b0faba997d51?t=1732155565926",
-                        "KINH TẾ": "/documents/39403/331149/ic_kt.png/618bcf29-7fbf-f158-f303-8a77ac7ade92?t=1732155565667",
-                        "VĂN HÓA - XÃ HỘI": "/documents/39403/331149/ic_vh.png/05543994-41a5-e16e-89b9-cee9a415e8f1?t=1732155566178",
-                        "ĐỐI NGOẠI": "/documents/39403/331149/%C4%91%E1%BB%91i+ngo%E1%BA%A1i.png/e9278b95-d550-abbb-7a3c-bc0e6c7145bf?t=1732155565214",
-                        "KHOA GIÁO": "/documents/39403/331149/khoa+gi%C3%A1o.png/100f8139-6dbd-6b6a-b441-0e51259b0807?t=1732155566411",
-                        "HẠ TẦNG - ĐÔ THỊ": "/documents/39403/331149/ic_ht.png/efcf15fa-7c8d-0461-3095-831796a669d8?t=1732155565437",
-                        "AN NINH - TRẬT TỰ": "/documents/39403/331149/AN+NINH+TRAT+TU.png/adb2dc88-bb80-b5fe-c14a-c9f3b3b1e15e?t=1732155564481",
-                        "THÔNG TIN DOANH NGHIỆP": "/documents/39403/331149/BUSINESS.png/8e06bae4-1c7e-aec4-c6b0-291439f12207?t=1732155564731"
-                    };
-                    
-                    return categoryIconMap[categoryName] || null;
-                }
+                
 
                 // Thêm xử lý cho nút Xem (lọc theo tháng/năm)
                 $(".tool-container .btn-view").off('click').on("click", function () {
@@ -902,38 +777,7 @@
                     }
                 });
 
-                // Xử lý chuyển đổi nội dung đa phương tiện
-                $(".multimedia-link").off('click').on("click", function (e) {
-                    e.preventDefault();
-
-                    // Xóa active class từ tất cả các link và content
-                    $(".multimedia-link").removeClass("active");
-                    $(".multimedia-content, .multimedia-subcontent").removeClass("active");
-
-                    // Thêm active class cho link được click
-                    $(this).addClass("active");
-
-                    // Ẩn/hiện các span tương ứng
-                    $(".multimedia-link").each(function () {
-                        const normalText = $(this).find(".normal-text");
-                        const roundedText = $(this).find(".px-2");
-
-                        if ($(this).hasClass("active")) {
-                            normalText.addClass("d-none");
-                            roundedText.removeClass("d-none");
-                        } else {
-                            normalText.removeClass("d-none");
-                            roundedText.addClass("d-none");
-                        }
-                    });
-
-                    // Lấy ID của content cần hiển thị
-                    const contentId = $(this).data("content");
-
-                    // Hiển thị content và subcontent tương ứng
-                    $("#" + contentId).addClass("active");
-                    $("#" + contentId.replace("content", "subcontent")).addClass("active");
-                });
+                
 
                 // Thêm cấu hình breakpoints cho newsSwiper
                 Object.assign(newsSwiper, {

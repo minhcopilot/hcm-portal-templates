@@ -79,7 +79,9 @@
 
     /* Mobile (< 425px) */
     @media screen and (max-width: 426px) {
-
+        .pt-0-mobile{
+            padding-top: 0!important;
+        }
         .news-category-section .category-title {
             font-size: 20px;
         }
@@ -112,6 +114,7 @@
             padding-bottom: 10px;
             border-bottom: 1px solid #eee;
             flex-wrap: wrap;
+            position: relative;
         }
 
         .news-category-section .news-date {
@@ -168,7 +171,12 @@
 
     /* Tablet (425px - 768px) */
     @media screen and (min-width: 425px) and (max-width: 768px) {
-
+        .pt-0-mobile{
+            padding-top: 0!important;
+        }
+        .pb-0-mobile{
+            padding-bottom: 0!important;
+        }
         .news-category-section .row > div {
             margin-bottom: 30px; /* Thêm khoảng cách giữa 2 cột khi stack */
         }
@@ -178,7 +186,7 @@
         }
 
         .news-category-section .category-title {
-            font-size: 14px !important;
+            font-size: 21px !important;
             line-height: 1.2;
         }
 
@@ -188,13 +196,17 @@
 
         .news-category-section .news-item {
             margin-bottom: 12px;
-            padding-bottom: 12px;
+            padding-bottom: 44px;
             border-bottom: 1px solid #eee;
+            position: relative;
         }
 
         .news-category-section .news-date {
             min-width: 70px;
             font-size: 13px;
+            position: absolute;
+        top: -3px;
+        left: 23px;
         }
 
         .news-category-section .news-content {
@@ -203,19 +215,25 @@
 
         .news-category-section .news-title-snqh {
             font-size: 14px;
-            max-width: 250px; /* Giới hạn độ rộng tiêu đề */
-            white-space: normal; /* Cho phép xuống dòng */
-            display: -webkit-box;
-            -webkit-line-clamp: 2; /* Giới hạn 2 dòng */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            line-height: 1.3;
-        }
+        max-width: 94%;
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.3;
+        position: absolute;
+        top: 18px;
+        left: 0px;
+    }
 
         .news-category-section .view-count {
             font-size: 12px;
-            white-space: nowrap;
-            min-width: 60px; /* Đảm bảo không bị vỡ layout */
+        white-space: nowrap;
+        min-width: 60px;
+        position: absolute;
+        top: 20px;
+        right: -41px;
         }
 
         .news-category-section .fa-newspaper {
@@ -375,7 +393,7 @@
     }
 
 </style>
-<div class="news-category-section pt-5 pb-4">
+<div class="news-category-section pt-5 pb-4 pb-0-mobile">
     <div class="row">
         <!-- Cột tin tức ngành -->
         <div class="col-lg-12 col-12">

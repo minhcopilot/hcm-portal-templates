@@ -1,0 +1,346 @@
+<div class="mt-4 mb-3">
+    <div class="ct-margin d-flex align-items-center justify-content-between">
+        <p class="title-chutruong">CHỦ TRƯƠNG CHÍNH SÁCH</p>
+        <a class="ct-xemthem" href="https://congthongtin-demo.qtsc.com.vn/ds-tin-lien-quan">Xem thêm <img src="/documents/39403/307879/arrow-right.svg" class="ml-1"></a>
+    </div>
+</div>
+<div id="carouselExample" class="carousel slide position-relative d-flex justify-content-center align-items-center ct-margin" data-ride="carousel">
+
+    <div class="carousel-inner">
+        <#assign indexLocal = 0 />
+        <#assign totalEntries = entries?size />
+        <#assign groupSize = 4 />
+        <#assign totalPages = ((totalEntries + groupSize - 1) / groupSize)>
+
+        <ol class="carousel-indicators ct-dot ml-auto mr-auto">
+            <#list 0..(totalPages - 1) as page>
+                <li data-target="#carouselExample" data-slide-to="${page}" <#if page == 0>class="active"</#if>></li>
+            </#list>
+        </ol>
+
+        <#if entries?has_content>
+            <#list entries as curEntry>
+            <#if  curEntry?? && curEntry.getAssetRenderer()?exists>
+                <#assign renderer = curEntry.getAssetRenderer() />
+                <#assign className = renderer.getClassName() />
+
+                <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal < totalEntries>
+                    <#assign title = curEntry.getTitle(locale) />
+                    <#assign article = renderer.getArticle() />
+                    <#assign description = article.getDescription(locale) />
+                    <#assign ddmTemplateKey = article.getDDMTemplateKey() />
+                    <#assign viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}" />
+                    <#assign indexLocal = indexLocal + 1 />
+
+                    <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                        <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) />
+                    <#else>
+                        <#assign smallImageUrl = "" />
+                    </#if>
+
+                    <#if indexLocal % groupSize == 1>
+                        <div class="carousel-item <#if indexLocal == 1>active</#if>">
+                        <div class="row">
+                    </#if>
+
+                    <div class="col-md-3 pr-0">
+                        <div class="card">
+                            <div class="ct-img">
+                            <img src="${smallImageUrl}" class="card-img-top" alt="..." width="277px" height="197px">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title text-clamp">${title}</h5>
+                                ${description}
+                                <a href="${viewURL}" class="ct-btn-detail mt-auto">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <#if indexLocal % groupSize == 0 || indexLocal == totalEntries>
+                        </div>
+                        </div>
+                    </#if>
+                </#if>
+                </#if>
+            </#list>
+        </#if>
+    </div>
+
+    <a class="carousel-control-prev position-absolute ct-carousel-left" href="#carouselExample" role="button" data-slide="prev">
+        <span class="ct-btn-carousel d-flex align-items-center justify-content-center">
+            <img src="/documents/39403/307879/left.svg" width="8px" height="19px">
+        </span>
+    </a>
+    <a class="carousel-control-next ct-carousel-right" href="#carouselExample" role="button" data-slide="next">
+        <span class="ct-btn-carousel d-flex align-items-center justify-content-center">
+            <img class="ct-rotate" src="/documents/39403/307879/left.svg" width="8px" height="19px">
+        </span>
+    </a>
+</div>
+
+    <style>
+        .carousel-inner{
+            padding-bottom: 60px;
+        }
+        .ct-carousel-left {
+            font-family: Roboto;
+            left: -50px !important;
+        }
+
+        .ct-carousel-right {
+            font-family: Roboto;
+            right: -50px !important;
+        }
+
+        .ct-btn-carousel {
+            font-family: Roboto;
+            border-radius: 50%;
+            background-color: lightgray !important;
+            width: 40px !important;
+            height: 40px !important;
+        }
+
+        .ct-btn-carousel:hover {
+            background-color: #DB7100 !important;
+            img {
+                transition: filter 0s ease;
+                filter: invert(100%) brightness(200%);
+            }
+        }
+
+        .ct-rotate {
+            transform: rotate(180deg);
+        }
+
+        .carousel-inner ol li {
+            font-family: Roboto;
+            background-color: #02397A !important;
+            border-radius: 8px !important;
+        }
+
+        .carousel-inner ol {
+            font-family: Roboto;
+            width: fit-content;
+            padding: 0 10px 0 10px !important;
+            height: 22px;
+            gap: 8px;
+            border-radius: 20px;
+            background-color: #BCE6FE4D;
+        }
+
+        .card {
+            font-family: Roboto;
+            border: unset !important;
+            box-shadow: unset !important;
+        }
+        .title-chutruong {
+            font-family: Roboto;
+            font-size: 32px !important;
+            font-weight: 700 !important;
+            line-height: 37.5px !important;
+            letter-spacing: 0.15000000596046448px !important;
+            text-align: left !important;
+            text-underline-position: from-font !important;
+            text-decoration-skip-ink: none !important;
+            color: #0D4C92 !important;
+        }
+
+        .card-img-top {
+            border-radius: 10px;
+        }
+
+        .card-body {
+            padding: 13px 20px 20px 20px !important;
+            background-color: #fefefe;
+            border-top-left-radius: 9px;
+            margin-left: 20px!important;
+            margin-top: -10px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 31.2px;
+            letter-spacing: 0.0125em;
+            color: #0D4C92;
+        }
+        .ct-xemthem {
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 18.75px;
+            letter-spacing: 0.15000000596046448px;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            text-decoration: none !important;
+            color: #DB7100;
+        }
+        .card-text, p {
+            font-size: 16px !important;
+            font-weight: 400 !important;
+            line-height: 20.8px !important;
+            letter-spacing: 0.005em !important;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .card-body {
+            transition: background-color 1.5s ease, color 1.5s ease !important;
+        }
+
+        .card:hover .card-body {
+            background-color: #0D4C92 !important;
+        }
+        .card:hover .card-body a{
+            background-color:#BCE6FE;
+            text-decoration: none;
+            color: #031739;
+        }
+
+        .card:hover .card-title {
+            color: #fefefe !important;
+        }
+
+        .card:hover .card-text, .card:hover p {
+            color: #fefefe !important;
+        }
+
+        .ct-btn-detail:hover {
+            background-color: #fefefe !important;
+            color: #031739 !important;
+        }
+
+        .text-clamp{
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+            max-height: 4.5em;
+        }
+        .card-body p {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+            max-height: 6.5em;
+        }
+        .ct-btn-detail {
+            font-size: 16px;
+            font-weight: 500;
+            width: 110px;
+            padding: 7px 11px;
+            border-radius: 8px;
+            border: 1px solid #FFFFFF;
+            background-color: #0D4C92;
+            color: #fefefe;
+        }
+
+        .carousel-item img {
+            max-width: 100% !important;
+            min-height: 197px !important;
+            object-fit: cover !important;
+            height:revert-layer!important;
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            width: unset !important;
+        }
+
+        .carousel-indicators {
+            text-align: center;
+        }
+        .ct-breadcrum span{
+            font-family: Roboto;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20.8px;
+            letter-spacing: 0.0015em;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            color:#ABABAB;
+        }
+        .ct-breadcrum-active{
+            color:#0D4C92!important;
+        }
+        .ct-img{
+            z-index: 10;
+            padding-right: 20px !important;
+            min-height:197px;
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+
+        .card-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 13px 20px 20px 20px !important;
+            background-color: #fefefe;
+            border-top-left-radius: 9px;
+            margin-left: 20px!important;
+            margin-top: -10px;
+        }
+
+        .card-body .text-clamp {
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+            max-height: 4.5em;
+        }
+
+        .card-body p {
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.5;
+            max-height: 6.5em;
+        }
+
+        .card:hover .card-body {
+            background-color: #0D4C92 !important;
+        }
+
+        .card:hover .card-body a {
+            background-color: #BCE6FE;
+            text-decoration: none;
+            color: #031739;
+        }
+
+        .card:hover .card-title {
+            color: #fefefe !important;
+        }
+
+        .card:hover .card-text, .card:hover p {
+            color: #fefefe !important;
+        }
+
+        .ct-btn-detail:hover {
+            background-color: #fefefe !important;
+            color: #031739 !important;
+        }
+
+    </style>
+
+
+<script>
+    $(document).ready(function () {
+        $("img.img-3x4").each(function () {
+            $(this).outerHeight($(this).width() * 0.6);
+        });
+    })
+</script>

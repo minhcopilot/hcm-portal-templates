@@ -1,0 +1,78 @@
+<div class="button-container">
+  [#list 0..configuration.numberOfTabs-1 as i]
+  <div
+    class="button-child"
+    style="flex: 1 1 calc(${configuration.withOfButton} - 16px)"
+  >
+    <button
+      class="nav-link w-100 h-100 nav-link-gt-chiquyen button-style2 col-12 thuong-truc-duong-nhiem"
+      data-content="thuongtrucduongnhiem"
+      aria-controls="tabPanel${i+1}"
+      aria-selected="false"
+      data-fragment-namespace="${fragmentEntryLinkNamespace}"
+      id="tab${i+1}"
+      role="tab"
+    >
+      <div
+        class="component-html mb-0"
+        data-lfr-editable-id="title${i+1}"
+        data-lfr-editable-type="html"
+        tabindex="-1"
+      >
+        Tab ${i+1}
+      </div>
+    </button>
+  </div>
+  [/#list]
+</div>
+<div class="tab-panel d-block custom-nav">
+  [#list 0..configuration.numberOfTabs-1 as i]
+  <div
+    aria-labelledby="tab${i+1}"
+    class="tab-panel-item d-none"
+    data-fragment-namespace="${fragmentEntryLinkNamespace}"
+    id="tabPanel${i+1}"
+    role="tabpanel"
+    tabindex="0"
+  >
+    <lfr-drop-zone></lfr-drop-zone>
+  </div>
+  [/#list]
+</div>
+<style>
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 32px 15px 0 15px;
+  }
+  .button-child {
+    box-sizing: border-box;
+  }
+  .button-style2 {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    padding: 2px 0 !important;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #f5f5f5;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  .button-style2.active {
+    background-color: #db7100;
+    color: #ffffff;
+  }
+
+  .button-style2:hover {
+    background-color: #db7100;
+    color: #ffffff;
+  }
+</style>
