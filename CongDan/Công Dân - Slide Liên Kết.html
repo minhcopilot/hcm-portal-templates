@@ -1,0 +1,30 @@
+<div class="slideshow-news-container position-relative">
+  <!-- Thêm nút điều hướng tùy chỉnh -->
+  <button
+    class="custom-prev-btn"
+    onclick="document.querySelector('.newsSwiper').swiper.slidePrev()"
+  >
+    <img src="/documents/39403/310714/left-arrow.svg" alt="Previous" />
+  </button>
+  <button
+    class="custom-next-btn"
+    onclick="document.querySelector('.newsSwiper').swiper.slideNext()"
+  >
+    <img src="/documents/39403/310714/right-arrow.svg" alt="Next" />
+  </button>
+
+  <swiper-container
+    class="newsSwiper position-relative"
+    pagination="true"
+    pagination-clickable="true"
+    space-between="20"
+    slides-per-view="4"
+    loop="true"
+    initial-slide="0"
+    navigation="false"
+    pagination-dynamic-bullets="true"
+    pagination-dynamic-main-bullets="3"
+  >
+    <swiper-slide> </swiper-slide>
+  </swiper-container>
+</div>

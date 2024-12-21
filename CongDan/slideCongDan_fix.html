@@ -1,0 +1,195 @@
+<style>
+    .ct-container-dn {
+        padding: 10px 5%;
+    }
+    .ct-title-dn {
+        text-align: center;
+        font-family: Roboto;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 28.6px;
+        letter-spacing: 0.0015em;
+        color: white;
+        align-self: center;
+    }
+    .ct-slide-dn {
+        background: url('/documents/39403/307319/background-slide.png');
+        height: 488px;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .slide-wrap {
+        /*padding-top: 5%;*/
+        padding-bottom: 5%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .ct-content-slide {
+        overflow: hidden;
+        width: 100%;
+        max-height: 230px;
+    }
+    #carouselExampleControls {
+        width: 100%;
+    }
+    .wrap-btn-slide {
+        background: #FFF9EA;
+        width: 40px;
+        justify-content: center;
+        align-self: center;
+        border-radius: 50%;
+        display: flex;
+        height: 37px;
+    }
+
+    .custom-carousel-control-prev,
+    .custom-carousel-control-next {
+        align-self: center;
+    }
+
+    .wrap-btn-slide:hover {
+        background-color: #DB7100 !important;
+
+        img {
+            transition: filter 0s ease;
+            filter: invert(100%) brightness(200%);
+        }
+    }
+    #nextButton-slide-dn:hover {
+        background-color: #DB7100 !important;
+
+        img {
+            transition: filter 0s ease;
+            filter: invert(100%) brightness(200%);
+        }
+    }
+    .ct-btn-prev, .ct-btn-next {
+        background: none;
+        border: none;
+    }
+    .ct-image-slide {
+        width: 100%;
+        height: 236px;
+    }
+
+    .ct-div-select-slide {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .ct-select-slide {
+        width: 100%;
+        height: 38px;
+        border-radius: 6px;
+        border: 1px solid #EEEEEE;
+        color: #77777799;
+    }
+    .title-slide {
+        text-transform: uppercase;
+        font-family: Roboto;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 28px;
+        color: #0D4C92;
+        margin-bottom: 10px;
+    }
+    #prevButton-slide-dn {
+        align-self: center;
+        position: absolute;
+        left: -3rem;
+    }
+    #nextButton-slide-dn:hover {
+        background-color: #DB7100 !important;
+
+        img {
+            transition: filter 0s ease;
+            filter: invert(100%) brightness(200%);
+        }
+    }
+
+
+    #nextButton-slide-dn {
+        background: #FFF9EA;
+        width: 40px;
+        justify-content: center;
+        border-radius: 50%;
+        display: flex;
+        height: 37px;
+        right: -3rem;
+        position: absolute;
+        transform: rotate(180deg);
+    }
+    #nextButton-slide-dn>img {
+        align-self: center;
+    }
+    .ct-rotate {
+        transform: rotate(180deg);
+    }
+    .ct-slide-cd {
+        /*background: url('/documents/39403/307319/background-slide.png');*/
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+
+<#assign images_folder = themeDisplay.getPathThemeImages() />
+<#assign indexLocal = 0 />
+<#assign totalEntries = entries?size />
+<#assign groupSize = 4 />
+<div class="row ct-slide-cd">
+    <div class="slide-wrap col-12">
+
+        <div class="ct-margin mt-4">
+            <div class="d-flex align-items-center justify-content-center position-relative" id="carousel-cd">
+                <div class="wrap-btn-slide"  id="prevButton-slide-dn" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <div class="custom-carousel-control-prev">
+                        <img src="/documents/39403/307879/left.svg" width="8px" height="16px">
+                    </div>
+                </div>
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <#if entries?has_content>
+                            <#assign entries = entries?sort_by("modifiedDate") />
+                            <#list entries as entry>
+                                <#if indexLocal % groupSize == 0>
+                                    <div class="carousel-item <#if indexLocal == 0>active</#if>">
+                                    <div class="row">
+                                </#if>
+                                <div class="col-3 px-0">
+                                    <img src="${dlUtil.getPreviewURL(entry, entry.getFileVersion(), themeDisplay, "")}" class="d-block ct-image-slide" alt="...">
+                                </div>
+                                <#if indexLocal % groupSize == groupSize - 1 || indexLocal == totalEntries - 1>
+                                    </div>
+                                    </div>
+                                </#if>
+                                <#assign indexLocal = indexLocal + 1 />
+                            </#list>
+                        </#if>
+                    </div>
+                </div>
+                <div class="" href="#carouselExampleControls" role="button" data-slide="next">
+                    <div class="custom-carousel-control-next" id="nextButton-slide-dn">
+                        <img src="/documents/39403/307879/left.svg" width="8px" height="16px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = new bootstrap.Carousel(document.getElementById('carouselExampleControls'), {
+            interval: false // Disable auto-sliding
+        });
+    
+        document.getElementById('prevButton-slide-dn').addEventListener('click', function() {
+            carousel.prev();
+        });
+    
+        document.getElementById('nextButton-slide-dn').addEventListener('click', function() {
+            carousel.next();
+        });
+    });
+    </script>

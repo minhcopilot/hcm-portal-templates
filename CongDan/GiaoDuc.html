@@ -1,0 +1,91 @@
+<style>
+
+    @media (max-width: 425px) {
+        .ct-header .col-md-8{
+        position: relative;
+    }
+    .ct-header  .ct-title-dn{
+        position: absolute;
+        top: -17px;
+    }
+    .ct-header .wrap-icon-title{
+        position: absolute;
+    }
+    .custom-item-banner-cd{
+        flex-direction: column;
+    }
+    .custom-item-banner-cd{
+        max-width: 100%;
+        padding: 12px;
+    }
+    }
+    /* Responsive cho màn hình từ 426px đến 768px */
+    @media (min-width: 426px) and (max-width: 768px) {
+        .ct-header .col-md-8{
+        position: relative;
+    }
+    .ct-header  .ct-title-dn{
+        position: absolute;
+        top: -17px;
+    }
+    .ct-header .wrap-icon-title{
+        position: absolute;
+    }
+    .custom-item-banner-cd{
+        flex-direction: column;
+    }
+    .custom-item-banner-cd{
+        max-width: 100%;
+        padding: 12px;
+    }
+    }
+</style>
+<div class="container-fluid" id="block2-wrap">
+    <div class="row ct-header" id="backgroud-block2">
+        <div class="col-md-8 align-self-center ">
+            <span class="ct-title-dn">
+                GIÁO DỤC ĐÀO TẠO
+            </span>
+        </div>
+        <div class="col-md-4 wrap-icon-title">
+            <img src="/documents/39403/307319/img-giaoduc.png" alt="">
+        </div>
+    </div>
+    <#assign indexLocal = 0/>
+    <#list entries as curEntry>
+    <#if  curEntry?? && curEntry.getAssetRenderer()?exists>
+        <#assign
+        renderer = curEntry.getAssetRenderer()
+        className = renderer.getClassName() />
+        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 3>
+            <#assign
+            title = curEntry.getTitle(locale)
+            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+            indexLocal = indexLocal + 1 />
+            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+            <#else>
+                <#assign smallImageUrl = "" >
+            </#if>
+            <div class="wrap-item-content">
+                <div class="row" onclick="location.href='${viewURL}'">
+                    <div class="txt-content col-md-11 col-10">
+                        <a>
+                            ${title}
+                        </a>
+                    </div>
+                    <div class="col-2 col-md-1 pl-0 align-content-center" >
+                        <img src="documents/39403/307319/arrow-right.png">
+                    </div>
+                </div>
+            </div>
+            <#if indexLocal < 3>
+                <div class="ct-under-line"> </div>
+            </#if>
+        </#if>
+         </#if>
+    </#list>
+    <div class="row justify-content-center mb-4 mt-3">
+            <a class="ct-btn-xemthem" href="/tin-tuc-2">Xem thêm</a>
+        </div>
+</div>

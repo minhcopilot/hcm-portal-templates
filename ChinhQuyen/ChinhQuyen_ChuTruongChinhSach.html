@@ -1,7 +1,7 @@
 <div class="mt-4 mb-3">
     <div class="ct-margin d-flex align-items-center justify-content-between">
         <p class="title-chutruong">CHỦ TRƯƠNG CHÍNH SÁCH</p>
-        <a class="ct-xemthem" href="https://congthongtin-demo.qtsc.com.vn/ds-tin-lien-quan">Xem thêm <img src="/documents/39403/307879/arrow-right.svg" class="ml-1"></a>
+        <a class="ct-xemthem" href="/ds-tin-lien-quan">Xem thêm <img src="/documents/39403/307879/arrow-right.svg" class="ml-1"></a>
     </div>
 </div>
 <div id="carouselExample" class="carousel slide position-relative d-flex justify-content-center align-items-center ct-margin" data-ride="carousel">
@@ -35,7 +35,7 @@
                     <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
                         <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) />
                     <#else>
-                        <#assign smallImageUrl = "" />
+                        <#assign smallImageUrl = "/documents/60205/77945/no-image.jpg" />
                     </#if>
 
                     <#if indexLocal % groupSize == 1>
