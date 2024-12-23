@@ -1,0 +1,292 @@
+<style>
+    .carousel-title {
+        color: #000;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0.024px;
+    }
+
+    .carousel-box {
+        background: #F3F3F3;
+    }
+
+    .carousel-title {
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 6em;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        color: #031739;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        font-size: 16px;
+        letter-spacing: 0.024px;
+    }
+
+    .title-activity > p {
+        overflow: hidden;
+        color: #2C2C2C;
+        /* Title/Small */
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%; /* 22.4px */
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        align-self: stretch;
+    }
+
+    .title-activity-bottom > p {
+        overflow: hidden;
+        color: #031739;
+        text-overflow: ellipsis;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0.024px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        align-self: stretch;
+    }
+
+    .title-news {
+        position: relative;
+        border-bottom: 1px solid #B2B2B2;
+
+    }
+
+    .title-news h3 {
+        position: relative;
+        z-index: 1;
+        padding-bottom: 2px;
+        display: inline-block;
+        margin-bottom: 0;
+        border-bottom: 2px solid #AF2630;
+    }
+
+    .content-activity > p {
+        overflow: hidden;
+        color: #3B4E68;
+        text-overflow: ellipsis;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+
+    .img-activity-tintuc {
+        border-radius: 8px;
+        height: 158px !important;
+    }
+
+    .img-news-intro-main {
+        border-radius: 12px;
+        height: 390px;
+    }
+
+    .media-body.limit-content-desc {
+        width: 72.5%;
+    }
+
+    .img-activity-bottom {
+        width: 35%;
+        height: 93px;
+        border-radius: 8px;
+    }
+
+    .media-body.limit-content-bottom {
+        width: 65%;
+    }
+
+    .title-activity-left button {
+        border: none;
+        background: #FFF;
+        color: #AF2630;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 25.6px */
+        letter-spacing: 0.2px;
+    }
+
+    .custom-date-time {
+        color: #474747;
+        /* Body Text/small */
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 22.4px */
+        letter-spacing: 0.175px;
+    }
+    .content-title{
+        color: #2C2C2C;
+        /* Title/Small */
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%; /* 22.4px */
+        letter-spacing: 0.2px;
+    }
+    .content-ds-tintuc > p {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        align-self: stretch;
+        overflow: hidden;
+        color:  #474747;
+        text-overflow: ellipsis;
+        /* Body Text/small */
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 22.4px */
+        letter-spacing: 0.175px;
+    }
+    @media only screen and (max-width: 576px) {
+        .media-news {
+            flex-direction: column-reverse;
+        }
+        .img-activity-right {
+            width: 100%;
+            height: 188px;
+        }
+
+        .media-body.limit-content-desc {
+            width: 100%;
+        }
+        .media-body.limit-content-bottom {
+            width: 100%;
+        }
+    }
+    .ct-ul-paginate {
+        list-style-type: none;
+        display: flex;
+    }
+    .ct-paginate-wrap {
+        justify-self: center;
+    }
+    .ct-button-paginate {
+        height: 35px;
+        width: 35px;
+        border: 0;
+        gap: 10px;
+        border-radius: 6px;
+        background: #E0E0E066;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 500;
+
+    }
+    .ct-button-paginate.active {
+        background: #C8392B;
+        color: white;
+    }
+    .ct-button-paginate.pre-next {
+        color: #212121;
+    }
+    ul.ct-ul-paginate > li {
+        margin: 0 3px;
+    }
+    .media-news-hover:hover .content-title-hover {
+        color: #AF2630;
+    }
+    .dstt-vanhoa .view-more-dstt-vh {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25.6px;
+    letter-spacing: 0.0125em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #AF2630;
+    cursor: pointer;
+    }
+</style>
+<#assign dateFormatDay = "dd" />
+<#assign monthFormatDay = "MM" />
+<#assign yearFormatDay = "yyyy" />
+<#assign dateFormatTime = "HH:mm" />
+<#assign indexLocal = 0/>
+
+<div class="row ml-0 mr-0 ">
+    <div class="col-12 pr-md-3 p-0 scroll-divv">
+        <div class="article-list dstt-vanhoa">
+            <#assign indexLocal = 0/>
+            <#list entries as curEntry>
+                <#assign
+                renderer = curEntry.getAssetRenderer()
+                className = renderer.getClassName() />
+                <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal < 7>
+                    <#assign
+                    title = curEntry.getTitle(locale)
+                    createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                    createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                    createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                    createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                    article = renderer.getArticle()
+                    description = article.getDescription(locale)
+                    ddmTemplateKey = article.getDDMTemplateKey()
+                    curEntry = curEntry
+                    viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                    indexLocal = indexLocal + 1 />
+                    <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                        <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                    <#else>
+                        <#assign smallImageUrl = "/image/journal/article?img_id=232983&t=1734868835252" >
+                    </#if>
+
+                    <#if curEntry_index == 0>
+                        <div class="media mb-4" onclick="location.href='${viewURL}'" style="cursor: pointer;">
+                            <div class="row media-news media-news-hover">
+                                <div class="col-12">
+                                    <img class="img-news-intro-main w-100 " src="${smallImageUrl}" alt="news-intro">
+                                    <div class="mt-3">
+                                        <span class="custom-date-time">${createTime} | ${createDay}/${createMonth}/${createYear}</span>
+                                        <p class="content-title content-title-hover mb-2 mt-1">${title}</p>
+                                        <div class="content-ds-tintuc">${description}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="view-more-dstt-vh pb-4" onclick="location.reload()">Xem thêm <i class="pl-2 fa fa-arrow-right"></i></p>
+                    <#else>
+                        <div class="media mb-4" onclick="location.href='${viewURL}'" style="cursor: pointer;">
+                            <div class="row media-news media-news-hover">
+                                <div class="col-12 col-md-4">
+                                    <img class="img-activity-tintuc w-100 rounded" src="${smallImageUrl}" alt="news-item">
+                                </div>
+                                <div class="media-body text-left limit-content-desc d-flex col-12 col-md-8">
+                                    <div class="title-tintuc">
+                                        <span class="custom-date-time">${createTime} | ${createDay}/${createMonth}/${createYear}</span>
+                                        <p class="content-title content-title-hover mb-1 mt-2 mt-md-0">${title}</p>
+                                        <div class="content-ds-tintuc">${description}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </#if>
+                </#if>
+            </#list>
+        </div>
+    </div>
+</div>

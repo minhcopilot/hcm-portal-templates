@@ -1,0 +1,255 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+    .ct-container-dn {
+        padding: 10px 5%;
+    }
+    
+    @media (max-width: 425px) {
+        #thongbao-block {
+            top: -24px;
+        }
+    }
+
+    .ct-title-cd {
+        font-family: Roboto;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 28.6px;
+        letter-spacing: 0.0015em;
+        color: white;
+        align-self: center;
+    }
+
+    #backgroud-block1 {
+        background: #C84735;
+    }
+
+    #backgroud-block2 {
+        background: #200079;
+    }
+
+    #backgroud-block3 {
+        background: #C9003C;
+    }
+
+    #backgroud-block4 {
+        background: #E19200;
+    }
+
+    #backgroud-block5 {
+        background: #8B049C;
+    }
+
+    #backgroud-block6 {
+        background: #18B7C9;
+    }
+
+    .ct-header {
+        height: 75px;
+    }
+
+    #block1-wrap {
+        border: 1px solid #C84735;
+    }
+
+    #block2-wrap {
+        border: 1px solid #200079;
+    }
+
+    #block3-wrap {
+        border: 1px solid #C9003C;
+    }
+
+    #block4-wrap {
+        border: 1px solid #E19200;
+    }
+
+    #block5-wrap {
+        border: 1px solid #8B049C;
+    }
+
+    #block6-wrap {
+        border: 1px solid #18B7C9;
+    }
+
+    .ct-content-item-dn {
+        background: #E0E0E04D;
+    }
+
+    .txt-content {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .txt-content > a {
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20.8px;
+        letter-spacing: 0.0015em;
+        color: #2E2E2E;
+    }
+
+    .ct-under-line {
+        border-top: 1px solid #E0E0E0;
+        width: 99%;
+        margin: 0 1%;
+    }
+
+    .ct-ul-paginate {
+        list-style-type: none;
+        display: flex;
+    }
+
+    .ct-paginate-wrap {
+        justify-self: center;
+        margin-bottom: 1.75rem;
+        margin-top: 1rem;
+    }
+
+    .ct-button-paginate {
+        height: 35px;
+        width: 35px;
+        border: 0;
+        gap: 10px;
+        border-radius: 6px;
+        opacity: 0px;
+        background: #E0E0E066;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 500;
+
+    }
+
+    .ct-button-paginate.active {
+        background: #0D4C92;
+        color: white;
+    }
+
+    .ct-button-paginate.pre-next {
+        color: #0D4C92;
+    }
+
+    ul.ct-ul-paginate > li {
+        margin: 0 3px;
+    }
+
+    .wrap-item-content {
+        padding: 0.5rem 0;
+        margin: 0.5rem;
+    }
+
+    .wrap-item-content:hover {
+        background: #0D4C92;
+        border-radius: 5px;
+        padding: 0.5rem;
+        transition: width 1s;
+        color: white;
+    }
+
+    .wrap-item-content:hover > .row > .txt-content > a {
+        color: white;
+    }
+
+    .wrap-item-content {
+        padding: 0.5rem 0;
+        margin: 0.5rem;
+        height: 4rem;
+    }
+
+    .wrap-item-content:hover {
+        background: #0D4C92;
+        border-radius: 5px;
+        padding: 0.5rem;
+        transition: width 1s;
+        color: white;
+    }
+
+    .wrap-item-content:hover > .row > .txt-content > a {
+        color: white;
+    }
+
+    .wrap-icon-title {
+        justify-content: end;
+        display: flex;
+        align-self: center;
+    }
+
+    #txt-laodong-vieclam {
+        text-wrap-mode: nowrap;
+    }
+
+    .ct-btn-xemthem {
+        font-family: 'Roboto';
+        color: white !important;
+        padding: 0.5rem 1rem;
+        background: #DB7100;
+        border-radius: 8px;
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 23.4px;
+        letter-spacing: 0.0125em;
+
+    }
+
+    .ct-btn-xemthem:hover {
+        background: #0D4C92;
+    }
+    .txt-content:hover{
+        cursor: pointer;
+    }
+</style>
+<div class="container-fluid" id="block1-wrap">
+    <div class="row ct-header" id="backgroud-block1">
+        <div class="col-md-8 align-self-center">
+                            <span class="ct-title-cd" id="thongbao-block">
+                                THÔNG BÁO TỚI <br> CÔNG DÂN
+                            </span>
+        </div>
+        <div class="col-md-4 wrap-icon-title">
+            <img src="/documents/39403/307319/icon-loa.png" alt="">
+        </div>
+    </div>
+    <#assign indexLocal = 0/>
+    <#list entries as curEntry>
+        <#if  curEntry?? && curEntry.getAssetRenderer()?exists>
+            <#assign
+            renderer = curEntry.getAssetRenderer()
+            className = renderer.getClassName() />
+            <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 3>
+                <#assign
+                title = curEntry.getTitle(locale)
+                viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                indexLocal = indexLocal + 1 />
+                <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                    <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                <#else>
+                    <#assign smallImageUrl = "" >
+                </#if>
+                <div class="wrap-item-content">
+                    <div class="row" onclick="location.href='${viewURL}'">
+                        <div class="txt-content col-md-11 col-10">
+                            <a>
+                                ${title}
+                            </a>
+                        </div>
+                        <div class="col-2 col-md-1 pl-lg-0 align-content-center">
+                            <img src="documents/39403/307319/arrow-right.png">
+                        </div>
+                    </div>
+                </div>
+                <#if indexLocal < 3>
+                    <div class="ct-under-line"></div>
+                </#if>
+            </#if>
+        </#if>
+    </#list>
+    <div class="row justify-content-center mb-4 mt-3">
+        <a class="ct-btn-xemthem" href="/thông-báo-tới-công-dân">Xem thêm</a>
+    </div>
+</div>

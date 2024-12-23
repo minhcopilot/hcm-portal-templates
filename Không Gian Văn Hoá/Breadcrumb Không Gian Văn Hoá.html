@@ -1,0 +1,36 @@
+<style>
+	.breadcrumb-default-steps:not([href]):hover {
+		color: #7D7D7D;
+		text-decoration: none;
+	}
+	.breadcrumb-default-steps {
+		margin-top: 30px;
+		font-family: Roboto;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 20.8px;
+		letter-spacing: 0.0015em;
+		text-align: left;
+		text-underline-position: from-font;
+		text-decoration-skip-ink: none;
+		color: #7D7D7D;
+	}
+	.breadcrumb-default-steps.active {
+		color: #AF2630;
+        display: inline!important;
+	}
+
+</style>
+<#if entries?has_content>
+	<div class="breadcrumb-default">
+		<#assign cssClass = "breadcrumb-default-steps" />
+		<a class="${cssClass}" href="/">Trang chủ</a>
+		<#list entries as entry>
+			<#if entry?is_last>
+				<#assign cssClass = "breadcrumb-default-steps active" />
+			</#if>
+				<a <#if entry.isBrowsable()> href="${entry.getURL()!""}"</#if> 
+			 class="${cssClass}"> / ${htmlUtil.escape(entry.getTitle())}</a>			
+		</#list>
+	</div>
+</#if>

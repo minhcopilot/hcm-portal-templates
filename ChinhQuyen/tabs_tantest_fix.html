@@ -25,9 +25,21 @@
   <span class="ct-sp pr-3">|</span>
   [/#if] [/#list]
   <!-- Phần "Xem thêm" -->
-  <div class="view-more-cddh" style="display: none; margin-left: auto">
-    <a href="/tin-tuc-su-kien-3">Xem thêm <i class="fa fa-arrow-right"></i></a>
+  <div
+    class="view-more-cddh"
+    id="view-more-cddh"
+    style="display: none; margin-left: auto"
+  >
+    <a href="/chỉ-đạo-điều-hànhnew"
+      >Xem thêm <i class="fa fa-arrow-right"></i
+    ></a>
   </div>
+</div>
+<div
+  class="view-more-cddh-small"
+  style="display: none; margin-left: auto; text-align: end; margin-right: 1rem"
+>
+  <a href="/chỉ-đạo-điều-hànhnew">Xem thêm <i class="fa fa-arrow-right"></i></a>
 </div>
 
 <div class="tab-panel d-block custom-nav">
@@ -45,8 +57,43 @@
   </div>
   [/#list]
 </div>
-
 <style>
+  .view-more-cddh-small {
+    display: none;
+  }
+
+  .view-more-cddh-small a {
+    color: #db7100;
+    text-decoration: none;
+    font-weight: bold;
+    align-items: center;
+    gap: 8px;
+  }
+
+  @media (min-width: 992px) {
+    .view-more-cddh-small {
+      display: none !important;
+    }
+    .view-more-cddh {
+    }
+  }
+  @media (max-width: 991px) {
+    .view-more-cddh-small {
+      text-align: end;
+      margin-right: 1rem;
+    }
+    .view-more-cddh {
+      display: none !important;
+    }
+  }
+
+  .nav-link-gt-chiquyen {
+    font-size: clamp(14px, 4vw, 32px);
+  }
+  .view-more-cddh {
+    margin-left: auto;
+  }
+
   .view-more-cddh a {
     color: #db7100;
     text-decoration: none;
@@ -58,7 +105,7 @@
   .button {
     text-align: left !important;
     font-family: Roboto;
-    font-size: 32px;
+    font-size: clamp(14px, 4vw, 32px);
     font-weight: 700;
     line-height: 37.5px;
     letter-spacing: 0.15000000596046448px;
@@ -87,6 +134,12 @@
     text-decoration-skip-ink: none;
     color: #777777;
   }
+  @media (max-width: 425px) {
+    #tab1,
+    .ct-sp {
+      display: none !important;
+    }
+  }
 </style>
 <script>
   const dropdown = fragmentElement.querySelector(".navbar-collapse");
@@ -102,14 +155,19 @@
     )
   );
   const viewMoreElement = fragmentElement.querySelector(".view-more-cddh");
+  const viewMoreElementSmall = fragmentElement.querySelector(
+    ".view-more-cddh-small"
+  );
 
   // Hàm ẩn/hiện phần tử view-more-cddh dựa trên tab được chọn
   function toggleViewMore(index) {
     if (index === 1) {
       // Tab thứ hai
       viewMoreElement.style.display = "block";
+      viewMoreElementSmall.style.display = "block";
     } else {
       viewMoreElement.style.display = "none";
+      viewMoreElementSmall.style.display = "none";
     }
   }
 

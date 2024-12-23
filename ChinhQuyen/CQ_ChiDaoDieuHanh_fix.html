@@ -1,66 +1,66 @@
 <div class="container">
     <div class="d-flex align-items-center justify-content-center position-relative" id="carousel1">
         <div class="custom-carousel-control-prev" id="prevButton1">
-            <span class="ct-btn-carousel-2 d-flex align-items-center justify-content-center">
+            <span class="btn-prev-cddh ct-btn-carousel-2 d-flex align-items-center justify-content-center">
                 <img src="/documents/39403/307879/left.svg" width="8px" height="19px">
             </span>
         </div>
         <div class="custom-carousel-container">
             <div class="custom-carousel-inner">
                 <#assign dateFormatDay = "dd" />
-            <#assign monthFormatDay = "MM" />
-            <#assign yearFormatDay = "yyyy" />
-            <#assign dateFormatTime = "HH:mm" />
-        <#assign indexLocal = 0/>
-        <#if entries?has_content>
-            <#list entries as curEntry>
-                <#assign
-                renderer = curEntry.getAssetRenderer()
-                className = renderer.getClassName() />
-                <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale)>
-                    <#assign
-                    title = curEntry.getTitle(locale)
-                    article = renderer.getArticle()
-                    description = article.getDescription(locale)
-                    ddmTemplateKey = article.getDDMTemplateKey()
-                    createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
-                    createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
-                    createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
-                    createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
-                    curEntry = curEntry
-                    viewCount = curEntry.getViewCount()
-                    viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
-                    indexLocal = indexLocal + 1 />
+                <#assign monthFormatDay = "MM" />
+                <#assign yearFormatDay = "yyyy" />
+                <#assign dateFormatTime = "HH:mm" />
+                <#assign indexLocal = 0/>
+                <#if entries?has_content>
+                    <#list entries as curEntry>
+                        <#assign
+                        renderer = curEntry.getAssetRenderer()
+                        className = renderer.getClassName() />
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale)>
+                            <#assign
+                            title = curEntry.getTitle(locale)
+                            article = renderer.getArticle()
+                            description = article.getDescription(locale)
+                            ddmTemplateKey = article.getDDMTemplateKey()
+                            createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                            createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                            createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                            createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                            curEntry = curEntry
+                            viewCount = curEntry.getViewCount()
+                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                            indexLocal = indexLocal + 1 />
 
-                    <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
-                        <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
-                    <#else>
-                        <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
-                    </#if>
+                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                            <#else>
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
+                            </#if>
 
-                    <div class="custom-carousel-item-thongbao">
-                        <div onclick="location.href='${viewURL}'" class="thongcao d-flex align-items-center justify-content-center">
-                            <img src="${smallImageUrl}" class="img-thongcao">
-                            <div class="p-3 ct-backgound-thongcao">
-                                <p class="title-thongcao text-clamp-4 mb-1">${title}</p>
-                                <div class="date-thongcao d-flex align-items-center justify-content-between">
-                                    <span>${createDay}/${createMonth}/${createYear}</span>
-                                    <span class="ml-auto">
+                            <div class="custom-carousel-item-thongbao">
+                                <div onclick="location.href='${viewURL}'" class="thongcao d-flex align-items-center justify-content-center">
+                                    <img src="${smallImageUrl}" class="img-thongcao-cddh">
+                                    <div class="p-3 ct-backgound-thongcao">
+                                        <p class="title-thongcao text-clamp-4 mb-1">${title}</p>
+                                        <div class="date-thongcao d-flex align-items-center justify-content-between">
+                                            <span>${createDay}/${createMonth}/${createYear}</span>
+                                            <span class="ml-auto">
                                         <img class="mr-1" src="/documents/39403/307879/icon_view.svg">${viewCount}
                                     </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
+                        </#if>
+                    </#list>
                 </#if>
-            </#list>
-        </#if>
-                
+
             </div>
         </div>
         <div class="custom-carousel-control-next" id="nextButton1">
-            <span class="ct-btn-carousel-2 d-flex align-items-center justify-content-center">
+            <span class="btn-next-cddh ct-btn-carousel-2 d-flex align-items-center justify-content-center">
                 <img class="ct-rotate" src="/documents/39403/307879/left.svg" width="8px" height="19px">
             </span>
         </div>
@@ -149,168 +149,168 @@
 </script>
 
 <style>
-        .custom-carousel-item a {
-            font-family: Roboto;
-            text-decoration: none !important;
+    .custom-carousel-item a {
+        font-family: Roboto;
+        text-decoration: none !important;
+    }
+
+    #nav-thongtin a {
+        font-family: Roboto;
+        text-decoration: none !important;
+    }
+    .thongtin-child p, .thongtin-child p span {
+        font-family: Roboto;
+        margin-top: 10px !important;
+        font-size: 18px !important;
+        font-weight: 500 !important;
+        line-height: 23.4px !important;
+        text-align: center !important;
+        text-underline-position: from-font !important;
+        text-decoration-skip-ink: none !important;
+        color: #02397A !important;
+        text-transform: uppercase !important;
+    }
+
+    .btn-baocao p {
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+
+    .carousel-item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .custom-carousel-container {
+        position: relative;
+        width: 100%;
+        margin: 20px auto;
+        overflow: hidden;
+    }
+
+    .custom-carousel-inner {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+
+    .custom-carousel-item-thongbao {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+        padding: 10px;
+    }
+
+    .custom-carousel-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .custom-carousel-control-prev,
+    .custom-carousel-control-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        color: white;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .custom-carousel-control-prev {
+        left: -50px;
+    }
+
+    .custom-carousel-control-next {
+        right: -50px;
+    }
+
+    .ct-btn-carousel-2 {
+        background-color: #FFF9EA;
+        border-radius: 50%;
+        width: 40px ;
+        height: 40px ;
+        border: unset ;
+    }
+
+    .ct-btn-carousel-2:hover {
+        background-color: #DB7100 !important;
+
+        img {
+            transition: filter 0s ease;
+            filter: invert(100%) brightness(200%);
+        }
+    }
+
+    .img-thongcao-cddh {
+        width: 221px ;
+        height: 155px ;
+    }
+
+    .title-thongcao, .ct-backgound-thongcao p {
+        font-family: Roboto;
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        line-height: 23.4px !important;
+        letter-spacing: 0.0015em !important;
+        text-align: left !important;
+        text-underline-position: from-font !important;
+        text-decoration-skip-ink: none !important;
+    }
+
+    .ct-backgound-thongcao {
+        background-color: #E0E0E0;
+        height: 155px;
+    }
+
+    .text-clamp-4 {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.5;
+        max-height: 6.5em;
+        text-align: justify-all;
+    }
+
+    .date-thongcao {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18.2px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+    }
+
+    .thongcao:hover {
+        span img {
+            transition: filter 0s ease;
+            filter: invert(100%) brightness(200%);
         }
 
-        #nav-thongtin a {
-            font-family: Roboto;
-            text-decoration: none !important;
-        }
-        .thongtin-child p, .thongtin-child p span {
-            font-family: Roboto;
-            margin-top: 10px !important;
-            font-size: 18px !important;
-            font-weight: 500 !important;
-            line-height: 23.4px !important;
-            text-align: center !important;
-            text-underline-position: from-font !important;
-            text-decoration-skip-ink: none !important;
-            color: #02397A !important;
-            text-transform: uppercase !important;
-        }
-
-        .btn-baocao p {
-            text-transform: uppercase;
-            margin: 0;
-        }
-        
-
-        .carousel-item img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .custom-carousel-container {
-            position: relative;
-            width: 100%;
-            margin: 20px auto;
-            overflow: hidden;
-        }
-
-        .custom-carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        
-
-        .custom-carousel-item-thongbao {
-            flex: 0 0 33.33%;
-            max-width: 33.33%;
-            padding: 10px;
-        }
-
-        .custom-carousel-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .custom-carousel-control-prev,
-        .custom-carousel-control-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            z-index: 1;
-        }
-
-        .custom-carousel-control-prev {
-            left: -50px;
-        }
-
-        .custom-carousel-control-next {
-            right: -50px;
-        }
-
-        .ct-btn-carousel-2 {
-            background-color: #FFF9EA;
-            border-radius: 50%;
-            width: 40px !important;
-            height: 40px !important;
-            border: unset !important;
-        }
-
-        .ct-btn-carousel-2:hover {
-            background-color: #DB7100 !important;
-
-            img {
-                transition: filter 0s ease;
-                filter: invert(100%) brightness(200%);
-            }
-        }
-
-        .img-thongcao {
-            width: 221px !important;
-            height: 155px !important;
-        }
-
-        .title-thongcao, .ct-backgound-thongcao p {
-            font-family: Roboto;
-            font-size: 18px !important;
-            font-weight: 700 !important;
-            line-height: 23.4px !important;
-            letter-spacing: 0.0015em !important;
-            text-align: left !important;
-            text-underline-position: from-font !important;
-            text-decoration-skip-ink: none !important;
-        }
+        cursor: pointer !important;
+        background-color: #02397A !important;
+        color: #fefefe !important;
 
         .ct-backgound-thongcao {
-            background-color: #E0E0E0;
-            height: 155px;
-        }
-
-        .text-clamp-4 {
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            line-height: 1.5;
-            max-height: 6.5em;
-            text-align: justify-all;
-        }
-
-        .date-thongcao {
-            font-family: Roboto;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 18.2px;
-            text-align: left;
-            text-underline-position: from-font;
-            text-decoration-skip-ink: none;
-        }
-
-        .thongcao:hover {
-            span img {
-                transition: filter 0s ease;
-                filter: invert(100%) brightness(200%);
-            }
-
-            cursor: pointer !important;
             background-color: #02397A !important;
+        }
+
+        span {
             color: #fefefe !important;
-
-            .ct-backgound-thongcao {
-                background-color: #02397A !important;
-            }
-
-            span {
-                color: #fefefe !important;
-            }
-            .title-thongcao, .ct-backgound-thongcao p{
-                color:white!important;
-            }
         }
         .title-thongcao, .ct-backgound-thongcao p{
-            color:black!important;
+            color:white!important;
         }
-/* Responsive */
+    }
+    .title-thongcao, .ct-backgound-thongcao p{
+        color:black!important;
+    }
+    /* Responsive */
     @media (max-width: 1200px) {
         .custom-carousel-item-thongbao {
             flex: 0 0 25%;
@@ -320,22 +320,61 @@
 
     @media (max-width: 991px) {
         .custom-carousel-item-thongbao {
-            flex: 0 0 33.33%;
-            max-width: 33.33%;
+            flex: 0 0 50% !important;
+            max-width: 50% !important;
         }
     }
 
     @media (max-width: 768px) {
         .custom-carousel-item-thongbao {
-            flex: 0 0 50%;
-            max-width: 50%;
+            /*flex: 0 0 50%;*/
+            /*max-width: 50%;*/
         }
     }
 
     @media (max-width: 480px) {
         .custom-carousel-item-thongbao {
-            flex: 0 0 100%;
-            max-width: 100%;
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
         }
     }
-    </style>
+    @media screen and (max-width: 426px) {
+        .img-thongcao-cddh {
+            width: 45% !important;
+            height: 155px !important;
+        }
+        .btn-prev-cddh{
+            left: 33px;
+            top:-20px;
+            position: absolute;
+        }
+        .btn-next-cddh{
+            right:  33px;
+            top:-20px;
+
+            position: absolute;
+
+        }
+
+    }
+    @media screen and (min-width: 427px) and (max-width: 768px) {
+        .img-thongcao-cddh {
+            width: 45% !important;
+            height: 155px !important;
+        }
+        .btn-prev-cddh{
+            left: 33px;
+            top:-20px;
+
+            position: absolute;
+        }
+        .btn-next-cddh{
+            right:  33px;
+            top:-20px;
+
+            position: absolute;
+
+        }
+
+    }
+</style>

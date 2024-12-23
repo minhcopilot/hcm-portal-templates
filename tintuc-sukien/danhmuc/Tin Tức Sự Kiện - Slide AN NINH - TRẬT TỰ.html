@@ -12,14 +12,14 @@
             >
                 <!-- Phần bên trái -->
                 <div class="d-flex align-items-center gap-3">
-                    <select class="custom-select" id="yearSelect">
+                    <select class="custom-select" id="yearSelect" disabled>
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
                         <option value="2021">2021</option>
                         <option value="2020">2020</option>
                     </select>
-                    <select class="custom-select" id="monthSelect">
+                    <select class="custom-select" id="monthSelect" disabled>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -115,6 +115,7 @@
                             createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
                             createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
                             curEntry = curEntry
+                            viewCount = curEntry.getViewCount()
                             viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
                             indexLocal = indexLocal + 1 />
                             <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
@@ -150,7 +151,7 @@
                                                         class="d-flex align-items-center gap-1 view-count-container"
                                                 >
                                                     <i class="fa fa-eye"></i>
-                                                    <span class="views-tindang">1,141</span>
+                                                    <span class="views-tindang">${viewCount}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -173,7 +174,7 @@
 
             </swiper-container>
             <div class="pagination-container position-absolute">
-                <a href="/tin-tuc-2">
+                <a href="/an-ninh-trat-tu">
                     <button class="btn text-white text-nowrap btn-orange">
                         Xem thêm
                     </button>
@@ -182,3 +183,138 @@
         </div>
     </div>
 </div>
+
+<script>
+    function initializeNewsSwiper() {
+        // Kiểm tra jQuery đã được load chưa
+        if (typeof jQuery === 'undefined') {
+            setTimeout(initializeNewsSwiper, 100);
+            return;
+        }
+
+        $(document).ready(function () {
+            // Đổi tên biến để tránh xung đột
+            const newsSwiper = $(".chinhtri-newsSwiper")[0];
+            if (newsSwiper && newsSwiper.swiper) {
+                const swiperNewsWrapper = newsSwiper.swiper;
+
+                // Xử lý nút Previous
+                $("#ct-prev-btn").off('click').on("click", () => {
+                    if (swiperNewsWrapper) swiperNewsWrapper.slidePrev();
+                });
+
+                // Xử lý nút Next
+                $("#ct-next-btn").off('click').on("click", () => {
+                    if (swiperNewsWrapper) swiperNewsWrapper.slideNext();
+                });
+
+
+
+                // Thêm xử lý cho nút Xem (lọc theo tháng/năm)
+                $(".tool-container .btn-view").off('click').on("click", function () {
+                    const selectedYear = $("#yearSelect").val();
+                    const selectedMonth = $("#monthSelect").val().padStart(2, "0");
+
+                    // Reset tất cả slide về trạng thái ẩn
+                    if (swiperNewsWrapper && swiperNewsWrapper.slides) {
+                        swiperNewsWrapper.slides.forEach((slide) => {
+                            slide.style.display = "none";
+                        });
+
+                        // Đếm số slide được hiển thị
+                        let visibleSlides = 0;
+
+                        // Lọc và hiển thị các slide phù hợp
+                        swiperNewsWrapper.slides.forEach((slide) => {
+                            const dateText = $(slide).find(".text-muted").text().trim();
+                            // Kiểm tra xem có tìm thấy phần tử có class text-muted không
+                            if (dateText) {
+                                // Tách chuỗi ngày tháng và xử lý
+                                const [time, date] = dateText.split("|").map((item) => item.trim());
+                                if (date) {
+                                    const [day, month, year] = date.split("/");
+                                    // So sánh tháng và năm
+                                    if (month === selectedMonth && year === selectedYear) {
+                                        slide.style.display = "block";
+                                        visibleSlides++;
+                                    }
+                                }
+                            }
+                        });
+
+                        // Kiểm tra và xử lý hiển thị nút điều hướng
+                        const navigationButtons = $("#ct-prev-btn, #ct-next-btn");
+                        if (visibleSlides <= 4) {
+                            navigationButtons.hide();
+                        } else {
+                            navigationButtons.show();
+                        }
+
+                        // Xử lý thông báo không có kết quả
+                        if (visibleSlides === 0) {
+                            if (!$(".no-results-message").length) {
+                                const noResultsMessage =
+                                    '<div class="no-results-message text-center py-5">' +
+                                    '<div class="mb-3">' +
+                                    '<i class="bi bi-search" style="font-size: 3rem; color: #ccc;"></i>' +
+                                    '</div>' +
+                                    '<h5 class="text-muted">Không tìm thấy bài viết nào</h5>' +
+                                    '<p class="text-muted">Không có bài viết nào trong tháng ' + selectedMonth + '/' + selectedYear + '</p>' +
+                                    '</div>';
+                                $(".chinhtri-newsSwiper").after(noResultsMessage);
+                                $(".btn-orange").hide();
+                            }
+                        } else {
+                            // Xóa thông báo không có kết quả
+                            $(".no-results-message").remove();
+                            $(".btn-orange").show();
+                        }
+
+                        // Update swiper
+                        swiperNewsWrapper.update();
+                        swiperNewsWrapper.slideTo(0);
+                    }
+                });
+
+
+
+                // Thêm cấu hình breakpoints cho newsSwiper
+                Object.assign(newsSwiper, {
+                    breakpoints: {
+                        320: {
+                            slidesPerView: 1,
+                            spaceBetween: 10,
+                        },
+                        480: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 20,
+                        },
+                        1440: {
+                            slidesPerView: 4,
+                            spaceBetween: 20,
+                        },
+                    },
+                });
+            }
+        });
+    }
+
+    // Khởi tạo khi document ready
+    $(document).ready(initializeNewsSwiper);
+
+    // Khởi tạo khi SPA navigation kết thúc
+    if (Liferay && Liferay.on) {
+        Liferay.on('endNavigate', initializeNewsSwiper);
+    }
+
+    // Khởi tạo khi window load
+    $(window).on('load', initializeNewsSwiper);
+</script>

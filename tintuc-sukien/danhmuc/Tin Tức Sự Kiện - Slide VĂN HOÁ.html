@@ -8,15 +8,15 @@
                     class="tool-container d-flex justify-content-between align-items-center gap-3 flex-wrap my-4"
             >
                 <!-- Phần bên trái -->
-                <div class="d-flex align-items-center gap-3">
-                    <select class="custom-select" id="yearSelect">
+                <div class="d-flex align-items-center gap-3"> 
+                    <select class="custom-select" id="yearSelect" disabled>
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
                         <option value="2021">2021</option>
                         <option value="2020">2020</option>
                     </select>
-                    <select class="custom-select" id="monthSelect">
+                    <select class="custom-select" id="monthSelect" disabled>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -48,13 +48,13 @@
         </div>
         <div class="slideshow-news-container position-relative">
             <!-- Thêm nút điều hướng tùy chỉnh -->
-            <button class="custom-prev-btn">
+            <button class="custom-prev-btn" id="vanhoa-prev-btn">
 
                 <img src="/documents/39403/310714/left-arrow.svg"
                      alt="Previous"
                 />
             </button>
-            <button class="custom-next-btn">
+            <button class="custom-next-btn" id="vanhoa-next-btn">
                 <img
                         src="/documents/39403/310714/right-arrow.svg"
                         alt="Next"
@@ -63,26 +63,18 @@
 
             <!-- Định nghĩa mapping cho icons -->
             <#assign categoryIcons = {
-            "KINH_TE": "/documents/39403/331149/ic_kt.png/618bcf29-7fbf-f158-f303-8a77ac7ade92?t=1732155565667",
-            "THONG_BAO": "/documents/39403/331149/ic_tb.png/4e4c2773-3b95-a073-7e4d-b0faba997d51?t=1732155565926",
-            "HA_TANG": "/documents/39403/331149/ic_ht.png/efcf15fa-7c8d-0461-3095-831796a669d8?t=1732155565437",
-            "VAN_HOA": "/documents/39403/331149/ic_vh.png/05543994-41a5-e16e-89b9-cee9a415e8f1?t=1732155566178",
-            "KHOA_GIAO":"/documents/39403/331149/khoa+gi%C3%A1o.png/100f8139-6dbd-6b6a-b441-0e51259b0807?t=1732155566411",
-            "DOI_NGOAI": "/documents/39403/331149/%C4%91%E1%BB%91i+ngo%E1%BA%A1i.png/e9278b95-d550-abbb-7a3c-bc0e6c7145bf?t=1732155565214",
-            "CHINH_TRI": "/documents/39403/331149/CH%C3%8DNH+TR%E1%BB%8A.png/aff1039f-cafc-1121-e49f-210645a54730?t=1732155564962",
-            "BUSINESS": "/documents/39403/331149/BUSINESS.png/8e06bae4-1c7e-aec4-c6b0-291439f12207?t=1732155564731",
-            "AN_NINH":"/documents/39403/331149/AN+NINH+TRAT+TU.png/adb2dc88-bb80-b5fe-c14a-c9f3b3b1e15e?t=1732155564481"
+            "VAN_HOA": "/documents/39403/331149/ic_vh.png/05543994-41a5-e16e-89b9-cee9a415e8f1?t=1732155566178"
             } />
 
             <!-- Định nghĩa mảng các category -->
-            <#assign categories = ["KINH_TE", "THONG_BAO", "HA_TANG", "VAN_HOA","KHOA_GIAO","DOI_NGOAI","CHINH_TRI","BUSINESS","AN_NINH"] />
+            <#assign categories = ["VAN_HOA"] />
             <#assign dateFormatDay = "dd" />
             <#assign monthFormatDay = "MM" />
             <#assign yearFormatDay = "yyyy" />
             <#assign dateFormatTime = "HH:mm" />
             <#assign indexLocal = 0/>
             <swiper-container
-                    class="newsSwiper position-relative"
+                    class="vanhoa-newsSwiper position-relative"
                     pagination="true"
                     pagination-clickable="true"
                     space-between="20"
@@ -99,7 +91,8 @@
                         <#assign
                         renderer = curEntry.getAssetRenderer()
                         className = renderer.getClassName()
-                        iconUrl = categoryIcons["KHOA_GIAO"]!""
+                        category = "VAN_HOA"
+                        iconUrl = categoryIcons[category]!""
                         />
                         <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 10>
                             <#assign
@@ -112,6 +105,7 @@
                             createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
                             createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
                             curEntry = curEntry
+                            viewCount = curEntry.getViewCount()
                             viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
                             indexLocal = indexLocal + 1 />
                             <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
@@ -147,7 +141,7 @@
                                                         class="d-flex align-items-center gap-1 view-count-container"
                                                 >
                                                     <i class="fa fa-eye"></i>
-                                                    <span class="views-tindang">1,141</span>
+                                                    <span class="views-tindang">${viewCount}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -170,7 +164,7 @@
 
             </swiper-container>
             <div class="pagination-container position-absolute">
-                <a href="/tin-tuc-2">
+                <a href="/tin-tuc-van-hoa-xa-hoi">
                     <button class="btn text-white text-nowrap btn-orange">
                         Xem thêm
                     </button>
@@ -179,3 +173,138 @@
         </div>
     </div>
 </div>
+
+<script>
+    function initializeNewsSwiper() {
+        // Kiểm tra jQuery đã được load chưa
+        if (typeof jQuery === 'undefined') {
+            setTimeout(initializeNewsSwiper, 100);
+            return;
+        }
+
+        $(document).ready(function () {
+            // Đổi tên biến để tránh xung đột
+            const newsSwiper = $(".vanhoa-newsSwiper")[0];
+            if (newsSwiper && newsSwiper.swiper) {
+                const swiperNewsWrapper = newsSwiper.swiper;
+
+                // Xử lý nút Previous
+                $("#vanhoa-prev-btn").off('click').on("click", () => {
+                    if (swiperNewsWrapper) swiperNewsWrapper.slidePrev();
+                });
+
+                // Xử lý nút Next
+                $("#vanhoa-next-btn").off('click').on("click", () => {
+                    if (swiperNewsWrapper) swiperNewsWrapper.slideNext();
+                });
+
+
+
+                // Thêm xử lý cho nút Xem (lọc theo tháng/năm)
+                $(".tool-container .btn-view").off('click').on("click", function () {
+                    const selectedYear = $("#yearSelect").val();
+                    const selectedMonth = $("#monthSelect").val().padStart(2, "0");
+
+                    // Reset tất cả slide về trạng thái ẩn
+                    if (swiperNewsWrapper && swiperNewsWrapper.slides) {
+                        swiperNewsWrapper.slides.forEach((slide) => {
+                            slide.style.display = "none";
+                        });
+
+                        // Đếm số slide được hiển thị
+                        let visibleSlides = 0;
+
+                        // Lọc và hiển thị các slide phù hợp
+                        swiperNewsWrapper.slides.forEach((slide) => {
+                            const dateText = $(slide).find(".text-muted").text().trim();
+                            // Kiểm tra xem có tìm thấy phần tử có class text-muted không
+                            if (dateText) {
+                                // Tách chuỗi ngày tháng và xử lý
+                                const [time, date] = dateText.split("|").map((item) => item.trim());
+                                if (date) {
+                                    const [day, month, year] = date.split("/");
+                                    // So sánh tháng và năm
+                                    if (month === selectedMonth && year === selectedYear) {
+                                        slide.style.display = "block";
+                                        visibleSlides++;
+                                    }
+                                }
+                            }
+                        });
+
+                        // Kiểm tra và xử lý hiển thị nút điều hướng
+                        const navigationButtons = $("#vanhoa-prev-btn, #vanhoa-next-btn");
+                        if (visibleSlides <= 4) {
+                            navigationButtons.hide();
+                        } else {
+                            navigationButtons.show();
+                        }
+
+                        // Xử lý thông báo không có kết quả
+                        if (visibleSlides === 0) {
+                            if (!$(".no-results-message").length) {
+                                const noResultsMessage =
+                                    '<div class="no-results-message text-center py-5">' +
+                                    '<div class="mb-3">' +
+                                    '<i class="bi bi-search" style="font-size: 3rem; color: #ccc;"></i>' +
+                                    '</div>' +
+                                    '<h5 class="text-muted">Không tìm thấy bài viết nào</h5>' +
+                                    '<p class="text-muted">Không có bài viết nào trong tháng ' + selectedMonth + '/' + selectedYear + '</p>' +
+                                    '</div>';
+                                $(".vanhoa-newsSwiper").after(noResultsMessage);
+                                $(".btn-orange").hide();
+                            }
+                        } else {
+                            // Xóa thông báo không có kết quả
+                            $(".no-results-message").remove();
+                            $(".btn-orange").show();
+                        }
+
+                        // Update swiper
+                        swiperNewsWrapper.update();
+                        swiperNewsWrapper.slideTo(0);
+                    }
+                });
+
+
+
+                // Thêm cấu hình breakpoints cho newsSwiper
+                Object.assign(newsSwiper, {
+                    breakpoints: {
+                        320: {
+                            slidesPerView: 1,
+                            spaceBetween: 10,
+                        },
+                        480: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                            spaceBetween: 20,
+                        },
+                        1440: {
+                            slidesPerView: 4,
+                            spaceBetween: 20,
+                        },
+                    },
+                });
+            }
+        });
+    }
+
+    // Khởi tạo khi document ready
+    $(document).ready(initializeNewsSwiper);
+
+    // Khởi tạo khi SPA navigation kết thúc
+    if (Liferay && Liferay.on) {
+        Liferay.on('endNavigate', initializeNewsSwiper);
+    }
+
+    // Khởi tạo khi window load
+    $(window).on('load', initializeNewsSwiper);
+</script>

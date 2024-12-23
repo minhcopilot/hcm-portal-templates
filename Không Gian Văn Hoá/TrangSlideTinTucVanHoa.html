@@ -1,0 +1,196 @@
+<style>
+
+    .carousel-box {
+        background: #FFF !important;
+    }
+
+    .carousel-title-kgvh {
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 6em;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        color: #000;
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%; /* 25.2px */
+        letter-spacing: 0.225px;
+    }
+    .carousel-indicators {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 15;
+        display: flex;
+        justify-content: center;
+        padding-left: 0;
+        margin-right: 15%;
+        margin-left: 15%;
+        list-style: none;
+        bottom: -53px;
+    }
+    .carousel-indicators li {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #AF2630;
+    }
+    .title-activity > p {
+        overflow: hidden;
+        color: #2C2C2C;
+        /* Title/Small */
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%; /* 22.4px */
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        align-self: stretch;
+    }
+
+    .title-activity-bottom > p {
+        overflow: hidden;
+        color: #031739;
+        text-overflow: ellipsis;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0.024px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        align-self: stretch;
+    }
+
+    .title-news {
+        position: relative;
+        border-bottom: 2px solid #B2B2B2;
+
+    }
+
+    .title-news h3 {
+        position: relative;
+        z-index: 1;
+        padding-bottom: 2px;
+        display: inline-block;
+        margin-bottom: -2px;
+        border-bottom: 2px solid #AF2630;
+    }
+
+    .content-activity > p {
+        overflow: hidden;
+        color: #3B4E68;
+        text-overflow: ellipsis;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+    .img-news-intro {
+        border-radius: 8px;
+        height: 210px;
+    }
+
+    .title-activity-left button {
+        border: none;
+        background: #FFF;
+        color: #AF2630;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 25.6px */
+        letter-spacing: 0.2px;
+    }
+    .bgr-none {
+        background: none !important;
+    }
+    @media only screen and (max-width: 576px) {
+    }
+    .title-activity-tintuc button {
+        border: none;
+        background: none;
+        color: #AF2630;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 25.6px */
+        letter-spacing: 0.2px;
+    }
+    .border-bottom-red-2px {
+        border-bottom: 2px solid #AF2630 !important;
+    }
+</style>
+<#assign dateFormatDay = "dd" />
+<#assign monthFormatDay = "MM" />
+<#assign yearFormatDay = "yyyy" />
+<#assign dateFormatTime = "HH:mm" />
+<#assign indexLocal = 0/>
+
+
+<div class="col-md-12 p-0 scroll-divv mt-3 ">
+    <div class="carousel-box  pb-2 bgr-none">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="title-news mb-4 title-activity-tintuc d-flex justify-content-between align-items-center border-bottom-red-2px">
+                <h3 class="title-item pr-2">ẢNH</h3>
+                <button onclick="location.reload()">Xem thêm  <i class="pl-2 fa fa-arrow-right"></i></button>
+            </div>
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1" ></li>
+                <li data-target="#myCarousel" data-slide-to="2" ></li>
+            </ol>
+            <div class="carousel-inner">
+                <#assign indexLocal = 0/>
+                <#list entries as curEntry>
+                    <#assign renderer = curEntry.getAssetRenderer()
+                    className = renderer.getClassName() />
+                    <#if className == "com.liferay.journal.model.JournalArticle" && indexLocal < 4>
+                        <#assign title = curEntry.getTitle(locale)
+                        createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                        createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                        createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                        createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                        article = renderer.getArticle()
+                        description = article.getDescription(locale)
+                        ddmTemplateKey = article.getDDMTemplateKey()
+                        curEntry = curEntry
+                        viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                        indexLocal = indexLocal + 1 />
+                        <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                            <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                        <#else>
+                            <#assign smallImageUrl = "https://congthongtin-demo.qtsc.com.vn/documents/39403/41422/no-image.jpg/9195029e-8ad5-861f-710a-f727d7b2be9f" >
+                        </#if>
+                        <div class="carousel-item<#if indexLocal == 1> active</#if>">
+                            <div class="carousel-box">
+                                <div class="position-relative px-sm-0 px-lg-0 pe-sm-0 mx-sm-0">
+                                    <div>
+                                        <img src="${smallImageUrl}" class="w-100 img-fluid img-news-intro" alt="">
+                                    </div>
+                                    <div class="bottom-0 carousel-box w-100 pt-2" style="background: #FFF9F1 !important;">
+                                        <a class="carousel-title-kgvh" href="${viewURL}">${title}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </#if>
+                </#list>
+            </div>
+
+        </div>
+    </div>
+</div>

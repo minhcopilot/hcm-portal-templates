@@ -1,0 +1,349 @@
+<style>
+  .bdr-t-10 {
+    border-radius: 10px 10px 0px 0px;
+  }
+  .bdr-b-10 {
+    border-radius: 0px 0px 10px 10px;
+  }
+  .pho-card-item:last-child {
+    padding-right: 0;
+  }
+
+  .pho-card-item:first-child {
+    padding-left: 0;
+  }
+
+  .pho-card-item:hover > div {
+    transition: all 300ms ease-out;
+    box-shadow: -3px 4px 10px 0px rgba(0, 0, 0, 0.5),
+      inset -3px 4px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    transform: translate(-2px, -2px);
+  }
+
+  .header-chutich {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .header-chutich > h3 {
+    color: #0d4c92;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 23.44px;
+    text-align: center;
+  }
+
+  .header-chutich > h2 {
+    color: #000;
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 37.5px;
+    text-align: center;
+  }
+
+  .content-chucvu {
+    color: #000;
+    font-family: Roboto;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0.0015em;
+    text-align: left;
+  }
+
+  .content-name {
+    color: #0d4c92;
+    font-family: Roboto;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0.0015em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+
+  .chutich-detail {
+    margin-top: 28px;
+  }
+
+  .chutich-detail:hover .img-pvm-hover {
+    transition: all 300ms ease-out;
+    box-shadow: -3px 4px 10px 0px rgba(0, 0, 0, 0.5),
+      inset -3px 4px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  }
+
+  .chutich-detail:hover .content-name {
+    color: rgba(219, 113, 0, 1);
+    transition: all 300ms ease-out;
+  }
+
+  .gioithieu-chutich {
+    color: #000;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22.4px;
+    letter-spacing: 0.0015em;
+    text-align: left;
+  }
+
+  .btn-more {
+    padding: 14px 22px;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    background: #0d4c92;
+    color: #ffffff;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23.4px;
+    letter-spacing: 0.0125em;
+    text-align: left;
+  }
+
+  .pho-card {
+    margin: 20px 0 48px 0;
+  }
+
+  .header-chucvu-pct {
+    color: rgba(0, 0, 0, 1);
+    text-align: center;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 46.8px */
+    text-transform: uppercase;
+  }
+
+  .title-hot-news {
+    background: #0d4c92;
+    min-height: 55px;
+    font-family: Roboto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .title-hot-news > span {
+    color: #fff;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: 0.08px;
+  }
+
+  .ttct-pvm-cq {
+    color: #fff;
+
+    /* Subtitle 2-16px */
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 20.8px */
+    letter-spacing: 0.024px;
+  }
+
+  .pho-card-item {
+    width: 20%;
+    padding: 0 10px;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 767px) {
+    .pho-card-item {
+      width: 100%;
+      padding: 10px 10px;
+      border-radius: 10px;
+    }
+    .pho-card {
+      display: none;
+    }
+  }
+
+  .content-chutich {
+    padding-right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .h-290 {
+    height: 290px;
+  }
+
+  .d-flex-left {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .mt-25 {
+    margin-top: 25px;
+  }
+
+  .position-bottom {
+    position: absolute;
+    bottom: 0;
+  }
+</style>
+<div id="ttdn" class="d-none d-md-block">
+  <div class="row">
+    <div class="col-12 col-md-12 chutich-detail">
+      <div class="">
+        <div class="col-12 col-md-12 p-0">
+          <a
+            href="/web/ct-phan-van-mai"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/documents/39403/41422/PVM2011.png"
+              style="width: -webkit-fill-available"
+              class="img-pvm-hover"
+              alt=""
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pho-card">
+    <h2 class="header-chucvu-pct mb-4 mt-25">TRANG TIN CỦA CÁC PHÓ CHỦ TỊCH</h2>
+    <ul class="w-100 d-flex flex-column flex-md-row">
+      <li class="pho-card-item">
+        <div>
+          <a
+            href="/web/pho-chu-tich-duong-ngoc-hai"
+            target="_blank"
+            rel="noopener noreferrer"
+            previewlistener="true"
+          >
+            <img
+              src="/documents/39403/295011/DNH.png"
+              class="img-fluid bdr-t-10"
+              style="height: 191.078px"
+            />
+            <div class="title-hot-news bdr-b-10">
+              <span class="pt-2">Phó chủ tịch Thường trực</span>
+              <h3 class="ttct-pvm-cq p-2 mb-0 text-center text-white">
+                Dương Ngọc Hải
+              </h3>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li class="pho-card-item">
+        <div>
+          <a
+            href="/web/pho-chu-tich-vo-van-hoan"
+            target="_blank"
+            rel="noopener noreferrer"
+            previewlistener="true"
+          >
+            <img
+              src="/documents/39403/295011/VVH.png"
+              class="img-fluid bdr-t-10"
+              style="height: 191.078px"
+            />
+
+            <div class="title-hot-news bdr-b-10">
+              <span class="pt-2">Phó chủ tịch</span>
+              <h3 class="ttct-pvm-cq p-2 mb-0 text-center text-white">
+                Võ Văn Hoan
+              </h3>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li class="pho-card-item">
+        <div>
+          <a
+            href="/web/pct-tran-thi-dieu-thuy"
+            target="_blank"
+            rel="noopener noreferrer"
+            previewlistener="true"
+          >
+            <img
+              src="/documents/39403/295011/TTDT.png"
+              class="img-fluid bdr-t-10"
+              style="height: 191.078px"
+            />
+
+            <div class="title-hot-news bdr-b-10">
+              <span class="pt-2">Phó chủ tịch</span>
+              <h3 class="ttct-pvm-cq p-2 mb-0 text-center text-white">
+                Trần Thị Diệu Thúy
+              </h3>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li class="pho-card-item">
+        <div>
+          <a
+            href="/web/pho-chu-tich-nguyen-van-dung"
+            target="_blank"
+            rel="noopener noreferrer"
+            previewlistener="true"
+          >
+            <img
+              src="/documents/39403/295011/NVD.png"
+              class="img-fluid bdr-t-10"
+              style="height: 191.078px"
+            />
+            <div class="title-hot-news bdr-b-10">
+              <span class="pt-2">Phó chủ tịch</span>
+              <h3 class="ttct-pvm-cq p-2 mb-0 text-center text-white">
+                Nguyễn Văn Dũng
+              </h3>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li class="pho-card-item">
+        <div>
+          <a
+            href="/web/pho-chu-tich-bui-xuan-cuong"
+            target="_blank"
+            rel="noopener noreferrer"
+            previewlistener="true"
+          >
+            <img
+              src="/documents/39403/295011/BXC.png"
+              class="img-fluid bdr-t-10"
+              style="height: 191.078px"
+            />
+            <div class="title-hot-news bdr-b-10">
+              <span class="pt-2">Phó chủ tịch</span>
+              <h3 class="ttct-pvm-cq p-2 mb-0 text-center text-white">
+                Bùi Xuân Cường
+              </h3>
+            </div>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<script>
+  let maxHeightPVM = 0;
+  $(".pho-card-item img").each(function () {
+    if ($(this).height() > maxHeightPVM) maxHeightPVM = $(this).height();
+  });
+  $(".pho-card-item img").each(function () {
+    $(this).height(maxHeightPVM);
+  });
+</script>

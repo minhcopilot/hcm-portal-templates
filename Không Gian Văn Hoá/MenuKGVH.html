@@ -1,0 +1,303 @@
+<style>
+    .sub-me-row {
+        width: 600%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .par-me-div {
+        text-align: center;
+    }
+
+    .par-me-title {
+        margin: 0;
+        color: #AF2630;
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 160%; /* 22.4px */
+        letter-spacing: 0.175px;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 1366px) {
+        .child-me-div {
+            height: 166px;
+        }
+    }
+
+    @media only screen and (min-width: 1367px) and (max-width: 1200px) {
+        .child-me-div {
+            height: 200px;
+        }
+    }
+
+    .child-me-div {
+        text-align: center;
+        padding: 10px 0;
+        border: 2px solid #6aa9e973;
+        border-radius: 5px;
+    }
+
+    .ad-me-bar {
+        box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+        overflow: hidden;
+    }
+
+    .ad-me-bar .child-a {
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 14px 14px;
+        text-decoration: none;
+    }
+
+    .me-div {
+        margin: 0 16px 0 4px;
+    }
+
+    .par-btn {
+        text-decoration: none !important;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 0px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+    }
+    .active-bottom-line {
+        border-bottom: 2px solid #AF2630;
+    }
+    .me-div:hover .par-me-div p {
+        color: #000;
+    }
+
+    .child-div {
+        display: none;
+        position: absolute;
+        left: 0;
+        background-color: #dce8fc;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .child-div a {
+        float: left;
+        color: white;
+        text-decoration: none;
+    }
+
+    .me-div:hover .child-div {
+        display: block;
+    }
+
+    .header-menu-kgvh {
+        gap: 0 !important;
+        display: flex;
+    }
+    .t-active {
+        border-bottom: 2px solid #AF2630;
+    }
+
+    @media only screen and (max-width: 992px) {
+
+        .me-div {
+            width: 25%;
+        }
+
+        .child-a {
+            width: 25%;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .me-div {
+            width: 33.3%;
+        }
+
+        .child-a {
+            width: 33.3%;
+        }
+    }
+
+    @media only screen and (max-width: 576px) {
+        .me-div {
+            width: 100%;
+        }
+
+        .child-a {
+            width: 100%;
+        }
+
+        .par-me-div {
+            min-height: 0;
+        }
+
+        .child-me-div {
+            min-height: 0;
+        }
+    }
+    .header-menu-kgvh {
+        margin-bottom: 0 !important;
+    }
+</style>
+
+<div class="ad-me-bar d-flex align-items-center mb-2" style="background: #fff">
+    <div class="container d-flex align-items-center pr-3">
+        <div class="mobile-menu" id="click-menu" >
+            <div class="header stylehome1">
+                <ul class="menu_bar_home2">
+                    <li class="list-inline-item mr-2">
+                        <a href="#mobile-menu-kgvh">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"
+                                 fill="none">
+                                <path d="M23.3333 12.8334C22.689 12.8334 22.1667 13.3557 22.1667 14.0001C22.1667 14.6444 22.689 15.1667 23.3333 15.1667C23.9777 15.1667 24.5 14.6444 24.5 14.0001C24.5 13.3557 23.9777 12.8334 23.3333 12.8334Z"
+                                      fill="#C8392B"/>
+                                <path d="M4.59683 15.1667L18.7368 15.1667C19.3425 15.1667 19.8335 14.6758 19.8335 14.0701L19.8335 13.9301C19.8335 13.3244 19.3425 12.8334 18.7368 12.8334L4.59683 12.8334C3.99116 12.8334 3.50016 13.3244 3.50016 13.9301L3.50016 14.0701C3.50016 14.6758 3.99116 15.1667 4.59683 15.1667Z"
+                                      fill="#C8392B"/>
+                                <path d="M4.59667 9.33325L23.4033 9.33325C24.009 9.33325 24.5 8.84226 24.5 8.23658L24.5 8.09659C24.5 7.49091 24.009 6.99992 23.4033 6.99992L4.59667 6.99992C3.991 6.99992 3.5 7.49091 3.5 8.09658L3.5 8.23658C3.5 8.84226 3.991 9.33325 4.59667 9.33325Z"
+                                      fill="#C8392B"/>
+                                <path d="M4.59667 21L23.4033 21C24.009 21 24.5 20.509 24.5 19.9033L24.5 19.7633C24.5 19.1577 24.009 18.6667 23.4033 18.6667L4.59667 18.6667C3.991 18.6667 3.5 19.1577 3.5 19.7633L3.5 19.9033C3.5 20.509 3.991 21 4.59667 21Z"
+                                      fill="#C8392B"/>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="logo-menu-kgvh">
+            <a href="/" target="_blank" class="d-flex">
+                <img src="/documents/39403/41422/logo-menu.png" alt="">
+                <div class="header-title mx-3 d-md-none">
+                    <div class="ttdt-header"><#if headerTopVi?? && headerTopVi?length gt 0>${headerTopVi}<#else>CỔNG THÔNG TIN ĐIỆN TỬ</#if>
+                        </br> <#if headerBottomVi?? && headerBottomVi?length gt 0>${headerBottomVi}<#else>THÀNH PHỐ HỒ CHÍ MINH</#if>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div id="menu-mobile-kgvh" class="header-menu ml-4">
+            <ul class="header_top header-menu-kgvh">
+                <li class="d-flex">
+                    <a href="/" target="_blank" class="par-btn pr-3 mb-2 d-flex align-items-center">
+                        <img src="/documents/39403/340740/kgvh_home_nav_icon.png">
+                    </a>
+                </li>
+                <#if entries?has_content>
+                    <#assign nav_items = entries />
+                    <#list nav_items as nav_item>
+                        <#assign
+                        nav_item_attr_has_popup = ""
+                        nav_item_css_class = ""
+                        nav_item_layout = nav_item.getLayout()
+                        nav_item_href_link = "href='${nav_item.getURL()}' ${nav_item.getTarget()}"
+                        listChild = nav_item.getBrowsableChildren()
+                        />
+                        <#if nav_item.isSelected()>
+                            <#assign
+                            nav_item_attr_has_popup = "aria-haspopup='true'"
+                            nav_item_css_class = "t-active"
+                            />
+                        </#if>
+                        <li class="me-div header_top menu-item ${nav_item_css_class}">
+                            <a ${nav_item_href_link} class="par-btn ">
+                                <p class="par-me-title">${nav_item.getName()}</p>
+                            </a>
+                        </li>
+                    </#list>
+                </#if>
+                <li class="d-flex">
+                    <div class="par-btn pr-0 mb-2 d-flex align-items-center cursor-pointer">
+                        <img src="/documents/39403/340740/Search.png">
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<nav id="menu-kgvh" class="stylehome1 d-none">
+    <ul>
+        <li>
+            <@liferay_ui["language"]/>
+        </li>
+        <li>
+            <form action="${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/search" class="form form-search-mobile"
+                  data-fm-namespace="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_grfo_"
+                  id="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_grfo_fm"
+                  method="get"
+                  name="_com_liferay_portal_search_web_search_bar_portlet_SearchBarPortlet_INSTANCE_grfo_fm"
+                  style="width: 96%; margin: 5px;">
+                <fieldset class="fieldset search-bar">
+                    <div class="">
+                        <div class="header-main-mobile">
+                            <a href="/" class="menu-logo-70">
+                                <img src="/documents/39403/41422/logo-menu.png" alt="logo" class="menu-logo__image-70"/>
+                            </a>
+                        </div>
+                        <div class="home1-advnc-search home9">
+                            <ul class="h1ads_1st_list sasw_list  mb0">
+                                <li class="list-inline-item search_area">
+                                    <div class="form-group mobile-search">
+                                        <div class="menu-search__icon">
+                                            <i class="ri-search-line"></i>
+                                        </div>
+                                        <#if locale.getLanguage() == 'vi'>
+                                            <input class="form-control input-group-inset input-group-inset-before search-bar-keywords-input"
+                                                   data-qa-id="searchInput" placeholder="Tìm kiếm..."
+                                                   name="q" title="Tìm kiếm..." type="text" value=""/>
+                                        <#else>
+                                            <input class="form-control input-group-inset input-group-inset-before search-bar-keywords-input"
+                                                   data-qa-id="searchInput" placeholder="Search..."
+                                                   name="q" title="Search..." type="text" value=""/>
+                                        </#if>
+                                        <input type="hidden" name="type" value="com.liferay.journal.model.JournalArticle">
+                                        <button aria-label="Đồng ý" class="btn btn-unstyled" type="submit" style="color: var(--main-color-background)">
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </li>
+        </li>
+        <#assign navItems = entries />
+        <#list navItems as nav_item>
+            <#assign
+            nav_item_attr_has_popup = ""
+            nav_item_css_class = ""
+            nav_item_href_link = "href='${nav_item.getURL()}' ${nav_item.getTarget()}" />
+            <#if nav_item.isSelected()>
+                <#assign
+                nav_item_attr_has_popup = "aria-haspopup='true'"
+                nav_item_css_class = "selected"
+                />
+            </#if>
+            <li><a ${nav_item_href_link}><p>${nav_item.getName()}</p></a></li>
+        </#list>
+    </ul>
+</nav>
+
+<script>
+    $('#mobile-menu-kgvh').each(function () {
+        $(this).remove();
+    });
+    $("#click-menu").click(function(){
+
+        $('#menu-kgvh').before($('#menu-kgvh').clone().prop('id','mobile-menu-kgvh').prop('class','stylehome1 d-md-none'));
+
+        $('#mobile-menu-kgvh').mmenu();
+    });
+
+
+    $(document).ready(function() {
+        $('.header-top').css("background-color" , "#AF2630");
+        $('.info-left__icon').css("color" , "#FFF")
+    });
+</script>

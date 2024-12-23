@@ -110,7 +110,7 @@
     color: #0d4c92;
     margin: 0;
     flex-grow: 1;
-    font-size: 32px;
+    font-size: clamp(20px, 4vw, 32px);
     font-weight: 700;
   }
 
@@ -169,7 +169,7 @@
       background: none;
     }
     .name-pct {
-      font-size: 46px;
+      font-size: 36px;
     }
     .profile-title-pct {
       padding-top: 25px;
@@ -280,17 +280,14 @@
     .banner-cd-pvm {
       padding-top: 1% !important;
     }
-    .wrapper-gioi-thieu-ct {
-      padding-top: 47px;
-    }
     .wrapper-anh-video-pvm {
       margin-right: 1.1%;
     }
+    .wrapper-chi-dao-pvm{
+      padding-top: 2.5%;
+    }
   }
   @media screen and (min-width: 1441px) and (max-width: 1824px) {
-    .wrapper-gioi-thieu-ct {
-      padding-top: 47px;
-    }
     .ml-15pt {
       margin-left: 16%;
     }
@@ -309,6 +306,9 @@
     }
     .wrapper-anh-video-pvm {
       margin-right: 1%;
+    }
+    .wrapper-chi-dao-pvm{
+      padding-top: 2.5%;
     }
   }
   @media screen and (min-width: 1825px) and (max-width: 1919px) {
@@ -331,8 +331,8 @@
     .wrapper-anh-video-pvm {
       margin-right: 0.7%;
     }
-    .profile-left-pct {
-      padding-top: 6%;
+    .wrapper-chi-dao-pvm{
+      padding-top: 2.5%;
     }
   }
   @media screen and (min-width: 1920px) and (max-width: 2304px) {
@@ -355,11 +355,11 @@
     .wrapper-anh-video-pvm {
       margin-right: 0.7%;
     }
-    .profile-left-pct {
-      padding-top: 6%;
+    .wrapper-chi-dao-pvm{
+      padding-top: 2.5%;
     }
   }
-  @media screen and (min-width: 2305px) {
+  @media screen and (min-width: 2305px) and (max-width: 2350px) {
     .ml-15pt {
       margin-left: 36%;
     }
@@ -370,7 +370,8 @@
       margin-left: 27% !important;
     }
     .content-ltcd {
-      padding-right: 56% !important;
+      margin-right: 37%;
+      padding: 0 12px 0 2px;
     }
     .banner-cd-pvm {
       height: 308px;
@@ -378,15 +379,87 @@
     .wrapper-anh-video-pvm {
       margin-right: 1%;
     }
+    .wrapper-chi-dao-pvm{
+      padding-top: 1.5%;
+    }
+  }
+  @media screen and (min-width: 2351px) and (max-width: 2400px) {
+    .ml-15pt {
+      margin-left: 37.5%;
+    }
+    .mr-15pt {
+      margin-right: 38.5%;
+    }
+    .content-cddh-ct {
+      margin-left: 28% !important;
+    }
+    .content-ltcd {
+      margin-right: 58%;
+      padding: 0 12px 0 2px;
+    }
     .banner-cd-pvm {
-      padding-top: 10% !important;
+      height: 308px;
+    }
+    .wrapper-anh-video-pvm {
+      margin-right: 1%;
+    }
+    .wrapper-chi-dao-pvm{
+      padding-top: 1.5%;
+    }
+  }
+  @media screen and (min-width: 2401px) and (max-width: 2559px) {
+    .ml-15pt {
+      margin-left: 38.5%;
+    }
+    .mr-15pt {
+      margin-right: 39.5%;
+    }
+    .content-cddh-ct {
+      margin-left: 29% !important;
+    }
+    .content-ltcd {
+      margin-right: 59%;
+      padding: 0 12px 0 2px;
+    }
+    .banner-cd-pvm {
+      height: 308px;
+    }
+    .wrapper-anh-video-pvm {
+      margin-right: 1%;
+    }
+    .wrapper-chi-dao-pvm{
+      padding-top: 1.5%;
+    }
+  }
+  @media screen and (min-width: 2560px) {
+    .ml-15pt {
+      margin-left: 40%;
+    }
+    .mr-15pt {
+      margin-right: 41.5%;
+    }
+    .content-cddh-ct {
+      margin-left: 31% !important;
+    }
+    .content-ltcd {
+      margin-right: 50%;
+      padding: 0 12px 0 2px;
+    }
+    .banner-cd-pvm {
+      height: 308px;
+    }
+    .wrapper-anh-video-pvm {
+      margin-right: 1%;
+    }
+    .wrapper-chi-dao-pvm{
+      padding-top: 1.5%;
     }
   }
 </style>
 <div class="profile-container-pct">
   <div class="ml-15pt">
     <div class="row m-0 box-shadow-left-15pt wrapper-gioi-thieu-ct">
-      <div class="d-none d-md-block col-12 col-md-12 pt-0 pt-md-5">
+      <div class="d-md-block col-12 col-md-12 pt-0 pt-md-5">
         <div class="profile-left-pct pr-0">
           <div class="profile-title-pct">
             <h3 class="position-pct text-center text-md-left">CHỦ TỊCH UBND</h3>
@@ -395,7 +468,7 @@
             </h3>
             <h2 class="name-pct text-center text-md-left">PHAN VĂN MÃI</h2>
           </div>
-          <div class="profile-image-pct d-none d-md-block pr-md-5">
+          <div class="profile-image-pctd-md-block pr-md-5">
             <img
               class="profile-image-pct-img mr-md-5"
               src="/documents/58202/1035722/chuyentrang-avt-pvm.png"

@@ -9,14 +9,14 @@
             >
                 <!-- Phần bên trái -->
                 <div class="d-flex align-items-center gap-3">
-                    <select class="custom-select" id="yearSelect">
+                    <select class="custom-select" id="yearSelect" disabled>
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
                         <option value="2021">2021</option>
                         <option value="2020">2020</option>
                     </select>
-                    <select class="custom-select" id="monthSelect">
+                    <select class="custom-select" id="monthSelect" disabled>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -112,6 +112,7 @@
                             createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
                             createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
                             curEntry = curEntry
+                            viewCount = curEntry.getViewCount()
                             viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
                             indexLocal = indexLocal + 1 />
                             <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
@@ -147,7 +148,7 @@
                                                         class="d-flex align-items-center gap-1 view-count-container"
                                                 >
                                                     <i class="fa fa-eye"></i>
-                                                    <span class="views-tindang">1,141</span>
+                                                    <span class="views-tindang">${viewCount}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -170,7 +171,7 @@
 
             </swiper-container>
             <div class="pagination-container position-absolute">
-                <a href="/tin-tuc-2">
+                <a href="/hoat-dong-cua-lanh-dao">
                     <button class="btn text-white text-nowrap btn-orange">
                         Xem thêm
                     </button>

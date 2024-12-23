@@ -1,0 +1,278 @@
+<style>
+    .carousel-title {
+        color: #000;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0.024px;
+    }
+
+
+    .carousel-title {
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 6em;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        color: #031739;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        font-size: 16px;
+        letter-spacing: 0.024px;
+    }
+
+    .title-activity {
+        color: #031739;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        font-size: 20px;
+        letter-spacing: 0.15px;
+    }
+
+    .title-news {
+        position: relative;
+        border-bottom: 2px solid #AF2630 !important;
+    }
+
+    .title-news h3 {
+        position: relative;
+        z-index: 1;
+        padding-bottom: 2px;
+        display: inline-block;
+        margin-bottom: -2px;
+        border-bottom: 2px solid #AF2630;
+    }
+    .img-activity-right {
+        width: 100%%;
+        height: 100%;
+        border-radius: 8px;
+    }
+
+    .img-news-intro {
+        border-radius: 8px;
+        height: 210px;
+    }
+    .media-body.limit-content-desc {
+        width: 72.5%;
+    }
+
+    .img-activity-bottom {
+        width: 35%;
+        height: 93px;
+        border-radius: 8px;
+    }
+
+    .media-body.limit-content-bottom {
+        width: 65%;
+    }
+
+    .title-tintuc button {
+        border: none;
+        background: none;
+        color: #AF2630;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 25.6px */
+        letter-spacing: 0.2px;
+    }
+
+    .custom-date-time {
+        color: #474747;
+        /* Body Text/small */
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 22.4px */
+        letter-spacing: 0.175px;
+    }
+    .content-activity-tintuc > p {
+        color: #474747;
+        /* Body Text/Medium */
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 25.6px */
+        letter-spacing: 0.2px;
+    }
+    .content-title {
+        color:  #2C2C2C;
+        /* Title/Large */
+        font-family: Roboto;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%; /* 30.8px */
+        letter-spacing: 0.275px;
+    }
+
+    @media only screen and (max-width: 576px) {
+        .media-news {
+            flex-direction: column-reverse;
+        }
+        .img-activity-right {
+            width: 100%;
+            height: 188px;
+        }
+
+        .media-body.limit-content-desc {
+            width: 100%;
+        }
+        .media-body.limit-content-bottom {
+            width: 100%;
+        }
+    }
+    .w-h-140 {
+        width: 140px !important;
+        height: 140px !important;
+    }
+    .border-radius-50 {
+        border-radius: 50% !important;
+    }
+    .font-size-16 {
+        font-size: 16px !important;
+    }
+    .text-2-lines {
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Hiển thị tối đa 2 dòng */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis; /* Hiển thị dấu "..." nếu bị cắt */
+    }
+    .box-left-tintuc {
+        background-image: url("/documents/39403/340740/banner-trongdong-left-tintuc.png");
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 100%;
+        border-radius: 16px;
+    }
+    .box-left-tintuc > span {
+        color: #AF2630;
+        font-family: Roboto;
+        font-size: 30px;
+        font-weight: 900;
+        line-height: 48px;
+        letter-spacing: 0.0125em;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        text-align: center;
+    }
+    .box-left-tintuc > p {
+        color: #AF2630;
+        font-family: Roboto;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 28.8px;
+        letter-spacing: 0.0125em;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        text-align: center;
+    }
+    .box-banner-laco-tintuc {
+        background-image: url("/documents/39403/340740/banner-la-co.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border-radius: 16px;
+        text-align: center;
+        padding: 20px 75px;
+    }
+    .box-banner-laco-tintuc > span {
+        color: #FFF9F1;
+        font-family: Roboto;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 28px;
+        letter-spacing: 0.0125em;
+        text-align: center;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+
+    }
+</style>
+<#assign dateFormatDay = "dd" />
+<#assign monthFormatDay = "MM" />
+<#assign yearFormatDay = "yyyy" />
+<#assign dateFormatTime = "HH:mm" />
+<#assign indexLocal = 0/>
+
+
+<div class="row ml-0 mr-0 ">
+    <div class="col-4 col-md-3 border-2 box-left-tintuc pt-3">
+        <span>CHỦ TỊCH </span>
+        <span>HỒ CHÍ MINH </span>
+        <p class="m-0">(19/5/1890 - 2/9/1969) </p>
+        <img class="pt-4" src="/documents/39403/340740/anh-bac.png" alt="fls1.jpg">
+    </div>
+    <#--tin mới-->
+    <div class="col-9 pr-md-3 p-0 scroll-divv pl-3">
+        <div class="title-news mb-4 d-block">
+            <h3 class="title-item">TIN MỚI</h3>
+        </div>
+        <div class="article-list">
+            <div class="p-0 border-2 row m-0">
+
+            <#assign indexLocal = 0/>
+            <#list entries as curEntry>
+                <#assign
+                renderer = curEntry.getAssetRenderer()
+                className = renderer.getClassName() />
+                <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 4>
+                    <#assign
+                    title = curEntry.getTitle(locale)
+                    createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                    createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                    createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                    createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                    article = renderer.getArticle()
+                    description = article.getDescription(locale)
+                    ddmTemplateKey = article.getDDMTemplateKey()
+                    curEntry = curEntry
+                    viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                    indexLocal = indexLocal + 1 />
+                    <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                        <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                    <#else>
+                        <#assign smallImageUrl = "" >
+                    </#if>
+                    <div class="col-6 m-0 px-0 pb-3" onclick="location.href='${viewURL}'" style="cursor: pointer;">
+                        <div class="d-flex flex-row align-items-center">
+                            <div class="w-h-140 flex-shrink-0">
+                                <img
+                                        class="w-100 h-100 border-radius-50" src="${smallImageUrl}" alt="fls1.jpg">
+                            </div>
+                            <div class="title-tintuc pl-3">
+                                <span class="custom-date-time">${createTime} | ${createDay}/${createMonth}/${createYear}</span>
+                                <p class="content-title font-size-16 mb-1 mt-2 mt-md-0 text-2-lines">${title}</p>
+                                <button>Xem chi tiết  <i class="fa fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </#if>
+            </#list>
+            </div>
+            <div class="box-banner-laco-tintuc mt-3">
+                <span>
+                    Chuyên đề năm 2024: “Học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh về thực hành dân chủ, tăng cường pháp chế, đảm bảo kỷ cương, thu hút nguồn nhân lực chất lượng cao và tâm huyết trong xây dựng Thành phố Hồ Chí Minh văn minh, hiện đại, nghĩa tình”
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>

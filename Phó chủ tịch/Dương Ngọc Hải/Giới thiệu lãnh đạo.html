@@ -1,0 +1,592 @@
+<style>
+    * {
+        font-family: roboto;
+    }
+    .profile-container-pct-hd {
+        display: flex;
+        padding: 40px 0;
+        margin: 0 auto;
+        background-image: url("/documents/1195624/1195684/bg-pct.png/7ebcfed4-a3c1-8d54-7be3-106966d1b702?t=1733135986724");
+        background-size: 64.5% auto;
+        background-position: right;
+        background-repeat: no-repeat;
+    }
+
+    .profile-left-pct-hd {
+        width: 45%;
+        position: relative;
+    }
+
+    .profile-title-pct-hd {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .position-pct-hd,
+    .city-pct-hd {
+        color: #0d4c92;
+        margin: 5px 0;
+        font-size: 26px;
+        font-weight: 700;
+    }
+
+    .name-pct-hd {
+        color: #0d4c92;
+        font-size: 40px;
+        font-weight: 700;
+        margin: 10px 0;
+    }
+
+    .profile-image-pct-hd {
+        position: relative;
+        width: 390px;
+        height: 350px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .profile-image-pct-hd .profile-image-pct-hd-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        position: relative;
+        z-index: 4;
+    }
+
+    .sub-image-pct-hd-1 {
+        position: absolute;
+        z-index: 1;
+        left: -30%;
+        top: 0;
+    }
+    .sub-image-pct-hd-2 {
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        top: 53%;
+    }
+    .sub-image-pct-hd-3 {
+        position: absolute;
+        z-index: 3;
+        left: 0;
+        top: 22%;
+    }
+
+    .profile-right-pct-hd {
+        width: 46%;
+        padding: 20px;
+    }
+
+    .activities-header-pct-hd {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .activities-icon-pct-hd {
+        width: 66px;
+        height: 60px;
+        margin-right: 15px;
+    }
+
+    .icon-wrapper-pct-hd {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .icon-wrapper-pct-hd img:first-child {
+        width: 100%;
+        height: 100%;
+    }
+
+    .overlay-icon-pct-hd {
+        position: absolute;
+        top: 44%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 35px; /* Có thể điều chỉnh kích thước này */
+        height: 35px;
+    }
+
+    .activities-title-pct-hd {
+        color: #0d4c92;
+        margin: 0;
+        flex-grow: 1;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .view-more-pct-hd {
+        color: #DB7100;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 700;
+    }
+    .view-more-pct-hd:hover {
+        color: #DB7100;
+    }
+
+    .activities-list-pct-hd {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-left: 4%;
+    }
+
+    .activity-item-pct-hd {
+        color: #2E2E2E;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .activity-item-pct-hd:hover .activity-item-text-pct-hd {
+        color: #0e4e94;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .activity-item-pct-hd:hover .activity-item-dot-pct-hd {
+        content: url("/documents/1195624/1195684/dot_active.png/99bf191c-d663-bd6d-bd10-20cd83094062?t=1733135987844");
+    }
+
+    .activity-item-pct-hd .activity-item-dot-pct-hd {
+        width: 17px;
+        height: 16px;
+    }
+
+    .activity-item-pct-hd .activity-item-text-pct-hd {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    /* mobile < 425px */
+    @media screen and (max-width: 425px) {
+        .profile-container-pct-hd {
+            flex-direction: column;
+            background-image: none;
+            padding: 20px;
+        }
+
+        .profile-left-pct-hd,
+        .profile-right-pct-hd {
+            width: 100%;
+            padding: 0;
+        }
+
+        .name-pct-hd {
+            font-size: 32px;
+        }
+
+        .position-pct-hd,
+        .city-pct-hd {
+            font-size: 22px;
+        }
+
+        .profile-image-pct-hd {
+            width: 100%;
+            height: auto;
+        }
+
+        .activities-title-pct-hd {
+            font-size: 24px;
+        }
+
+        .sub-image-pct-hd-1 {
+            width: 35%;
+            left: -1%;
+        }
+
+        .sub-image-pct-hd-2 {
+            width: 35%;
+            height: auto;
+            left: -10px;
+        }
+
+        .sub-image-pct-hd-3 {
+            width: 18%;
+            top: 30%;
+            left: -10px;
+        }
+
+        .profile-image-pct-hd .profile-image-pct-hd-img {
+            width: 83%;
+            height: 93%;
+        }
+    }
+    /* 425px - 768px */
+    @media screen and (min-width: 425px) and (max-width: 768px) {
+        .profile-container-pct-hd {
+            flex-direction: column;
+            background-image: none;
+            padding: 20px;
+        }
+
+        .profile-left-pct-hd,
+        .profile-right-pct-hd {
+            width: 100%;
+            padding: 0;
+        }
+
+        .profile-image-pct-hd {
+            width: 80%;
+            height: 283px;
+        }
+
+        .sub-image-pct-hd-1 {
+            width: 38%;
+            left: -8%;
+        }
+
+        .sub-image-pct-hd-2 {
+            width: 35%;
+            height: auto;
+            left: -10px;
+        }
+
+        .sub-image-pct-hd-3 {
+            width: 22%;
+            left: -10px;
+            top: 29%;
+        }
+
+        .profile-image-pct-hd .profile-image-pct-hd-img {
+            width: 90%;
+        }
+    }
+    /* 768px - 1024px */
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        .profile-container-pct-hd {
+            flex-direction: column;
+            padding: 20px;
+            background-image: none;
+        }
+
+        .profile-left-pct-hd,
+        .profile-right-pct-hd {
+            width: 100%;
+            padding: 0;
+        }
+        .profile-right-pct-hd {
+            background-image: url("/documents/1195624/1195684/bg-pct.png/7ebcfed4-a3c1-8d54-7be3-106966d1b702?t=1733135986724")!important;
+            background-size: 100% 100%;
+        }
+        .profile-image-pct-hd {
+            width: 60%;
+            height: 392px;
+        }
+
+        .sub-image-pct-hd-1 {
+            width: 40%;
+            left: -17%;
+            top: 2%;
+        }
+
+        .sub-image-pct-hd-2 {
+            width: 32%;
+            height: 41%;
+            left: -10px;
+        }
+
+        .sub-image-pct-hd-3 {
+            width: 23%;
+            top: 15%;
+            left: -10px;
+        }
+
+        .profile-image-pct-hd .profile-image-pct-hd-img {
+            width: 95%;
+        }
+
+    }
+    /* 1024px - 1124px */
+    @media screen and (min-width: 1024px) and (max-width: 1324px) {
+        .profile-container-pct-hd {
+            background-size: 59% 100%;
+        }
+
+        .profile-left-pct-hd {
+            width: 49%;
+        }
+
+        .profile-right-pct-hd {
+            width: 48%;
+        }
+
+        .profile-image-pct-hd {
+            width: 68%;
+            height: 67%;
+        }
+
+        .sub-image-pct-hd-1 {
+            width: 40%;
+            left: -14%;
+        }
+
+        .sub-image-pct-hd-2 {
+            width: 31%;
+        }
+
+        .sub-image-pct-hd-3 {
+            width: 22%;
+        }
+    }
+    /* 1324px - 1440px */
+    @media screen and (min-width: 1324px) and (max-width: 1440px) {
+        .profile-container-pct-hd {
+            background-size: 61% 100%;
+        }
+
+        .profile-left-pct-hd {
+            width: 44%;
+        }
+
+        .profile-right-pct-hd {
+            width: 51%;
+            padding: 2% 2% 0 6%;
+        }
+
+        .profile-image-pct-hd {
+            width: 63%;
+            height: 65%;
+        }
+        .profile-image-pct-hd .profile-image-pct-hd-img{
+            width: 90%;
+        }
+
+        .sub-image-pct-hd-1 {
+            width: 50%;
+            left: -24%;
+        }
+
+        .sub-image-pct-hd-2 {
+            width: 34%;
+            height: 40%;
+            top: 56%;
+        }
+
+        .sub-image-pct-hd-3 {
+            width: 22%;
+        }
+
+    }
+    @media screen and (min-width: 1440px) and (max-width: 1824px) {
+        .profile-container-pct-hd {
+            background-size: 61% 100%;
+        }
+
+        .profile-left-pct-hd {
+            width: 44%;
+        }
+
+        .profile-right-pct-hd {
+            width: 51%;
+            padding: 2% 5% 0 6%;
+        }
+
+        .profile-image-pct-hd {
+            width: 63%;
+            height: 65%;
+        }
+        .profile-image-pct-hd .profile-image-pct-hd-img{
+            width: 87%;
+        }
+
+        .sub-image-pct-hd-1 {
+            width: 40%;
+            left: -14%;
+        }
+
+        .sub-image-pct-hd-2 {
+            width: 34%;
+            height: 42%;
+        }
+
+        .sub-image-pct-hd-3 {
+            width: 22%;
+        }
+    }
+    @media screen and (min-width: 1824px) and (max-width: 2304px) {
+        .profile-container-pct-hd {
+            background-size: 61% 100%;
+        }
+
+        .profile-left-pct-hd {
+            width: 44%;
+        }
+
+        .profile-right-pct-hd {
+            width: 51%;
+            padding: 2% 6% 0 6%;
+        }
+
+        .profile-image-pct-hd {
+            width: 87%;
+            height: 74%;
+        }
+        .profile-image-pct-hd .profile-image-pct-hd-img{
+            width: 70%;
+        }
+
+        .sub-image-pct-hd-1 {
+            width: 40%;
+            left: -3%;
+        }
+
+        .sub-image-pct-hd-2 {
+            width: 34%;
+            height: 42%;
+        }
+
+        .sub-image-pct-hd-3 {
+            width: 20%;
+        }
+    }
+    @media screen and (min-width: 2304px) {
+        .profile-container-pct-hd {
+            background-size: 61% 100%;
+        }
+
+        .profile-left-pct-hd {
+            width: 44%;
+        }
+
+        .profile-right-pct-hd {
+            width: 51%;
+            padding: 2% 14% 0 6%;
+        }
+
+        .profile-image-pct-hd {
+            width: 66%;
+            height: 76%;
+        }
+        .profile-image-pct-hd .profile-image-pct-hd-img{
+            width: 80%;
+        }
+
+        .sub-image-pct-hd-1 {
+            width: 40%;
+            left: -11%;
+        }
+
+        .sub-image-pct-hd-2 {
+            width: 37%;
+            height: 42%;
+        }
+
+        .sub-image-pct-hd-3 {
+            width: 24%;
+        }
+    }
+</style>
+<div class="profile-container-pct-hd">
+    <!-- Giới thiệu lãnh đạo -->
+    <div class="profile-left-pct-hd">
+        <img
+                class="sub-image-pct-hd-2"
+                src="/documents/1195624/1195684/icon_left_2.png/53aee2d1-1b5d-af96-59ee-0d64e1c0781c?t=1733135986990"
+                alt="Ảnh phụ 2"
+        />
+        <img
+                class="sub-image-pct-hd-3"
+                src="/documents/1195624/1195684/icon_left_3.png/f1470642-1d73-9100-7004-5b65e73f223a?t=1733135987342"
+                alt="Ảnh phụ 3"
+        />
+        <div class="profile-title-pct-hd">
+            <h3 class="position-pct-hd">PHÓ CHỦ TỊCH THƯỜNG TRỰC UBND</h3>
+            <h3 class="city-pct-hd">THÀNH PHỐ HỒ CHÍ MINH</h3>
+            <h2 class="name-pct-hd">DƯƠNG NGỌC HẢI</h2>
+        </div>
+        <div class="profile-image-pct-hd">
+            <img
+                    class="sub-image-pct-hd-1"
+                    src="/documents/1195624/1195684/icon_left_1.png/02c5ddcc-ff7a-8da4-8377-7ef74d03dd3d?t=1733135987156"
+                    alt="Ảnh phụ 1"
+                    m,
+            />
+
+            <img
+                    class="profile-image-pct-hd-img"
+                    src="/documents/1195624/1195687/anh_dai_dien.png/ac1618bc-e70a-48b0-14c4-f5e72bb2e9d2?t=1733137061131"
+                    alt="Ảnh lãnh đạo"
+            />
+        </div>
+    </div>
+
+    <!-- Giới thiệu hoạt động -->
+    <div class="profile-right-pct-hd">
+        <div class="activities-header-pct-hd">
+            <div class="activities-icon-pct-hd">
+                <div class="icon-wrapper-pct-hd">
+                    <img
+                            src="/documents/1195624/1195684/ic_hoat_dong.png/13a6cdec-3d22-06f6-0f2f-87974990911b?t=1733135987514"
+                            alt="Hoạt động"
+                    />
+                    <img
+                            src="/documents/1195624/1195684/icons_pct.png/3ea41c98-5c8c-0941-daaf-5dedc9a535b4?t=1733135987680"
+                            alt="icon"
+                            class="overlay-icon-pct-hd"
+                    />
+                </div>
+            </div>
+            <h2 class="activities-title-pct-hd" id="hoatDong">HOẠT ĐỘNG</h2>
+            <a href="/vi/web/pho-chu-tich-duong-ngoc-hai/hoat-dong" class="view-more-pct-hd"
+            >Xem thêm <i class="fa fa-arrow-right"></i
+                ></a>
+        </div>
+
+        <div class="activities-list-pct-hd">
+            <#assign indexLocal = 0/>
+            <#if entries?has_content>
+                <#list entries as curEntry>
+                    <#assign
+                    renderer = curEntry.getAssetRenderer()
+                    className = renderer.getClassName() />
+                    <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 5>
+                        <#assign
+                        title = curEntry.getTitle(locale)
+                        article = renderer.getArticle()
+                        description = article.getDescription(locale)
+                        ddmTemplateKey = article.getDDMTemplateKey()
+                        curEntry = curEntry
+                        viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                        indexLocal = indexLocal + 1 />
+
+                        <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                            <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                        <#else>
+                            <#assign smallImageUrl = "" >
+                        </#if>
+
+                        <div class="activity-item-pct-hd">
+                            <img
+                                    class="activity-item-dot-pct-hd"
+                                    src="/documents/1195624/1195684/dot.png/36ce89ac-a018-c1b5-c4ba-010c713fba83?t=1733135987764"
+                                    alt="${title}"
+                            />
+                            <a href="${viewURL}" class="activity-item-text-pct-hd">
+                                ${title}
+                            </a>
+                        </div>
+                    </#if>
+                </#list>
+            </#if>
+
+
+        </div>
+    </div>
+</div>

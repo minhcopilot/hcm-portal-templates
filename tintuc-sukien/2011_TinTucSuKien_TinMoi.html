@@ -12,7 +12,7 @@
     .gap-3 {
         gap: 1rem;
     }
-    .view-count-container {
+    .view-count-tm-container {
         color: #686868;
         font-weight: 400;
         font-size: 14px;
@@ -36,16 +36,7 @@
         color: white;
         font-weight: bold;
     }
-    .list-group-item .news-title-ttsk {
-        text-decoration: none;
-        color: #031739;
-        font-weight: 600;
-        max-width: 830px;       /* Chiều dài tối đa */
-        overflow: hidden;
-        text-overflow: ellipsis; /* Hiển thị dấu ... */
-        white-space: nowrap;    /* Giữ text trên 1 dòng */
-        display: block;         /* Thay đổi display thành block */
-    }
+
     .list-group-item .news-title-ttsk:hover {
         text-decoration: none;
         color: #0d4c92;
@@ -73,8 +64,8 @@
         color: #db7100;
     }
 
-    .news-new-container .list-group-item:nth-child(4) .news-title-ttsk,
-    .news-new-container .list-group-item:nth-child(5) .news-title-ttsk {
+    .news-new-container .list-group-item:nth-child(4) .news-title-tm,
+    .news-new-container .list-group-item:nth-child(5) .news-title-tm {
         font-weight: normal;
     }
 
@@ -85,6 +76,7 @@
             align-items: flex-start;
             gap: 5px;
             position: relative;
+            min-height: 80px;
         }
         .list-group-item > div { /*Direct child of list-group-item*/
             display: flex;
@@ -104,28 +96,21 @@
             font-size: 12px;
             white-space: nowrap;
             position: absolute;
-        top: 8px;
+        top: 16px;
         left: 44px;
         }
 
-        .news-title-ttsk {
-            font-size: 12px;
-            max-width: 100%;
-            white-space: normal;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            position: absolute;
-        top: 27px;
-        left: 44px;
-        max-width: 75% !important;
-        }
-        .view-count-container {
-          font-size: 12px;
-          gap: 3px;
-          margin-left: auto; /* Push to the right */
+        .news-title-tm {
+        position: absolute;
+        top: 45px;
+        left: 0;
+        max-width: 86% !important;
+    }
+        .view-count-tm {
+
           position: absolute;
-        top: 27px;
-        right: 0;
+            top: 45px;
+            right: 0;
         }
 
     }
@@ -136,47 +121,44 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-             gap: 5px;
+            gap: 5px;
+            position: relative;
+            min-height: 80px;
         }
         .list-group-item > div { /*Direct child of list-group-item*/
             display: flex;
             align-items: center;
         }
 
+
         .news-number-minh {
-            font-size: 14px;
-            width: 28px;
-            height: 24px;
-            margin-right: 5px;
+            font-size: 12px;
+            width: 24px;
+            height: 20px;
+            padding: 0 5px;
+             margin-right: 5px;
         }
 
         .news-time {
             font-size: 12px;
             white-space: nowrap;
             position: absolute;
-        top: 8px;
+        top: 16px;
         left: 44px;
-        }
-        .news-title-ttsk {
-            font-size: 14px;
-            max-width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            position: absolute;
-        top: 27px;
-        left: 44px;
-        max-width: 77% !important;
         }
 
-       .view-count-container {
-            font-size: 12px;
-            gap: 5px;
-            margin-left: auto; /* Push to the right */
-            position: absolute;
-        top: 27px;
-        right: 0;
+        .news-title-tm {
+        position: absolute;
+        top: 45px;
+        left: 0;
+        max-width: 86% !important;
+    }
+        .view-count-tm {
+          position: absolute;
+            top: 45px;
+            right: 0;
         }
+
     }
 
     @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -198,6 +180,39 @@
         .list-group-item .news-title-ttsk {
             max-width: 1175px;
         }
+    }
+    .news-new-container .news-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .news-new-container .news-content i {
+        color: #686868;
+        font-weight: 400;
+    }
+
+    .news-new-container .news-title-tm {
+        flex: 1;
+        color: #2e2e2e;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 14px;
+        max-width: 910px; 
+    }
+    .news-new-container .news-title-tm:hover {
+        color: #0d4c92;
+    }
+    .news-new-container .view-count-tm {
+        color: #686868;
+        font-size: 14px;
+        font-weight: 400;
+          gap: 3px;
+          margin-left: auto; 
+    }
+    
+    .news-new-container .view-count-tm i {
+        margin-right: 2px;
     }
 </style>
 <div class="news-new-container mt-5">
@@ -226,7 +241,7 @@
 						createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
 						createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
 						curEntry = curEntry
-							viewCout = curEntry.getViewCount()
+                        viewCount = curEntry.getViewCount()
 						viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
 						indexLocal = indexLocal + 1 />
 
@@ -240,13 +255,10 @@
 							<div class="d-flex align-items-center gap-3">
 								<div class="news-number-minh active-news">${indexLocal}</div>
 								<div class="news-time">${createTime} | ${createDay}/${createMonth}/${createYear}</div>
-								<div class="flex-grow-1">
-									<a href="${viewURL}" class="news-title-ttsk">${title}</a>
-								</div>
-								<div class="d-flex align-items-center gap-1 view-count-container">
-									<i class="fa fa-eye"></i>
-									<span class="news-views">${viewCout}</span>
-								</div>
+								<div class="news-content">
+                                    <a href="${viewURL}" class="news-title-tm">${title}</a>
+                                    <span class="view-count-tm"><i class="fa fa-eye me-1"></i>${viewCount}</span>
+                                </div>
 							</div>
 						</div>
 

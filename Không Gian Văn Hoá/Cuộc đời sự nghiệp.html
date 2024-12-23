@@ -1,0 +1,633 @@
+<style>
+    .tieusu-wrapper {
+        position: relative;
+    }
+
+    .time-line-banner {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 10px;
+        border-radius: 12px;
+        background: #F1DDC5;
+        padding: 36px 0;
+        position: relative;
+    }
+
+    .content-banner h4 {
+        color: #2C2C2C;
+        font-family: Roboto;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%; /* 30.8px */
+        letter-spacing: 0.275px;
+    }
+
+    .name-banner {
+        color: #AF2630;
+        font-family: Roboto;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 67.2px */
+        letter-spacing: 0.6px;
+    }
+
+    .content-banner h3 {
+        color: #000;
+        font-family: Roboto;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: -0.5px;
+        margin-bottom: 55px;
+    }
+
+    .tieusu-hcm {
+        margin-top: 57px;
+        color: #2C2C2C;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 25.6px */
+        letter-spacing: 0.2px;
+        margin-right: 110px;
+    }
+
+    .describe p {
+        color: #000;
+        /* Body Text/Medium */
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 25.6px */
+        letter-spacing: 0.2px;
+        padding-top: 48px;
+    }
+
+    /*timeline*/
+
+    .sessions {
+        margin-top: 2rem;
+        border-radius: 12px;
+        position: relative;
+    }
+
+    .time-line-item {
+        padding-bottom: 1.5rem;
+        border-left: 1px solid #AF2630;
+        position: relative;
+        padding-left: 20px;
+        color: #AF2630;
+
+    }
+
+    .time-line-item:before {
+        content: '';
+        width: 14px;
+        height: 14px;
+        background: #AF2630;
+        border-radius: 50%;
+        position: absolute;
+        left: -7px;
+        top: 0px;
+    }
+
+    .time-line-item p {
+        color: #000;
+        /* Body Text/Medium */
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 25.6px */
+        letter-spacing: 0.2px;
+    }
+
+    .sessions .row:last-child .time-line-item {
+        border: none;
+    }
+
+    .hiden-13 {
+        border: none;
+    }
+
+    .time {
+        color: #AF2630;
+        /* Title/Large */
+        font-family: Roboto;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%; /* 30.8px */
+        letter-spacing: 0.275px;
+        margin-top: -6px;
+    }
+    .timeline-img-container {
+        height: 116px;
+        width: 236px;
+        margin-bottom: 18px;
+    }
+    .time-line-img {
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .btn-down-more button {
+        border: none;
+        background: none;
+        color: #AF2630;
+        /* Body Text/Medium */
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 25.6px */
+        letter-spacing: 0.2px;
+        padding: 0 0 20px;
+    }
+
+    .bgr-trongdong {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    .bgr-trongdong > img {
+        height: 100%;
+    }
+
+    .hoasen-bottom {
+        width: 100%;
+        position: absolute;
+        opacity: 0.1;
+        bottom: 0;
+    }
+
+    .list-item {
+        display: none;
+    }
+
+    .btn-down-more {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hiden-timeline {
+        display: none;
+    }
+
+    @media only screen and (max-width: 576px) {
+        .tieusu-hcm {
+            margin-right: 0;
+        }
+        .describe p {
+            padding-top: 20px;
+            margin: 0;
+        }
+    }
+</style>
+<div class="tieusu-wrapper container">
+    <div class="time-line-banner row justify-content-center">
+        <div class="img-hcm col-12 col-md-4 d-flex justify-content-center">
+            <img src="/documents/39403/41422/chandungbac.png" style="height: 401px;" alt="">
+        </div>
+        <div class="content-banner col-12 col-md-8 pt-5 pt-md-0">
+            <h4>
+                Cuộc đời, sự nghiệp
+            </h4>
+            <p class="name-banner">
+                HỒ CHÍ MINH
+            </p>
+            <h3>
+                (1890 - 1969)
+            </h3>
+            <p class="tieusu-hcm">
+                Chủ tịch Hồ Chí Minh (lúc nhỏ tên là Nguyễn Sinh Cung, khi đi học là Nguyễn Tất Thành,
+                trong nhiều năm hoạt động cách mạng lấy tên là Nguyễn Ái Quốc và nhiều bí danh, bút danh khác)
+                sinh ngày 19/5/1890 ở xã Kim Liên, huyện Nam Đàn, tỉnh Nghệ An; mất ngày 2/9/1969 tại Hà Nội.
+            </p>
+        </div>
+        <div class="bgr-trongdong">
+            <img src="/documents/39403/41422/trogndongtieusu.png" alt="">
+        </div>
+    </div>
+    <div class="describe">
+        <p>
+            Hồ Chí Minh sinh ra trong một gia đình nhà nho yêu nước, lớn lên ở một địa phương có truyền thống anh dũng
+            chống
+            giặc ngoại xâm. Sống trong hoàn cảnh đất nước chìm dưới ách đô hộ của thực dân Pháp, thời niên thiếu và
+            thanh
+            niên của mình, Hồ Chí Minh đã chứng kiến nỗi khổ cực của đồng bào và những phong trào đấu tranh chống thực
+            dân,
+            Hồ Chí Minh sớm có chí đuổi thực dân, giành độc lập cho đất nước, đem lại tự do, hạnh phúc cho đồng bào.
+        </p>
+    </div>
+    <div class="time-line">
+        <div class="time-line-content">
+            <ul class="sessions" id="list-timeline">
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="/documents/39403/41422/tieusu1.png" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 6/1911</div>
+                        <p>Hồ Chí Minh đã rời Tổ quốc đi sang phương Tây để tìm con đường giải phóng dân tộc.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2  timeline-img-container" style="height: 116px">
+                        <img src="" class=" time-line-img" alt="" style="display: none;">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Năm 1912 - 1917</div>
+                        <p>Dưới cái tên Nguyễn Tất Thành, Hồ Chí Minh đến nhiều nước ở châu Á, châu Âu, châu Mỹ, châu
+                            Phi, sống hoà mình với nhân dân lao động. Cuối năm 1917, Hồ Chí Minh từ Anh trở lại Pháp,
+                            hoạt động trong phong trào Việt kiều và phong trào công nhân Pháp.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="/documents/39403/41422/tieusu2.png" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Năm 1919</div>
+                        <p>Lấy tên là Nguyễn Ái Quốc, thay mặt những người Việt Nam yêu nước tại Pháp, Hồ Chí Minh đã
+                            gửi tới Hội nghị Vécxây (Versailles) bản yêu sách đòi quyền tự do cho nhân dân Việt Nam và
+                            cũng là quyền tự do cho nhân dân các nước thuộc địa.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="/documents/39403/41422/tieusu3.png" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 12/1920</div>
+                        <p>Dưới ảnh hưởng của Cách mạng Tháng Mười Nga năm 1917 và Luận cương của Lênin về vấn đề dân
+                            tộc và thuộc địa, Nguyễn Ái Quốc tham dự Đại hội lần thứ XVIII Đảng Xã hội Pháp và bỏ phiếu
+                            tán thành Đảng gia nhập Quốc tế III (Quốc tế Cộng sản), trở thành một trong những người sáng
+                            lập Đảng Cộng sản Pháp.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://tuoitrevoibacho.ueh.edu.vn/wp-content/uploads/2023/04/mot_bai_bao_nguyen_ai_quoc_viet_tren_to_humanite_0-300x180.jpg" class=" time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Năm 1921</div>
+                        <p>Cùng với một số người yêu nước của các thuộc địa Pháp, Nguyễn Ái Quốc tham gia sáng lập Hội
+                            Liên hiệp các dân tộc thuộc địa.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="" class=" time-line-img" alt="" style="display: none;">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 4/1922</div>
+                        <p>Hội Liên hiệp các dân tộc thuộc địa xuất bản báo “Người cùng khổ” (Le Paria) nhằm đoàn kết,
+                            tổ chức và hướng dẫn phong trào đấu tranh giải phóng dân tộc ở các nước thuộc địa. Nhiều bài
+                            báo của Nguyễn Ái Quốc đã được đưa vào tác phẩm “Bản án chế độ thực dân Pháp”, xuất bản tại
+                            Paris năm 1925. Đây là một công trình nghiên cứu về bản chất của chủ nghĩa thực dân, góp
+                            phần thức tỉnh và cổ vũ nhân dân các nước thuộc địa đứng lên tự giải phóng.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://img.loigiaihay.com/picture/article/2014/0812/123195701407838016_small.jpg" class=" time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 6/1923</div>
+                        <p>Nguyễn Ái Quốc từ Pháp sang Liên Xô, làm việc tại Quốc tế Cộng sản.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://file3.qdnd.vn/data/images/0/2021/05/29/phucthang/nguyen-ai-quoc.jpg" class=" time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 10/1923</div>
+                        <p>Tại Hội nghị Quốc tế Nông dân lần thứ nhất, Nguyễn Ái Quốc được bầu vào Hội đồng Quốc tế Nông
+                            dân và là đại biểu duy nhất của nông dân thuộc địa được cử vào Đoàn Chủ tịch của Hội đồng.
+                            Tiếp đó tham dự Đại hội Quốc tế Cộng sản lần thứ V, Đại hội Quốc tế Thanh niên lần thứ IV,
+                            Đại hội Quốc tế Công hội đỏ. Tại các đại hội, Nguyễn Ái Quốc kiên trì bảo vệ và phát triển
+                            sáng tạo tư tưởng của V.I. Lênin về vấn đề dân tộc và thuộc địa, hướng sự quan tâm của Quốc
+                            tế Cộng sản tới phong trào giải phóng dân tộc.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://2.bp.blogspot.com/-Uj8rTVlKSC8/TyZhkcoUxaI/AAAAAAAAAMg/CKmZHykpeSc/s1600/nhe1bbafng-ngc6b0e1bb9di-be1baa1n-tq-ce1bba7a-hcm-11.jpg" class=" time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 11/1924</div>
+                        <p>Với tư cách là Uỷ viên Ban Phương Đông Quốc tế Cộng sản và Uỷ viên Đoàn Chủ tịch Quốc tế Nông
+                            dân, Nguyễn Ái Quốc đến Quảng Châu (Trung Quốc). Tại Quảng Châu, Nguyễn Ái Quốc làm việc
+                            trong đoàn cố vấn Bôrôđin của Chính phủ Liên Xô bên cạnh Chính phủ Tôn Dật Tiên.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://tuoitrevoibacho.ueh.edu.vn/wp-content/uploads/2023/04/ThanhnienbaocachmangVNdautien_2019061481631-300x231.jpg" class=" time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Năm 1925</div>
+                        <p>Nguyễn Ái Quốc thành lập Hội Việt Nam Cách mạng Thanh niên, trực tiếp mở lớp huấn luyện đào
+                            tạo cán bộ cách mạng, ra tuần báo “Thanh niên”, tờ báo cách mạng đầu tiên của Việt Nam nhằm
+                            truyền bá chủ nghĩa Mác - Lênin về Việt Nam, chuẩn bị cho việc thành lập Đảng Cộng sản Việt
+                            Nam. Các bài giảng của Nguyễn Ái Quốc tại các lớp huấn luyện được tập hợp in thành sách
+                            “Đường Kách mệnh” - một văn kiện lý luận quan trọng đặt cơ sở tư tưởng cho đường lối cách
+                            mạng Việt Nam.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="" class=" time-line-img" alt="" style="display: none;">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 5/1927</div>
+                        <p>Nguyễn Ái Quốc rời Quảng Châu đi Mátxcơva (Liên Xô), sau đó đi Béclin (Đức), đi Brúcxen (Bỉ),
+                            tham dự phiên họp mở rộng của Đại hội đồng Liên đoàn chống chiến tranh đế quốc, sau đó đi Ý
+                            và từ đây về châu Á.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="/documents/39403/41422/tieusu4.png" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Từ tháng 7/1928 đến tháng 11/1929</div>
+                        <p>Nguyễn Ái Quốc hoạt động trong phong trào Việt kiều yêu nước ở Xiêm (Thái Lan), tiếp tục
+                            chuẩn bị cho sự ra đời của Đảng Cộng sản Việt Nam.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="" class="time-line-img hiden-13" alt="" style="display: none;">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 2/1930</div>
+                        <p>Nguyễn Ái Quốc chủ trì Hội nghị thành lập Đảng họp tại Cửu Long, thuộc Hồng Kông (Trung
+                            Quốc). Hội nghị đã thông qua Chính cương vắn tắt, Sách lược vắn tắt, Điều lệ vắn tắt của
+                            Đảng Cộng sản Việt Nam, đội tiên phong của giai cấp công nhân và toàn thể dân tộc Việt
+                            Nam.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="" class="time-line-img hiden-13" alt="" style="display: none;">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 6/1931</div>
+                        <p>Nguyễn Ái Quốc bị chính quyền Anh bắt giam tại Hồng Kông.</p>
+                    </div>
+                </li>
+                <li class="row list-item" style="display: flex;">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="" class="time-line-img hiden-13" alt="" style="display: none;">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Năm 1933</div>
+                        <p>Nguyễn Ái Quốc được trả tự do.</p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://tuoitrevoibacho.ueh.edu.vn/wp-content/uploads/2023/04/1_YWGG-300x204.jpg" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Từ năm 1934 đến năm 1938</div>
+                        <p>Nguyễn Ái Quốc nghiên cứu tại Viện Nghiên cứu các vấn đề dân tộc thuộc địa tại Mátxcơva (Liên
+                            Xô). Kiên trì con đường đã xác định cho cách mạng Việt Nam, Người tiếp tục theo dõi, chỉ đạo
+                            phong trào cách mạng trong nước. Người rời Liên Xô sang Trung Quốc, bắt liên lạc với tổ chức
+                            Đảng chuẩn bị về nước.</p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="" class="time-line-img" alt="" style="display: none;">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 1/1941</div>
+                        <p>Nguyễn Ái Quốc về nước sau hơn 30 năm xa Tổ quốc.</p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://tuoitrevoibacho.ueh.edu.vn/wp-content/uploads/2023/04/minh_-_lien_viet1-300x196.jpg" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 5/1941</div>
+                        <p>Nguyễn Ái Quốc triệu tập Hội nghị lần thứ VIII Ban Chấp hành Trung ương Đảng, quyết định
+                            đường lối cứu nước trong thời kỳ mới, thành lập Việt Nam độc lập đồng minh (Việt Minh), tổ
+                            chức xây dựng lực lượng vũ trang giải phóng, xây dựng căn cứ địa cách mạng.</p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://tuoitrevoibacho.ueh.edu.vn/wp-content/uploads/2023/05/1-300x214.jpg" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 8/1942</div>
+                        <p>Lấy tên là Hồ Chí Minh, Người đại diện cho Mặt trận Việt Minh và Phân hội Việt Nam thuộc Hiệp
+                            hội Quốc tế chống xâm lược sang Trung Quốc tìm sự liên minh quốc tế, cùng phối hợp hành động
+                            chống phát xít trên chiến trường Thái Bình Dương. Người bị chính quyền địa phương của Tưởng
+                            Giới Thạch bắt giam trong các nhà lao của tỉnh Quảng Tây. Trong thời gian một năm 14 ngày bị
+                            tù, Người đã viết tập thơ “Nhật ký trong tù” với 133 bài thơ chữ Hán. </p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="" class="time-line-img" alt="" style="display: none;">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 9/1943</div>
+                        <p>Hồ Chí Minh được trả tự do.</p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="" class="time-line-img" alt="" style="display: none;">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 9/1944</div>
+                        <p>Hồ Chí Minh trở về căn cứ Cao Bằng.</p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="" class="time-line-img" alt="" style="display: none;">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 12/1944</div>
+                        <p>Hồ Chí Minh chỉ thị thành lập Đội Việt Nam tuyên truyền giải phóng quân, tiền thân của Quân
+                            đội nhân dân Việt Nam.</p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="" class="time-line-img" alt="" style="display: none;">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 5/1945</div>
+                        <p>Hồ Chí Minh rời Cao Bằng về Tân Trào (Tuyên Quang). Tại đây theo đề nghị của Hồ Chí Minh, Hội
+                            nghị toàn quốc của Đảng và Đại hội Quốc dân đã họp quyết định Tổng khởi nghĩa. Đại hội Quốc
+                            dân đã bầu ra Uỷ ban giải phóng dân tộc Việt Nam (tức Chính phủ lâm thời) do Hồ Chí Minh làm
+                            Chủ tịch.</p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://tuoitrevoibacho.ueh.edu.vn/wp-content/uploads/2023/05/tong-khoi-nghia-thang-8-300x180.jpg" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 8/1945</div>
+                        <p>Hồ Chí Minh cùng Trung ương Đảng lãnh đạo nhân dân khởi nghĩa giành chính quyền thắng
+                            lợi.</p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://tuoitrevoibacho.ueh.edu.vn/wp-content/uploads/2021/11/1945.jpg" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Ngày 2/9/1945</div>
+                        <p>Tại Quảng trường Ba Đình (Hà Nội), Hồ Chí Minh đọc “Tuyên ngôn độc lập”, tuyên bố thành lập
+                            nước Việt Nam Dân chủ Cộng hoà và trở thành vị Chủ tịch đầu tiên của nước Việt Nam độc lập.
+                            Ngay sau đó, thực dân Pháp gây chiến tranh, âm mưu xâm chiếm Việt Nam một lần nữa. Trước nạn
+                            ngoại xâm, Hồ Chí Minh kêu gọi cả nước đứng lên bảo vệ độc lập, tự do của Tổ quốc với tinh
+                            thần: “Chúng ta thà hy sinh tất cả, chứ nhất định không chịu mất nước, nhất định không chịu
+                            làm nô lệ”. Người đã khởi xướng phong trào thi đua yêu nước, cùng Trung ương Đảng lãnh đạo
+                            nhân dân Việt Nam tiến hành cuộc kháng chiến toàn dân, toàn diện, trường kỳ, dựa vào sức
+                            mình là chính, từng bước giành thắng lợi.</p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://tuoitrevoibacho.ueh.edu.vn/wp-content/uploads/2023/05/dai_hoi_ii-09_52_50_538-300x293.gif" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 2/1951</div>
+                        <p>Tại Đại hội Đại hội đại biểu toàn quốc lần thứ II của Đảng, Người được bầu làm Chủ tịch Đảng
+                            Lao động Việt Nam. Dưới sự lãnh đạo của Trung ương Đảng và Chủ tịch Hồ Chí Minh, cuộc kháng
+                            chiến của nhân dân Việt Nam chống thực dân Pháp xâm lược đã giành thắng lợi to lớn, kết thúc
+                            vẻ vang bằng chiến thắng lịch sử Điện Biên Phủ (1954), giải phóng hoàn toàn miền Bắc.</p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://tuoitrevoibacho.ueh.edu.vn/wp-content/uploads/2023/05/chien_dich_dbp-15_38_14_403-300x203.png" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Từ năm 1954</div>
+                        <p>Người cùng Trung ương Đảng Lao động Việt Nam lãnh đạo nhân dân xây dựng chủ nghĩa xã hội ở
+                            miền Bắc và đấu tranh giải phóng miền Nam, thống nhất Tổ quốc.</p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://image.tienphong.vn/w645/Uploaded/2023/chutpuo/2020_05_19/c6629413_ee02_4059_896f_e6f840425efb_guym.jpeg" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Tháng 9/1960</div>
+                        <p>Tại Đại hội đại biểu toàn quốc lần thứ III của Đảng, Người được bầu làm Chủ tịch Ban Chấp
+                            hành Trung ương Đảng. Quốc hội khóa II, khóa III đã bầu Người làm Chủ tịch nước Việt Nam Dân
+                            chủ Cộng hòa.</p>
+                    </div>
+                </li>
+                <li class="row list-item">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://tuoitrevoibacho.ueh.edu.vn/wp-content/uploads/2023/05/dbb68baec139379253c0a4315d3851e1-15913465046581454579474-300x187.jpg" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 time-line-item">
+                        <div class="time">Năm 1964</div>
+                        <p>Đế quốc Mỹ mở cuộc chiến tranh phá hoại bằng không quân đánh phá miền Bắc Việt Nam. Người
+                            động viên toàn thể nhân dân Việt Nam vượt mọi khó khăn gian khổ, quyết tâm đánh thắng giặc
+                            Mỹ xâm lược.</p>
+                    </div>
+                </li>
+                <li class="row list-item ">
+                    <div class="col-5 col-md-2 timeline-img-container">
+                        <img src="https://tuoitrevoibacho.ueh.edu.vn/wp-content/uploads/2023/05/dsc_002320120821162834-300x208.jpg" class="time-line-img" alt="">
+                    </div>
+                    <div class="col-7 col-md-10 pb-3 time-line-item">
+                        <div class="time">Ngày 2/9/1969</div>
+                        <p>Người mất tại Hà Nội.</p>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+    <div class="describe hiden-timeline">
+        <p class="p-0">
+            Trước khi qua đời, Chủ tịch Hồ Chí Minh để lại cho nhân dân Việt Nam bản Di chúc lịch sử, căn dặn những việc
+            nhân dân Việt Nam phải làm để xây dựng đất nước sau chiến tranh. Thực hiện Di chúc của Người, toàn dân Việt
+            Nam đã đoàn kết một lòng đánh thắng cuộc chiến tranh phá hoại bằng máy bay B52 của đế quốc Mỹ, buộc Chính
+            phủ Mỹ phải ký Hiệp định Paris ngày 27/1/1973, chấm dứt chiến tranh xâm lược, rút hết quân đội Mỹ và chư hầu
+            ra khỏi miền Nam Việt Nam. Mùa xuân năm 1975, với Chiến dịch Hồ Chí Minh lịch sử, nhân dân Việt Nam đã hoàn
+            thành sự nghiệp giải phóng miền Nam, thống nhất Tổ quốc, thực hiện mong ước thiêng liêng của Chủ tịch Hồ Chí
+            Minh. <br>
+
+            <br>Chủ tịch Hồ Chí Minh là người thầy vĩ đại của cách mạng Việt Nam, lãnh tụ kính yêu của giai cấp công nhân và
+            của cả dân tộc Việt Nam, một chiến sĩ xuất sắc, một nhà hoạt động lỗi lạc của phong trào cộng sản quốc tế và
+            phong trào giải phóng dân tộc. Người đã vận dụng và phát triển sáng tạo chủ nghĩa Mác - Lênin vào điều kiện
+            cụ thể của Việt Nam, sáng lập Đảng Cộng sản Việt Nam, sáng lập Mặt trận dân tộc thống nhất Việt Nam, sáng
+            lập lực lượng vũ trang nhân dân Việt Nam và sáng lập nước Việt Nam Dân chủ Cộng hoà (nay là Cộng hoà Xã hội
+            chủ nghĩa Việt Nam). Người luôn luôn gắn cách mạng Việt Nam với cuộc đấu tranh chung của nhân dân thế giới
+            vì hoà bình, độc lập dân tộc, dân chủ và tiến bộ xã hội. Người là tấm gương đạo đức cao cả, cần, kiệm, liêm,
+            chính, chí công vô tư, vô cùng khiêm tốn, giản dị. <br>
+
+            <br>Năm 1987, Tổ chức Giáo dục, Khoa học và Văn hoá Liên hợp quốc (UNESCO) đã tôn vinh Hồ Chí Minh là "Anh hùng
+            giải phóng dân tộc, Nhà văn hoá kiệt xuất của Việt Nam". <br>
+
+            <br> Ngày nay, trong sự nghiệp đổi mới đất nước, hội nhập với thế giới, tư tưởng Hồ Chí Minh là tài sản tinh thần
+            to lớn của Đảng Cộng sản Việt Nam và dân tộc Việt Nam, mãi mãi soi đường cho sự nghiệp xây dựng và bảo vệ
+            đất nước của nhân dân Việt Nam vì mục tiêu dân giàu, nước mạnh, dân chủ, công bằng, văn minh.
+        </p>
+    </div>
+    <div class="btn-down-more d-flex justify-content-center">
+        <button class="show-all">Xem thêm <i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+        <button class="hiden-timeline">Ẩn bớt <i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+    </div>
+</div>
+<div class="hoasen-bottom">
+    <img src="/documents/39403/41422/hoasen.png" style="opacity: 0.5; height: 465px" class="w-100" alt="">
+</div>
+<script>
+    $(document).ready(function () {
+        var listTimeline = $('#list-timeline');
+        var listItems = $('.list-item');
+        var showAllButton = $('.show-all');
+        var hidenButton = $('.hiden-timeline');
+
+        // Hiển thị 10 thẻ ban đầu
+        listItems.slice(0, 13).css("display", "flex");
+        listItems.eq(12).find('.time-line-img').addClass('hiden-13');
+        // Hiển thị tất cả các thẻ khi bấm nút "Xem thêm"
+        showAllButton.click(function () {
+            listItems.css("display", "flex");
+            showAllButton.hide();
+            hidenButton.css("display", "block")
+
+        });
+        hidenButton.click(function () {
+            listItems.css("display", "none")
+            listItems.slice(0, 13).css("display", "flex");
+            hidenButton.hide();
+            showAllButton.css("display", "block");
+        });
+        $('.time-line-img').each(function () {
+            // Kiểm tra xem đường dẫn có tồn tại hay không
+            if (!$(this).attr('src') && $(this).attr('src') !== 'about:blank') {
+                $(this).css('display', 'none');
+            }
+        });
+    });
+</script>
