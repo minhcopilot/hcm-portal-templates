@@ -1,0 +1,270 @@
+<style>
+    .news-new-container {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .mt-5 {
+        margin-top: 3rem;
+    }
+    .gap-1 {
+        gap: 0.25rem;
+    }
+    .gap-3 {
+        gap: 1rem;
+    }
+    .view-count-tm-container {
+        color: #686868;
+        font-weight: 400;
+        font-size: 14px;
+    }
+    .news-new-container .news-new-title {
+        color: #0d4c92;
+        text-decoration: none;
+        font-weight: 700;
+        border-bottom: 1px solid #777777;
+        font-size: 32px;
+    }
+    .news-new-container .news-number-minh {
+        width: 38px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+    }
+    .news-new-container .active-news {
+        background-color: #db7100;
+    }
+    .news-new-container .news-time {
+        color: #db7100;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .news-new-container .news-views {
+        color: #7f8c8d;
+        font-size: 14px;
+    }
+    .news-new-container .news-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .news-new-container .news-title-tm {
+        flex: 1;
+        color: #2e2e2e;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 14px;
+        max-width: 910px;
+    }
+    .news-new-container .news-title-tm:hover {
+        color: #0d4c92;
+    }
+    .news-new-container .view-count-tm {
+        color: #686868;
+        font-size: 14px;
+        font-weight: 400;
+        gap: 3px;
+        margin-left: auto;
+    }
+    .news-new-container .view-count-tm i {
+        margin-right: 2px;
+    }
+    
+    /* Debug Info Styles */
+    .debug-info {
+        background: #f5f5f5;
+        padding: 20px;
+        margin: 20px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .debug-info pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+    .debug-info .section {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #ddd;
+    }
+    .debug-info .section-title {
+        font-weight: bold;
+        color: #0d4c92;
+        margin-bottom: 10px;
+    }
+    
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
+        .list-group-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+            position: relative;
+            min-height: 80px;
+        }
+        .news-number-minh {
+            font-size: 12px;
+            width: 24px;
+            height: 20px;
+            padding: 0 5px;
+            margin-right: 5px;
+        }
+        .news-time {
+            font-size: 12px;
+            white-space: nowrap;
+            position: absolute;
+            top: 16px;
+            left: 44px;
+        }
+        .news-title-tm {
+            position: absolute;
+            top: 45px;
+            left: 0;
+            max-width: 86% !important;
+        }
+        .view-count-tm {
+            position: absolute;
+            top: 45px;
+            right: 0;
+        }
+    }
+</style>
+
+<div class="news-new-container mt-5">
+    <h2 class="news-new-title pb-3">TIN MỚI</h2>
+
+    <#-- Set date formats -->
+    <#assign dateFormatDay = "dd" />
+    <#assign monthFormatDay = "MM" />
+    <#assign yearFormatDay = "yyyy" />
+    <#assign dateFormatTime = "HH:mm" />
+    <#assign indexLocal = 0/>
+
+    <div class="list-group">
+        <#if entries?has_content>
+            <#list entries as curEntry>
+                <#if curEntry?? && curEntry.getAssetRenderer()?exists>
+                    <#assign
+                        renderer = curEntry.getAssetRenderer()
+                        className = renderer.getClassName()
+                    />
+                    <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal < 5>
+                        <#assign
+                            article = renderer.getArticle()
+                            title = curEntry.getTitle(locale)
+                            description = article.getDescription(locale)
+                            content = article.getContent()
+                            ddmTemplateKey = article.getDDMTemplateKey()
+                            createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                            createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                            createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                            modifiedDate = article.getModifiedDate()?datetime
+                            displayDate = article.getDisplayDate()?datetime
+                            createTime = dateUtil.getDate(displayDate, dateFormatTime, locale)
+                            viewCount = curEntry.getViewCount()
+                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                            indexLocal = indexLocal + 1
+                        />
+
+                        <#-- Get thumbnail image -->
+                        <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                            <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest)>
+                        <#else>
+                            <#assign smallImageUrl = "">
+                        </#if>
+
+                        <#-- Article Display -->
+                        <div class="list-group-item border-0 px-0 mt-2">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="news-number-minh active-news">${indexLocal}</div>
+                                <div class="news-time">${createTime} | ${createDay}/${createMonth}/${createYear}</div>
+                                <div class="news-content">
+                                    <a href="${viewURL}" class="news-title-tm">${title}</a>
+                                    <span class="view-count-tm"><i class="fa fa-eye me-1"></i>${viewCount}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <#-- Debug Information -->
+                        <div class="debug-info">
+                            <div class="section">
+                                <div class="section-title">Basic Information</div>
+                                <pre>
+Article ID: ${article.getArticleId()}
+Version: ${article.getVersion()}
+Title: ${title}
+Description: ${description}
+Template Key: ${ddmTemplateKey}
+View Count: ${viewCount}
+URL: ${viewURL}
+                                </pre>
+                            </div>
+
+                            <div class="section">
+                                <div class="section-title">Dates</div>
+                                <pre>
+Create Date: ${createDay}/${createMonth}/${createYear} ${createTime}
+Modified Date: ${modifiedDate}
+Display Date: ${displayDate}
+                                </pre>
+                            </div>
+
+                            <div class="section">
+                                <div class="section-title">Author Information</div>
+                                <pre>
+User ID: ${article.getUserId()}
+User Name: ${article.getUserName()}
+                                </pre>
+                            </div>
+
+                            <div class="section">
+                                <div class="section-title">Categories</div>
+                                <pre>
+<#if curEntry.getCategories()??>
+    <#list curEntry.getCategories() as category>
+        ${category.getName()}
+    </#list>
+<#else>
+No categories found
+</#if>
+                                </pre>
+                            </div>
+
+                            <div class="section">
+                                <div class="section-title">Tags</div>
+                                <pre>
+<#if curEntry.getTags()??>
+    <#list curEntry.getTags() as tag>
+        ${tag.getName()}
+    </#list>
+<#else>
+No tags found
+</#if>
+                                </pre>
+                            </div>
+
+                            <div class="section">
+                                <div class="section-title">Custom Fields</div>
+                                <pre>
+
+                                </pre>
+                            </div>
+
+                            <div class="section">
+                                <div class="section-title">Content</div>
+                                <pre>
+${content}
+                                </pre>
+                            </div>
+                        </div>
+                    </#if>
+                </#if>
+            </#list>
+        </#if>
+    </div>
+</div>

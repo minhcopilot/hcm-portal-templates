@@ -262,7 +262,6 @@
 
     .slideshow-news-container .card-content-container:hover {
         background-color: #0d4c92;
-        cursor: pointer;
         color: #ffffff;
     }
 
@@ -566,10 +565,10 @@
         </div>
         <div class="slideshow-news-container position-relative">
             <!-- Thêm nút điều hướng tùy chỉnh -->
-            <button class="custom-prev-btn" onclick="document.querySelector('.newsSwiper').swiper.slidePrev()">
+            <button class="custom-prev-btn" id="tatca-prev-btn" onclick="handleSlideNav('prev')">
                 <i class="icon-prev-ttsk fa fa-chevron-left" ></i>
             </button>
-            <button class="custom-next-btn" onclick="document.querySelector('.newsSwiper').swiper.slideNext()">
+            <button class="custom-next-btn" id="tatca-next-btn" onclick="handleSlideNav('next')">
                 <i class="icon-next-ttsk fa fa-chevron-right" ></i>
             </button>
 
@@ -594,7 +593,7 @@
             <#assign dateFormatTime = "HH:mm" />
             <#assign indexLocal = 0/>
             <swiper-container
-                    class="newsSwiper position-relative"
+                    class="newsSwiper tatca-swiper position-relative"
                     pagination="true"
                     pagination-clickable="true"
                     space-between="20"
@@ -621,7 +620,8 @@
 								article = renderer.getArticle()
 								description = article.getDescription(locale)
 								ddmTemplateKey = article.getDDMTemplateKey()
-								createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+								displayDate = article.getDisplayDate()?datetime
+                                createTime = dateUtil.getDate(displayDate, dateFormatTime, locale)
 								createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
 								createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
 								createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
@@ -632,7 +632,7 @@
 								<#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
 									<#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
 								<#else>
-									<#assign smallImageUrl = "" >
+									<#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
 								</#if>
 								<swiper-slide
 								><div class="card position-relative mb-5">
@@ -695,9 +695,8 @@
         </div>
     </div>
 </div>
-
 <script>
-function initializeNewsSwiper() {
+    function initializeNewsSwiper() {
         // Kiểm tra jQuery đã được load chưa
         if (typeof jQuery === 'undefined') {
             setTimeout(initializeNewsSwiper, 100);
@@ -706,21 +705,21 @@ function initializeNewsSwiper() {
 
         $(document).ready(function () {
             // Đổi tên biến để tránh xung đột
-            const newsSwiper = $(".newsSwiper")[0];
+            const newsSwiper = $(".tatca-swiper")[0];
             if (newsSwiper && newsSwiper.swiper) {
                 const swiperNewsWrapper = newsSwiper.swiper;
 
                 // Xử lý nút Previous
-                $(".custom-prev-btn").off('click').on("click", () => {
+                $("#tatca-prev-btn").off('click').on("click", () => {
                     if (swiperNewsWrapper) swiperNewsWrapper.slidePrev();
                 });
 
                 // Xử lý nút Next
-                $(".custom-next-btn").off('click').on("click", () => {
+                $("#tatca-next-btn").off('click').on("click", () => {
                     if (swiperNewsWrapper) swiperNewsWrapper.slideNext();
                 });
 
-                
+
 
                 // Thêm xử lý cho nút Xem (lọc theo tháng/năm)
                 $(".tool-container .btn-view").off('click').on("click", function () {
@@ -755,7 +754,7 @@ function initializeNewsSwiper() {
                         });
 
                         // Kiểm tra và xử lý hiển thị nút điều hướng
-                        const navigationButtons = $(".custom-prev-btn, .custom-next-btn");
+                        const navigationButtons = $("#tatca-prev-btn, #tatca-next-btn");
                         if (visibleSlides <= 4) {
                             navigationButtons.hide();
                         } else {
@@ -773,7 +772,7 @@ function initializeNewsSwiper() {
                                     '<h5 class="text-muted">Không tìm thấy bài viết nào</h5>' +
                                     '<p class="text-muted">Không có bài viết nào trong tháng ' + selectedMonth + '/' + selectedYear + '</p>' +
                                     '</div>';
-                                $(".newsSwiper").after(noResultsMessage);
+                                $(".chinhtri-newsSwiper").after(noResultsMessage);
                                 $(".btn-orange").hide();
                             }
                         } else {
@@ -788,7 +787,7 @@ function initializeNewsSwiper() {
                     }
                 });
 
-                
+
 
                 // Thêm cấu hình breakpoints cho newsSwiper
                 Object.assign(newsSwiper, {

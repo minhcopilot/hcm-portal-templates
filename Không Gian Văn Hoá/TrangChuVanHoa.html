@@ -249,7 +249,7 @@
                     <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
                         <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
                     <#else>
-                        <#assign smallImageUrl = "" >
+                        <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
                     </#if>
                     <div class="col-6 m-0 px-0 pb-3" onclick="location.href='${viewURL}'" style="cursor: pointer;">
                         <div class="d-flex flex-row align-items-center">

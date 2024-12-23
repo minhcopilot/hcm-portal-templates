@@ -51,17 +51,12 @@
         </div>
         <div class="slideshow-news-container position-relative">
             <!-- Thêm nút điều hướng tùy chỉnh -->
-            <button class="custom-prev-btn">
+            <button class="custom-prev-btn" id="antt-prev-btn">
 
-                <img src="/documents/39403/310714/left-arrow.svg"
-                     alt="Previous"
-                />
+                <i class="icon-prev-ttsk fa fa-chevron-left" ></i>
             </button>
-            <button class="custom-next-btn">
-                <img
-                        src="/documents/39403/310714/right-arrow.svg"
-                        alt="Next"
-                />
+            <button class="custom-next-btn" id="antt-next-btn">
+                <i class="icon-prev-ttsk fa fa-chevron-right" ></i>
             </button>
 
             <!-- Định nghĩa mapping cho icons -->
@@ -85,7 +80,7 @@
             <#assign dateFormatTime = "HH:mm" />
             <#assign indexLocal = 0/>
             <swiper-container
-                    class="newsSwiper position-relative"
+                    class="antt-newsSwiper position-relative"
                     pagination="true"
                     pagination-clickable="true"
                     space-between="20"
@@ -110,7 +105,8 @@
                             article = renderer.getArticle()
                             description = article.getDescription(locale)
                             ddmTemplateKey = article.getDDMTemplateKey()
-                            createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                        displayDate = article.getDisplayDate()?datetime
+                        createTime = dateUtil.getDate(displayDate, dateFormatTime, locale)
                             createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
                             createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
                             createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
@@ -121,7 +117,7 @@
                             <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
                                 <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
                             <#else>
-                                <#assign smallImageUrl = "" >
+                            <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
                             </#if>
                             <swiper-slide
                             ><div class="card position-relative mb-5">
@@ -194,17 +190,17 @@
 
         $(document).ready(function () {
             // Đổi tên biến để tránh xung đột
-            const newsSwiper = $(".chinhtri-newsSwiper")[0];
+            const newsSwiper = $(".antt-newsSwiper")[0];
             if (newsSwiper && newsSwiper.swiper) {
                 const swiperNewsWrapper = newsSwiper.swiper;
 
                 // Xử lý nút Previous
-                $("#ct-prev-btn").off('click').on("click", () => {
+                $("#antt-prev-btn").off('click').on("click", () => {
                     if (swiperNewsWrapper) swiperNewsWrapper.slidePrev();
                 });
 
                 // Xử lý nút Next
-                $("#ct-next-btn").off('click').on("click", () => {
+                $("#antt-next-btn").off('click').on("click", () => {
                     if (swiperNewsWrapper) swiperNewsWrapper.slideNext();
                 });
 
@@ -243,7 +239,7 @@
                         });
 
                         // Kiểm tra và xử lý hiển thị nút điều hướng
-                        const navigationButtons = $("#ct-prev-btn, #ct-next-btn");
+                        const navigationButtons = $("#antt-prev-btn, #antt-next-btn");
                         if (visibleSlides <= 4) {
                             navigationButtons.hide();
                         } else {

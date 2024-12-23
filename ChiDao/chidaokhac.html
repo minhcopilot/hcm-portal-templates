@@ -161,7 +161,7 @@
                     <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
                         <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
                     <#else>
-                        <#assign smallImageUrl = "" >
+                        <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
                     </#if>
                     <div class="media mb-4 col-12" onclick="location.href='${viewURL}'" style="cursor: pointer;">
                         <img <#if curEntry_index == 0>id="img-activity-right"</#if> class="img-activity-right mr-3" src="${smallImageUrl}" alt="fls1.jpg">
@@ -243,7 +243,7 @@
                             <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
                                 <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
                             <#else>
-                                <#assign smallImageUrl = "" >
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
                             </#if>
                             <div class="media mb-4 col-12" onclick="location.href='${viewURL}'" style="cursor: pointer;">
                                 <img <#if curEntry_index == 0>id="img-activity-bottom"</#if> class="img-activity-bottom mr-3" src="${smallImageUrl}" alt="fls1.jpg">

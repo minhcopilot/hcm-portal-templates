@@ -48,17 +48,11 @@
         </div>
         <div class="slideshow-news-container position-relative">
             <!-- Thêm nút điều hướng tùy chỉnh -->
-            <button class="custom-prev-btn" id="vanhoa-prev-btn">
-
-                <img src="/documents/39403/310714/left-arrow.svg"
-                     alt="Previous"
-                />
+            <button class="custom-prev-btn" id="vanhoa-prev-btn" onclick="handleSlideNav('prev')">
+                <i class="icon-prev-ttsk fa fa-chevron-left" ></i>
             </button>
-            <button class="custom-next-btn" id="vanhoa-next-btn">
-                <img
-                        src="/documents/39403/310714/right-arrow.svg"
-                        alt="Next"
-                />
+            <button class="custom-next-btn" id="vanhoa-next-btn" onclick="handleSlideNav('next')">
+                <i class="icon-next-ttsk fa fa-chevron-right" ></i>
             </button>
 
             <!-- Định nghĩa mapping cho icons -->
@@ -100,7 +94,8 @@
                             article = renderer.getArticle()
                             description = article.getDescription(locale)
                             ddmTemplateKey = article.getDDMTemplateKey()
-                            createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                        displayDate = article.getDisplayDate()?datetime
+                        createTime = dateUtil.getDate(displayDate, dateFormatTime, locale)
                             createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
                             createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
                             createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
@@ -111,7 +106,7 @@
                             <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
                                 <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
                             <#else>
-                                <#assign smallImageUrl = "" >
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
                             </#if>
                             <swiper-slide
                             ><div class="card position-relative mb-5">

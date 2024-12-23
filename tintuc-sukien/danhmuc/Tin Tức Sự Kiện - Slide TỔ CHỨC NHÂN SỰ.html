@@ -108,7 +108,8 @@
                             article = renderer.getArticle()
                             description = article.getDescription(locale)
                             ddmTemplateKey = article.getDDMTemplateKey()
-                            createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                        displayDate = article.getDisplayDate()?datetime
+                        createTime = dateUtil.getDate(displayDate, dateFormatTime, locale)
                             createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
                             createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
                             createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
@@ -119,7 +120,7 @@
                             <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
                                 <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
                             <#else>
-                                <#assign smallImageUrl = "" >
+                            <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
                             </#if>
                             <swiper-slide
                             ><div class="card position-relative mb-5">
@@ -192,17 +193,17 @@
 
         $(document).ready(function () {
             // Đổi tên biến để tránh xung đột
-            const newsSwiper = $(".chinhtri-newsSwiper")[0];
+            const newsSwiper = $(".tcns-newsSwiper")[0];
             if (newsSwiper && newsSwiper.swiper) {
                 const swiperNewsWrapper = newsSwiper.swiper;
 
                 // Xử lý nút Previous
-                $("#ct-prev-btn").off('click').on("click", () => {
+                $("#tcns-prev-btn").off('click').on("click", () => {
                     if (swiperNewsWrapper) swiperNewsWrapper.slidePrev();
                 });
 
                 // Xử lý nút Next
-                $("#ct-next-btn").off('click').on("click", () => {
+                $("#tcns-next-btn").off('click').on("click", () => {
                     if (swiperNewsWrapper) swiperNewsWrapper.slideNext();
                 });
 
@@ -241,7 +242,7 @@
                         });
 
                         // Kiểm tra và xử lý hiển thị nút điều hướng
-                        const navigationButtons = $("#ct-prev-btn, #ct-next-btn");
+                        const navigationButtons = $("#tcns-prev-btn, #tcns-next-btn");
                         if (visibleSlides <= 4) {
                             navigationButtons.hide();
                         } else {
@@ -259,7 +260,7 @@
                                     '<h5 class="text-muted">Không tìm thấy bài viết nào</h5>' +
                                     '<p class="text-muted">Không có bài viết nào trong tháng ' + selectedMonth + '/' + selectedYear + '</p>' +
                                     '</div>';
-                                $(".chinhtri-newsSwiper").after(noResultsMessage);
+                                $(".tcns-newsSwiper").after(noResultsMessage);
                                 $(".btn-orange").hide();
                             }
                         } else {

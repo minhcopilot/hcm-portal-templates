@@ -236,7 +236,8 @@
 						article = renderer.getArticle()
 						description = article.getDescription(locale)
 						ddmTemplateKey = article.getDDMTemplateKey()
-						createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                        displayDate = article.getDisplayDate()?datetime
+                        createTime = dateUtil.getDate(displayDate, dateFormatTime, locale)
 						createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
 						createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
 						createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
@@ -248,7 +249,7 @@
 						<#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
 							<#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
 						<#else>
-							<#assign smallImageUrl = "" >
+							<#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
 						</#if>
 
 						<div class="list-group-item border-0 px-0 mt-2">

@@ -1,138 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Phân trang Font Awesome</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
     <style>
-      .pagination {
+      .search-container {
         display: flex;
-        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 10px;
+        gap: 18px;
+      }
+
+      .search-group {
+        display: flex;
         align-items: center;
-        padding: 10px;
+        gap: 18px;
+        flex-grow: 1;
+        min-width: 300px;
       }
 
-      .pagination-button {
-        background-color: #f0f2f5;
+      .search-label {
+        font-size: 16px;
+        color: #2e2e2e;
+        width: 70px;
+        flex-shrink: 0;
+      }
+
+      .search-input {
+        height: 40px;
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 1px solid #e0e0e0;
+        outline: none;
+        flex-grow: 1;
+        min-width: 100px;
+      }
+
+      .search-button {
+        height: 40px;
+        padding: 0 24px;
+        border-radius: 8px;
         border: none;
-        border-radius: 5px;
-        padding: 8px 12px;
-        margin: 0 4px;
-        color: #333;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        font-size: 14px;
-      }
-
-      .pagination-button.active {
-        background-color: #00519a;
+        background: #0099d2;
         color: white;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        flex-shrink: 0;
       }
 
-      .pagination-button:hover {
-        background-color: #e0e0e0;
+      .advanced-search-button {
+        height: 40px;
+        padding: 0 22px;
+        border-radius: 6px;
+        border: none;
+        background: #db7100;
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
       }
 
-      .pagination-button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
+      .advanced-fields {
+        display: none;
+        width: 100%;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+      .advanced-fields.show {
+        display: flex;
       }
     </style>
   </head>
   <body>
-    <div class="pagination">
-      <button class="pagination-button" data-page="prev-group" disabled>
-        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-      </button>
-      <button class="pagination-button" data-page="prev" disabled>
-        <i class="fa fa-angle-left" aria-hidden="true"></i>
-      </button>
+    <div class="search-container">
+      <div class="advanced-fields" id="advancedFields">
+        <div class="search-group">
+          <label class="search-label">Điện thoại cơ quan:</label>
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Nhập số điện thoại cơ quan"
+          />
+        </div>
 
-      <button class="pagination-button active" data-page="1">1</button>
-      <button class="pagination-button" data-page="2">2</button>
+        <div class="search-group">
+          <label class="search-label">Địa chỉ:</label>
+          <input type="text" class="search-input" placeholder="Nhập địa chỉ" />
+        </div>
+      </div>
+      <div class="search-group">
+        <label class="search-label">Từ khóa:</label>
+        <input type="text" class="search-input" placeholder="Nhập từ khóa" />
+      </div>
 
-      <button class="pagination-button" data-page="next">
-        <i class="fa fa-angle-right" aria-hidden="true"></i>
-      </button>
-      <button class="pagination-button" data-page="next-group">
-        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-      </button>
-    </div>
+      <button class="search-button">Tìm kiếm</button>
 
-    <div id="content" style="margin-top: 20px; text-align: center">
-      <p>Nội dung trang 1</p>
+      <button class="advanced-search-button" onclick="toggleAdvanced()">
+        <span>−</span>
+        Tìm kiếm nâng cao
+      </button>
     </div>
 
     <script>
-      const paginationButtons = document.querySelectorAll(".pagination-button");
-      const contentDiv = document.getElementById("content");
-      let currentPage = 1;
-      const totalPages = 13;
-      const pagesPerGroup = 5;
-
-      function updateContent(page) {
-        contentDiv.innerHTML = `<p>Nội dung trang ${page}</p>`;
+      function toggleAdvanced() {
+        const advancedFields = document.getElementById("advancedFields");
+        advancedFields.classList.toggle("show");
       }
-
-      function updateActiveButton() {
-        paginationButtons.forEach((button) => {
-          if (button.dataset.page == currentPage) {
-            button.classList.add("active");
-          } else {
-            button.classList.remove("active");
-          }
-        });
-      }
-
-      function updatePaginationState() {
-        const prevButton = document.querySelector('button[data-page="prev"]');
-        const prevGroupButton = document.querySelector(
-          'button[data-page="prev-group"]'
-        );
-        const nextButton = document.querySelector('button[data-page="next"]');
-        const nextGroupButton = document.querySelector(
-          'button[data-page="next-group"]'
-        );
-
-        prevButton.disabled = currentPage <= 1;
-        prevGroupButton.disabled = currentPage <= 1;
-        nextButton.disabled = currentPage >= totalPages;
-        nextGroupButton.disabled = currentPage >= totalPages;
-      }
-
-      function handlePaginationClick(event) {
-        const clickedButton = event.target.closest("button");
-        if (!clickedButton) return;
-
-        const page = clickedButton.dataset.page;
-        if (page === "prev") {
-          currentPage--;
-        } else if (page === "next") {
-          currentPage++;
-        } else if (page === "prev-group") {
-          currentPage = Math.max(1, currentPage - pagesPerGroup);
-        } else if (page === "next-group") {
-          currentPage = Math.min(totalPages, currentPage + pagesPerGroup);
-        } else if (page) {
-          currentPage = parseInt(page);
-        }
-
-        updateContent(currentPage);
-        updateActiveButton();
-        updatePaginationState();
-      }
-
-      updateContent(currentPage);
-      updateActiveButton();
-      updatePaginationState();
-
-      document
-        .querySelector(".pagination")
-        .addEventListener("click", handlePaginationClick);
     </script>
   </body>
 </html>

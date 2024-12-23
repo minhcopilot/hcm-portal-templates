@@ -97,7 +97,7 @@
                             <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
                                 <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
                             <#else>
-                                <#assign smallImageUrl = "" >
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
                             </#if>
                             <p onclick="location.href='${viewURL}'" class="d-flex align-items-center justify-content-between dautu-item">
                                 <img

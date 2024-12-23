@@ -142,10 +142,8 @@
         color: #ffffff;
     }
 
-    .category-news-container .search-container .form-control {
-        min-width: 200px;
-        max-width: 300px;
-        width: 312px;
+    .search-container .form-control {
+        width: 300px;
     }
 
     .category-news-container .search-container {
@@ -332,6 +330,10 @@
     .btn-view{
         font-size: 18px;
     }
+    .icon-prev-ttsk,
+    .icon-next-ttsk {
+        color: #ffffff;
+    } 
     /* Mobile (< 425px) */
     @media screen and (max-width: 426px) {
         .nav-bv-tin {
@@ -391,7 +393,6 @@
         .search-container .search-button {
             position: absolute;
             right: 10px;
-            top: calc(65% + 15px);
             transform: translateY(-50%);
             padding: 6px 5px;
         }
@@ -402,10 +403,15 @@
         .card-content-container .btn-detail {
             font-size: 14px;
         }
+        .slideshow-news-container .card{
+            margin-left: auto;
+            margin-right: auto;
+            width: 84%;
+        }
     }
 
     /* Tablet (425px - 768px) */
-    @media screen and (min-width: 425px) and (max-width: 768px) {
+    @media screen and (min-width: 427px) and (max-width: 768px) {
         .nav-bv-tin {
             gap: 16px 4%;
         }
@@ -428,11 +434,15 @@
         }
 
         .custom-prev-btn {
-            left: -20px;
+            left: -12px;
         }
 
         .custom-next-btn {
-            right: -20px;
+            right: -12px;
+        }
+        .slideshow-news-container .card{
+            margin-left: 8%;
+            width: 85%;
         }
     }
 
@@ -517,14 +527,14 @@
             >
                 <!-- Phần bên trái -->
                 <div class="d-flex align-items-center gap-3">
-                    <select class="custom-select" id="yearSelect">
+                    <select class="custom-select" id="yearSelect" disabled>
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
                         <option value="2021">2021</option>
                         <option value="2020">2020</option>
                     </select>
-                    <select class="custom-select" id="monthSelect">
+                    <select class="custom-select" id="monthSelect" disabled>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -557,10 +567,10 @@
         <div class="slideshow-news-container position-relative">
             <!-- Thêm nút điều hướng tùy chỉnh -->
             <button class="custom-prev-btn" onclick="document.querySelector('.newsSwiper').swiper.slidePrev()">
-                <img src="/documents/39403/310714/left-arrow.svg" alt="Previous"/>
+                <i class="icon-prev-ttsk fa fa-chevron-left" ></i>
             </button>
             <button class="custom-next-btn" onclick="document.querySelector('.newsSwiper').swiper.slideNext()">
-                <img src="/documents/39403/310714/right-arrow.svg" alt="Next"/>
+                <i class="icon-next-ttsk fa fa-chevron-right" ></i>
             </button>
 
             <!-- Định nghĩa mapping cho icons -->
@@ -611,17 +621,19 @@
 								article = renderer.getArticle()
 								description = article.getDescription(locale)
 								ddmTemplateKey = article.getDDMTemplateKey()
-								createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                        displayDate = article.getDisplayDate()?datetime
+                        createTime = dateUtil.getDate(displayDate, dateFormatTime, locale)
 								createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
 								createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
 								createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
 								curEntry = curEntry
+                                viewCount = curEntry.getViewCount()
 								viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
 								indexLocal = indexLocal + 1 />
 								<#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
 									<#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
 								<#else>
-									<#assign smallImageUrl = "" >
+									<#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
 								</#if>
 								<swiper-slide
 								><div class="card position-relative mb-5">
@@ -651,7 +663,7 @@
 															class="d-flex align-items-center gap-1 view-count-container"
 													>
 														<i class="fa fa-eye"></i>
-														<span class="views-tindang">1,141</span>
+														<span class="views-tindang">${viewCount}</span>
 													</div>
 												</div>
 											</div>
@@ -675,7 +687,7 @@
 
             </swiper-container>
             <div class="pagination-container position-absolute">
-                <a href="/tin-tuc-2">
+                <a href="/tin-tức-sự-kiện-all-">
                     <button class="btn text-white text-nowrap btn-orange">
                         Xem thêm
                     </button>

@@ -3,24 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Combined Search and Consulate</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-      crossorigin="anonymous"
-    />
+
     <style>
       .search-container-ls {
         display: flex;
         align-items: center;
         gap: 18px;
         flex-wrap: wrap;
-        max-width: 1300px;
         margin: 0 10px;
       }
 
@@ -32,7 +21,6 @@
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
-        width: 70px;
         height: 21px;
         color: #2e2e2e;
         flex-shrink: 0;
@@ -78,6 +66,11 @@
         font-weight: 500;
         flex-shrink: 0;
       }
+      .advanced-search-button:hover {
+        background-color: #0d4c92;
+        color: #ffffff;
+        border: 1px solid #ffffff;
+      }
 
       .advanced-search-button > i {
         margin-right: 6px;
@@ -92,7 +85,8 @@
       .advanced-fields.show {
         display: flex;
         flex-wrap: wrap;
-        gap: 18px;
+        justify-content: space-between;
+        gap: 0;
       }
 
       .search-group {
@@ -115,22 +109,48 @@
         object-fit: contain;
       }
       /* Responsive cho màn hình nhỏ hơn 425px */
-      @media (max-width: 425px) {
+      @media screen and (max-width: 425px) {
         .search-container-ls {
           flex-direction: column;
-          gap: 10px;
+          gap: 15px;
+          margin: 0 15px;
         }
+
+        .search-group,
+        .search-group-tk {
+          width: 100%;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
         .search-input-ls {
           width: 100%;
         }
+
         .search-button-ls,
         .advanced-search-button {
           width: 100%;
-          height: 40px;
+          margin-top: 5px;
         }
-        .flag-container {
-          width: 80px;
-          height: 50px;
+
+        .advanced-fields.show {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .search-label {
+          margin-bottom: 4px;
+        }
+
+        /* Điều chỉnh font size cho mobile */
+        .search-button-ls,
+        .advanced-search-button {
+          font-size: 16px;
+        }
+
+        .search-label {
+          font-size: 14px;
         }
       }
 
@@ -161,10 +181,6 @@
         .search-container-ls {
           gap: 16px;
         }
-        .search-input-ls {
-          /*  Input chiếm phần lớn chiều ngang còn lại */
-          width: 850px;
-        }
 
         .search-button-ls {
           width: 110px;
@@ -178,6 +194,18 @@
           width: 120px;
           height: 70px;
         }
+        .search-input-ls-diachi {
+          width: 626px;
+        }
+        .search-input-ls-sdt {
+          width: 540px;
+        }
+        .search-input-ls-tukhoa {
+          width: 628px;
+        }
+        .search-group {
+          margin-top: 12px;
+        }
       }
 
       /* Responsive cho màn hình từ 1025px đến 1330px */
@@ -185,9 +213,7 @@
         .search-container-ls {
           gap: 16px;
         }
-        .search-input-ls {
-          width: 430px;
-        }
+
         .search-button-ls {
           width: 115px;
         }
@@ -198,26 +224,59 @@
           width: 127px;
           height: 80px;
         }
+        .search-input-ls-diachi {
+          width: 360px;
+        }
+        .search-input-ls-sdt {
+          width: 360px;
+        }
+        .search-input-ls-tukhoa {
+          width: 543px;
+        }
       }
       /* Responsive cho màn hình từ 1331px đến 1440px */
       @media (min-width: 1331px) and (max-width: 1440px) {
-        .search-input-ls {
-          width: 500px;
-        }
         .flag-container {
           width: 127px;
           height: 80px;
+        }
+        .search-input-ls-diachi {
+          width: 465px;
+        }
+        .search-input-ls-sdt {
+          width: 465px;
+        }
+        .search-input-ls-tukhoa {
+          width: 740px;
+        }
+        .consulate-grid {
+          margin-right: 8px;
+        }
+        .consulate-item {
+          width: 395px !important;
         }
       }
 
       /* Responsive cho màn hình từ 1441px đến 1824px */
       @media (min-width: 1441px) and (max-width: 1824px) {
-        .search-input-ls {
-          width: 500px;
-        }
         .flag-container {
           width: 127px;
           height: 80px;
+        }
+        .search-input-ls-diachi {
+          width: 465px;
+        }
+        .search-input-ls-sdt {
+          width: 465px;
+        }
+        .search-input-ls-tukhoa {
+          width: 740px;
+        }
+        .consulate-grid {
+          margin-right: 8px;
+        }
+        .consulate-item {
+          width: 395px !important;
         }
       }
 
@@ -225,9 +284,6 @@
       @media (min-width: 1825px) and (max-width: 2304px) {
         .search-container-ls {
           gap: 22px;
-        }
-        .search-input-ls {
-          width: 500px;
         }
 
         .search-button-ls {
@@ -237,6 +293,44 @@
         .advanced-search-button {
           width: 230px;
           font-size: 19px;
+        }
+        .search-input-ls-diachi {
+          width: 600px;
+        }
+        .search-input-ls-sdt {
+          width: 600px;
+        }
+        .search-input-ls-tukhoa {
+          width: 982px;
+        }
+        .consulate-item {
+          width: 420px !important;
+        }
+      }
+      @media screen and (min-width: 2305px) {
+        .search-container-ls {
+          gap: 22px;
+        }
+
+        .search-button-ls {
+          width: 130px;
+          font-size: 19px;
+        }
+        .advanced-search-button {
+          width: 230px;
+          font-size: 19px;
+        }
+        .search-input-ls-diachi {
+          width: 600px;
+        }
+        .search-input-ls-sdt {
+          width: 600px;
+        }
+        .search-input-ls-tukhoa {
+          width: 982px;
+        }
+        .consulate-item {
+          width: 420px !important;
         }
       }
       .consulate-container {
@@ -373,25 +467,31 @@
     <div class="search-container-ls">
       <div class="advanced-fields" id="advancedFields">
         <div class="search-group">
-          <span class="search-label mr-2">Điện thoại cơ quan:</span>
-          <input
-            type="text"
-            placeholder="Nhập số điện thoại cơ quan"
-            class="search-input-ls"
-          />
-        </div>
-        <div class="search-group">
           <span class="search-label mr-2">Địa chỉ:</span>
           <input
             type="text"
             placeholder="Nhập địa chỉ"
-            class="search-input-ls"
+            class="search-input-ls search-input-ls-diachi"
+          />
+        </div>
+
+        <div class="search-group">
+          <span class="search-label mr-2">Điện thoại cơ quan:</span>
+          <input
+            type="text"
+            placeholder="Nhập số điện thoại cơ quan"
+            class="search-input-ls search-input-ls-sdt"
           />
         </div>
       </div>
+
       <div class="search-group-tk">
-        <span class="search-label">Từ khoá:</span>
-        <input type="text" placeholder="Nhập từ khóa" class="search-input-ls" />
+        <span class="search-label mr-3">Từ khoá:</span>
+        <input
+          type="text"
+          placeholder="Nhập từ khóa"
+          class="search-input-ls search-input-ls-tukhoa"
+        />
       </div>
 
       <button class="search-button-ls">Tìm kiếm</button>
@@ -1367,12 +1467,7 @@
         </button>
       </div>
     </div>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-      integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+
     <script>
       $(document).ready(function () {
         // Khởi tạo các biến toàn cục
@@ -1477,15 +1572,27 @@
           // Cập nhật số lượng kết quả và giao diện
           updateResults();
         }
+        // Thêm HTML cho thông báo không có kết quả
+        $consulateGrid.after(
+          '<div class="no-results-message" style="display: none; text-align: center; padding: 20px; width: 100%;">Không tìm thấy kết quả phù hợp với tìm kiếm của bạn</div>'
+        );
 
+        const $noResultsMessage = $(".no-results-message");
         // Hàm cập nhật kết quả tìm kiếm
         function updateResults() {
           const visibleItems = $consulateItems.not(".search-hidden").length;
           $(".consulate-count").text(visibleItems);
-
-          const totalPages = Math.ceil(visibleItems / itemsPerPage);
-          renderPagination(totalPages);
-          displayFilteredItems();
+          // Hiển thị/ẩn thông báo không có kết quả
+          if (visibleItems === 0) {
+            $noResultsMessage.show();
+            $pagination.hide();
+          } else {
+            $noResultsMessage.hide();
+            $pagination.show();
+            const totalPages = Math.ceil(visibleItems / itemsPerPage);
+            renderPagination(totalPages);
+            displayFilteredItems();
+          }
         }
 
         // Hàm hiển thị các items đã lọc

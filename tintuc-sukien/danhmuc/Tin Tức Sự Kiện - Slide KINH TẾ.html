@@ -48,17 +48,11 @@
         </div>
         <div class="slideshow-news-container position-relative">
             <!-- Thêm nút điều hướng tùy chỉnh -->
-            <button class="custom-prev-btn">
-
-                <img src="/documents/39403/310714/left-arrow.svg"
-                     alt="Previous"
-                />
+            <button class="custom-prev-btn" id="kt-prev-btn" onclick="handleSlideNav('prev')">
+                <i class="icon-prev-ttsk fa fa-chevron-left" ></i>
             </button>
-            <button class="custom-next-btn">
-                <img
-                        src="/documents/39403/310714/right-arrow.svg"
-                        alt="Next"
-                />
+            <button class="custom-next-btn" id="kt-next-btn" onclick="handleSlideNav('next')">
+                <i class="icon-next-ttsk fa fa-chevron-right" ></i>
             </button>
 
             <!-- Định nghĩa mapping cho icons -->
@@ -74,7 +68,7 @@
             <#assign dateFormatTime = "HH:mm" />
             <#assign indexLocal = 0/>
             <swiper-container
-                    class="newsSwiper position-relative"
+                    class="newsSwiper kt-newsSwiper position-relative"
                     pagination="true"
                     pagination-clickable="true"
                     space-between="20"
@@ -100,7 +94,8 @@
                             article = renderer.getArticle()
                             description = article.getDescription(locale)
                             ddmTemplateKey = article.getDDMTemplateKey()
-                            createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                        displayDate = article.getDisplayDate()?datetime
+                        createTime = dateUtil.getDate(displayDate, dateFormatTime, locale)
                             createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
                             createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
                             createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
@@ -111,7 +106,7 @@
                             <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
                                 <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
                             <#else>
-                                <#assign smallImageUrl = "" >
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
                             </#if>
                             <swiper-slide
                             ><div class="card position-relative mb-5">
@@ -174,7 +169,6 @@
     </div>
 </div>
 
-
 <script>
     function initializeNewsSwiper() {
         // Kiểm tra jQuery đã được load chưa
@@ -185,17 +179,17 @@
 
         $(document).ready(function () {
             // Đổi tên biến để tránh xung đột
-            const newsSwiper = $(".newsSwiper-hdld")[0];
+            const newsSwiper = $(".kt-newsSwiper")[0];
             if (newsSwiper && newsSwiper.swiper) {
                 const swiperNewsWrapper = newsSwiper.swiper;
 
                 // Xử lý nút Previous
-                $("#hdld-prev-btn").off('click').on("click", () => {
+                $("#kt-prev-btn").off('click').on("click", () => {
                     if (swiperNewsWrapper) swiperNewsWrapper.slidePrev();
                 });
 
                 // Xử lý nút Next
-                $("#hdld-next-btn").off('click').on("click", () => {
+                $("#kt-next-btn").off('click').on("click", () => {
                     if (swiperNewsWrapper) swiperNewsWrapper.slideNext();
                 });
 
@@ -234,7 +228,7 @@
                         });
 
                         // Kiểm tra và xử lý hiển thị nút điều hướng
-                        const navigationButtons = $("#hdld-prev-btn, #hdld-next-btn");
+                        const navigationButtons = $("#kt-prev-btn, #kt-next-btn");
                         if (visibleSlides <= 4) {
                             navigationButtons.hide();
                         } else {
@@ -252,7 +246,7 @@
                                     '<h5 class="text-muted">Không tìm thấy bài viết nào</h5>' +
                                     '<p class="text-muted">Không có bài viết nào trong tháng ' + selectedMonth + '/' + selectedYear + '</p>' +
                                     '</div>';
-                                $(".newsSwiper-hdld").after(noResultsMessage);
+                                $(".kt-newsSwiper").after(noResultsMessage);
                                 $(".btn-orange").hide();
                             }
                         } else {
