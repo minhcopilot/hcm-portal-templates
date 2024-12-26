@@ -51,7 +51,7 @@
         border-radius: 50%;
         width: 40px ;
         height: 40px ;
-        border: unset !important;
+        border: unset ;
     }
 
     .ct-btn-carousel-2:hover {
@@ -206,11 +206,46 @@
         transition: filter 0s ease;
         filter: invert(203%) brightness(100%);
     }
+    @media screen and (max-width: 426px) {
+
+        .btn-prev-cqs{
+            left: 50px;
+            top:-20px;
+            width: 25px;
+            height: 28px!important;
+            position: absolute;
+        }
+        .btn-next-cqs{
+            right:  50px;
+            top:-20px;
+            width: 25px!important;
+            height: 28px!important;
+            position: absolute;
+
+        }
+    }
+    @media screen and (min-width: 427px) and (max-width: 768px) {
+        .btn-prev-cqs{
+            left: 50px;
+            top:-20px;
+            width: 25px;
+            height: 28px!important;
+            position: absolute;
+        }
+        .btn-next-cqs{
+            right:  50px;
+            top:-20px;
+            width: 25px!important;
+            height: 28px!important;
+            position: absolute;
+
+        }
+    }
 </style>
 
 <div class="d-flex align-items-center justify-content-center position-relative container" id="carouselDV">
     <div class="custom-carousel-control-prev" id="prevButtonDV">
-        <span class="ct-btn-carousel-2 d-flex align-items-center justify-content-center">
+        <span class="btn-prev-cqs ct-btn-carousel-2 d-flex align-items-center justify-content-center">
             <img src="/documents/39403/307879/left.svg" width="8px" height="19px">
         </span>
     </div>
@@ -255,7 +290,7 @@
         </div>
     </div>
     <div class="custom-carousel-control-next" id="nextButtonDV">
-        <span class="ct-btn-carousel-2 d-flex align-items-center justify-content-center">
+        <span class="btn-next-cqs ct-btn-carousel-2 d-flex align-items-center justify-content-center">
             <img class="ct-rotate" src="/documents/39403/307879/left.svg" width="8px" height="19px">
         </span>
     </div>

@@ -37,7 +37,6 @@
         border-radius: 6px;
         background: #C8392B;
         margin-top: 17px;
-        font-family: Roboto;
         font-size: 14px;
         font-style: normal;
         font-weight: 700;
@@ -188,7 +187,7 @@
             text-align: justify;
             margin-top: 16px;
             color: var(--darkdefault-212529, #212529);
-            font-family: Roboto;
+            /*font-family: Roboto;*/
             font-size: 22px;
             font-style: normal;
             font-weight: 700;
@@ -235,7 +234,6 @@
 
     .sp-dislaydate {
         color: var(--darkdefault-212529, #212529);
-        font-family: Roboto;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
@@ -251,7 +249,6 @@
         text-align: justify;
         margin-top: 16px;
         color: var(--darkdefault-212529, #212529);
-        font-family: Roboto;
         font-size: 22px;
         font-style: normal;
         font-weight: 700;
@@ -272,7 +269,6 @@
     #contentText p {
         text-align: justify;
         color: #000;
-        font-family: Roboto;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
@@ -282,7 +278,6 @@
 
     #contentText > .text-summary > p {
         color: #000;
-        font-family: Roboto;
         font-size: 16px;
         font-style: italic;
         font-weight: 700;
@@ -297,7 +292,6 @@
         display: flex;
         flex-direction: row;
         color: #000;
-        font-family: Roboto;
         font-size: 14px;
         font-style: normal;
         font-weight: 500;
@@ -312,7 +306,6 @@
 
     .text-trangchu-ctbv {
         color: var(--darkdefault-212529, #212529);
-        font-family: Roboto;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
@@ -322,7 +315,6 @@
 
     .text-gioithieu-ctbv {
         color:#0D4C92;
-        font-family: Roboto;
         font-size: 16px;
         font-style: normal;
         font-weight: 500;
@@ -338,7 +330,6 @@
 
     .title-content-vni {
         color: var(--Dark-primary-000000, #000);
-        font-family: Roboto;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
@@ -361,8 +352,7 @@
     }
 
     .text-readmore-tlq {
-        color: var(--cpredc-8392-b, #C8392B);
-        font-family: Roboto;
+        color: #0D4C92;
         font-size: 14px;
         font-style: normal;
         font-weight: 500;
@@ -371,19 +361,17 @@
         margin-top: 16px;
     }
 
-    .text-des-tlq > p {
+    .text-des-tlq > p  {
         color: var(--signinupfont-3777777, #777);
-        font-family: Roboto;
-        font-size: 14px;
+        font-size: 16px;
         font-style: normal;
-        font-weight: 400;
+        font-weight: 400!important;
         line-height: 130%; /* 18.2px */
         letter-spacing: 0.035px;
     }
 
     .text-title-tlq {
         color: var(--darkdefault-212529, #212529);
-        font-family: Roboto;
         font-size: 16px;
         font-style: normal;
         font-weight: 700;
@@ -395,7 +383,6 @@
 
     .text-title-tlq-img {
         color: var(--darkdefault-212529, #212529);
-        font-family: Roboto;
         font-size: 16px;
         font-style: normal;
         font-weight: 700;
@@ -406,7 +393,6 @@
 
     .title-content-tlq {
         color: var(--Dark-primary-000000, #000);
-        font-family: Roboto;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
@@ -444,19 +430,21 @@
 
     .sdt-list-tlq-items {
         color: var(--darkdefault-212529, #212529);
-        font-family: Roboto;
         font-size: 16px;
         font-style: normal;
-        font-weight: 700;
+        font-weight: 400;
         line-height: 130%;
         letter-spacing: 0.024px;
     }
+
     .sdt-list-tlq-items:hover > a{
         color: #0D4C92!important;
+        font-weight: 700;
     }
+
     .sdt-list-tlq-items:hover::before {
-    background: #0D4C92;
-}
+        background: #0D4C92;
+    }
     .sdt-list-tlq-items::before {
         position: absolute;
         top: 7px;
@@ -471,7 +459,6 @@
 
     .text-border {
         color: #000;
-        font-family: Roboto;
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
@@ -488,7 +475,6 @@
 
     .form-chitiet::placeholder {
         color: rgba(119, 119, 119, 0.50);
-        font-family: Roboto;
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
@@ -498,7 +484,6 @@
 
     .lbl-blyk {
         color: #000;
-        font-family: Roboto;
         font-size: 16px;
         font-style: normal;
         font-weight: 500;
@@ -509,25 +494,6 @@
     .align-right {
         text-align: right;
         border: 0;
-    }
-
-    @media only screen and (max-width: 576px) {
-        .detail__sticky {
-            display: none;
-        }
-        .h-img-ctbv {
-            height: 100%;
-        }
-
-        .text-title-tlq-img {
-            margin-top: 10px;
-        }
-    }
-
-    @media only screen and (min-width: 576px) {
-        .h-img-ctbv {
-            height: 181px;
-        }
     }
 
     .gg-custom {
@@ -551,7 +517,6 @@
     }
     .user-name {
         color: #000;
-        font-family: Roboto;
         font-size: 16px;
         font-style: normal;
         font-weight: 700;
@@ -560,7 +525,6 @@
     }
     .text-comment {
         color: #4D4D4D;
-        font-family: Roboto;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
@@ -576,7 +540,6 @@
         border-radius: 8px;
         border: 1px solid #000;
         color: #000;
-        font-family: Roboto;
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
@@ -596,18 +559,44 @@
     }
 
     .content-right-tlq:hover .text-title-tlq-img,
-    .content-right-tlq:hover .text-des-tlq > p,
+    .content-right-tlq:hover .text-des-tlq > p ,
     .content-right-tlq:hover .text-readmore-tlq{
         color: #ffffff!important;
     }
     .content-right-tlq,
     .content-left-tlq,
     .content-right-tlq .text-title-tlq-img,
-    .content-right-tlq .text-des-tlq > p,
+    .content-right-tlq .text-des-tlq > p ,
     .content-right-tlq .text-readmore-tlq {
         transition: all 0.9s ease;
     }
 
+    @media only screen and (min-width: 576px) {
+        .h-img-ctbv {
+            height: 181px;
+        }
+    }
+
+    @media only screen and (max-width: 576px) {
+        .detail__sticky {
+            display: none;
+        }
+        .h-img-ctbv {
+            height: 100%;
+        }
+
+        .text-title-tlq-img {
+            margin-top: 10px;
+        }
+
+        #tin-slide-img-left {
+            height: 100% !important;
+        }
+
+        .content-right-tlq {
+            padding-left: 12px !important;
+        }
+    }
 </style>
 <style>
 
@@ -1015,14 +1004,14 @@ images_folder = theme_display.getPathThemeImages()
                 <a onclick="giamTuongPhan();" href="javascript:void(0);"
                    data-toggle="tooltip" title="Giảm tương phản">
 					<span class="icon">
-						<img src="/o/portal-home-theme/icons/trothinh/trothinh_bright-down-btn.png"
+						<img src="/o/portal-home-multi-theme/icons/trothinh/trothinh_bright-down-btn.png"
                              style="vertical-align: middle;opacity: 1;"/>
 					</span>
                 </a>
                 <a onclick="tangTuongPhan();" href="javascript:void(0);"
                    data-toggle="tooltip" title="Tăng tương phản">
 					<span class="icon">
-						<img src="/o/portal-home-theme/icons/trothinh/trothinh_bright-up-btn.png"
+						<img src="/o/portal-home-multi-theme/icons/trothinh/trothinh_bright-up-btn.png"
                              style="vertical-align: middle;opacity: 1;"/>
 					</span>
                 </a>
@@ -1086,11 +1075,11 @@ images_folder = theme_display.getPathThemeImages()
                 </div>
                 <div class="article-info">
                     <div class="row social-buttons">
-                        <div class="col-lg-9 d-flex">
+                        <div class="col-lg-10 d-flex align-items-center">
                             <iframe class="like-fb-custom" src="${srcfb}" width="92" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-                            <div style="display: contents;">
+                            <div style="display: flex; align-items: center;">
                                 <p class="text-dgbv">Đánh giá bài viết:</p>
-                                <div class="ratings-wrapper">
+                                <div class="ratings-wrapper ml-2">
                                     <div data-productid="39" class="ratings">
                                         <span class="star" data-rating="5"></span>
                                         <span class="star" data-rating="4"></span>
@@ -1101,16 +1090,14 @@ images_folder = theme_display.getPathThemeImages()
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 ctbv-right">
-                            
-                        </div>
+                        <div class="col-lg-1 ctbv-right"></div>
                     </div>
                 </div>
                 <div class="line"></div>
                 <p class="title-content-vni">
                     <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
                         <path d="M31.5337 15.445L25.8262 6.89125C25.6445 6.61728 25.3978 6.39252 25.1082 6.23702C24.8185 6.08151 24.4949 6.00008 24.1662 6H5.70117C5.17074 6 4.66203 6.21071 4.28696 6.58579C3.91189 6.96086 3.70117 7.46957 3.70117 8V24C3.70117 24.5304 3.91189 25.0391 4.28696 25.4142C4.66203 25.7893 5.17074 26 5.70117 26H24.1662C24.4947 25.9994 24.818 25.9179 25.1075 25.7626C25.397 25.6074 25.6439 25.3833 25.8262 25.11L31.5299 16.555C31.6401 16.391 31.6993 16.1981 31.7 16.0006C31.7006 15.803 31.6428 15.6097 31.5337 15.445ZM24.1662 24H5.70117V8H24.1662L29.4987 16L24.1662 24Z"
-                              fill="#DA251C"/>
+                              fill="#0D4C92"/>
                     </svg>
                     Từ khoá
                 </p>
@@ -1189,68 +1176,79 @@ images_folder = theme_display.getPathThemeImages()
                 </section>
                 <div id="comment-list"></div>
                 <div class="line"></div>
-                <#assign indexLocal = 0/>
                 <div class="col-lg-12 col-xl-12 box-tlq">
                     <#if teste?has_content>
                         <h1 class="title-content-tlq font-merri mb-3">Tin liên quan</h1>
                         <div class="row">
+                            <#assign indexLocal = 0/>
                             <#list teste?filter(curEntryyy -> curEntryyy.getEntryId() != currentArticleAssetEntry.getEntryId()) as  curEntryyy>
                                 <#if curEntryyy?? && curEntryyy.getAssetRenderer()??>
-									<#assign
-									renderer = curEntryyy.getAssetRenderer()
-									className = renderer.getClassName() />
-									<#if className == "com.liferay.journal.model.JournalArticle" && indexLocal &lt; 6>
-										<#assign
-										title = curEntryyy.getTitle(locale)
-										article = renderer.getArticle()
-										SmallImageID  = article.getSmallImageId()
-										SmallImage  = article.getSmallImageURL()
-										description = article.getDescription(locale)
-										curEntryyy = curEntryyy
-										viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
-										indexLocal = indexLocal + 1 />
-										<#if SmallImage ?? && SmallImage?length !=0 >
-											<#assign smallImageUrl = SmallImage>
-										<#elseif SmallImageID ?? && SmallImageID != 0>
-											<#assign smallImageUrl = "/image/journal/article?img_id=${SmallImageID}">
-										<#else>
-											<#assign smallImageUrl = "/documents/60205/77945/no-image.jpg" >
-										</#if>
-										<#list curEntryyy.getCategories() as categoryList>
-											<#list currentArticleAssetEntry.getCategories() as cateId>
-												<#if categoryList.getCategoryId() == cateId.getCategoryId()>
-													<#if indexLocal  == 1>
-														<div class="col-12 d-flex p-0 mb-16" idx="${indexLocal}" style="height: 100% !important;">
-															<a href="${viewURL}" class="d-flex w-100 border-item">
-																<div class="col-4 pl-0 content-left-tlq">
-																	<img id="tin-slide-img-left"
-																		 class="tin-slide-img-left img-34-left col-4 p-0 h-img-ctbv"
-																		 src="${smallImageUrl}" alt="" width="100%">
-																</div>
-																<div class="col-8 content-right-tlq">
-																	<p class="limit-title-1 text-title-tlq-img">${title}</p>
-																	<div class="text-left limit-description-3 text-des-tlq">${description}</div>
-																	<p class="text-readmore-tlq d-mobile-none">Đọc thêm
-																		<i class="fa fa-angle-right"></i>
-																	</p>
-																</div>
-															</a>
-														</div>
-														<div class="line-tlq"></div>
-													<#else>
-														<div class="col-lg-12" idx="${indexLocal}" style="margin-left: 15px;">
-															<li class="sdt-list-tlq-items"><a href="${viewURL}">${title}</a></li>
-														</div>
-													</#if>
-												</#if>
-											</#list>
-										</#list>
-									</#if>
-								</#if>
+                                    <#assign
+                                    renderer = curEntryyy.getAssetRenderer()
+                                    className = renderer.getClassName() />
+                                    <#if className == "com.liferay.journal.model.JournalArticle" && indexLocal < 6>
+                                        <#assign
+                                        title = curEntryyy.getTitle(locale)
+                                        article = renderer.getArticle()
+                                        SmallImageID  = article.getSmallImageId()
+                                        SmallImage  = article.getSmallImageURL()
+                                        description = article.getDescription(locale)
+                                        curEntryyy = curEntryyy
+                                        viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                                        hasMatch = false />
+
+                                        <#list curEntryyy.getCategories() as categoryList>
+                                            <#list currentArticleAssetEntry.getCategories() as cateId>
+                                                <#if categoryList.getCategoryId() == cateId.getCategoryId()>
+                                                    <#assign hasMatch = true />
+                                                    <#break />
+                                                </#if>
+                                            </#list>
+                                            <#if hasMatch>
+                                                <#break />
+                                            </#if>
+                                        </#list>
+
+                                        <#if hasMatch>
+                                            <#if SmallImage ?? && SmallImage?length !=0 >
+                                                <#assign smallImageUrl = SmallImage>
+                                            <#elseif SmallImageID ?? && SmallImageID != 0>
+                                                <#assign smallImageUrl = "/image/journal/article?img_id=${SmallImageID}">
+                                            <#else>
+                                                <#assign smallImageUrl = "/documents/60205/77945/no-image.jpg" >
+                                            </#if>
+                                            <#if indexLocal  == 0>
+                                                <div class="col-12 d-flex p-0 mb-16" idx="${indexLocal+1}" style="height: 100% !important;">
+                                                    <a href="${viewURL}" class="d-flex w-100 border-item">
+                                                        <div class="col-4 pl-0 content-left-tlq">
+                                                            <img id="tin-slide-img-left"
+                                                                 class="tin-slide-img-left img-34-left col-4 p-0 h-img-ctbv"
+                                                                 src="${smallImageUrl}" alt="" width="100%">
+                                                        </div>
+                                                        <div class="col-8 content-right-tlq">
+                                                            <p class="limit-title-1 text-title-tlq-img">${title}</p>
+                                                            <div class="text-left limit-description-3 text-des-tlq">${description}</div>
+                                                            <p class="text-readmore-tlq d-mobile-none">Đọc thêm
+                                                                <i class="fa fa-angle-right"></i>
+                                                            </p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="line-tlq"></div>
+                                            <#else>
+                                                <div class="col-lg-12" idx="${indexLocal+1}" style="margin-left: 15px;">
+                                                    <li class="sdt-list-tlq-items "><a class="limit-title-1 mr-2" href="${viewURL}">${title}</a></li>
+                                                </div>
+                                            </#if>
+                                            <#assign indexLocal = indexLocal + 1 />
+                                        </#if>
+                                    </#if>
+                                </#if>
                             </#list>
                         </div>
                     </#if>
                 </div>
+
             </div>
         </div>
     </div>

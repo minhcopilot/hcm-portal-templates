@@ -251,42 +251,65 @@
     </div>
     <div class="custom-carousel-container">
         <div class="custom-carousel-inner-dv" style="transform: translateX(0%);">
-            <#if entries?has_content>
-                <#assign navItems = entries />
-                <#list navItems as navItem>
-                    <#if navItem.isBrowsable()>
-                        <#assign nav_item_href_link = "href='${navItem.getURL()}' ${navItem.getTarget()}"
-                        listChild = navItem.getBrowsableChildren()
-                        has_child = ""
-                        />
-                    </#if>
-                    <#if listChild?has_content>
-                        <#assign nav_item_href_link = "href='#'" />
-                        <#assign has_child = "has_child" />
-                    </#if>
-                    <div class="custom-carousel-item-dv ${has_child}">
-                        <a ${nav_item_href_link} target="_blank" class="text-decoration-none">
-                            <div class="icon-head text-center">
-                                <img src="${navItem.iconURL()}">
-                                <span class="w-100 d-block mt-3 text-nowrap">
-                                    <#assign nameLevel1 = navItem.getName()?replace("**", "<br>")>
-                                    ${nameLevel1}
-                                </span>
-                            </div>
-                        </a>
-                        <div class="child-menu-slide">
-                            <#list navItem.getBrowsableChildren() as childNavigationItem>
-                                <a href="${childNavigationItem.getURL()}" target="_blank" class="child-a">
-                                    <div class="icon-head-left text-center">
-                                        <img src="${childNavigationItem.iconURL()}">
-                                        <b>${childNavigationItem.getName()}</b>
-                                    </div>
-                                </a>
-                            </#list>
-                        </div>
-                    </div>
-                </#list>
+            <#assign desiredOrder = [
+    "Cổng dữ liệu** Thành phố",
+    "Dịch vụ công** trực tuyến",
+    "Chuyển đổi** số",
+    "Công báo** Thành phố",
+    "Công dân số **TPHCM",
+    "HCMC METRO** HURC",
+    "Tổng đài** khẩn cấp",
+    "Bản đồ số** TPHCM",
+    "Tổng đài** 1022"
+]>
+
+<#if entries?has_content>
+    <#assign navItems = entries />
+    <#assign orderedNavItems = []>
+
+    <#list desiredOrder as desiredName>
+        <#list navItems as navItem>
+            <#assign itemNameWithoutLineBreak = navItem.getName()?replace("<br>", "")>
+            <#if itemNameWithoutLineBreak == desiredName>
+                <#assign orderedNavItems = orderedNavItems + [navItem]>
             </#if>
+        </#list>
+    </#list>
+
+    <#list orderedNavItems as navItem>
+        <#if navItem.isBrowsable()>
+            <#assign nav_item_href_link = "href='${navItem.getURL()}' ${navItem.getTarget()}"
+            listChild = navItem.getBrowsableChildren()
+            has_child = ""
+            />
+        </#if>
+        <#if listChild?has_content>
+            <#assign nav_item_href_link = "href='#'" />
+            <#assign has_child = "has_child" />
+        </#if>
+        <div class="custom-carousel-item-dv ${has_child}">
+            <a ${nav_item_href_link} target="_blank" class="text-decoration-none">
+                <div class="icon-head text-center">
+                    <img src="${navItem.iconURL()}">
+                    <span class="w-100 d-block mt-3 text-nowrap">
+                        <#assign nameLevel1 = navItem.getName()?replace("**", "<br>")>
+                        ${nameLevel1}
+                    </span>
+                </div>
+            </a>
+            <div class="child-menu-slide">
+                <#list navItem.getBrowsableChildren() as childNavigationItem>
+                    <a href="${childNavigationItem.getURL()}" target="_blank" class="child-a">
+                        <div class="icon-head-left text-center">
+                            <img src="${childNavigationItem.iconURL()}">
+                            <b>${childNavigationItem.getName()}</b>
+                        </div>
+                    </a>
+                </#list>
+            </div>
+        </div>
+    </#list>
+</#if>
         </div>
     </div>
     <div class="custom-carousel-control-next" id="nextButtonDV">

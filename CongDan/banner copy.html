@@ -1,6 +1,4 @@
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
   .carousel-item img {
     max-width: 100%;
     height: auto;
@@ -94,12 +92,11 @@
 
   .ct-btn-carousel-bannner:hover {
     background-color: #db7100 !important;
-
-    img {
-      transition: filter 0s ease;
-      filter: invert(100%) brightness(200%);
-    }
   }
+  /*img {*/
+  /*    transition: filter 0s ease;*/
+  /*    filter: invert(100%) brightness(200%);*/
+  /*}*/
   .next-button-banner {
     transform: rotate(180deg);
   }
@@ -120,8 +117,8 @@
     transform: rotate(180deg);
   }
 </style>
-<div class="ct-margin col-12 px-0">
-  <div
+<div class="ct-margin col-12 px-0 d-none d-lg-block">
+  <!-- <div
     class="d-flex align-items-center justify-content-center position-relative"
     id="carousel-banner-cd"
   >
@@ -131,7 +128,7 @@
       >
         <img src="/documents/39403/307879/left.svg" width="8px" height="16px" />
       </span>
-    </div>
+    </div> -->
     <div class="custom-carousel-container">
       <div class="custom-carousel-inner">
         <div class="custom-item-banner-cd">
@@ -144,11 +141,7 @@
           </a>
         </div>
         <div class="custom-item-banner-cd">
-          <a
-            class="p-3 background2"
-            href="https://congthongtin-demo.qtsc.com.vn/gop-y-linh-vuc"
-            target="_blank"
-          >
+          <a class="p-3 background2" href="/gop-y-linh-vuc" target="_blank">
             <span>GÓP Ý - HIẾN KẾ</span>
           </a>
         </div>
@@ -162,11 +155,7 @@
           </a>
         </div>
         <div class="custom-item-banner-cd">
-          <a
-            href="https://congthongtin-demo.qtsc.com.vn/van-ban-du-thao"
-            target="_blank"
-            class="p-3 background2"
-          >
+          <a href="/van-ban-du-thao" target="_blank" class="p-3 background2">
             <span
               >GÓP Ý DỰ THẢO <br />
               VĂN BẢN</span
@@ -176,7 +165,7 @@
         <div class="custom-item-banner-cd">
           <a
             class="p-3 background2"
-            href="https://congthongtin-demo.qtsc.com.vn/hoi-dap-kien-nghi"
+            href="/hoi-dap-kien-nghi?p_p_id=HoiDap_WAR_sdthoidapportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_HoiDap_WAR_sdthoidapportlet_action=themMoi"
             target="_blank"
           >
             <span>GỬI KIẾN NGHỊ</span>
@@ -193,7 +182,7 @@
         </div>
       </div>
     </div>
-    <div class="custom-carousel-banner-next" id="nextButton-banner-cd">
+    <!-- <div class="custom-carousel-banner-next" id="nextButton-banner-cd">
       <span
         class="ct-btn-carousel-bannner d-flex align-items-center justify-content-center"
         id="next-button-banner"
@@ -205,53 +194,53 @@
           height="16px"
         />
       </span>
-    </div>
+    </div> -->
   </div>
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const itemsPerSlide = 4;
+  <#--document.addEventListener("DOMContentLoaded", function () {-->
+  <#--    const itemsPerSlide = 4;-->
 
-    function initializeCarousel() {
-      const carouselId = "carousel-banner-cd";
-      const carouselInner = document.querySelector(
-        `#${carouselId} .custom-carousel-inner`
-      );
-      const items = document.querySelectorAll(
-        `#${carouselId} .custom-item-banner-cd`
-      );
-      console.log("items", items);
-      const totalItems = items.length;
-      const itemWidth = items[0].offsetWidth;
-      let currentIndex = 0;
+  <#--    function initializeCarousel() {-->
+  <#--        const carouselId = "carousel-banner-cd";-->
+  <#--        const carouselInner = document.querySelector(-->
+  <#--            `#carousel-banner-cd .custom-carousel-inner`-->
+  <#--        );-->
+  <#--        const items = document.querySelectorAll(-->
+  <#--            `#carousel-banner-cd .custom-item-banner-cd`-->
+  <#--        );-->
+  <#--        console.log("items", items);-->
+  <#--        const totalItems = items.length;-->
+  <#--        const itemWidth = items[0].offsetWidth;-->
+  <#--        let currentIndex = 0;-->
 
-      function movePrev() {
-        if (currentIndex > 0) {
-          currentIndex--;
-          carouselInner.style.transform = `translateX(${
-            -itemWidth * currentIndex
-          }px)`;
-        }
-      }
+  <#--        function movePrev() {-->
+  <#--            if (currentIndex > 0) {-->
+  <#--                currentIndex--;-->
+  <#--                carouselInner.style.transform = `translateX(${-->
+  <#--        -itemWidth * currentIndex-->
+  <#--      }px)`;-->
+  <#--            }-->
+  <#--        }-->
 
-      function moveNext() {
-        if (currentIndex < totalItems - itemsPerSlide) {
-          currentIndex++;
-          carouselInner.style.transform = `translateX(${
-            -itemWidth * currentIndex
-          }px)`;
-        }
-      }
+  <#--        function moveNext() {-->
+  <#--            if (currentIndex < totalItems - itemsPerSlide) {-->
+  <#--                currentIndex++;-->
+  <#--                carouselInner.style.transform = `translateX(${-->
+  <#--        -itemWidth * currentIndex-->
+  <#--      }px)`;-->
+  <#--            }-->
+  <#--        }-->
 
-      document
-        .querySelector(`#${carouselId} .custom-carousel-banner-prev`)
-        .addEventListener("click", movePrev);
-      document
-        .querySelector(`#${carouselId} .custom-carousel-banner-next`)
-        .addEventListener("click", moveNext);
-    }
+  <#--        document-->
+  <#--            .querySelector(`#carousel-banner-cd .custom-carousel-banner-prev`)-->
+  <#--            .addEventListener("click", movePrev);-->
+  <#--        document-->
+  <#--            .querySelector(`#carousel-banner-cd .custom-carousel-banner-next`)-->
+  <#--            .addEventListener("click", moveNext);-->
+  <#--    }-->
 
-    initializeCarousel("carousel-banner-cd");
-  });
+  <#--    initializeCarousel("carousel-banner-cd");-->
+  <#--});-->
 </script>

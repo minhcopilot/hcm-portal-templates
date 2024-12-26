@@ -1,66 +1,64 @@
 <style>
-  .content-ltcd {
-    padding-right: 22%;
-  }
   .ct-child-single-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+  .ct-child:hover{
+      cursor: pointer;
   }
 </style>
 
 <div class="position-relative w-100">
   <div class="box1 w-100 box-shadow-main-ltcd">
-    <div class="h-100">
-      <div class="h-100 pt-5 pb-5 content-ltcd box-shadow-right-15pt">
-        <div class="w-100 ct-lich text-center p-3">
-          <div class="ct-border mb-4">
-            <p class="ct-title">
-              <img src="/documents/39403/1077501/icon_lich.png" /> LỊCH TIẾP
-              CÔNG DÂN
-            </p>
+      <div class="h-100">
+          <div class="h-100 pt-5 pb-5 content-ltcd box-shadow-right-15pt">
+              <div class="w-100 ct-lich text-center p-3">
+                  <div class="ct-border mb-4">
+                      <p class="ct-title">
+                          <img src="/documents/39403/1077501/icon_lich.png" /> LỊCH TIẾP
+                          CÔNG DÂN
+                      </p>
+                  </div>
+                  <div class="ct-scroll">
+                      <#assign indexLocal = 0/>
+                      <#if entries?has_content>
+                          <#list entries as curEntry>
+                              <#assign
+                              renderer = curEntry.getAssetRenderer()
+                              className = renderer.getClassName()
+                              />
+                              <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale)>
+                                  <#assign
+                                  title = curEntry.getTitle(locale)
+                                  article = renderer.getArticle()
+                                  description = article.getDescription(locale)
+                                  viewURL = "/vi/web/hcm/w/${renderer.getUrlTitle()}"
+                                  smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest)!"/documents/20123/41696/cover-emty-img.jpg"
+                                  indexLocal = indexLocal + 1
+                                  />
+                                  <div class="ct-border child pt-3">
+                                      <p class="ct-child ml-2" onclick="location.href='${viewURL}'">${title}</p>
+                                  </div>
+                              </#if>
+                          </#list>
+                      </#if>
+                  </div>
+                  <div class="mt-3">
+                      <!-- <button
+                              class="ct-btn"
+                              onclick="location.href='javascript:void(0)'"
+                      >
+                          Xem thêm
+                      </button> -->
+                  </div>
+              </div>
           </div>
-          <div class="ct-scroll">
-            <div class="ct-border child pt-3">
-              <p class="ct-child ml-2">Lịch tiếp công dân quý IV năm 2024</p>
-            </div>
-            <div class="ct-border child pt-3">
-              <p class="ct-child ml-2">Lịch tiếp công dân quý III năm 2024</p>
-            </div>
-            <div class="ct-border child pt-3">
-              <p class="ct-child ml-2">Lịch tiếp công dân quý II năm 2024</p>
-            </div>
-            <div class="ct-border child pt-3">
-              <p class="ct-child ml-2">Lịch tiếp công dân quý I năm 2024</p>
-            </div>
-            <div class="ct-border child pt-3">
-              <p class="ct-child ml-2">Lịch tiếp công dân quý IV năm 2023</p>
-            </div>
-            <div class="ct-border child pt-3">
-              <p class="ct-child ml-2">Lịch tiếp công dân quý III năm 2023</p>
-            </div>
-            <div class="ct-border child pt-3">
-              <p class="ct-child ml-2">Lịch tiếp công dân quý II năm 2023</p>
-            </div>
-            <div class="ct-border child pt-3">
-              <p class="ct-child ml-2">Lịch tiếp công dân quý I năm 2023</p>
-            </div>
-          </div>
-          <div class="mt-3">
-            <button
-              class="ct-btn"
-              onclick="location.href='/lich-tiep-cong-dan'"
-            >
-              Xem thêm
-            </button>
-          </div>
-        </div>
       </div>
-    </div>
   </div>
   <div class="box2 w-100 h-100">
-    <div class="m-0 h-100">
-      <div class="h-100 ct-h2 bg-lucgiac"></div>
-    </div>
+      <div class="m-0 h-100">
+          <div class="h-100 ct-h2 bg-lucgiac"></div>
+      </div>
   </div>
 </div>

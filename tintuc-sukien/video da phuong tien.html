@@ -1,0 +1,115 @@
+<div class="video-dpt-container">
+  <video
+    controls
+    autoplay
+    loop
+    muted
+    poster="anh-thumbnail.jpg"
+    role="button"
+    class="video-dpt"
+  >
+    <source
+      src="/documents/39403/2338250/hcm+petro.mp4/38dc9901-9e3c-5c51-c48a-9dbf89bb9e17?t=1735014687392"
+      type="video/mp4"
+    />
+  </video>
+  <h3 class="title-video-dpt">ĐIỂM TIN DỰ ÁN HCMCMETRO</h3>
+</div>
+
+<style>
+  .video-dpt {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .title-video-dpt {
+    background-color: #f9f9f9;
+    color: #0d4c92;
+    text-align: center;
+    padding: 12px;
+    font-weight: 700;
+  }
+
+  /* Mobile - < 425px */
+  @media screen and (max-width: 425px) {
+    .title-video-dpt {
+      font-size: 16px;
+      padding: 8px;
+    }
+  }
+
+  /* Tablet - 426px - 768px */
+  @media screen and (min-width: 426px) and (max-width: 768px) {
+    .title-video-dpt {
+      font-size: 18px;
+      padding: 10px;
+    }
+  }
+
+  /* Tablet Pro - 769px - 1024px */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .title-video-dpt {
+      font-size: 20px;
+    }
+  }
+
+  /* Desktop - 1025px - 1324px */
+  @media screen and (min-width: 1025px) and (max-width: 1324px) {
+    .title-video-dpt {
+      font-size: 22px;
+    }
+  }
+
+  /* Desktop Large - 1325px - 1440px */
+  @media screen and (min-width: 1325px) and (max-width: 1440px) {
+    .title-video-dpt {
+      font-size: 24px;
+    }
+    .video-dpt {
+      aspect-ratio: 17 / 9;
+    }
+  }
+
+  /* Desktop XL - 1441px - 1824px */
+  @media screen and (min-width: 1441px) and (max-width: 1824px) {
+    .title-video-dpt {
+      font-size: 26px;
+    }
+    .video-dpt {
+      aspect-ratio: 18 / 9;
+    }
+  }
+
+  /* Desktop XXL - 1825px - 2304px */
+  @media screen and (min-width: 1825px) and (max-width: 2304px) {
+    .title-video-dpt {
+      font-size: 28px;
+    }
+    .video-dpt {
+      aspect-ratio: 20 / 9;
+    }
+  }
+
+  /* Desktop Ultra - >= 2305px */
+  @media screen and (min-width: 2305px) {
+    .title-video-dpt {
+      font-size: 30px;
+    }
+    .video-dpt {
+      aspect-ratio: 20 / 9;
+    }
+  }
+
+  .video-dpt-container {
+    background-color: #f9f9f9;
+  }
+
+  .video-dpt-container:hover .title-video-dpt,
+  .video-dpt-container:hover {
+    background-color: #0d4c92;
+    transition: all 0.9s ease;
+    color: #ffffff;
+    cursor: pointer;
+  }
+</style>

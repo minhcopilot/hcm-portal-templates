@@ -1,0 +1,106 @@
+<div class="mt-4 row">
+  <#assign dateFormatDay = "dd" />
+          <#assign monthFormatDay = "MM" />
+          <#assign yearFormatDay = "yyyy" />
+          <#assign dateFormatTime = "HH:mm" />
+      <#assign indexLocal = 0/>
+      <#if entries?has_content>
+          <#list entries as curEntry>
+      <#if  curEntry?? && curEntry.getAssetRenderer()?exists>
+        <#assign
+        renderer = curEntry.getAssetRenderer()
+        className = renderer.getClassName() />
+        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal < 5>
+          <#assign
+          title = curEntry.getTitle(locale)
+          article = renderer.getArticle()
+          description = article.getDescription(locale)
+          ddmTemplateKey = article.getDDMTemplateKey()
+                      displayDate = article.getDisplayDate()?datetime
+                      createTime = dateUtil.getDate(displayDate, dateFormatTime, locale)
+          createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+          createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+          createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+          curEntry = curEntry
+                      viewCount = curEntry.getViewCount()
+          viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+          indexLocal = indexLocal + 1 />
+
+          <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+            <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+          <#else>
+            <#assign smallImageUrl = "/documents/39403/307879/bieudo.svg" />
+          </#if>
+<div class="col-lg-3 col-md-3 col-sm-6">
+  <div class="bieudo text-center">
+    <img src="/documents/39403/307879/bieudo.svg" />
+    <div class="ngaythang">${title}</div>
+  </div>
+</div>
+</#if>
+</#if>
+</#list>
+</#if>
+
+<div class="mt-4 w-100 text-center">
+  <button
+    class="btn-xemthem"
+    onclick="location.href='/so-lieu-thong-ke-kinh-te-xa-hoi'"
+  >
+    Xem thêm
+  </button>
+</div>
+</div>
+<style>
+.bieudo {
+  height: 338px;
+  gap: 0px;
+  border-radius: 10px;
+  background-color: #fff2e5;
+  padding: 35px 23px 35px 23px;
+  margin-bottom: 8px;
+}
+
+.ngaythang {
+  font-family: Roboto;
+  width: 100%;
+  height: 54px;
+  gap: 0px;
+  border-radius: 20px;
+  color: #02397a;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28.13px;
+  letter-spacing: 0.15000000596046448px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  background-color: #ffffff;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bieudo:hover {
+  background-color: #02397a;
+}
+
+.btn-xemthem {
+  width: 113px;
+  height: 35px;
+  padding: 5px 19px 5px 19px;
+  gap: 10px;
+  border-radius: 8px;
+  color: #fefefe;
+  background-color: #db7100;
+  border: unset;
+  transition: background-color 0.5s ease, color 0.2s ease;
+}
+
+.btn-xemthem:hover {
+  background-color: #02397a;
+  color: #fefefe;
+}
+
+</style>

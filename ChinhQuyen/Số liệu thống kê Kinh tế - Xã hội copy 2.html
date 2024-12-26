@@ -1,0 +1,227 @@
+
+    <style>
+      .chart-container {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .chart-item {
+        flex: 1 1 calc(25% - 1rem);
+      }
+      .chart-item:hover{
+        cursor: pointer;
+      }
+      .bieudo {
+        height: 338px;
+        border-radius: 10px;
+        background-color: #fff2e5;
+        padding: 35px 23px;
+        margin-bottom: 8px;
+      }
+
+      .ngaythang {
+        font-family: Roboto;
+        width: 100%;
+        height: 54px;
+        border-radius: 20px;
+        color: #02397a;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 28.13px;
+        letter-spacing: 0.15px;
+        text-align: center;
+        background-color: #ffffff;
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .bieudo:hover {
+        background-color: #02397a;
+      }
+
+      .button-container-tkkt  {
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      .btn-xemthem {
+        width: 113px;
+        height: 35px;
+        padding: 5px 19px;
+        border-radius: 8px;
+        color: #fefefe;
+        background-color: #db7100;
+        border: unset;
+        transition: background-color 0.5s ease, color 0.2s ease;
+        cursor: pointer;
+      }
+
+      .btn-xemthem:hover {
+        background-color: #02397a;
+        color: #fefefe;
+      }
+
+      /* Mobile - < 425px */
+      @media screen and (max-width: 425px) {
+        .chart-item {
+          flex: 1 1 100%;
+        }
+        .bieudo {
+          height: 280px;
+          padding: 20px 15px;
+        }
+        .ngaythang {
+          font-size: 20px;
+          height: 45px;
+        }
+      }
+
+      /* Tablet - 426px to 768px */
+      @media screen and (min-width: 426px) and (max-width: 768px) {
+        .chart-item {
+          flex: 1 1 calc(50% - 1rem);
+        }
+        .bieudo {
+          height: 300px;
+          padding: 25px 18px;
+        }
+      }
+
+      /* Small laptop - 769px to 1024px */
+      @media screen and (min-width: 769px) and (max-width: 1024px) {
+        .chart-item {
+          flex: 1 1 calc(50% - 1rem);
+        }
+        .bieudo {
+          height: 320px;
+          padding: 30px 20px;
+        }
+      }
+
+      /* Regular laptop - 1025px to 1324px */
+      @media screen and (min-width: 1025px) and (max-width: 1324px) {
+        .chart-item {
+          flex: 1 1 calc(25% - 1rem);
+        }
+        .bieudo {
+          height: 338px;
+          padding: 35px 23px;
+        }
+      }
+
+      /* Large laptop - 1325px to 1440px */
+      @media screen and (min-width: 1325px) and (max-width: 1440px) {
+        .chart-item {
+          flex: 1 1 calc(25% - 1rem);
+        }
+        .bieudo {
+          height: 350px;
+          padding: 38px 25px;
+        }
+      }
+
+      /* Desktop - 1441px to 1824px */
+      @media screen and (min-width: 1441px) and (max-width: 1824px) {
+        .chart-item {
+          flex: 1 1 calc(25% - 1rem);
+        }
+        .bieudo {
+          height: 380px;
+          padding: 40px 28px;
+        }
+        .ngaythang {
+          font-size: 26px;
+        }
+      }
+
+      /* Large Desktop - 1825px to 2304px */
+      @media screen and (min-width: 1825px) and (max-width: 2304px) {
+        .chart-item {
+          flex: 1 1 calc(25% - 1rem);
+        }
+        .bieudo {
+          height: 400px;
+          padding: 45px 30px;
+        }
+        .ngaythang {
+          font-size: 28px;
+          height: 60px;
+        }
+      }
+
+      /* Extra Large Desktop - >= 2305px */
+      @media screen and (min-width: 2305px) {
+        .chart-item {
+          flex: 1 1 calc(25% - 1rem);
+        }
+        .bieudo {
+          height: 450px;
+          padding: 50px 35px;
+        }
+        .ngaythang {
+          font-size: 30px;
+          height: 65px;
+        }
+      }
+    </style>
+    <div class="chart-container">
+      <#assign dateFormatDay = "dd" />
+      <#assign monthFormatDay = "MM" />
+      <#assign yearFormatDay = "yyyy" />
+      <#assign dateFormatTime = "HH:mm" />
+  <#assign indexLocal = 0/>
+  <#if entries?has_content>
+  <#list entries?reverse as curEntry>
+  <#if  curEntry?? && curEntry.getAssetRenderer()?exists>
+    <#assign
+    renderer = curEntry.getAssetRenderer()
+    className = renderer.getClassName() />
+    <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal < 5>
+      <#assign
+      title = curEntry.getTitle(locale)
+      article = renderer.getArticle()
+      description = article.getDescription(locale)
+      ddmTemplateKey = article.getDDMTemplateKey()
+                  displayDate = article.getDisplayDate()?datetime
+                  createTime = dateUtil.getDate(displayDate, dateFormatTime, locale)
+      createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+      createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+      createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+      curEntry = curEntry
+                  viewCount = curEntry.getViewCount()
+      viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+      indexLocal = indexLocal + 1 />
+
+      <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+        <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+      <#else>
+        <#assign smallImageUrl = "/documents/39403/307879/bieudo.svg" />
+      </#if>
+
+      <div class="chart-item" onclick="location.href='${viewURL}'">
+        <div class="bieudo">
+          <img src="/documents/39403/307879/bieudo.svg" alt="Biểu đồ" />
+          <div class="ngaythang text-center" >${title}</div>
+        </div>
+      </div>
+</#if>
+</#if>
+</#list>
+</#if>
+
+
+    </div>
+
+    <div class="button-container-tkkt text-center">
+      <button
+        class="btn-xemthem"
+        onclick="location.href='/số-liệu-thống-kê-kinh-tế-xã-hội'"
+      >
+        Xem thêm
+      </button>
+    </div>

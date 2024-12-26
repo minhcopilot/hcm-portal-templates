@@ -1,0 +1,415 @@
+<style>
+  .landing-page-hcm {
+    position: relative;
+    background: #f1ddc5;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .langding-page-content {
+    padding: 24px 0px 0px;
+    justify-content: space-evenly;
+    position: relative;
+    z-index: 9;
+  }
+
+  .hoa-tiet {
+    position: absolute;
+    left: 0;
+    z-index: 8;
+  }
+  .logo-langding > img {
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-hcm > h3 {
+    color: #2c2c2c;
+    font-family: Roboto;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    text-align: center;
+  }
+
+  .profile-hcm > h1 {
+    color: #af2630;
+    font-family: Roboto;
+    font-size: 74px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    margin-bottom: 20px;
+  }
+
+  .nav-profile-hcm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-profile-hcm > li:last-child {
+    margin-bottom: 0px;
+  }
+
+  .nav-profile-hcm a {
+    color: #fff;
+  }
+  .avt-hcm {
+    height: 670px;
+  }
+
+  .nav-profile-hcm > li {
+    padding: 12px 10px;
+    background: #af2630;
+    margin-bottom: 32px;
+    border-radius: 12px;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 30.8px */
+    letter-spacing: 0.275px;
+  }
+  @media (max-width: 575px) {
+    .nav-profile-hcm > li {
+      margin-left: 15px;
+    }
+    .profile-hcm > h3 {
+      color: #2c2c2c;
+      font-family: Roboto;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      text-align: center;
+    }
+
+    .profile-hcm > h1 {
+      color: #af2630;
+      font-family: Roboto;
+      font-size: 50px;
+      text-align: center;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      margin-bottom: 20px;
+    }
+    .logo-langding > img {
+      width: 80px;
+      height: 80px;
+    }
+    .avt-hcm {
+      height: 550px;
+    }
+  }
+  @media (min-width: 1200px) and (max-width: 1345px) {
+    .landing-page-hcm {
+      height: 100vh;
+      overflow-y: auto;
+      position: relative;
+      background: #f1ddc5;
+      width: 100%;
+    }
+    .langding-page-content {
+      padding: 0;
+      justify-content: space-evenly;
+      position: relative;
+      z-index: 9;
+    }
+
+    .hoa-tiet {
+      position: absolute;
+      left: 0;
+      z-index: 8;
+    }
+
+    .logo-langding > img {
+      width: 90px;
+      height: 90px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .profile-hcm > h3 {
+      color: #2c2c2c;
+      font-family: Roboto;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      text-align: center;
+      margin: 0;
+    }
+
+    .profile-hcm > h1 {
+      color: #af2630;
+      font-family: Roboto;
+      font-size: 56px;
+      text-align: center;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      margin-bottom: 20px;
+    }
+
+    .nav-profile-hcm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-profile-hcm a {
+      color: #fff;
+    }
+
+    .nav-profile-hcm > li {
+      padding: 8px 6px;
+      background: #af2630;
+      margin-bottom: 18px;
+      border-radius: 12px;
+      text-align: center;
+      font-family: Roboto;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 140%; /* 30.8px */
+      letter-spacing: 0.275px;
+      width: 252px;
+    }
+    .avt-hcm {
+      height: 500px;
+    }
+  }
+  @media (min-width: 1345px) and (max-width: 1440px) {
+    .landing-page-hcm {
+      height: 100vh;
+      overflow-y: auto;
+      position: relative;
+      background: #f1ddc5;
+      width: 100%;
+    }
+    .langding-page-content {
+      padding: 0;
+      justify-content: space-evenly;
+      position: relative;
+      z-index: 9;
+    }
+
+    .hoa-tiet {
+      position: absolute;
+      left: 0;
+      z-index: 8;
+    }
+
+    .logo-langding > img {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .profile-hcm > h3 {
+      color: #2c2c2c;
+      font-family: Roboto;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      text-align: center;
+      margin: 0;
+    }
+
+    .profile-hcm > h1 {
+      color: #af2630;
+      font-family: Roboto;
+      font-size: 56px;
+      text-align: center;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      margin-bottom: 20px;
+    }
+
+    .nav-profile-hcm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-profile-hcm a {
+      color: #fff;
+    }
+
+    .nav-profile-hcm > li {
+      padding: 8px 6px;
+      background: #af2630;
+      margin-bottom: 18px;
+      border-radius: 12px;
+      text-align: center;
+      font-family: Roboto;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 140%; /* 30.8px */
+      letter-spacing: 0.275px;
+      width: 252px;
+    }
+    .avt-hcm {
+      height: 500px;
+    }
+  }
+  @media (min-width: 1442px) and (max-width: 1720px) {
+    .landing-page-hcm {
+      height: 100vh;
+      overflow-y: auto;
+      position: relative;
+      background: #f1ddc5;
+      width: 100%;
+    }
+    .langding-page-content {
+      padding: 0;
+      justify-content: space-evenly;
+      position: relative;
+      z-index: 9;
+    }
+
+    .hoa-tiet {
+      position: absolute;
+      left: 0;
+      z-index: 8;
+    }
+
+    .logo-langding > img {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .profile-hcm > h3 {
+      color: #2c2c2c;
+      font-family: Roboto;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      text-align: center;
+      margin: 0;
+    }
+
+    .profile-hcm > h1 {
+      color: #af2630;
+      font-family: Roboto;
+      font-size: 60px;
+      text-align: center;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 140%;
+      margin-bottom: 26px;
+    }
+
+    .nav-profile-hcm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-profile-hcm a {
+      color: #fff;
+    }
+
+    .nav-profile-hcm > li {
+      padding: 10px 8px;
+      background: #af2630;
+      margin-bottom: 18px;
+      border-radius: 12px;
+      text-align: center;
+      font-family: Roboto;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 140%; /* 30.8px */
+      letter-spacing: 0.275px;
+      width: 258px;
+    }
+    .avt-hcm {
+      height: 500px;
+    }
+  }
+</style>
+<img
+  class="hoa-tiet"
+  src="/documents/39403/41422/hoatiet.png"
+  style="height: 100vh; width: 52%"
+  alt=""
+/>
+<div class="landing-page-hcm" style="">
+  <div class="container">
+    <div class="langding-page-content row w-100 align-items-center">
+      <div class="profile-hcm col-12 col-md-6">
+        <h3 class="">Không gian văn hóa</h3>
+        <h1 class="">HỒ CHÍ MINH</h1>
+        <div
+          class="avt-hcm mb-3 ml-2 col-12 col-md-6 d-flex justify-content-center d-block d-md-none"
+        >
+          <img class="" src="/documents/39403/41422/chandungbac.png" alt="" />
+        </div>
+        <ul class="nav-profile-hcm row">
+          <li class="col-12 col-md-7">
+            <a href="/trang-chu-khong-gian-van-hoa" previewlistener="true"
+              >Trang chủ</a
+            >
+          </li>
+          <li class="col-12 col-md-7">
+            <a href="/tin-tuc-khong-gian-van-hoa" previewlistener="true"
+              >Tin tức - Sự kiện</a
+            >
+          </li>
+          <li class="col-12 col-md-7">
+            <a href="/cuoc-doi-su-nghiep" previewlistener="true"
+              >Cuộc đời, sự nghiệp</a
+            >
+          </li>
+          <li class="col-12 col-md-7">
+            <a href="/hoc-va-lam-theo-loi-bac" previewlistener="true"
+              >Gương điển hình</a
+            >
+          </li>
+          <li class="col-12 col-md-7">
+            <a href="/tu-tuong-dao-duc" previewlistener="true"
+              >Tư tưởng, đạo đức Hồ Chí Minh</a
+            >
+          </li>
+          <li class="col-12 col-md-7">
+            <a href="/hcm-va-the-gioi" previewlistener="true"
+              >Hồ Chí Minh &amp; thế giới</a
+            >
+          </li>
+          <li class="col-12 col-md-7">
+            <a
+              href="https://map3d.visithcmc.vn/?startscene=scene_bnr_view4"
+               target="_blank"
+              previewlistener="true"
+              >Tham quan Bảo tàng <br />
+              Hồ Chí Minh</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div
+        class="avt-hcm col-12 col-md-6 justify-content-center d-none d-md-flex"
+      >
+        <img class="" src="/documents/39403/41422/chandungbac.png" alt="" />
+      </div>
+    </div>
+  </div>
+</div>

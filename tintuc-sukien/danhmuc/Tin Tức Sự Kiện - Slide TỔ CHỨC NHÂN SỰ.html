@@ -48,17 +48,11 @@
         </div>
         <div class="slideshow-news-container position-relative">
             <!-- Thêm nút điều hướng tùy chỉnh -->
-            <button class="custom-prev-btn">
-
-                <img src="/documents/39403/310714/left-arrow.svg"
-                     alt="Previous"
-                />
+            <button class="custom-prev-btn" id="tcns-prev-btn" onclick="handleSlideNav('prev')">
+                <i class="icon-prev-ttsk fa fa-chevron-left" ></i>
             </button>
-            <button class="custom-next-btn">
-                <img
-                        src="/documents/39403/310714/right-arrow.svg"
-                        alt="Next"
-                />
+            <button class="custom-next-btn" id="tcns-next-btn" onclick="handleSlideNav('next')">
+                <i class="icon-next-ttsk fa fa-chevron-right" ></i>
             </button>
 
             <!-- Định nghĩa mapping cho icons -->
@@ -82,7 +76,7 @@
             <#assign dateFormatTime = "HH:mm" />
             <#assign indexLocal = 0/>
             <swiper-container
-                    class="newsSwiper position-relative"
+                    class="tcns-newsSwiper position-relative"
                     pagination="true"
                     pagination-clickable="true"
                     space-between="20"

@@ -8,7 +8,8 @@
     }
 
     .border-item {
-        border-radius: 6px;<style>
+        border-radius: 6px;
+    }
     .mb-20px {
         margin-bottom: 20px;
     }
@@ -349,6 +350,7 @@
             align-self: center;
         }
 
+        .img-hover:hover .tin-right-dsbv,
         .img-hover:hover .tintucsukien-right{
             background-color: #0D4C92;
             color: #FFF;
@@ -357,6 +359,9 @@
         .img-hover:hover .text-ngaythang > span,
         .img-hover:hover .limit-tin-descc-news > p {
             color: #FFF;
+        }
+        .tin-right-dsbv{
+            background: #F6F6F6;
         }
         .tintucsukien-right {
             height: 100%;
@@ -492,7 +497,8 @@
                         description = article.getDescription(locale)
                         ddmTemplateKey = article.getDDMTemplateKey()
                         createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
-                        datehhmm = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                        displayDate = article.getDisplayDate()?datetime
+                        datehhmm = dateUtil.getDate(displayDate, dateFormatTime, locale)
                         createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
                         createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
                         curEntry = curEntry
@@ -512,14 +518,14 @@
                                     <img id="tin-slide-img-left" class="tin-slide-img-left" height="100%"
                                          src="${smallImageUrl}" alt="" >
                                 </div>
-                                <div class="col-7 limit-tin-desc-news-3">
+                                <div class="col-7 limit-tin-desc-news-3 tin-right-dsbv">
                                     <div class="tintucsukien-right">
                                         <div class="limit-tin-desc-2">
                                             <p class="makeshortnews asset-publisher-title font-merri mb-1 font-weight-bold mb-2 limit-tin-desc-2">${title}</p>
                                         </div>
                                         <div class="text-left limit-tin-descc-news limit-description-3 description-color d-none d-md-none d-lg-block">${description}</div>
                                         <p class="text-ngaythang d-flex align-items-center justify-content-between">
-                                            <span>${datehhmm} | ${createYear}</span>
+                                            <span class="text-date-sklh">${datehhmm} | ${createYear}</span>
                                             <span><i class="fa fa-eye" aria-hidden="true"></i> ${viewCout}</span></p>
                                     </div>
                                 </div>
@@ -618,7 +624,7 @@
     }
     .text-ngaythang{
         position: absolute;
-        bottom: -14px;
+        bottom: 0;
         width: 85%;
     }
     .tin-slide-img-left {
@@ -633,6 +639,10 @@
         }
         .tin-slide-img-left{
             height: 140px !important;
+        }
+        .text-date-sklh{
+            position: absolute;
+            bottom: 19px;
         }
     }
     @media screen and (min-width: 427px) and (max-width: 768px) {

@@ -1,0 +1,225 @@
+<style>
+    .carousel-title {
+        color: #000;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0.024px;
+    }
+
+    .carousel-box {
+        background: #F3F3F3;
+    }
+
+    .carousel-title {
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+        max-height: 6em;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        color: #031739;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        font-size: 16px;
+        letter-spacing: 0.024px;
+    }
+
+    .content-title {
+        overflow: hidden;
+        color: #000;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%; /* 22.4px */
+        letter-spacing: 0.2px;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        align-self: stretch;
+    }
+
+    .title-activity-bottom > p {
+        overflow: hidden;
+        color: #031739;
+        text-overflow: ellipsis;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 130%;
+        letter-spacing: 0.024px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        align-self: stretch;
+    }
+    .play-btn {
+        font-size: 42px;
+        color: #AF2630;
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .title-news {
+        position: relative;
+        border-bottom: 2px solid #B2B2B2;
+
+    }
+    .title-news h3 {
+        position: relative;
+        z-index: 1;
+        padding-bottom: 2px;
+        display: inline-block;
+        margin-bottom: -2px;
+        border-bottom: 2px solid #AF2630;
+        color: #000;
+        font-family: Roboto;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%; /* 30.8px */
+        letter-spacing: 0.275px;
+    }
+
+    .content-activity > p {
+        overflow: hidden;
+        color: #3B4E68;
+        text-overflow: ellipsis;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+
+    .img-activity-video {
+        border-radius: 8px;
+        height: 222px !important;
+    }
+
+
+    .media-body.limit-content-desc {
+        width: 72.5%;
+    }
+    .media-body.limit-content-bottom {
+        width: 65%;
+    }
+
+    .title-activity-left button {
+        border: none;
+        background: #FFF;
+        color: #AF2630;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 25.6px */
+        letter-spacing: 0.2px;
+    }
+    @media only screen and (max-width: 576px) {
+        .media-news {
+            flex-direction: column-reverse;
+        }
+        .img-activity-right {
+            width: 100%;
+            height: 188px;
+        }
+
+        .media-body.limit-content-desc {
+            width: 100%;
+        }
+        .media-body.limit-content-bottom {
+            width: 100%;
+        }
+    }
+    .title-activity-tintuc button {
+        border: none;
+        background: none;
+        color: #AF2630;
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 160%; /* 25.6px */
+        letter-spacing: 0.2px;
+    }
+    .border-bottom-red-2px {
+        border-bottom: 2px solid #AF2630 !important;
+    }
+</style>
+<#assign dateFormatDay = "dd" />
+<#assign monthFormatDay = "MM" />
+<#assign yearFormatDay = "yyyy" />
+<#assign dateFormatTime = "HH:mm" />
+<#assign indexLocal = 0/>
+
+
+<div class="row ml-0 mr-0 mt-md-2">
+    <div class="col-12 pr-md-3 p-0">
+        <a href="/hoc-va-lam-theo-loi-bac"><img src="/documents/39403/41422/banner.png" class=" w-100"  alt=""></a>
+    </div>
+
+    <div class="col-12 pr-md-3 p-0 scroll-divv mt-4">
+        <div class="title-news mb-4 title-activity-tintuc d-flex justify-content-between align-items-center border-bottom-red-2px">
+            <h3 class="title-item pr-2">VIDEO</h3>
+            <!-- <button onclick="location.reload()">Xem thêm  <i class="pl-2 fa fa-arrow-right"></i></button> -->
+        </div>
+        <div class="article-list ">
+            <#assign indexLocal = 0/>
+            <#list entries as curEntry>
+                <#assign
+                renderer = curEntry.getAssetRenderer()
+                className = renderer.getClassName() />
+                <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 1>
+                    <#assign
+                    title = curEntry.getTitle(locale)
+                    createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                    createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                    createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                    createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                    article = renderer.getArticle()
+                    description = article.getDescription(locale)
+                    ddmTemplateKey = article.getDDMTemplateKey()
+                    curEntry = curEntry
+                    viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                    indexLocal = indexLocal + 1 />
+                    <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                        <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                    <#else>
+                        <#assign smallImageUrl = "" >
+                    </#if>
+                    <div class="media mb-2" onclick="location.href='${viewURL}'" style="cursor: pointer;">
+                        <div class="row media-news">
+                            <div class="banner-video mb-3 col-12">
+                                <img src="/documents/39403/41422/Button+Play.png" class="play-btn" alt="">
+                                <img <#if curEntry_index == 0>id="img-activity-right"</#if>
+                                     class="img-activity-video w-100 border-2 " src="${smallImageUrl}" alt="fls1.jpg">
+                            </div>
+                            <div class="media-body text-left limit-content-desc d-flex col-12">
+                                <div class="title-activity-video">
+                                    <p class="content-title mb-1 mt-2 mt-md-0">${title}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </#if>
+            </#list>
+        </div>
+    </div>
+    <div>
+
+    </div>
+</div>
