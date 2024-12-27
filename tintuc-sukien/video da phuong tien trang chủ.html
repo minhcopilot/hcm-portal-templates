@@ -1,0 +1,246 @@
+<div class="combined-videos-container">
+  <div class="video-dpt-container video-main">
+    <video
+      controls=""
+      autoplay="true"
+      loop=""
+      muted=""
+      poster="anh-thumbnail.jpg"
+      role="button"
+      class="video-dpt"
+    >
+      <source
+        src="/documents/39403/2338250/trung_phimCongTTTP_ok.mp4/7f7499cb-beca-8569-7455-bc299b639919?t=1735202137488"
+        type="video/mp4"
+      />
+    </video>
+    <h3 class="title-video-dpt title-main-video">
+      CÔNG BỐ CỔNG THÔNG TIN MỚI THÀNH PHỐ HỒ CHÍ MINH
+    </h3>
+  </div>
+
+  <div class="video-dpt-container video-secondary">
+    <video
+      controls=""
+      loop=""
+      muted=""
+      poster="anh-thumbnail.jpg"
+      role="button"
+      class="video-dpt-second"
+    >
+      <source
+        src="/documents/39403/2338250/hcm+petro.mp4/38dc9901-9e3c-5c51-c48a-9dbf89bb9e17?t=1735014687392"
+        type="video/mp4"
+      />
+    </video>
+    <h3 class="title-video-dpt title-second-video">ĐIỂM TIN DỰ ÁN HCMCMETRO</h3>
+  </div>
+</div>
+
+<style>
+  .combined-videos-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 10px; /* Adjust the gap between videos as needed */
+    background-color: #f9f9f9;
+  }
+
+  .video-main {
+    grid-column: span 8;
+  }
+
+  .video-secondary {
+    grid-column: span 4;
+  }
+
+  .video-dpt,
+  .video-dpt-second {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .title-video-dpt {
+    background-color: #e0e0e0;
+    color: #0d4c92;
+    text-align: center;
+    padding: 12px;
+    font-weight: 700;
+  }
+  .title-second-video {
+    max-height: 90px;
+  }
+
+  /* Mobile - < 425px */
+  @media screen and (max-width: 425px) {
+    .title-main-video {
+      font-size: 14px;
+      padding: 6px;
+    }
+    .combined-videos-container {
+      grid-template-columns: 1fr;
+    }
+    .video-main,
+    .video-secondary {
+      grid-column: span 1;
+    }
+    .title-second-video {
+      font-size: 14px;
+      padding: 6px;
+    }
+    .component-tabs-custom {
+      display: none !important;
+    }
+    .mr-3 {
+      margin-right: 0 !important;
+    }
+    .ml-3 {
+      margin-left: 0 !important;
+    }
+    .col-lg-9 {
+      padding: 0 6px !important;
+    }
+    .col-lg-9 {
+      padding: 0 6px !important;
+    }
+  }
+
+  /* Tablet - 426px - 768px */
+  @media screen and (min-width: 426px) and (max-width: 768px) {
+    .title-main-video {
+      font-size: 14px;
+      padding: 6px;
+    }
+    .combined-videos-container {
+      grid-template-columns: 1fr;
+    }
+    .video-main,
+    .video-secondary {
+      grid-column: span 1;
+    }
+    .title-second-video {
+      font-size: 14px;
+      padding: 6px;
+    }
+    .component-tabs-custom {
+      display: none !important;
+    }
+  }
+
+  /* Tablet Pro - 769px - 1024px */
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .title-main-video {
+      font-size: 18px;
+    }
+    .title-second-video {
+      font-size: 14px;
+    }
+  }
+
+  /* Desktop - 1025px - 1324px */
+  @media screen and (min-width: 1025px) and (max-width: 1324px) {
+    .title-main-video {
+      font-size: 22px;
+    }
+    .video-dpt {
+      aspect-ratio: 12 / 9.1;
+    }
+    .video-dpt-second {
+      aspect-ratio: 14 / 9.1;
+    }
+    .title-second-video {
+      font-size: 16px;
+    }
+    .video-secondary {
+      height: 200px;
+    }
+  }
+
+  /* Desktop Large - 1325px - 1440px */
+  @media screen and (min-width: 1325px) and (max-width: 1440px) {
+    .title-main-video {
+      font-size: 20px;
+    }
+    .video-dpt {
+      aspect-ratio: 12 / 9.1;
+    }
+    .video-dpt-second {
+      aspect-ratio: 14 / 9.1;
+    }
+    .title-second-video {
+      font-size: 16px;
+    }
+    .video-secondary {
+      height: 200px;
+    }
+  }
+
+  /* Desktop XL - 1441px - 1824px */
+  @media screen and (min-width: 1441px) and (max-width: 1824px) {
+    .title-main-video {
+      font-size: 20px;
+    }
+    .video-dpt {
+      aspect-ratio: 12 / 9.1;
+    }
+    .video-dpt-second {
+      aspect-ratio: 14 / 9.1;
+    }
+    .title-second-video {
+      font-size: 16px;
+    }
+    .video-secondary {
+      height: 194px;
+    }
+  }
+
+  /* Desktop XXL - 1825px - 2304px */
+  @media screen and (min-width: 1825px) and (max-width: 2304px) {
+    .title-video-dpt {
+      font-size: 22px;
+    }
+    .video-dpt {
+      aspect-ratio: 12 / 8.8;
+    }
+    .video-dpt {
+      aspect-ratio: 14 / 8.8;
+    }
+    .title-second-video {
+      font-size: 16px;
+    }
+    .video-secondary {
+      height: 210px;
+    }
+  }
+
+  /* Desktop Ultra - >= 2305px */
+  @media screen and (min-width: 2305px) {
+    .title-video-dpt {
+      font-size: 22px;
+    }
+    .video-dpt {
+      aspect-ratio: 12 / 8.8;
+    }
+    .video-dpt {
+      aspect-ratio: 14 / 8.8;
+    }
+    .title-second-video {
+      font-size: 16px;
+    }
+    .video-secondary {
+      height: 210px;
+    }
+  }
+
+  .video-dpt-container {
+    background-color: #e0e0e0;
+  }
+
+  .video-dpt-container:hover .title-video-dpt,
+  .video-dpt-container:hover {
+    background-color: #0d4c92;
+    transition: all 0.9s ease;
+    color: #ffffff;
+    cursor: pointer;
+  }
+</style>

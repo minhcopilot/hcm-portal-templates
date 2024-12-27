@@ -597,8 +597,6 @@
             padding-left: 12px !important;
         }
     }
-</style>
-<style>
 
     .star {
         position: relative;
@@ -720,12 +718,11 @@ summary = .vars['reserved-article-description'].data/>
 <#assign layo = themeDisplay.getPlid() />
 
 <#list articleCatId as a>
-    <a name="articleCatId" property="og:title" content="${a}"/>
+    <meta name="articleCatId" property="og:title" content="${a}"/>
 </#list>
 <@liferay_util["html-top"]>
     <meta name="title" property="og:title" content="${title}"/>
     <meta name="assetEntryQuery" property="og:title" content="${assetEntryQuery}"/>
-
     <meta name="image" property="og:image" content="${imageUrl}"/>
     <meta name="imageurl" property="og:image:url" content="${imageUrl}"/>
     <meta name="description" property="og:description" content="${summary}"/>
@@ -1194,7 +1191,7 @@ images_folder = theme_display.getPathThemeImages()
                                         SmallImage  = article.getSmallImageURL()
                                         description = article.getDescription(locale)
                                         curEntryyy = curEntryyy
-                                        viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
+                                         viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/chi-tiet-bai-viet/-/asset_publisher/rvlr/content/${renderer.getUrlTitle()}/39403"
                                         hasMatch = false />
 
                                         <#list curEntryyy.getCategories() as categoryList>
@@ -1215,14 +1212,14 @@ images_folder = theme_display.getPathThemeImages()
                                             <#elseif SmallImageID ?? && SmallImageID != 0>
                                                 <#assign smallImageUrl = "/image/journal/article?img_id=${SmallImageID}">
                                             <#else>
-                                                <#assign smallImageUrl = "/documents/60205/77945/no-image.jpg" >
+                                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
                                             </#if>
                                             <#if indexLocal  == 0>
                                                 <div class="col-12 d-flex p-0 mb-16" idx="${indexLocal+1}" style="height: 100% !important;">
                                                     <a href="${viewURL}" class="d-flex w-100 border-item">
                                                         <div class="col-4 pl-0 content-left-tlq">
                                                             <img id="tin-slide-img-left"
-                                                                 class="tin-slide-img-left img-34-left col-4 p-0 h-img-ctbv"
+                                                                 class="tin-slide-img-left img-34-left p-0 h-img-ctbv"
                                                                  src="${smallImageUrl}" alt="" width="100%">
                                                         </div>
                                                         <div class="col-8 content-right-tlq">

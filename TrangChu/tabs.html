@@ -1,0 +1,359 @@
+<div class="component-tabs-custom container wrapper nav-multimedia ${configuration.customClass}">
+    <nav class="custom-nav navbar navbar-collapse-absolute navbar-expand-md navbar-underline navigation-bar">
+        <div class="navbar-collapse ui_kit_tab nav-flex-start" id="navigationBarCollapse">
+            <ul class="navbar-nav nav nav-tabs2" role="tablist">
+                <li style="display: flex; align-items: center;">
+                    <${configuration.headingLevel} class="mb-0 title2-custom" data-lfr-editable-id="element-text"
+                    data-lfr-editable-type="text">
+                    Heading Example
+                </${configuration.headingLevel}>
+                </li>
+            </ul>
+        </div>
+        <div class="tabs-livestream">
+            <ul class="navbar-nav nav nav-tabs2" role="tablist">
+                [#list 0..configuration.numberOfTabs-1 as i]
+                    <li class="nav-item" role="presentation">
+                        <button
+                                aria-controls="tabPanel${i+1}"
+                                aria-selected="false"
+                                class="nav-link"
+                                data-fragment-namespace="${fragmentEntryLinkNamespace}"
+                                id="tab${i+1}"
+                                role="tab"
+                        >
+                            <p
+                                    class="navbar-text-truncate"
+                                    data-lfr-editable-id="title${i+1}"
+                                    data-lfr-editable-type="text"
+                                    tabindex="-1"
+                            >
+                                Tab ${i+1}
+                            </p>
+                        </button>
+                    </li>
+                [/#list]
+            </ul>
+        </div>
+    </nav>
+
+    <div class="tab-panel d-block custom-nav">
+        [#list 0..configuration.numberOfTabs-1 as i]
+            <div aria-labelledby="tab${i+1}" class="tab-panel-item d-none" data-fragment-namespace="${fragmentEntryLinkNamespace}" id="tabPanel${i+1}" role="tabpanel" tabindex="0">
+                <lfr-drop-zone></lfr-drop-zone>
+            </div>
+        [/#list]
+    </div>
+</div>
+<style>
+  @media (max-width: 539px) {
+	.tabs-livestream {
+	    padding-top: 0.3rem;
+    height: 2rem;
+    overflow-y: hidden;
+    overflow-x: scroll;
+	}
+	    .navbar-nav {
+        flex-flow: row !important;
+    }
+	.custom-by-portal-hcm .nav-tabs2 > li.nav-item {
+		        margin-right: 2rem;
+	}
+}
+.fragment_205 {
+}
+.navbar-nav {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Căn trái cho mục đầu tiên */
+.navbar-nav li:first-child {
+  margin-right: auto; /* Đẩy các mục khác sang bên phải */
+}
+
+/* Căn phải cho các mục sau */
+.navbar-nav li:not(:first-child) {
+  display: flex;
+  justify-content: flex-end;
+}
+
+li.nav-item {
+  display: inline;
+  margin-top: -5px;
+  float: right;
+}
+.custom-by-portal-hcm p.navbar-text-truncate {
+  color: #0d4c92;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: 0.024px;
+  margin: 0px;
+  margin-right: 29px;
+}
+
+.nav-link.active p {
+  background: linear-gradient(90deg, #1387de 0%, #0ab2f0 100%);
+  color: #ffffff !important;
+  padding: 4px 8px;
+}
+.component-tabs-custom .navigation-bar-light .icon-caret-bottom {
+  border-left: 5px solid transparent;
+  border-radius: 4px;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #272833;
+  height: 0;
+  margin-left: 4px;
+  margin-top: 4px;
+  width: 0;
+}
+
+.component-tabs-custom .navigation-bar-light .nav-link {
+  background: none;
+  border: none;
+}
+.component-tabs-custom .navigation-bar-light .nav-link span:focus {
+  outline: none;
+}
+
+.component-tabs-custom img {
+  width: 100%;
+}
+.ui_kit_tab .nav.nav-tabs {
+  width: 100%;
+}
+li.nav-item {
+  width: auto;
+}
+.navbar-underline.navbar-expand-md .navbar-nav .nav-link.active:after {
+  background-color: transparent;
+}
+
+.navigation-bar-light .nav-link.active {
+  height: 57%;
+  border-bottom: 2px solid;
+}
+span.navbar-text-truncate {
+  vertical-align: inherit;
+}
+
+.navbar-underline.navbar-expand-md .navbar-nav .nav-link.active:after {
+  background: none;
+}
+button.active > span {
+  color: #c6231d;
+}
+
+.custom-by-portal-hcm .nav-multimedia {
+  margin-top: 8px;
+  padding: 8px 0px !important ;
+}
+.custom-by-portal-hcm .sdt-title-hot-news {
+  min-height: auto;
+}
+.custom-by-portal-hcm .nav-multimedia .custom-nav {
+  background: #F1EFEF!important;
+  padding: 25px 4px 20px 4px;
+}
+.navigation-bar-light{
+    background: #F1EFEF!important;
+}
+
+.custom-by-portal-hcm .nav-multimedia .title2-custom {
+  color: #0d4c92;
+  font-family: Roboto;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  letter-spacing: 0.027px;
+  margin: 0px 20px;
+  margin-right: 51px;
+  padding-left: 20px;
+  margin-top: 0px;
+}
+.custom-by-portal-hcm .nav-tabs2 > li.nav-item {
+  display: inline;
+  margin-top: -5px;
+}
+.custom-by-portal-hcm .nav-multimedia li.nav-item button {
+  padding: 0px !important;
+}
+.custom-by-portal-hcm p.navbar-text-truncate {
+  color: #000;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: 0.024px;
+  margin: 0px;
+  margin-right: 29px;
+}
+.custom-by-portal-hcm p.navbar-text-truncate {
+  color: #0d4c92;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: 0.024px;
+  margin: 0px;
+  margin-right: 29px;
+}
+.nav-link.active p {
+  background: linear-gradient(90deg, #1387de 0%, #0ab2f0 100%);
+  color: #ffffff !important;
+  padding: 4px 8px;
+}
+.nav-flex-start {
+  justify-content: flex-start !important;
+}
+@media screen and (max-width: 426px) {
+  .navbar-nav {
+    flex-direction: row !important;
+  }
+  .custom-by-portal-hcm .nav-tabs2 > li.nav-item {
+    flex: 0 1 auto;
+    max-width: 25%;
+    text-align: center;
+  }
+  .navbar-nav .nav-item:nth-child(2) .navbar-text-truncate {
+    margin-right: 0px;
+    margin-left: 20px;
+  }
+  .nav-tabs2 .title2-custom {
+    margin-bottom: 8px !important;
+  }
+  .custom-by-portal-hcm .nav-multimedia .custom-nav {
+    padding: 25px 22px 20px 4px;
+  }
+}
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: row !important;
+  }
+  .custom-by-portal-hcm .nav-tabs2 > li.nav-item {
+    flex: 0 1 auto;
+    max-width: 25%;
+    text-align: center;
+  }
+  .navbar-nav .nav-item:nth-child(2) .navbar-text-truncate {
+    margin-right: 0px;
+    margin-left: 20px;
+  }
+  .nav-tabs2 .title2-custom {
+    margin-bottom: 8px !important;
+  }
+  .custom-by-portal-hcm .nav-multimedia .custom-nav {
+    padding: 25px 22px 20px 4px;
+  }
+  .nav-link.active p{
+    padding: 4px 6px;
+  }
+}
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: row !important;
+  }
+  .custom-by-portal-hcm .nav-tabs2 > li.nav-item {
+    flex: 0 1 auto;
+    max-width: 25%;
+    text-align: center;
+  }
+  .navbar-nav .nav-item:nth-child(2) .navbar-text-truncate {
+    margin-right: 0px;
+    margin-left: 20px;
+  }
+  .nav-tabs2 .title2-custom {
+    margin-bottom: 8px !important;
+  }
+  .custom-by-portal-hcm .nav-multimedia .custom-nav {
+    padding: 25px 22px 20px 4px;
+  }
+  .nav-link.active p{
+    padding: 4px 6px;
+  }
+}  
+</style>
+
+const dropdown = fragmentElement.querySelector('.navbar-collapse');
+const editMode = document.body.classList.contains('has-edit-mode-menu');
+const tabItems = [].slice.call(fragmentElement.querySelectorAll('[data-fragment-namespace="' + fragmentNamespace + '"].nav-link'));
+const tabPanelItems = [].slice.call(
+	fragmentElement.querySelectorAll('[data-fragment-namespace="' + fragmentNamespace + '"].tab-panel-item')
+);
+
+function activeTab(item) {
+	tabItems.forEach(function(tabItem) {
+		tabItem.setAttribute('aria-selected', false);
+		tabItem.classList.remove('active');
+	});
+	item.setAttribute('aria-selected', true);
+	item.classList.add('active');
+}
+
+function activeTabPanel(item) {
+	tabPanelItems.forEach(function(tabPanelItem) {
+		if (!tabPanelItem.classList.contains('d-none')) {
+			tabPanelItem.classList.add('d-none');
+		}
+	});
+	item.classList.remove('d-none');
+}
+
+
+function openTabPanel(event, i) {
+	const currentTarget = event.currentTarget;
+	const target = event.target;
+	const isEditable = target.hasAttribute('data-lfr-editable-id') || target.hasAttribute('contenteditable');
+
+	if (!isEditable || !editMode) {
+		currentTarget.focus();
+
+		activeTab(currentTarget, i);
+		activeTabPanel(tabPanelItems[i]);
+
+		this.tabIndex = i;
+	}
+}
+
+function main() {
+	const initialState = !this.tabIndex || this.tabIndex >= tabItems.length;
+	let tabItemSelected = tabItems[0];
+
+	if (initialState) {
+		tabItems.forEach(function(item, i) {
+			if (!i) {
+				activeTab(item);
+			}
+			item.addEventListener('click', function(event) {
+				openTabPanel(event, i);
+			});
+		});
+		tabPanelItems.forEach(function(item, i) {
+			if (!i) {
+				activeTabPanel(item);
+			}
+		});
+	}
+	else {
+		tabItemSelected = tabItems[this.tabIndex];
+		tabItems.forEach(function(item, i) {
+			activeTab(tabItems[this.tabIndex]);
+			item.addEventListener('click', function(event) {
+				openTabPanel(event, i);
+			});
+		});
+		tabPanelItems.forEach(function() {
+			activeTabPanel(tabPanelItems[this.tabIndex]);
+		});
+	}
+
+}
+
+main();

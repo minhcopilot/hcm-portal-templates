@@ -597,8 +597,6 @@
             padding-left: 12px !important;
         }
     }
-</style>
-<style>
 
     .star {
         position: relative;
@@ -670,6 +668,9 @@
     .reset:hover {
         filter: brightness(1.2);
     }
+    .asset-details .mr-3 a{
+        display: none !important;
+    }
 </style>
 <#assign AssetEntryLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetEntryLocalService" )>
 <#assign JournalArticleLocalService = serviceLocator.findService("com.liferay.journal.service.JournalArticleLocalService")>
@@ -720,12 +721,11 @@ summary = .vars['reserved-article-description'].data/>
 <#assign layo = themeDisplay.getPlid() />
 
 <#list articleCatId as a>
-    <a name="articleCatId" property="og:title" content="${a}"/>
+    <meta name="articleCatId" property="og:title" content="${a}"/>
 </#list>
 <@liferay_util["html-top"]>
     <meta name="title" property="og:title" content="${title}"/>
     <meta name="assetEntryQuery" property="og:title" content="${assetEntryQuery}"/>
-
     <meta name="image" property="og:image" content="${imageUrl}"/>
     <meta name="imageurl" property="og:image:url" content="${imageUrl}"/>
     <meta name="description" property="og:description" content="${summary}"/>
@@ -1222,7 +1222,7 @@ images_folder = theme_display.getPathThemeImages()
                                                     <a href="${viewURL}" class="d-flex w-100 border-item">
                                                         <div class="col-4 pl-0 content-left-tlq">
                                                             <img id="tin-slide-img-left"
-                                                                 class="tin-slide-img-left img-34-left col-4 p-0 h-img-ctbv"
+                                                                 class="tin-slide-img-left img-34-left p-0 h-img-ctbv"
                                                                  src="${smallImageUrl}" alt="" width="100%">
                                                         </div>
                                                         <div class="col-8 content-right-tlq">

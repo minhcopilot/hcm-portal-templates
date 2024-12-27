@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giao Diện Tin Tức</title>
+
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      .news-container-tctm {
+        display: flex;
+        flex-wrap: wrap; /* Đảm bảo responsive trên màn hình nhỏ */
+      }
+      .main-image-tctm {
+        flex: 1; /* Chiếm phần lớn không gian */
+        padding-right: 15px; /* Tạo khoảng cách với phần bên phải */
+        text-decoration: none;
+        overflow: hidden;
+      }
+      .main-image-tctm img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .right-content-tctm {
+        flex: 1; /* Chiếm phần không gian còn lại */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Tạo lưới 2 cột */
+        gap: 15px; /* Khoảng cách giữa các ô */
+      }
+      .news-box-tctm {
+        font-size: 22px;
+        font-weight: 600;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 150px;
+      }
+      .news-box-tctm p {
+        margin: 0;
+        font-weight: 600;
+        color: #0d4c92;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+      }
+      .news-box-tctm p {
+        margin: 0;
+        font-weight: bold;
+        color: #0d4c92;
+      }
+
+      .box-tctm-2 {
+        background-image: url("/documents/39403/2315666/hoatiet1.png/c6fbfdb9-79fb-6140-ee85-40b5a17be64b?t=1735030345444");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border: solid;
+        border-bottom-width: 3px;
+    border-top-width: 1px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+        border-image: linear-gradient(55.8deg, #112d60 0%, #dd83e0 100%) 1;
+      }
+      .box-tctm-3 {
+        background-image: url("/documents/39403/2315666/hoatiet2.png/e936d643-51d1-d1aa-f185-b982ad96cc08?t=1735027459672");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border: solid;
+        border-bottom-width: 0;
+        border-top-width: 0;
+        border-left-width: 2px;
+        border-right-width: 2px;
+        border-image: linear-gradient(55.8deg, #e90000 0%, #dd83e0 100%) 1;
+      }
+      .box-tctm-4 {
+        background-image: url("/documents/39403/2315666/hoatiet3.png/c3979a7c-6d29-0612-c7fb-d5b3915db87d?t=1735027460218");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border: solid;
+                border-bottom-width: 0;
+        border-top-width: 0;
+        border-left-width: 2px;
+       border-right-width: 2px;
+        
+        border-image: linear-gradient(55.8deg, #ffb330 0%, #dd83e0 100%) 1;
+      }
+
+      .box-tctm-5 {
+        background-image: url("/documents/39403/2315666/hoatiet4.png/1a090a82-bf01-f593-47a1-6892d135e902?t=1735027460718");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border: solid;
+                border-bottom-width: 0;
+        border-top-width: 0;
+        border-left-width: 2px;
+       border-right-width: 2px;
+        
+        border-image: linear-gradient(55.8deg, #05999e 0%, #dd83e0 100%) 1;
+      }
+
+      /* Điều chỉnh trên màn hình nhỏ hơn */
+      @media (max-width: 768px) {
+        .news-container-tctm {
+          flex-direction: column; /* Chuyển sang bố cục dọc */
+        }
+        .main-image-tctm {
+          padding-right: 0; /* Loại bỏ padding */
+          margin-bottom: 15px; /* Tạo khoảng cách với phần bên dưới */
+        }
+        .right-content-tctm {
+          grid-template-columns: 1fr; /* Chuyển thành 1 cột */
+        }
+        .news-box-tctm {
+          font-size: 16px;
+          text-align: center;
+          -webkit-line-clamp: 4;
+        }
+        .title-tnb-trangchu {
+          font-size: 18px !important;
+          max-height: 109px !important;
+          -webkit-line-clamp: 3 !important;
+        }
+        .box-tctm-2,
+        .box-tctm-3,
+        .box-tctm-4,
+        .box-tctm-5 {
+              border-bottom-width: 3px;
+              border-top-width: 1px;
+              border-left-width: 0px;
+              border-right-width: 0px;
+        }
+      }
+      .title-tnb-trangchu {
+        font-family: Roboto;
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 32.6px;
+        letter-spacing: 0.0125em;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #0d4c92;
+        transition: background-color 1.5s ease, color 1.5s ease;
+        background: rgba(224, 224, 224, 30%);
+        border-bottom: 1px solid #0d4c92;
+        padding: 12px;
+        margin: auto;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+        white-space: normal;
+        max-height: 80.2px;
+      }
+
+      .main-image-tctm:hover .title-tnb-trangchu {
+        background: #0d4c92;
+        color: white;
+        transition: all 0.9s ease;
+      }
+      .img-second-tctm {
+        display: none;
+      }
+      .wrapper-tctm{
+        background-color: #ffffff;
+      padding: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper-tctm">
+      <div class="news-container-tctm">
+        <#assign indexLocal = 0/>
+                <#if entries?has_content>
+                    <#list entries as curEntry>
+                        <#assign
+                        renderer = curEntry.getAssetRenderer()
+                        className = renderer.getClassName() />
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 1>
+                            <#assign
+                            title = curEntry.getTitle(locale)
+                            article = renderer.getArticle()
+                            description = article.getDescription(locale)
+                            ddmTemplateKey = article.getDDMTemplateKey()
+                            curEntry = curEntry
+                            viewURL = "/vi/web/hcm/w/${renderer.getUrlTitle()}"
+                            indexLocal = indexLocal + 1 />
+                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                            <#else>
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
+                            </#if>
+                                    <a href="${viewURL}" class="main-image-tctm">
+                                    <img
+                                      src="${smallImageUrl}"
+                                      alt="Ảnh Chính"
+                                      class="img-main-tctm"
+                                      id="main-image"
+                                    />
+                                    <p class="title-tnb-trangchu" id="main-title">
+                                      ${title}
+                                    </p>
+                                  </a>
+                        </#if>
+                    </#list>
+                </#if>
+
+
+        <div class="right-content-tctm">
+          <#assign indexLocal = 1/>
+                <#if entries?has_content>
+                    <#list entries as curEntry>
+                        <#assign
+                        renderer = curEntry.getAssetRenderer()
+                        className = renderer.getClassName() />
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 5>
+                            <#assign
+                            title = curEntry.getTitle(locale)
+                            article = renderer.getArticle()
+                            description = article.getDescription(locale)
+                            ddmTemplateKey = article.getDDMTemplateKey()
+                            curEntry = curEntry
+                            viewURL = "/vi/web/hcm/w/${renderer.getUrlTitle()}"
+                            indexLocal = indexLocal + 1 />
+                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                            <#else>
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
+                            </#if>
+                            
+                            <a href="${viewURL}" class="news-box-tctm box-tctm-${indexLocal}">
+                            <img
+                              src="${smallImageUrl}"
+                              alt="Ảnh Chính"
+                              class="img-second-tctm"
+                            />
+                            <p>
+                              ${title}
+                            </p>
+                          </a>
+                        </#if>
+                    </#list>
+                </#if>
+          
+          
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const newsBoxes = document.querySelectorAll(".news-box-tctm");
+        const mainImage = document.getElementById("main-image");
+        const mainTitle = document.getElementById("main-title");
+        const mainLink = document.querySelector(".main-image-tctm");
+
+        newsBoxes.forEach((box) => {
+          box.addEventListener("mouseover", function () {
+            const imageSrc = this.querySelector(".img-second-tctm").src;
+            const titleText = this.querySelector("p").textContent;
+            const linkHref = this.closest("a").href;
+
+            mainImage.src = imageSrc;
+            mainTitle.textContent = titleText;
+            mainLink.href = linkHref;
+          });
+        });
+
+        if (newsBoxes.length > 0) {
+          const firstBox = newsBoxes[0];
+          const initialImageSrc =
+            firstBox.querySelector(".img-second-tctm").src;
+          const initialTitleText = firstBox.querySelector("p").textContent;
+          const initialLinkHref = firstBox.closest("a").href;
+
+          mainImage.src = initialImageSrc;
+          mainTitle.textContent = initialTitleText;
+          mainLink.href = initialLinkHref;
+        }
+      });
+    </script>
+  </body>
+</html>
