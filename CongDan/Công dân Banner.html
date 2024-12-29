@@ -1,0 +1,249 @@
+<style>
+  .custom-item-banner-cd {
+    width: 25%;
+    float: left;
+    padding: 10px;
+  }
+  .background2 {
+    background: url("/documents/39403/307319/background-banner-dn.png");
+    background-size: cover;
+    background-repeat: round;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .background2:hover {
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: -4px 4px 10px 0px #00000040;
+    box-shadow: 8px -3px 10px 0px #2e2e2e4d inset;
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    background-color: #fff9ea;
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    opacity: 1;
+  }
+
+  .carousel-control-prev:hover,
+  .carousel-control-next:hover {
+    background-color: #db7100;
+  }
+  .carousel-control-prev:hover .prev-yk,
+  .carousel-control-next:hover .next-yk {
+    filter: invert(100%) brightness(200%);
+  }
+
+  .carousel-control-prev {
+    left: -40px;
+  }
+  .carousel-control-next {
+    right: -40px;
+  }
+  /* Bootstrap 4 specific styles */
+  .carousel-item.active {
+    display: flex;
+  }
+  .carousel-item-next,
+  .carousel-item-prev {
+    display: flex;
+    position: absolute;
+    top: 0;
+  }
+  .background2 > span {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 30.47px;
+    color: #c8392b;
+    text-align: center;
+  }
+  /* Media query cho thiết bị máy tính bảng (ví dụ: màn hình có chiều rộng tối đa 991px) */
+  @media (max-width: 991px) {
+    .wrapper-slide-yk {
+      display: none !important;
+    }
+    .custom-item-banner-cd {
+      width: 50%; /* Hiển thị 2 banner trên một hàng */
+    }
+    .carousel-item {
+      padding: 10px;
+    }
+  }
+
+  /* Media query cho thiết bị di động (ví dụ: màn hình có chiều rộng tối đa 767px) */
+  @media (max-width: 767px) {
+    .wrapper-slide-yk {
+      display: none !important;
+    }
+    .custom-item-banner-cd {
+      width: 100%; /* Hiển thị 1 banner trên một hàng */
+      float: none; /* Loại bỏ float để các banner xếp chồng lên nhau */
+    }
+    .carousel-item {
+      flex-direction: column; /* Xếp chồng các item theo chiều dọc */
+      align-items: center; /* Căn giữa các item */
+      padding: 10px 0; /* Giảm padding ngang */
+    }
+    .background2 > span {
+      font-size: 20px; /* Giảm kích thước chữ cho thiết bị di động */
+      line-height: 24px;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+      top: auto; /* Đặt lại vị trí top */
+      bottom: 10px; /* Đặt xuống dưới cùng */
+      margin: 0 10px; /* Thêm khoảng cách lề */
+    }
+    .carousel-control-prev {
+      left: 40%; /* Điều chỉnh vị trí nút prev */
+      transform: translateX(-50%);
+    }
+    .carousel-control-next {
+      right: 40%; /* Điều chỉnh vị trí nút next */
+      transform: translateX(50%);
+    }
+  }
+  .wrapper-slide-yk .carousel-inner {
+    padding-bottom: 0 !important;
+  }
+</style>
+
+<div
+  id="carouselBanner"
+  class="carousel slide wrapper-slide-yk py-4"
+  data-ride="carousel"
+>
+  <div class="carousel-inner">
+    <!-- Slide 1 -->
+    <div class="carousel-item active">
+      <div class="custom-item-banner-cd">
+        <a
+          class="p-3 background2"
+          href="https://dichvucong.hochiminhcity.gov.vn/vi/procedure-online/search?keyword=&amp;page=1&amp;size=10&amp;procedure=5f5b2c564e1bd312a6f3ae25,5f5b2c4b4e1bd312a6f3ae24"
+          target="_blank"
+        >
+          <span> DỊCH VỤ CÔNG <br />TRỰC TUYẾN</span>
+        </a>
+      </div>
+      <div class="custom-item-banner-cd">
+        <a class="p-3 background2" href="javascript:void(0)" target="_blank">
+          <span>GÓP Ý - HIẾN KẾ</span>
+        </a>
+      </div>
+      <div class="custom-item-banner-cd">
+        <a
+          href="https://1022.tphcm.gov.vn/vi/"
+          target="_blank"
+          class="p-3 background2"
+        >
+          <span>TỔNG ĐÀI 1022</span>
+        </a>
+      </div>
+      <div class="custom-item-banner-cd">
+        <a href="/van-ban-du-thao" target="_blank" class="p-3 background2">
+          <span
+            >GÓP Ý DỰ THẢO <br />
+            VĂN BẢN</span
+          >
+        </a>
+      </div>
+      <div class="custom-item-banner-cd">
+        <a class="p-3 background2" href="/hoi-dap-kien-nghi" target="_blank">
+          <span>GỬI KIẾN NGHỊ</span>
+        </a>
+      </div>
+      <div class="custom-item-banner-cd">
+        <a
+          class="p-3 background2"
+          href="https://thongtinquyhoach.hochiminhcity.gov.vn/"
+          target="_blank"
+        >
+          <span>TRA CỨU <br />THÔNG TIN QUY HOẠCH </span>
+        </a>
+      </div>
+    </div>
+    <!-- Slide 2 -->
+    <div class="carousel-item">
+      <div class="custom-item-banner-cd">
+        <a
+          class="p-3 background2"
+          href="https://dichvucong.hochiminhcity.gov.vn/vi/procedure-online/search?keyword=&amp;page=1&amp;size=10&amp;procedure=5f5b2c564e1bd312a6f3ae25,5f5b2c4b4e1bd312a6f3ae24"
+          target="_blank"
+        >
+          <span> DỊCH VỤ CÔNG <br />TRỰC TUYẾN</span>
+        </a>
+      </div>
+      <div class="custom-item-banner-cd">
+        <a class="p-3 background2" href="javascript:void(0)" target="_blank">
+          <span>GÓP Ý - HIẾN KẾ</span>
+        </a>
+      </div>
+      <div class="custom-item-banner-cd">
+        <a
+          href="https://1022.tphcm.gov.vn/vi/"
+          target="_blank"
+          class="p-3 background2"
+        >
+          <span>TỔNG ĐÀI 1022</span>
+        </a>
+      </div>
+      <div class="custom-item-banner-cd">
+        <a href="/van-ban-du-thao" target="_blank" class="p-3 background2">
+          <span
+            >GÓP Ý DỰ THẢO <br />
+            VĂN BẢN</span
+          >
+        </a>
+      </div>
+      <div class="custom-item-banner-cd">
+        <a class="p-3 background2" href="/hoi-dap-kien-nghi" target="_blank">
+          <span>GỬI KIẾN NGHỊ</span>
+        </a>
+      </div>
+      <div class="custom-item-banner-cd">
+        <a
+          class="p-3 background2"
+          href="https://thongtinquyhoach.hochiminhcity.gov.vn/"
+          target="_blank"
+        >
+          <span>TRA CỨU <br />THÔNG TIN QUY HOẠCH </span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <a
+    class="carousel-control-prev"
+    href="#carouselBanner"
+    role="button"
+    data-slide="prev"
+    style="width: 34px !important"
+  >
+    <img
+      src="/documents/39403/307879/left.svg"
+      width="8px"
+      height="19px"
+      class="prev-yk"
+    />
+  </a>
+  <a
+    class="carousel-control-next"
+    href="#carouselBanner"
+    role="button"
+    data-slide="next"
+    style="width: 34px !important"
+  >
+    <img
+      class="ct-rotate next-yk"
+      src="/documents/39403/307879/left.svg"
+      width="8px"
+      height="19px"
+    />
+  </a>
+</div>

@@ -44,9 +44,13 @@
     .home-tinnoibat-tinmoi-news > span > p {
         transition: background-color 1.5s ease, color 1.5s ease;
     }
-
-    .home-tinnoibat-tinmoi-news-left:hover > a
-   {
+    .home-tinnoibat-tinmoi-news:hover {
+        background-color: #0D4C92;
+    }
+    .home-tinnoibat-tinmoi-news-left:hover > a,
+    .home-tinnoibat-tinmoi-news:hover > a,
+    .home-tinnoibat-tinmoi-news:hover > span,
+    .home-tinnoibat-tinmoi-news:hover > span > p {
         color: #FFF;
     }
     .boder-r::before {
@@ -118,7 +122,7 @@
     }
     .home-tinnoibat-tinmoi-news > a {
         font-family: Roboto;
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 600;
         line-height: 23.4px;
         letter-spacing: 0.0125em;
@@ -137,7 +141,6 @@
     .news-category-content{
         background-color: #FFFFFF;
     }
-
 
     /* navbar news-categories */
 
@@ -175,7 +178,7 @@
     }
 
     .bg-custom-gray-tinnoibat {
-        justify-content: center;
+        background: rgba(224, 224, 224, 30%);
     }
 
     .featured-news .bg-custom-gray-tinnoibat {
@@ -192,6 +195,8 @@
     @media (max-width: 575px){
         #img-main {
             height: fit-content;
+			max-width:100%;
+			max-height: 270px
         }
     }
 
@@ -203,364 +208,19 @@
         text-align: left;
         color: #2E2E2E;
     }
-     @media screen and (min-width: 1025px) and (max-width: 1324px) {
-            /* Custom styles for each news item */
-        .news-item-2 {
-            background-image: url('/documents/39403/2315666/hoatiet1.png/c6fbfdb9-79fb-6140-ee85-40b5a17be64b?t=1735030345444');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
 
-        .news-item-3 {
-            background-image: url('/documents/39403/2315666/hoatiet2.png/e936d643-51d1-d1aa-f185-b982ad96cc08?t=1735027459672');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-4{
-            background-image: url('/documents/39403/2315666/hoatiet3.png/c3979a7c-6d29-0612-c7fb-d5b3915db87d?t=1735027460218');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-5 {
-            background-image: url('/documents/39403/2315666/hoatiet4.png/1a090a82-bf01-f593-47a1-6892d135e902?t=1735027460718');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-
-    /* Style cho container chính */
-    .home-tinnoibat-tinmoi-news {
-        height: 200px; /* Chiều cao cố định cho khối */
-        position: relative;
-         padding: 19px 0px;
-    }
-
-    /* Style cho link title */
-    .home-tinnoibat-tinmoi-news-a {
-        font-family: Roboto;
-        font-size: 22px;
-        font-weight: 600;
-        line-height: 1.3;
-        margin: 0;
-        display: -webkit-box;
-        -webkit-line-clamp: 6;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    /* Đảm bảo các khối có kích thước bằng nhau */
-    .col-md-6 {
-        flex: 1 0 45%;
-        max-width: 50%;
-        height: 240px; 
-        
-    }
-
-    /* Background patterns vẫn giữ nguyên */
-    .news-item-2,
-    .news-item-3,
-    .news-item-4,
-    .news-item-5 {
-        height: 100%;
-    }
-    }
-
-     @media screen and (min-width: 1325px) and (max-width: 1440px) {
-            /* Custom styles for each news item */
-        .news-item-2 {
-            background-image: url('/documents/39403/2315666/hoatiet1.png/c6fbfdb9-79fb-6140-ee85-40b5a17be64b?t=1735030345444');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-3 {
-            background-image: url('/documents/39403/2315666/hoatiet2.png/e936d643-51d1-d1aa-f185-b982ad96cc08?t=1735027459672');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-4{
-            background-image: url('/documents/39403/2315666/hoatiet3.png/c3979a7c-6d29-0612-c7fb-d5b3915db87d?t=1735027460218');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-5 {
-            background-image: url('/documents/39403/2315666/hoatiet4.png/1a090a82-bf01-f593-47a1-6892d135e902?t=1735027460718');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-
-    /* Style cho container chính */
-    .home-tinnoibat-tinmoi-news {
-        height: 200px; /* Chiều cao cố định cho khối */
-        position: relative;
-        padding: 15px;
-    }
-
-    /* Style cho link title */
-    .home-tinnoibat-tinmoi-news-a {
-        font-family: Roboto;
-        font-size: 22px;
-        font-weight: 600;
-        line-height: 1.3;
-        height: 100%;
-        margin: 0;
-        display: -webkit-box;
-        -webkit-line-clamp: 6;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    /* Đảm bảo các khối có kích thước bằng nhau */
-    .col-md-6 {
-        flex: 1 0 47%;
-        max-width: 50%;
-        height: 232px;
-        
-    }
-
-    /* Background patterns vẫn giữ nguyên */
-    .news-item-2,
-    .news-item-3,
-    .news-item-4,
-    .news-item-5 {
-        height: 100%;
-    }
-    }
-
-     @media screen and (min-width: 1441px) and (max-width: 1824px) {
-            /* Custom styles for each news item */
-        .news-item-2 {
-            background-image: url('/documents/39403/2315666/hoatiet1.png/c6fbfdb9-79fb-6140-ee85-40b5a17be64b?t=1735030345444');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-3 {
-            background-image: url('/documents/39403/2315666/hoatiet2.png/e936d643-51d1-d1aa-f185-b982ad96cc08?t=1735027459672');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-4{
-            background-image: url('/documents/39403/2315666/hoatiet3.png/c3979a7c-6d29-0612-c7fb-d5b3915db87d?t=1735027460218');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-5 {
-            background-image: url('/documents/39403/2315666/hoatiet4.png/1a090a82-bf01-f593-47a1-6892d135e902?t=1735027460718');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-
-    /* Style cho container chính */
-    .home-tinnoibat-tinmoi-news {
-        height: 200px; /* Chiều cao cố định cho khối */
-        position: relative;
-        padding: 15px;
-    }
-
-    /* Style cho link title */
-    .home-tinnoibat-tinmoi-news-a {
-        font-family: Roboto;
-        font-size: 22px;
-        font-weight: 600;
-        line-height: 1.3;
-        height: 100%;
-        margin: 0;
-        display: -webkit-box;
-        -webkit-line-clamp: 6;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    /* Đảm bảo các khối có kích thước bằng nhau */
-    .col-md-6 {
-        flex: 1 0 47%;
-        max-width: 50%;
-        height: 230px;
-        margin-bottom: 16px !important;
-        
-    }
-
-    /* Background patterns vẫn giữ nguyên */
-    .news-item-2,
-    .news-item-3,
-    .news-item-4,
-    .news-item-5 {
-        height: 100%;
-    }
-    }
-    @media screen and (min-width: 1825px) and (max-width: 2304px) {
-            /* Custom styles for each news item */
-        .news-item-2 {
-            background-image: url('/documents/39403/2315666/hoatiet1.png/c6fbfdb9-79fb-6140-ee85-40b5a17be64b?t=1735030345444');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-3 {
-            background-image: url('/documents/39403/2315666/hoatiet2.png/e936d643-51d1-d1aa-f185-b982ad96cc08?t=1735027459672');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-4{
-            background-image: url('/documents/39403/2315666/hoatiet3.png/c3979a7c-6d29-0612-c7fb-d5b3915db87d?t=1735027460218');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-5 {
-            background-image: url('/documents/39403/2315666/hoatiet4.png/1a090a82-bf01-f593-47a1-6892d135e902?t=1735027460718');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-
-    /* Style cho container chính */
-    .home-tinnoibat-tinmoi-news {
-        height: 200px; /* Chiều cao cố định cho khối */
-        position: relative;
-        padding: 15px;
-    }
-
-    /* Style cho link title */
-    .home-tinnoibat-tinmoi-news-a {
-        font-family: Roboto;
-        font-size: 22px;
-        font-weight: 600;
-        line-height: 1.3;
-        height: 100%;
-        margin: 0;
-        display: -webkit-box;
-        -webkit-line-clamp: 6;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    /* Đảm bảo các khối có kích thước bằng nhau */
-    .col-md-6 {
-        flex: 0 0 50%;
-        max-width: 50%;
-        height: 240px; 
-        
-    }
-
-    /* Background patterns vẫn giữ nguyên */
-    .news-item-2,
-    .news-item-3,
-    .news-item-4,
-    .news-item-5 {
-        height: 100%;
-    }
-    }
-      @media screen and (min-width: 2305px) {
-   /* Custom styles for each news item */
-        .news-item-2 {
-            background-image: url('/documents/39403/2315666/hoatiet1.png/c6fbfdb9-79fb-6140-ee85-40b5a17be64b?t=1735030345444');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-3 {
-            background-image: url('/documents/39403/2315666/hoatiet2.png/e936d643-51d1-d1aa-f185-b982ad96cc08?t=1735027459672');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-4{
-            background-image: url('/documents/39403/2315666/hoatiet3.png/c3979a7c-6d29-0612-c7fb-d5b3915db87d?t=1735027460218');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-        .news-item-5 {
-            background-image: url('/documents/39403/2315666/hoatiet4.png/1a090a82-bf01-f593-47a1-6892d135e902?t=1735027460718');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-        }
-
-
-    /* Style cho container chính */
-    .home-tinnoibat-tinmoi-news {
-        height: 200px; /* Chiều cao cố định cho khối */
-        position: relative;
-        padding: 15px;
-    }
-
-    /* Style cho link title */
-    .home-tinnoibat-tinmoi-news-a {
-        font-family: Roboto;
-        font-size: 22px;
-        font-weight: 600;
-        line-height: 1.3;
-        height: 100%;
-        margin: 0;
-        display: -webkit-box;
-        -webkit-line-clamp: 6;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    /* Đảm bảo các khối có kích thước bằng nhau */
-    .col-md-6 {
-        flex: 0 0 50%;
-        max-width: 50%;
-        height: 240px; 
-    }
-
-    /* Background patterns vẫn giữ nguyên */
-    .news-item-2,
-    .news-item-3,
-    .news-item-4,
-    .news-item-5 {
-        height: 100%;
-    }
-      }
 </style>
 <div class="home-tinnoibat-tinmoi">
     <div id="chi-dao-content" class="news-category-content p-md-3 active">
         <div class="row">
-            <div class="col-lg-6 col-md-12 mb-md-4 mb-lg-0">
+            <div class="col-lg-6 col-md-12 mb-md-4 mb-lg-0 main-news-container">
                 <#assign indexLocal = 0/>
                 <#if entries?has_content>
                     <#list entries as curEntry>
                         <#assign
                         renderer = curEntry.getAssetRenderer()
                         className = renderer.getClassName() />
-                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 1>
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal < 1>
                             <#assign
                             title = curEntry.getTitle(locale)
                             article = renderer.getArticle()
@@ -581,23 +241,23 @@
                                     </a>
                                 </div>
                                 <div class="custom-left-new-tinnoibat w-100 home-tinnoibat-tinmoi-news-left border-bottom-1px">
-                                    <a class="position-relative m-0 top-5 text-2dong" id="div-a-main" title="${title}" href="${viewURL}">
+                                    <a class="m-0 top-5 text-2dong" id="div-a-main" title="${title}" href="${viewURL}">
                                         ${title}
-                                    </a>									
+                                    </a>
                                 </div>
                             </div>
                         </#if>
                     </#list>
                 </#if>
             </div>
-            <div class="col-12 col-md-6 mb-md-4  row  p-0 ">
+            <div class="col-12 col-md-6 mb-md-4 mb-lg-0 row m-0 p-0 sub-news-container">
                 <#assign indexLocal = 1/>
                 <#if entries?has_content>
                     <#list entries as curEntry>
                         <#assign
                         renderer = curEntry.getAssetRenderer()
                         className = renderer.getClassName() />
-                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 5>
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal < 5>
                             <#assign
                             title = curEntry.getTitle(locale)
                             article = renderer.getArticle()
@@ -611,12 +271,15 @@
                             <#else>
                                 <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
                             </#if>
-                            <div class="col-md-6 right-item-tnb pl-md-0 news-item-${indexLocal}">
-                                <div class="home-tinnoibat-tinmoi-news bg-custom-gray-tinnoibat text-decoration-none text-black d-flex flex-column "
-                                    data-title="${title}" data-image="${smallImageUrl}">
-                                    <a class="pt-4 px-4 home-tinnoibat-tinmoi-news-a" title="${title}" href="${viewURL}">
+                            <div class="col-md-6 pb-3 pl-md-0 sub-news-item">
+                                <div class="w-100 h-100 border-bottom-1px home-tinnoibat-tinmoi-news bg-custom-gray-tinnoibat text-decoration-none text-black d-flex flex-column"
+                                     data-title="${title}" data-image="${smallImageUrl}">
+                                    <a class="text-3dong pt-3 px-2 home-tinnoibat-tinmoi-news-a" title="${title}" href="${viewURL}">
                                         ${title}
                                     </a>
+                                    <span class="pb-3 px-2 pt-2 text-4dong home-tinnoibat-tinmoi-news-span">
+										${description}
+									</span>
                                 </div>
                             </div>
                         </#if>
@@ -626,3 +289,36 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const subNewsItems = document.querySelectorAll('.sub-news-item');
+        const mainNewsImage = document.querySelector('#img-main');
+        const mainNewsTitle = document.querySelector('#div-a-main');
+
+        subNewsItems.forEach(item => {
+            item.addEventListener('mouseover', function() {
+                const title = this.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-title');
+                const image = this.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-image');
+
+                mainNewsImage.src = image;
+                mainNewsTitle.textContent = title;
+                mainNewsTitle.setAttribute('title', title); // Update the title attribute as well
+                mainNewsTitle.closest('a').setAttribute('href', this.querySelector('.home-tinnoibat-tinmoi-news-a').getAttribute('href')); // Update the link
+            });
+        });
+
+        // Set the initial main news content to the first sub-news item
+        if (subNewsItems.length > 0) {
+            const firstSubNews = subNewsItems[0];
+            const initialTitle = firstSubNews.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-title');
+            const initialImage = firstSubNews.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-image');
+            const initialLink = firstSubNews.querySelector('.home-tinnoibat-tinmoi-news-a').getAttribute('href');
+
+            mainNewsImage.src = initialImage;
+            mainNewsTitle.textContent = initialTitle;
+            mainNewsTitle.setAttribute('title', initialTitle);
+            mainNewsTitle.closest('a').setAttribute('href', initialLink);
+        }
+    });
+</script>

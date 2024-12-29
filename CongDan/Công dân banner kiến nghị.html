@@ -1,0 +1,246 @@
+<style>
+  .carousel-item img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .custom-carousel-container {
+    position: relative;
+    width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+  }
+
+  .custom-carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .custom-item-banner-cd {
+    flex: 0 0 20%;
+    max-width: 20%;
+    padding: 10px;
+  }
+
+  .custom-item-banner-cd img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .custom-carousel-banner-prev,
+  .custom-carousel-banner-next {
+    position: absolute;
+    border: none !important;
+    border-radius: 50%;
+    color: #77777799;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .custom-carousel-banner-prev {
+    left: -50px;
+  }
+
+  .custom-carousel-banner-next {
+    right: -50px;
+  }
+
+  .ct-back {
+    background-color: #fff9ea;
+  }
+
+  .ct-container-dn {
+    padding: 10px 5%;
+  }
+
+  .background2 {
+    background: url("/documents/39403/307319/background-banner-dn.png");
+    background-size: cover;
+    background-repeat: round;
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  a.background2 :hover {
+    text-decoration: none !important;
+  }
+  .background2 > span {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30.47px;
+    color: #c8392b;
+    text-align: center;
+  }
+  a.p-3.background2:hover {
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: -4px 4px 10px 0px #00000040;
+    box-shadow: 8px -3px 10px 0px #2e2e2e4d inset;
+  }
+
+  .ct-btn-carousel-bannner {
+    background-color: #fff9ea;
+    border-radius: 50%;
+    width: 36px !important;
+    height: 33px !important;
+    border: none;
+  }
+
+  .ct-btn-carousel-bannner:hover {
+    background-color: #db7100 !important;
+  }
+  /*img {*/
+  /*    transition: filter 0s ease;*/
+  /*    filter: invert(100%) brightness(200%);*/
+  /*}*/
+  .next-button-banner {
+    transform: rotate(180deg);
+  }
+  #prevButton-banner-cd {
+    align-self: center;
+    position: absolute;
+    left: -3rem;
+  }
+  #nextButton-banner-cd {
+    background: #fff9ea;
+    width: 40px;
+    justify-content: center;
+    border-radius: 50%;
+    display: flex;
+    height: 37px;
+    right: -4rem;
+    position: absolute;
+    transform: rotate(180deg);
+  }
+</style>
+<div class="ct-margin col-12 px-0 d-none d-lg-block">
+  <div
+    class="d-flex align-items-center justify-content-center position-relative"
+    id="carousel-banner-cd"
+  >
+    <div class="custom-carousel-banner-prev" id="prevButton-banner-cd">
+      <span
+        class="ct-btn-carousel-bannner d-flex align-items-center justify-content-center"
+      >
+        <img src="/documents/39403/307879/left.svg" width="8px" height="16px" />
+      </span>
+    </div>
+    <div class="custom-carousel-container">
+      <div class="custom-carousel-inner">
+        <div class="custom-item-banner-cd">
+          <a
+            class="p-3 background2"
+            href="https://dichvucong.hochiminhcity.gov.vn/vi/procedure-online/search?keyword=&amp;page=1&amp;size=10&amp;procedure=5f5b2c564e1bd312a6f3ae25,5f5b2c4b4e1bd312a6f3ae24"
+            target="_blank"
+          >
+            <span> DỊCH VỤ CÔNG <br />TRỰC TUYẾN</span>
+          </a>
+        </div>
+        <div class="custom-item-banner-cd">
+          <a class="p-3 background2" href="/gop-y-linh-vuc" target="_blank">
+            <span>GÓP Ý - HIẾN KẾ</span>
+          </a>
+        </div>
+        <div class="custom-item-banner-cd">
+          <a
+            href="https://1022.tphcm.gov.vn/vi/"
+            target="_blank"
+            class="p-3 background2"
+          >
+            <span>TỔNG ĐÀI 1022</span>
+          </a>
+        </div>
+        <div class="custom-item-banner-cd">
+          <a href="/van-ban-du-thao" target="_blank" class="p-3 background2">
+            <span
+              >GÓP Ý DỰ THẢO <br />
+              VĂN BẢN</span
+            >
+          </a>
+        </div>
+        <div class="custom-item-banner-cd">
+          <a
+            class="p-3 background2"
+            href="/hoi-dap-kien-nghi?p_p_id=HoiDap_WAR_sdthoidapportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_HoiDap_WAR_sdthoidapportlet_action=themMoi"
+            target="_blank"
+          >
+            <span>GỬI KIẾN NGHỊ</span>
+          </a>
+        </div>
+        <div class="custom-item-banner-cd">
+          <a
+            class="p-3 background2"
+            href="https://thongtinquyhoach.hochiminhcity.gov.vn/"
+            target="_blank"
+          >
+            <span>TRA CỨU <br />THÔNG TIN QUY HOẠCH </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="custom-carousel-banner-next" id="nextButton-banner-cd">
+      <span
+        class="ct-btn-carousel-bannner d-flex align-items-center justify-content-center"
+        id="next-button-banner"
+      >
+        <img
+          class="ct-rotate-banner-cd"
+          src="/documents/39403/307879/left.svg"
+          width="8px"
+          height="16px"
+        />
+      </span>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const itemsPerSlide = 4;
+
+    function initializeCarousel() {
+      const carouselId = "carousel-banner-cd";
+      const carouselInner = document.querySelector(
+        `#carousel-banner-cd .custom-carousel-inner`
+      );
+      const items = document.querySelectorAll(
+        `#carousel-banner-cd .custom-item-banner-cd`
+      );
+      console.log("items", items);
+      const totalItems = items.length;
+      const itemWidth = items[0].offsetWidth;
+      let currentIndex = 0;
+
+      function movePrev() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          carouselInner.style.transform = `translateX(${
+            -itemWidth * currentIndex
+          }px)`;
+        }
+      }
+
+      function moveNext() {
+        if (currentIndex < totalItems - itemsPerSlide) {
+          currentIndex++;
+          carouselInner.style.transform = `translateX(${
+            -itemWidth * currentIndex
+          }px)`;
+        }
+      }
+
+      document
+        .querySelector(`#carousel-banner-cd .custom-carousel-banner-prev`)
+        .addEventListener("click", movePrev);
+      document
+        .querySelector(`#carousel-banner-cd .custom-carousel-banner-next`)
+        .addEventListener("click", moveNext);
+    }
+
+    initializeCarousel("carousel-banner-cd");
+  });
+</script>
