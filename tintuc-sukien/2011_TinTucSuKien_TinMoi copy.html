@@ -166,6 +166,7 @@
                             modifiedDate = article.getModifiedDate()?datetime
                             displayDate = article.getDisplayDate()?datetime
                             createTime = dateUtil.getDate(displayDate, dateFormatTime, locale)
+                            createDay = dateUtil.getDate(displayDate, dateFormatDay, locale)
                             viewCount = curEntry.getViewCount()
                             viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
                             indexLocal = indexLocal + 1
@@ -183,6 +184,7 @@
                             <div class="d-flex align-items-center gap-3">
                                 <div class="news-number-minh active-news">${indexLocal}</div>
                                 <div class="news-time">${createTime} | ${createDay}/${createMonth}/${createYear}</div>
+                                 <div class="news-time">${createDay2}</div>
                                 <div class="news-content">
                                     <a href="${viewURL}" class="news-title-tm">${title}</a>
                                     <span class="view-count-tm"><i class="fa fa-eye me-1"></i>${viewCount}</span>

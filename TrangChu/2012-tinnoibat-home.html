@@ -142,7 +142,6 @@
         background-color: #FFFFFF;
     }
 
-
     /* navbar news-categories */
 
     .nav-pills .nav-link.active {
@@ -214,14 +213,14 @@
 <div class="home-tinnoibat-tinmoi">
     <div id="chi-dao-content" class="news-category-content p-md-3 active">
         <div class="row">
-            <div class="col-lg-6 col-md-12 mb-md-4 mb-lg-0">
+            <div class="col-lg-6 col-md-12 mb-md-4 mb-lg-0 main-news-container">
                 <#assign indexLocal = 0/>
                 <#if entries?has_content>
                     <#list entries as curEntry>
                         <#assign
                         renderer = curEntry.getAssetRenderer()
                         className = renderer.getClassName() />
-                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 1>
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal < 1>
                             <#assign
                             title = curEntry.getTitle(locale)
                             article = renderer.getArticle()
@@ -251,14 +250,14 @@
                     </#list>
                 </#if>
             </div>
-            <div class="col-12 col-md-6 mb-md-4 mb-lg-0 row m-0 p-0">
+            <div class="col-12 col-md-6 mb-md-4 mb-lg-0 row m-0 p-0 sub-news-container">
                 <#assign indexLocal = 1/>
                 <#if entries?has_content>
                     <#list entries as curEntry>
                         <#assign
                         renderer = curEntry.getAssetRenderer()
                         className = renderer.getClassName() />
-                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 5>
+                        <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal < 5>
                             <#assign
                             title = curEntry.getTitle(locale)
                             article = renderer.getArticle()
@@ -272,7 +271,7 @@
                             <#else>
                                 <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" >
                             </#if>
-                            <div class="col-md-6 pb-3 pl-md-0 ">
+                            <div class="col-md-6 pb-3 pl-md-0 sub-news-item">
                                 <div class="w-100 h-100 border-bottom-1px home-tinnoibat-tinmoi-news bg-custom-gray-tinnoibat text-decoration-none text-black d-flex flex-column"
                                      data-title="${title}" data-image="${smallImageUrl}">
                                     <a class="text-3dong pt-3 px-2 home-tinnoibat-tinmoi-news-a" title="${title}" href="${viewURL}">
@@ -290,32 +289,36 @@
         </div>
     </div>
 </div>
+
 <script>
-    /*$(document).ready(function() {
-        $('.home-tinnoibat-tinmoi-news').hover(function(e) {
-            document.getElementById("img-main").src = $(this).attr("data-image");
-            document.getElementById("div-a-main").textContent = $(this).attr("data-title");
+    document.addEventListener('DOMContentLoaded', function() {
+        const subNewsItems = document.querySelectorAll('.sub-news-item');
+        const mainNewsImage = document.querySelector('#img-main');
+        const mainNewsTitle = document.querySelector('#div-a-main');
+
+        subNewsItems.forEach(item => {
+            item.addEventListener('mouseover', function() {
+                const title = this.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-title');
+                const image = this.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-image');
+
+                mainNewsImage.src = image;
+                mainNewsTitle.textContent = title;
+                mainNewsTitle.setAttribute('title', title); // Update the title attribute as well
+                mainNewsTitle.closest('a').setAttribute('href', this.querySelector('.home-tinnoibat-tinmoi-news-a').getAttribute('href')); // Update the link
+            });
         });
-        const $navLinks = $('.nav-link');
-        const $contentSections = $('.news-category-content');
 
-        $navLinks.on('click', function(e) {
-            e.preventDefault();
+        // Set the initial main news content to the first sub-news item
+        if (subNewsItems.length > 0) {
+            const firstSubNews = subNewsItems[0];
+            const initialTitle = firstSubNews.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-title');
+            const initialImage = firstSubNews.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-image');
+            const initialLink = firstSubNews.querySelector('.home-tinnoibat-tinmoi-news-a').getAttribute('href');
 
-            $navLinks.removeClass('active');
-
-            $(this).addClass('active');
-
-            $contentSections.hide();
-
-            // Show the corresponding content section
-            const contentId = $(this).attr('data-content');
-            const $contentToShow = $('#' + contentId);
-            if ($contentToShow.length) {
-                $contentToShow.show();
-            } else {
-                console.error('Content section not found:', contentId);
-            }
-        });
-    });*/
+            mainNewsImage.src = initialImage;
+            mainNewsTitle.textContent = initialTitle;
+            mainNewsTitle.setAttribute('title', initialTitle);
+            mainNewsTitle.closest('a').setAttribute('href', initialLink);
+        }
+    });
 </script>

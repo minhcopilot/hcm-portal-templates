@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bản đồ TP.HCM</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: #f0f2f5;
+      }
+
+      .container {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        min-height: 100vh;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+      }
+
+      .map-container {
+        flex: 1.5;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .info-panel {
+        flex: 1;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+      }
+
+      @media (max-width: 768px) {
+        .info-panel {
+          max-width: 100%;
+        }
+      }
+
+      .district {
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .district:hover {
+        opacity: 0.8;
+        transform: scale(1.01);
+      }
+
+      .district.active {
+        stroke-width: 3;
+        stroke: #ffd700;
+      }
+
+      .info-title {
+        font-size: 24px;
+        color: #1a1a1a;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e0e0e0;
+      }
+
+      .info-content {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      .info-row {
+        margin-bottom: 15px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 6px;
+      }
+
+      .info-row strong {
+        color: #2c5282;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .default-message {
+        text-align: center;
+        color: #666;
+        font-size: 16px;
+        padding: 20px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .search-box {
+        margin-bottom: 20px;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 16px;
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: #4299e1;
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="map-container">
+        <svg viewBox="0 0 1800 1800" width="100%" height="auto">
+          <!-- Hóc Môn -->
+          <path
+            id="hocmon"
+            class="district"
+            d="M657 433l-65 14-45-26-38 11-32-9-52 23-25-13-29 7-34-17 7-33-26-22 6-29-18-24 3-20 15-2 13-28 31-16 2-17 15-5-2-33 25-4 11-27 37-6-1-31 39-10 26 9 21-30 37 5 19-11 39 13-13 34 13 7-5 28 16 11-9 21 18 24-2 17-18 3 4 23-16 11-1 27 19 8-7 41 17 31z"
+            fill="#F472B6"
+            stroke="white"
+            stroke-width="2"
+          />
+
+          <!-- Củ Chi -->
+          <path
+            id="cuchi"
+            class="district"
+            d="M599 246l-38 7-16-14-35 12 3 22-26 3-2 33-15 5-2 17-31 16-13 28-15 2-3 20 18 24-6 29 26 22-7 33 34 17 29-7 25 13 52-23 32 9 38-11 45 26 65-14-7-21 16-11-4-23 18-3 2-17-18-24 9-21-16-11 5-28-13-7 13-34-39-13-19 11-37-5-21 30-26-9-39 10 1 31-37 6-11 27-25 4 2 33z"
+            fill="#9333EA"
+            stroke="white"
+            stroke-width="2"
+          />
+
+          <!-- Bình Chánh -->
+          <path
+            id="binhchanh"
+            class="district"
+            d="M674 464l-17-31 7-41-19-8 1-27 16-11-4-23 18-3-2-17 18-24-9-21 16-11-5-28 13-7-13-34 39 13 19-11 37 5 21-30 26 9 39-10-1-31 37-6 11-27 25-4-2-33 15-5 2-17 31-16 13-28 15-2 3-20-18-24 6-29-26-22 7-33-34-17-29 7-25-13-52 23-32-9-38 11-45 26-65 14 17 31-7 41 19 8-1 27-16 11 4 23-18 3 2 17-18 24 9 21-16 11 5 28-13 7 13 34-39 13-19 11-37-5z"
+            fill="#60A5FA"
+            stroke="white"
+            stroke-width="2"
+          />
+
+          <!-- Quận 12 -->
+          <path
+            id="quan12"
+            class="district"
+            d="M778 402l-24 16-42-8-19 14-35-7-17 31 7 41-19 8 1 27-16 11 4 23-18 3 2 17-18 24 9 21-16 11 5 28 13-7-13-34 39-13 19-11 37 5 21-30 26 9 39-10-1-31 37-6 11-27 25-4-2-33 15-5 2-17 31-16 13-28 15-2 3-20-18-24 6-29-26-22 7-33-34-17-29 7z"
+            fill="#EC4899"
+            stroke="white"
+            stroke-width="2"
+          />
+
+          <!-- Thủ Đức -->
+          <path
+            id="thuduc"
+            class="district"
+            d="M924 478l-31-16-26 14-42-7-18 14-36-7-16 31 7 41-19 8 1 27-16 11 4 23-18 3 2 17-18 24 9 21-16 11 5 28-13 7 13 34-39 13-19 11-37-5-21 30-26-9-39 10 1 31-37 6-11 27-25 4 2 33-15 5-2 17-31 16-13 28-15 2-3 20 18 24-6 29 26 22-7 33 34 17 29-7 25 13 52-23 32 9 38-11 45-26 65-14-17-31 7-41-19-8 1-27 16-11-4-23 18-3-2-17 18-24-9-21 16-11-5-28 13-7-13-34 39-13 19-11 37 5z"
+            fill="#8B5CF6"
+            stroke="white"
+            stroke-width="2"
+          />
+
+          <!-- Cần Giờ -->
+          <path
+            id="cangio"
+            class="district"
+            d="M1180 920l-42-7-18 14-36-7-16 31 7 41-19 8 1 27-16 11 4 23-18 3 2 17-18 24 9 21-16 11 5 28-13 7 13 34-39 13-19 11-37-5-21 30-26-9-39 10 1 31-37 6-11 27-25 4 2 33-15 5-2 17-31 16-13 28-15 2-3 20 18 24-6 29 26 22-7 33 34 17 29-7 25 13 52-23 32 9 38-11 45-26 65-14-17-31 7-41-19-8 1-27 16-11-4-23 18-3-2-17 18-24-9-21 16-11-5-28 13-7-13-34 39-13 19-11z"
+            fill="#34D399"
+            stroke="white"
+            stroke-width="2"
+          />
+        </svg>
+      </div>
+
+      <div class="info-panel">
+        <div class="search-box">
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Tìm kiếm quận/huyện..."
+            id="searchInput"
+          />
+        </div>
+
+        <div class="default-message" id="defaultMessage">
+          Chọn một quận/huyện trên bản đồ để xem thông tin chi tiết
+        </div>
+
+        <div id="districtInfo" class="hidden">
+          <h2 class="info-title" id="districtName"></h2>
+          <div class="info-content">
+            <div class="info-row">
+              <strong>Dân số</strong>
+              <span id="population"></span>
+            </div>
+            <div class="info-row">
+              <strong>Diện tích</strong>
+              <span id="area"></span>
+            </div>
+            <div class="info-row">
+              <strong>Mật độ dân số</strong>
+              <span id="density"></span>
+            </div>
+            <div class="info-row">
+              <strong>Thông tin</strong>
+              <span id="description"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const districtData = {
+        thuduc: {
+          name: "TP. Thủ Đức",
+          population: "1,013,795",
+          area: "211.56",
+          description:
+            "Thành phố Thủ Đức là đô thị sáng tạo tương tác cao phía Đông TP.HCM. Được thành lập từ việc sáp nhập 3 quận: 2, 9 và Thủ Đức.",
+          density: "4,792",
+        },
+        quan12: {
+          name: "Quận 12",
+          population: "620,933",
+          area: "52.76",
+          description:
+            "Quận 12 là quận nội thành nằm ở phía Bắc thành phố, là cửa ngõ phía Bắc của TP.HCM.",
+          density: "11,769",
+        },
+        hocmon: {
+          name: "Huyện Hóc Môn",
+          population: "422,471",
+          area: "109.18",
+          description:
+            "Hóc Môn là huyện ngoại thành phía Tây Bắc của TP.HCM, nổi tiếng với nghề làm nem và các làng nghề truyền thống.",
+          density: "3,870",
+        },
+        binhchanh: {
+          name: "Huyện Bình Chánh",
+          population: "591,451",
+          area: "252.69",
+          description:
+            "Bình Chánh là huyện lớn nhất TP.HCM về diện tích, có tiềm năng phát triển công nghiệp và đô thị.",
+          density: "2,340",
+        },
+        cangio: {
+          name: "Huyện Cần Giờ",
+          population: "71,526",
+          area: "704.22",
+          description:
+            "Cần Giờ là huyện ven biển với khu dự trữ sinh quyển rừng ngập mặn được UNESCO công nhận.",
+          density: "102",
+        },
+        cuchi: {
+          name: "Huyện Củ Chi",
+          population: "462,096",
+          area: "434.5",
+          description:
+            "Củ Chi nổi tiếng với hệ thống địa đạo trong kháng chiến và là vùng đất anh hùng của TP.HCM.",
+          density: "1,064",
+        },
+      };
+
+      // Thêm event listeners cho tất cả các quận/huyện
+      let activeDistrict = null;
+
+      document.querySelectorAll(".district").forEach((district) => {
+        district.addEventListener("click", function () {
+          // Remove active class from previous district
+          if (activeDistrict) {
+            activeDistrict.classList.remove("active");
+          }
+
+          // Add active class to clicked district
+          this.classList.add("active");
+          activeDistrict = this;
+
+          const districtId = this.id;
+          const data = districtData[districtId];
+
+          // Update information
+          document.getElementById("defaultMessage").classList.add("hidden");
+          document.getElementById("districtInfo").classList.remove("hidden");
+          document.getElementById("districtName").textContent = data.name;
+          document.getElementById(
+            "population"
+          ).textContent = `${data.population} người`;
+          document.getElementById("area").textContent = `${data.area} km²`;
+          document.getElementById(
+            "density"
+          ).textContent = `${data.density} người/km²`;
+          document.getElementById("description").textContent = data.description;
+        });
+      });
+    </script>
+  </body>
+</html>

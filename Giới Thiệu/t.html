@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bản đồ Quận/Huyện TP.HCM</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      #map {
+        height: 600px;
+      }
+      #info {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: white;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="info">
+      <h3>Thông tin quận/huyện</h3>
+      <p>Click vào một quận/huyện để xem chi tiết.</p>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      // Khởi tạo bản đồ
+      const map = L.map("map").setView([10.7769, 106.7009], 10); // Tọa độ trung tâm TP.HCM
+
+      // Thêm lớp bản đồ từ OpenStreetMap
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 18,
+        attribution: "© OpenStreetMap contributors",
+      }).addTo(map);
+
+      // Dữ liệu mẫu GeoJSON cho quận/huyện
+      const districts = {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            properties: {
+              name: "Quận 1",
+              population: 142000,
+              area: "7.721 km²",
+              description:
+                "Trung tâm kinh tế, hành chính, và văn hóa của TP.HCM.",
+            },
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [106.695, 10.774],
+                  [106.705, 10.774],
+                  [106.705, 10.764],
+                  [106.695, 10.764],
+                  [106.695, 10.774],
+                ],
+              ],
+            },
+          },
+          {
+            type: "Feature",
+            properties: {
+              name: "Thành phố Thủ Đức",
+              population: 500000,
+              area: "211.56 km²",
+              description:
+                "Khu vực phát triển năng động với nhiều trường đại học và khu công nghệ cao.",
+            },
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [106.75, 10.85],
+                  [106.78, 10.85],
+                  [106.78, 10.82],
+                  [106.75, 10.82],
+                  [106.75, 10.85],
+                ],
+              ],
+            },
+          },
+          // Bạn có thể thêm dữ liệu các quận/huyện khác ở đây
+        ],
+      };
+
+      // Hiển thị các vùng quận/huyện trên bản đồ
+      const geojsonLayer = L.geoJSON(districts, {
+        style: {
+          color: "#ff7800",
+          weight: 2,
+          opacity: 0.65,
+        },
+        onEachFeature: function (feature, layer) {
+          // Sự kiện click vào từng vùng
+          layer.on("click", function () {
+            const infoDiv = document.getElementById("info");
+            infoDiv.innerHTML = `
+            <h3>${feature.properties.name}</h3>
+            <p><b>Dân số:</b> ${feature.properties.population}</p>
+            <p><b>Diện tích:</b> ${feature.properties.area}</p>
+            <p>${feature.properties.description}</p>
+          `;
+          });
+        },
+      }).addTo(map);
+    </script>
+  </body>
+</html>

@@ -18,8 +18,7 @@
     }
 
     .btn-pct-anh-video {
-        width: 76px;
-        height: 33px;
+        padding: 5px 20px;
         border: none;
         border-radius: 10px;
         cursor: pointer;
@@ -155,9 +154,16 @@
         color: white;
         cursor: pointer;
     }
-
+    .wrapper-pct-anh-video {
+        background: url("/documents/1195624/1195684/bg_anh_video_pct.png/5a6f9764-0d28-3449-3460-4a8b9f13ca72?t=1733135986813")
+        no-repeat left top;
+        background-size: 36% 70%;
+        position: relative;
+        z-index: 5;
+        margin-bottom: 30px;
+    }
     .content-pct-anh-video {
-        padding: 0 2.3% 0 1.5%;
+        padding: 0 10%;
     }
 
     /* Thêm styles mới để ẩn/hiện gallery */
@@ -177,11 +183,6 @@
 
     /* Responsive styles */
     @media screen and (max-width: 425px) {
-        .main-image-pct-anh-video img {
-            width: 100%;
-            height: unset;
-            object-fit: cover;
-        }
         .content-pct-anh-video {
             padding: 0 15px;
         }
@@ -196,7 +197,7 @@
 
         .btn-pct-anh-video {
             font-size: 16px;
-
+            padding: 5px 15px;
         }
 
         .main-image-pct-anh-video .caption-pct-anh-video {
@@ -207,20 +208,17 @@
         .side-gallery-pct-anh-video {
             height: auto;
             grid-template-columns: 100%;
+            padding-right: 0;
         }
-        .caption-text-row-2 {
-        -webkit-line-clamp: 3;
-    }
+
+        .wrapper-pct-anh-video {
+            background: none;
+        }
     }
 
     @media screen and (min-width: 426px) and (max-width: 768px) {
         .content-pct-anh-video {
             padding: 0 20px;
-        }
-        .main-image-pct-anh-video img {
-            width: 100%;
-            height: unset;
-            object-fit: cover;
         }
 
         .gallery-container-pct-anh-video {
@@ -235,16 +233,21 @@
         .title-pct-anh-video {
             font-size: 22px;
         }
-        .caption-text-row-2 {
-        -webkit-line-clamp: 3;
-    }
+
+        .wrapper-pct-anh-video {
+            background: none;
+        }
     }
 
     @media screen and (min-width: 769px) and (max-width: 1024px) {
         .content-pct-anh-video {
+            padding: 0 5%;
         }
 
-      
+        .wrapper-pct-anh-video {
+            background-size: 45% 60%;
+        }
+
         .main-image-pct-anh-video .caption-pct-anh-video {
             font-size: 20px;
         }
@@ -252,50 +255,75 @@
 
     @media screen and (min-width: 1025px) and (max-width: 1324px) {
         .content-pct-anh-video {
+            padding: 0 6%;
         }
 
+        .wrapper-pct-anh-video {
+            background-size: 40% 65%;
+        }
 
     }
 
     @media screen and (min-width: 1325px) and (max-width: 1440px) {
-        
-        .wrapper-pct-anh-video{
-            margin-right: 1.1%;
+        .content-pct-anh-video {
+            padding: 0 7.5%;
+        }
+
+        .wrapper-pct-anh-video {
+            background-size: 38% 68%;
+        }
+.main-image-pct-anh-video .caption-pct-anh-video {
+            min-height: 90px;
+        }
+    }
+
+    @media screen and (min-width: 1440px) and (max-width: 1824px) {
+        .content-pct-anh-video {
+            padding: 0 8.5%;
+        }
+
+        .wrapper-pct-anh-video {
+            background-size: 38% 68%;
+        }
+.main-image-pct-anh-video .caption-pct-anh-video {
+            min-height: 90px;
         }
        
 
     }
 
-    @media screen and (min-width: 1440px) and (max-width: 1824px) {
-        .wrapper-pct-anh-video{
-            margin-right: 1%;
-        }
-      
-
-    }
-
     @media screen and (min-width: 1825px) and (max-width: 2304px) {
         .content-pct-anh-video {
+            padding: 0 10%;
             margin-bottom: 0;
         }
-        .wrapper-pct-anh-video{
-            margin-right: 1%;
+
+        .wrapper-pct-anh-video {
+            background-size: 34% 72%;
+        }
+
+        .main-image-pct-anh-video .caption-pct-anh-video {
+            font-size: 26px;
+            min-height: 110px;
         }
         .main-image-pct-anh-video img {
             height: 447px;
         }
-        .main-image-pct-anh-video .caption-pct-anh-video{
-            min-height: 110px;
-        }
     }
 
     @media screen and (min-width: 2305px) {
-        .wrapper-pct-anh-video{
-            margin-right: 1%;
+        .content-pct-anh-video {
+            padding: 0 14%;
         }
+
+        .wrapper-pct-anh-video {
+            background-size: 32% 75%;
+        }
+
 
         .main-image-pct-anh-video .caption-pct-anh-video {
             font-size: 28px;
+            min-height: 110px;
         }
 
         .side-gallery-pct-anh-video .caption-pct-anh-video {
@@ -304,13 +332,10 @@
         .main-image-pct-anh-video img {
             height: 447px;
         }
-        .main-image-pct-anh-video .caption-pct-anh-video{
-            min-height: 110px;
-        }
     }
 </style>
 
-<div class="wrapper-pct-anh-video box-shadow-left-right">
+<div class="wrapper-pct-anh-video">
     <div class="content-pct-anh-video">
         <div class="header-pct-anh-video">
             <h1 class="title-pct-anh-video">ẢNH - VIDEO</h1>
@@ -337,8 +362,10 @@
                             title = curEntry.getTitle(locale)
                             article = renderer.getArticle()
                             description = article.getDescription(locale)
-                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
-                            smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest)!"/documents/20123/41696/cover-emty-img.jpg"
+                        viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/chi-tiet/-/asset_publisher/gNtPHVXU0nxC/content/${renderer.getUrlTitle()}/39403"
+
+
+                            smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest)!"/documents/20123/41696/cover-emty-img.jpg/7204018e-25e4-2e16-d8da-28b378325efe?t=1732942854416"
                             indexLocal = indexLocal + 1
                             />
 
@@ -391,10 +418,14 @@
                             title = curEntry.getTitle(locale)
                             article = renderer.getArticle()
                             description = article.getDescription(locale)
-                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
-                            smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest)!"/documents/20123/41696/cover-emty-img.jpg"
+                        viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/chi-tiet/-/asset_publisher/gNtPHVXU0nxC/content/${renderer.getUrlTitle()}/39403"
                             indexLocal = indexLocal + 1
                             />
+                            <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                            <#else>
+                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg/7204018e-25e4-2e16-d8da-28b378325efe?t=1732942854416" >
+                            </#if>
 
                             <#if indexLocal == 1>
                                 <!-- Hiển thị ảnh chính -->

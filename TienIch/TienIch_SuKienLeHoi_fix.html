@@ -1,7 +1,7 @@
 <div class="mt-4">
 
     <div class="d-flex align-items-center justify-content-between ct-border">
-        <p class="title-chutruong"> SỰ KIỆN - LỄ HỘI</p>
+        <p class="title-chutruong-lehoi"> SỰ KIỆN - LỄ HỘI</p>
         <a class="ct-xemthem" href="/sự-kiện-lễ-hội">Xem thêm <img src="/documents/39403/310275/arrow-right.svg" class="ml-1"></a>
     </div>
 </div>
@@ -44,7 +44,8 @@
 
                         <#if indexLocal % groupSize == 1>
                             <div class="carousel-item <#if indexLocal == 1>active</#if>">
-                            <div class="row">
+<#--                            <div class="row">-->
+                            <div class="d-flex">
                         </#if>
                         <div class="col-12 col-lg-3">
                             <div class="card">
@@ -93,9 +94,9 @@
         margin-right: 100px;
     }
 
-    .title-chutruong {
+    .title-chutruong-lehoi {
         font-family: Roboto;
-        font-size: 32px !important;
+        font-size: clamp(18px, 4vw, 28px) !important;
         font-weight: 700 !important;
         line-height: 37.5px !important;
         letter-spacing: 0.15000000596046448px !important;
@@ -104,6 +105,18 @@
         text-decoration-skip-ink: none !important;
         color: #0D4C92 !important;
     }
+
+    /*.title-chutruong-lehoi {*/
+    /*    font-family: Roboto;*/
+    /*    font-size: clamp(18px, 4vw, 28px) !important;*/
+    /*    font-weight: 700;*/
+    /*    line-height: 32.81px;*/
+    /*    letter-spacing: 0.15000000596046448px;*/
+    /*    text-align: left;*/
+    /*    text-underline-position: from-font;*/
+    /*    text-decoration-skip-ink: none;*/
+    /*    color: #0D4C92 !important;*/
+    /*}*/
 
     .ct-xemthem {
         font-family: Roboto;
@@ -365,17 +378,7 @@
         display: block;
     }
 
-    .title-chutruong {
-        font-family: Roboto;
-        font-size: 28px;
-        font-weight: 700;
-        line-height: 32.81px;
-        letter-spacing: 0.15000000596046448px;
-        text-align: left;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color: #0D4C92 !important;
-    }
+    
     .ct-breadcrum span{
         font-family: Roboto;
         font-size: 16px;
@@ -392,12 +395,45 @@
     }
     @media screen and (max-width: 426px) {
         .ct-btn-carousel{
-            display: none !important;
+            width: 30px !important;
+            height: 30px !important;
+        }
+        .ct-carousel-left{
+            left: -15px !important;
+        }
+        .ct-carousel-right{
+            right: -15px !important;
+        }
+       
+        .ct-btn-carousel-2{
+            width: 30px !important;
+            height: 30px !important;
+        }
+        .custom-carousel-control-prev,
+        .custom-carousel-control-next
+        {
+            z-index: 99 !important;
         }
     }
     @media screen and (min-width: 427px) and (max-width: 768px) {
         .ct-btn-carousel{
-            display: none !important;
+            width: 30px !important;
+            height: 30px !important;
+        }
+        .ct-carousel-left{
+            left: -15px !important;
+        }
+        .ct-carousel-right{
+            right: -15px !important;
+        }
+        .ct-btn-carousel-2{
+            width: 30px !important;
+            height: 30px !important;
+        }
+        .custom-carousel-control-prev,
+        .custom-carousel-control-next
+        {
+            z-index: 99 !important;
         }
     }
 </style>

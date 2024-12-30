@@ -238,9 +238,9 @@
 						ddmTemplateKey = article.getDDMTemplateKey()
                         displayDate = article.getDisplayDate()?datetime
                         createTime = dateUtil.getDate(displayDate, dateFormatTime, locale)
-						createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
-						createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
-						createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                        createDay = dateUtil.getDate(displayDate, dateFormatDay, locale)
+						createMonth = dateUtil.getDate(displayDate, monthFormatDay, locale)
+						createYear = dateUtil.getDate(displayDate, yearFormatDay, locale)
 						curEntry = curEntry
                         viewCount = curEntry.getViewCount()
 						viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"

@@ -104,7 +104,7 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
     }
-    .text-4dong > p {
+    .text-4dong {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 4;
@@ -132,6 +132,7 @@
     .home-tinnoibat-tinmoi-news > span {
         font-family: Roboto;
         font-size: 14px;
+        max-height: 80px;
         font-weight: 400;
         line-height: 18.2px;
         letter-spacing: 0.005em;
@@ -200,7 +201,7 @@
         }
     }
 
-    .text-4dong > p > strong {
+    .text-4dong {
         font-size: 14px;
         font-weight: 400;
         line-height: 18.2px;
@@ -236,13 +237,13 @@
                             </#if>
                             <div class="main-news position-relative h-100 pb-3 img-hover">
                                 <div class="position-relative px-sm-0 px-lg-0 pe-sm-0 mx-sm-0">
-                                    <a href="${viewURL}">
-                                        <img src="${smallImageUrl}" id="img-main" alt="Main news image" class="w-100 d-block object-fit-cover" />
+                                    <a href="${htmlUtil.escape(viewURL)}">
+                                        <img src="${htmlUtil.escape(smallImageUrl)}" id="img-main" alt="${htmlUtil.escape(title)}" class="w-100 d-block object-fit-cover" />
                                     </a>
                                 </div>
                                 <div class="custom-left-new-tinnoibat w-100 home-tinnoibat-tinmoi-news-left border-bottom-1px">
-                                    <a class="m-0 top-5 text-2dong" id="div-a-main" title="${title}" href="${viewURL}">
-                                        ${title}
+                                    <a class="m-0 top-5 text-2dong" id="div-a-main" title="${htmlUtil.escape(title)}" href="${htmlUtil.escape(viewURL)}">
+                                        ${htmlUtil.escape(title)}
                                     </a>
                                 </div>
                             </div>
@@ -273,13 +274,16 @@
                             </#if>
                             <div class="col-md-6 pb-3 pl-md-0 sub-news-item">
                                 <div class="w-100 h-100 border-bottom-1px home-tinnoibat-tinmoi-news bg-custom-gray-tinnoibat text-decoration-none text-black d-flex flex-column"
-                                     data-title="${title}" data-image="${smallImageUrl}">
-                                    <a class="text-3dong pt-3 px-2 home-tinnoibat-tinmoi-news-a" title="${title}" href="${viewURL}">
-                                        ${title}
+                                     data-title="${htmlUtil.escape(title)}" 
+                                     data-image="${htmlUtil.escape(smallImageUrl)}">
+                                    <a class="text-3dong pt-3 px-2 home-tinnoibat-tinmoi-news-a" 
+                                       title="${htmlUtil.escape(title)}" 
+                                       href="${htmlUtil.escape(viewURL)}">
+                                        ${htmlUtil.escape(title)}
                                     </a>
                                     <span class="pb-3 px-2 pt-2 text-4dong home-tinnoibat-tinmoi-news-span">
-										${description}
-									</span>
+                                        ${htmlUtil.extractText(description)}
+                                    </span>
                                 </div>
                             </div>
                         </#if>
@@ -296,29 +300,46 @@
         const mainNewsImage = document.querySelector('#img-main');
         const mainNewsTitle = document.querySelector('#div-a-main');
 
+        function sanitizeHTML(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
         subNewsItems.forEach(item => {
             item.addEventListener('mouseover', function() {
-                const title = this.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-title');
+                const title = sanitizeHTML(this.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-title'));
                 const image = this.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-image');
+                const link = this.querySelector('.home-tinnoibat-tinmoi-news-a').getAttribute('href');
 
-                mainNewsImage.src = image;
-                mainNewsTitle.textContent = title;
-                mainNewsTitle.setAttribute('title', title); // Update the title attribute as well
-                mainNewsTitle.closest('a').setAttribute('href', this.querySelector('.home-tinnoibat-tinmoi-news-a').getAttribute('href')); // Update the link
+                if (mainNewsImage && title && image) {
+                    mainNewsImage.src = image;
+                    mainNewsTitle.textContent = title;
+                    mainNewsTitle.setAttribute('title', title);
+                    const parentLink = mainNewsTitle.closest('a');
+                    if (parentLink && link) {
+                        parentLink.setAttribute('href', link);
+                    }
+                }
             });
         });
 
-        // Set the initial main news content to the first sub-news item
+        // Set initial content safely
         if (subNewsItems.length > 0) {
             const firstSubNews = subNewsItems[0];
-            const initialTitle = firstSubNews.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-title');
+            const initialTitle = sanitizeHTML(firstSubNews.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-title'));
             const initialImage = firstSubNews.querySelector('.home-tinnoibat-tinmoi-news').getAttribute('data-image');
             const initialLink = firstSubNews.querySelector('.home-tinnoibat-tinmoi-news-a').getAttribute('href');
 
-            mainNewsImage.src = initialImage;
-            mainNewsTitle.textContent = initialTitle;
-            mainNewsTitle.setAttribute('title', initialTitle);
-            mainNewsTitle.closest('a').setAttribute('href', initialLink);
+            if (mainNewsImage && initialTitle && initialImage) {
+                mainNewsImage.src = initialImage;
+                mainNewsTitle.textContent = initialTitle;
+                mainNewsTitle.setAttribute('title', initialTitle);
+                const parentLink = mainNewsTitle.closest('a');
+                if (parentLink && initialLink) {
+                    parentLink.setAttribute('href', initialLink);
+                }
+            }
         }
     });
 </script>

@@ -19,11 +19,12 @@
                             description = article.getDescription(locale)
                             ddmTemplateKey = article.getDDMTemplateKey()
                             curEntry = curEntry
-                            createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
-                            datehhmm = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
-                            createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
-                            createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
-                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/chi-tiet-bai-viet/-/asset_publisher/rvlr/content/${renderer.getUrlTitle()}/39403"
+                        displayDate = article.getDisplayDate()?datetime
+                        createTime = dateUtil.getDate(displayDate, dateFormatTime, locale)
+                        createDay = dateUtil.getDate(displayDate, dateFormatDay, locale)
+						createMonth = dateUtil.getDate(displayDate, monthFormatDay, locale)
+						createYear = dateUtil.getDate(displayDate, yearFormatDay, locale)
+                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/chi-tiet/-/asset_publisher/gNtPHVXU0nxC/content/${renderer.getUrlTitle()}/39403"
                             indexLocal = indexLocal + 1 />
                             <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
                                 <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
@@ -63,7 +64,7 @@
                             description = article.getDescription(locale)
                             ddmTemplateKey = article.getDDMTemplateKey()
                             curEntry = curEntry
-                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/chi-tiet-bai-viet/-/asset_publisher/rvlr/content/${renderer.getUrlTitle()}/39403" />
+                            viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/chi-tiet/-/asset_publisher/gNtPHVXU0nxC/content/${renderer.getUrlTitle()}/39403" />
                             <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
                                 <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
                             <#else>

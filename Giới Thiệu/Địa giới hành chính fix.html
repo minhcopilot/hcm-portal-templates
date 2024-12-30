@@ -1,81 +1,3 @@
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // District details handling
-    const areas = document.querySelectorAll("area");
-    const districtDetailsContainer =
-      document.getElementById("district-details");
-    const districtNameDetails = document.getElementById(
-      "district-name-details"
-    );
-    const districtImageDetails = document.getElementById(
-      "district-image-details"
-    );
-    const districtDescriptionDetails = document.getElementById(
-      "district-description-details"
-    );
-
-    // Click handlers for areas
-    areas.forEach((area) => {
-      area.addEventListener("click", function (event) {
-        event.preventDefault();
-
-        const districtName = area.getAttribute("alt");
-        const description = area.getAttribute("data-description");
-        const imageUrl = area.getAttribute("data-image");
-
-        districtNameDetails.textContent = districtName;
-        districtImageDetails.src = imageUrl;
-        districtDescriptionDetails.textContent = description;
-        districtDetailsContainer.style.display = "block";
-        districtDetailsContainer.focus();
-      });
-    });
-
-    // Close details when clicking outside
-    document.addEventListener("click", function (event) {
-      if (
-        districtDetailsContainer.style.display === "block" &&
-        !event.target.closest("area") &&
-        !event.target.closest(".district-details-container")
-      ) {
-        districtDetailsContainer.style.display = "none";
-      }
-    });
-
-    // Map coordinate scaling
-    const map = document.querySelector('map[name="hcm-map"]');
-    const mapAreas = map.querySelectorAll("area");
-    const img = document.querySelector(".container-ban-do-hcm img");
-
-    function adjustAreaCoords() {
-      if (!img || !map) return;
-
-      const scaleX = img.offsetWidth / img.naturalWidth;
-      const scaleY = img.offsetHeight / img.naturalHeight;
-
-      mapAreas.forEach((area) => {
-        const originalCoords = area
-          .getAttribute("coords")
-          .split(",")
-          .map(Number);
-        const newCoords = originalCoords
-          .map((coord, index) => {
-            return index % 2 === 0
-              ? Math.round(coord * scaleX)
-              : Math.round(coord * scaleY);
-          })
-          .join(",");
-        area.setAttribute("coords", newCoords);
-      });
-    }
-
-    // Initial adjustment
-    adjustAreaCoords();
-
-    // Adjust on window resize
-    window.addEventListener("resize", adjustAreaCoords);
-  });
-</script>
 <style>
   .container-ban-do-hcm {
     position: relative;
@@ -194,264 +116,311 @@
     }
   }
 </style>
-<div id="dia-gioi-hanh-chinh-content" class="news-category-content">
-  <div class="row">
-    <div class="divModelDetail">
-      <p>
-        <strong
-          >Chi tiết bản đồ hành chính TPHCM và các quận, huyện, Thành phố trực
-          thuộc</strong
-        >
-      </p>
+<div>
+  <div id="dia-gioi-hanh-chinh-content" class="news-category-content">
+    <div class="row">
+      <div class="divModelDetail">
+        <p>
+          <strong
+            >Chi tiết bản đồ hành chính TPHCM và các quận, huyện, Thành phố trực
+            thuộc</strong
+          >
+        </p>
 
-      <p>
-        Tính đến năm 2020, thành phố Hồ Chí Minh có tổng cộng 22 đơn vị hành
-        chính. Trong đó gồm 1 thành phố (TP. Thủ Đức), 16 quận và 5 huyện, riêng
-        Quận 2 và Quận 9 trước đó đã được sáp nhập vào TP. Thủ Đức.
-      </p>
+        <p>
+          Tính đến năm 2020, thành phố Hồ Chí Minh có tổng cộng 22 đơn vị hành
+          chính. Trong đó gồm 1 thành phố (TP. Thủ Đức), 16 quận và 5 huyện,
+          riêng Quận 2 và Quận 9 trước đó đã được sáp nhập vào TP. Thủ Đức.
+        </p>
 
-      <div class="container-ban-do-hcm">
-        <img
-          alt=""
-          src="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/ban-do-hanh-chinh-tphcm.jpg"
-          style="width: 800px; height: 692px"
-          usemap="#hcm-map"
-        />
-        <map name="hcm-map">
-          <area
-            shape="poly"
-            coords="301,290,316,287,324,300,330,318,336,327,325,330,322,338,313,337,300,300"
-            alt="Quận Tân Phú"
-            data-description="Quận Tân Phú có diện tích 15,97 km2 cùng dân cư khá đông (khoảng 485.348 người). Đơn vị hành chính quận bao gồm 11 phường: Hòa Thạnh, Phú Thạnh, Hiệp Tân, Phú Trung, Phú Thọ Hòa, Sơn Kỳ, Tân Quý, Tân Sơn Nhì, Tân Thành, Tân Thới Hòa, Tây Thạnh."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-tan-phu.jpg"
-            data-target="tan-phu"
+        <div class="container-ban-do-hcm">
+          <img
+            alt=""
+            src="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/ban-do-hanh-chinh-tphcm.jpg"
+            style="width: 800px; height: 692px"
+            usemap="#hcm-map"
           />
-          <area
-            shape="poly"
-            coords="306,287,291,280,279,288,282,295,279,305,283,313,284,320,278,326,266,333,260,346,259,355,291,370,299,379,309,376,310,358,315,338,304,307,300,295"
-            alt="Quận Bình Tân"
-            data-description="Quận Bình Tân tọa lạc tại phía Tây bản đồ TP.HCM. Bản đồ hành chính quận Bình Tân bao gồm 10 phường: An Lạc, An Lạc A, Bình Hưng Hòa, Bình Hưng Hòa A, Bình Hưng Hòa B, Tân Tạo, Tân Tạo A, Bình Trị Đông A, Bình Trị Đông B."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-binh-tan.jpg"
-            data-target="binh-tan"
-          />
-          <area
-            shape="poly"
-            coords="365,345,389,345,394,339,384,335,382,331"
-            alt="Quận 4"
-            data-description="Quận 4 có vị trí đặc biệt bên bờ phía nam của sông Sài Gòn, nối liền với Quận 1 qua cầu Calmette hoặc cầu Ông Lãnh. Với diện tích 4,18km2, đây được xem là quận có diện tích nhỏ nhất TP.HCM, được bao bọc bởi hệ thống sông ròi, kênh rạch.
+          <map name="hcm-map">
+            <area
+              shape="poly"
+              coords="301,290,316,287,324,300,330,318,336,327,325,330,322,338,313,337,300,300"
+              alt="Quận Tân Phú"
+              data-description="Quận Tân Phú có diện tích 15,97 km2 cùng dân cư khá đông (khoảng 485.348 người). Đơn vị hành chính quận bao gồm 11 phường: Hòa Thạnh, Phú Thạnh, Hiệp Tân, Phú Trung, Phú Thọ Hòa, Sơn Kỳ, Tân Quý, Tân Sơn Nhì, Tân Thành, Tân Thới Hòa, Tây Thạnh."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-tan-phu.jpg"
+              data-target="tan-phu"
+            />
+            <area
+              shape="poly"
+              coords="306,287,291,280,279,288,282,295,279,305,283,313,284,320,278,326,266,333,260,346,259,355,291,370,299,379,309,376,310,358,315,338,304,307,300,295"
+              alt="Quận Bình Tân"
+              data-description="Quận Bình Tân tọa lạc tại phía Tây bản đồ TP.HCM. Bản đồ hành chính quận Bình Tân bao gồm 10 phường: An Lạc, An Lạc A, Bình Hưng Hòa, Bình Hưng Hòa A, Bình Hưng Hòa B, Tân Tạo, Tân Tạo A, Bình Trị Đông A, Bình Trị Đông B."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-binh-tan.jpg"
+              data-target="binh-tan"
+            />
+            <area
+              shape="poly"
+              coords="365,345,389,345,394,339,384,335,382,331"
+              alt="Quận 4"
+              data-description="Quận 4 có vị trí đặc biệt bên bờ phía nam của sông Sài Gòn, nối liền với Quận 1 qua cầu Calmette hoặc cầu Ông Lãnh. Với diện tích 4,18km2, đây được xem là quận có diện tích nhỏ nhất TP.HCM, được bao bọc bởi hệ thống sông ròi, kênh rạch.
 
             Bản đồ hành chính Quận 4 hiện nay gồm 13 phường: 1, 2, 3, 4, 6, 8, 9, 10, 13, 14, 15, 16, 18.
             
             "
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-4.jpg"
-            data-target="q4"
-          />
-          <area
-            shape="poly"
-            coords="347,200,295,97,185,0,98,143,119,165,174,185,219,207"
-            alt="Huyện Củ Chi"
-            data-description="Huyện Củ Chi có diện tích tự nhiên 434,77 km2, được chia thành 1 thị trấn Củ Chi và 20 xã (An Nhơn Tây, An Phú, Bình Mỹ, Hòa Phú, Nhuận Đức, Phú Hòa Đông, Phạm Văn Cội, Phú Mỹ Hưng, Phước Thạnh, Phước Hiệp, Phước Vĩnh An, Tân An Hội, Tân Phú Trung, Tân Thông Hội, Tân Thạnh Đông, Tân Thạnh Tây, Thái Mỹ, Trung An, Trung Lập Thượng, Trung Lập Hạ)."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/cu-chi.jpg"
-            data-target="cu-chi"
-          />
-          <area
-            shape="poly"
-            coords="283,199,370,202,376,218,321,232,303,261,297,282,240,264,234,239,239,222,213,203"
-            alt="Huyện Hóc Môn"
-            data-description="Huyện Hóc Môn tọa lạc tại phía Tây Bắc trên bản đồ TPHCM. Diện tích tự nhiên của huyện là 109,17 km2, được chia thành 12 đơn vị hành chính. Trong đó gồm 1 thị trấn (Hóc Môn) và 11 xã (Bà Điểm, Nhị Bình, Đông Thạnh, Tân Hiệp, Tân Xuân, Tân Thới Nhì, Thới Tam Thôn, Trung Chánh, Xuân Thới Thượng, Xuân Thới Đông, Xuân Thới Sơn)."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/hoc-mon.jpg"
-            data-target="hoc-mon"
-          />
-          <area
-            shape="poly"
-            coords="299,284,313,290,325,264,336,254,353,256,366,264,374,277,393,254,370,237,372,217,335,226,318,235,305,256,303,266"
-            alt="Quận 12"
-            data-description="Quận 12 là khu vực nằm về phía Bắc thành phố, khá xa vị trí trung tâm, là quận có nhiều tuyến đường lớn cắt ngang bao gồm: Quốc lộ 1A, quốc lộ 22 và nhiều tỉnh lộ khác. Quận 12 hiện được phân chia thành 11 phường, bao gồm: An Phú Đông, Đông Hưng Thuận, Tân Hưng Thuận, Hiệp Thành, Thới An, Tân Thới Nhất, Tân Thới Hiệp, Tân Chánh Hiệp, Thạnh Lộc, Thạnh Xuân, Trung Mỹ Tây."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-12.jpg"
-            data-target="q12"
-          />
-          <area
-            shape="poly"
-            coords="322,277,329,280,334,273,341,276,351,279,357,281,354,290,363,296,370,287,376,282,370,277,366,269,360,261,353,255,347,256,339,253,330,259,321,267"
-            alt="Quận Gò Vấp"
-            data-description="Quận Gò Vấp nằm ở phía Bắc thành phố, có vị trí tiếp giáp Quận 12, quận Tân Bình, Phú Nhuận và Bình Thạnh. Diện tích quận Gò Vấp khoảng 19,73 km2, được chia thành 16 phường gồm: 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-go-vap.jpg"
-            data-target="go-vap"
-          />
-          <area
-            shape="poly"
-            coords="334,329,329,318,326,306,320,292,317,281,327,278,338,275,346,278,353,284,352,294,350,304,343,317"
-            alt="Quận Tân Bình"
-            data-description="Quận Tân Bình có vị trí tiếp giáp với Quận 3, Quận 10, Quận 12, quận Phú Nhuận và quận Gò Vấp. Diện tích khu vực này là 22,43km2 và dân số khoảng 474.792 người, được chia thành 15 phường: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-tan-binh.jpg"
-            data-target="tan-binh"
-          />
-          <area
-            shape="poly"
-            coords="349,311,357,312,364,310,370,303,363,296,355,292,351,298"
-            alt="Quận Phú Nhuận"
-            data-description="Quận Phú Nhuận có diện tích khá nhỏ, chỉ 4,86 km2 và được chia thành 13 phường: 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 13, 15, 17. Khu vực này có vị trí tiếp giáp với các quận trung tâm như Quận 1, Quận 3, quận Tân Bình, Bình Thạnh và Gò Vấp, thuận tiện cho việc di chuyển và kết nối."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-phu-nhuan.jpg"
-            data-target="phu-nhuan"
-          />
-          <area
-            shape="poly"
-            coords="365,298,370,302,374,308,382,311,390,317,395,312,396,306,396,295,402,288,408,290,413,294,418,289,417,280,410,276,393,287,383,283,380,274,374,286"
-            alt="Quận Bình Thạnh"
-            data-description="Quận Bình Thạnh có diện tích tự nhiên 20,78 km2, được chia thành 20 phường bao gồm: 1, 2, 3, 5, 6, 7, 11, 12, 13, 14, 15, 17, 19, 21, 22, 24, 25, 26, 27, 28. Mật độ dân số của khu vực này khá cao, vào khoảng 24.021 người/km2 (dân số là 499.164 người)."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-binh-thanh.jpg"
-            data-target="binh-thanh"
-          />
-          <area
-            shape="poly"
-            coords="322,338,327,343,333,343,339,341,344,337,340,326,332,326,325,330"
-            alt="Quận 11"
-            data-description="Quận 11 là phía tây thành phố, tiếp giáp với các quận lân cận như Quận 5, Quận 6, Quận 10 và Quận Tân Bình. Đơn vị hành chính Quận 11 gồm 16 phường: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-11.jpg"
-            data-target="q11"
-          />
-          <area
-            shape="poly"
-            coords="340,326,344,335,350,337,359,333,361,326,352,319,344,319"
-            alt="Quận 10"
-            data-description="Nằm giáp ranh với Quận 3, Quận 5, Quận 11 và Quận Tân Bình. Đơn vị hành chính Quận 10 trên bản đồ TP. Hồ Chí Minh bao gồm 14 phường: 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-10.jpg"
-            data-target="q10"
-          />
-          <area
-            shape="poly"
-            coords="359,332,366,329,371,324,375,319,366,311,352,314,361,323"
-            alt="Quận 3"
-            data-description="Quận 3 cũng là quận trung tâm của TP.HCM, nằm tiếp giáp với Quận 1 và Quận 10, được biết đến là nơi tập trung nhiều đại sứ quán của các nước. Hiện nay, đơn vị hành chính Quận 3 có 12 phường, cụ thể bao gồm: phường 1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14 và Võ Thị Sáu. Theo đó, các phường 6, 7, 8 trước đó đã được sáp nhập thành phường Võ Thị Sáu vào tháng 01/2021."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-3.jpg"
-            data-target="q3"
-          />
-          <area
-            shape="poly"
-            coords="361,335,365,343,371,338,380,332,383,325,387,318,381,312,373,308,364,311,371,319"
-            alt="Quận 1"
-            data-description="Quận 1 là một trong những quận trung tâm của Thành phố Hồ Chí Minh, được xem là trung tâm kinh tế, tài chính, văn hóa và xã hội của thành phố. Đơn vị hành chính này có tổng diện tích tự nhiên là 7,72 km2, được chia thành 10 phường bao gồm: Bến Thành, Bến Nghé, Đa Kao, Nguyễn Cư Trinh, Nguyễn Thái Bình, Tân Định, Cô Giang, Cầu Ông Lãnh, Phạm Ngũ Lão, Cầu Kho.
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-4.jpg"
+              data-target="q4"
+            />
+            <area
+              shape="poly"
+              coords="347,200,295,97,185,0,98,143,119,165,174,185,219,207"
+              alt="Huyện Củ Chi"
+              data-description="Huyện Củ Chi có diện tích tự nhiên 434,77 km2, được chia thành 1 thị trấn Củ Chi và 20 xã (An Nhơn Tây, An Phú, Bình Mỹ, Hòa Phú, Nhuận Đức, Phú Hòa Đông, Phạm Văn Cội, Phú Mỹ Hưng, Phước Thạnh, Phước Hiệp, Phước Vĩnh An, Tân An Hội, Tân Phú Trung, Tân Thông Hội, Tân Thạnh Đông, Tân Thạnh Tây, Thái Mỹ, Trung An, Trung Lập Thượng, Trung Lập Hạ)."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/cu-chi.jpg"
+              data-target="cu-chi"
+            />
+            <area
+              shape="poly"
+              coords="283,199,370,202,376,218,321,232,303,261,297,282,240,264,234,239,239,222,213,203"
+              alt="Huyện Hóc Môn"
+              data-description="Huyện Hóc Môn tọa lạc tại phía Tây Bắc trên bản đồ TPHCM. Diện tích tự nhiên của huyện là 109,17 km2, được chia thành 12 đơn vị hành chính. Trong đó gồm 1 thị trấn (Hóc Môn) và 11 xã (Bà Điểm, Nhị Bình, Đông Thạnh, Tân Hiệp, Tân Xuân, Tân Thới Nhì, Thới Tam Thôn, Trung Chánh, Xuân Thới Thượng, Xuân Thới Đông, Xuân Thới Sơn)."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/hoc-mon.jpg"
+              data-target="hoc-mon"
+            />
+            <area
+              shape="poly"
+              coords="299,284,313,290,325,264,336,254,353,256,366,264,374,277,393,254,370,237,372,217,335,226,318,235,305,256,303,266"
+              alt="Quận 12"
+              data-description="Quận 12 là khu vực nằm về phía Bắc thành phố, khá xa vị trí trung tâm, là quận có nhiều tuyến đường lớn cắt ngang bao gồm: Quốc lộ 1A, quốc lộ 22 và nhiều tỉnh lộ khác. Quận 12 hiện được phân chia thành 11 phường, bao gồm: An Phú Đông, Đông Hưng Thuận, Tân Hưng Thuận, Hiệp Thành, Thới An, Tân Thới Nhất, Tân Thới Hiệp, Tân Chánh Hiệp, Thạnh Lộc, Thạnh Xuân, Trung Mỹ Tây."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-12.jpg"
+              data-target="q12"
+            />
+            <area
+              shape="poly"
+              coords="322,277,329,280,334,273,341,276,351,279,357,281,354,290,363,296,370,287,376,282,370,277,366,269,360,261,353,255,347,256,339,253,330,259,321,267"
+              alt="Quận Gò Vấp"
+              data-description="Quận Gò Vấp nằm ở phía Bắc thành phố, có vị trí tiếp giáp Quận 12, quận Tân Bình, Phú Nhuận và Bình Thạnh. Diện tích quận Gò Vấp khoảng 19,73 km2, được chia thành 16 phường gồm: 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-go-vap.jpg"
+              data-target="go-vap"
+            />
+            <area
+              shape="poly"
+              coords="334,329,329,318,326,306,320,292,317,281,327,278,338,275,346,278,353,284,352,294,350,304,343,317"
+              alt="Quận Tân Bình"
+              data-description="Quận Tân Bình có vị trí tiếp giáp với Quận 3, Quận 10, Quận 12, quận Phú Nhuận và quận Gò Vấp. Diện tích khu vực này là 22,43km2 và dân số khoảng 474.792 người, được chia thành 15 phường: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-tan-binh.jpg"
+              data-target="tan-binh"
+            />
+            <area
+              shape="poly"
+              coords="349,311,357,312,364,310,370,303,363,296,355,292,351,298"
+              alt="Quận Phú Nhuận"
+              data-description="Quận Phú Nhuận có diện tích khá nhỏ, chỉ 4,86 km2 và được chia thành 13 phường: 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 13, 15, 17. Khu vực này có vị trí tiếp giáp với các quận trung tâm như Quận 1, Quận 3, quận Tân Bình, Bình Thạnh và Gò Vấp, thuận tiện cho việc di chuyển và kết nối."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-phu-nhuan.jpg"
+              data-target="phu-nhuan"
+            />
+            <area
+              shape="poly"
+              coords="365,298,370,302,374,308,382,311,390,317,395,312,396,306,396,295,402,288,408,290,413,294,418,289,417,280,410,276,393,287,383,283,380,274,374,286"
+              alt="Quận Bình Thạnh"
+              data-description="Quận Bình Thạnh có diện tích tự nhiên 20,78 km2, được chia thành 20 phường bao gồm: 1, 2, 3, 5, 6, 7, 11, 12, 13, 14, 15, 17, 19, 21, 22, 24, 25, 26, 27, 28. Mật độ dân số của khu vực này khá cao, vào khoảng 24.021 người/km2 (dân số là 499.164 người)."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-binh-thanh.jpg"
+              data-target="binh-thanh"
+            />
+            <area
+              shape="poly"
+              coords="322,338,327,343,333,343,339,341,344,337,340,326,332,326,325,330"
+              alt="Quận 11"
+              data-description="Quận 11 là phía tây thành phố, tiếp giáp với các quận lân cận như Quận 5, Quận 6, Quận 10 và Quận Tân Bình. Đơn vị hành chính Quận 11 gồm 16 phường: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-11.jpg"
+              data-target="q11"
+            />
+            <area
+              shape="poly"
+              coords="340,326,344,335,350,337,359,333,361,326,352,319,344,319"
+              alt="Quận 10"
+              data-description="Nằm giáp ranh với Quận 3, Quận 5, Quận 11 và Quận Tân Bình. Đơn vị hành chính Quận 10 trên bản đồ TP. Hồ Chí Minh bao gồm 14 phường: 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-10.jpg"
+              data-target="q10"
+            />
+            <area
+              shape="poly"
+              coords="359,332,366,329,371,324,375,319,366,311,352,314,361,323"
+              alt="Quận 3"
+              data-description="Quận 3 cũng là quận trung tâm của TP.HCM, nằm tiếp giáp với Quận 1 và Quận 10, được biết đến là nơi tập trung nhiều đại sứ quán của các nước. Hiện nay, đơn vị hành chính Quận 3 có 12 phường, cụ thể bao gồm: phường 1, 2, 3, 4, 5, 9, 10, 11, 12, 13, 14 và Võ Thị Sáu. Theo đó, các phường 6, 7, 8 trước đó đã được sáp nhập thành phường Võ Thị Sáu vào tháng 01/2021."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-3.jpg"
+              data-target="q3"
+            />
+            <area
+              shape="poly"
+              coords="361,335,365,343,371,338,380,332,383,325,387,318,381,312,373,308,364,311,371,319"
+              alt="Quận 1"
+              data-description="Quận 1 là một trong những quận trung tâm của Thành phố Hồ Chí Minh, được xem là trung tâm kinh tế, tài chính, văn hóa và xã hội của thành phố. Đơn vị hành chính này có tổng diện tích tự nhiên là 7,72 km2, được chia thành 10 phường bao gồm: Bến Thành, Bến Nghé, Đa Kao, Nguyễn Cư Trinh, Nguyễn Thái Bình, Tân Định, Cô Giang, Cầu Ông Lãnh, Phạm Ngũ Lão, Cầu Kho.
 
             "
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-1.jpg"
-            data-target="q1"
-          />
-          <area
-            shape="poly"
-            coords="337,344,344,349,351,348,357,345,364,344,361,336,350,338"
-            alt="Quận 5"
-            data-description="Khu vực Quận 5 nằm tại vị trí trung tâm bản đồ TPHCM, tiếp giáp với Quận 1, Quận 10, Quận 11 và Quận 6. Hiện nay, đơn vị hành chính Quận 5 bao gồm 14 phường: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-5.jpg"
-            data-target="q5"
-          />
-          <area
-            shape="poly"
-            coords="290,387,294,392,306,391,313,392,318,386,324,376,328,364,337,360,347,360,355,357,361,360,364,355,370,352,365,343,353,345,341,348,313,362,312,372"
-            alt="Quận 8"
-            data-description="Quận 8 tọa lạc ở phía tây nam Sài Gòn, bao gồm 16 phường: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16. Nằm giữa sông Sài Gòn và sông Đồng Nai, Quận 8 thừa hưởng vị trí địa lý độc đáo đồng thời giáp với các quận huyện: Quận 5, Quận 7, Quận 4 và huyện Nhà Bè."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-8.jpg"
-            data-target="q8"
-          />
-          <area
-            shape="poly"
-            coords="313,360,321,360,331,354,339,350,334,343,325,342,314,337"
-            alt="Quận 6"
-            data-description="Quận 6 nằm ở phía tây của trung tâm TPHCM, giáp ranh với Quận 5, Quận 8, Quận 11, Quận Bình Tân và Quận Tân Phú. Khu vực Quận 6 bao gồm 14 phường: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-6.jpg"
-            data-target="q6"
-          />
-          <area
-            shape="poly"
-            coords="368,368,380,368,389,373,396,371,396,378,399,386,406,388,416,384,419,375,431,356,420,353,413,353,414,344,418,336,413,327,406,332,401,338,395,342,387,345,370,345,371,357"
-            alt="Quận 7"
-            data-description="Quận 7 là một trong những quận phát triển mạnh mẽ, nằm ở phía nam trên bản đồ hành chính TP HCM. Xét về đơn vị hành chính, Quận 7 được chia thành 10 phường bao gồm: Phú Mỹ, Phú Thuận, Bình Thuận, Tân Phong, Tân Phú, Tân Hưng, Tân Kiểng, Tân Quy, Tân Thuận Đông, Tân Thuận Tây."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-7.jpg"
-            data-target="q7"
-          />
-          <area
-            shape="poly"
-            coords="233,244,239,246,235,258,245,267,263,267,273,270,288,278,279,289,279,305,284,315,282,323,267,331,270,338,258,348,260,357,291,369,294,379,295,392,313,392,328,367,350,360,369,356,368,376,359,379,355,387,356,400,358,417,363,429,353,442,325,450,299,428,261,429,252,424,250,403,240,397,232,375,220,373,199,366,181,342,214,314"
-            alt="Huyện Bình Chánh"
-            data-description="Huyện Bình Chánh có diện tích tự nhiên khá lớn khoảng 252,56 km2. Trong đó bao gồm 16 đơn vị hành chính là 1 thị trấn (Tân Túc) và 15 xã (An Phú Tây, Bình Hưng, Bình Chánh, Bình Lợi, Đa Phước, Hưng Long, Lê Minh Xuân, Phạm Văn Hai, Phong Phú, Quy Đức, Tân Kiên, Tân Nhựt, Tân Quý Tây, Vĩnh Lộc A, Vĩnh Lộc B)."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/binh-chanh.jpg"
-            data-target="binh-chanh"
-          />
-          <area
-            shape="poly"
-            coords="390,224,389,237,389,249,387,257,375,263,379,273,390,286,410,276,418,281,419,293,408,294,401,288,395,295,398,306,393,314,387,318,384,326,390,336,401,336,407,327,416,330,418,337,414,345,416,354,425,352,432,354,444,346,457,338,466,330,474,324,480,329,480,337,491,329,501,326,511,331,518,331,516,312,528,299,524,288,497,255,501,240,497,231,493,221,481,226,467,240,447,245,441,232,435,225,427,233,427,243,420,247,417,238,408,238,402,228"
-            alt="Thành Phố Thủ Đức"
-            data-description="Thành phố Thủ Đức chính thức được thành lập vào tháng 01/2022 trên cơ sở sáp nhập 3 quận: Quận 2, Quận 9 và quận Thủ Đức. Đây là thành phố đầu tiên của nước ta thuộc loại hình đơn vị hành chính là thành phố thuộc thành phố trực thuộc trung ương.
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-1.jpg"
+              data-target="q1"
+            />
+            <area
+              shape="poly"
+              coords="337,344,344,349,351,348,357,345,364,344,361,336,350,338"
+              alt="Quận 5"
+              data-description="Khu vực Quận 5 nằm tại vị trí trung tâm bản đồ TPHCM, tiếp giáp với Quận 1, Quận 10, Quận 11 và Quận 6. Hiện nay, đơn vị hành chính Quận 5 bao gồm 14 phường: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-5.jpg"
+              data-target="q5"
+            />
+            <area
+              shape="poly"
+              coords="290,387,294,392,306,391,313,392,318,386,324,376,328,364,337,360,347,360,355,357,361,360,364,355,370,352,365,343,353,345,341,348,313,362,312,372"
+              alt="Quận 8"
+              data-description="Quận 8 tọa lạc ở phía tây nam Sài Gòn, bao gồm 16 phường: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16. Nằm giữa sông Sài Gòn và sông Đồng Nai, Quận 8 thừa hưởng vị trí địa lý độc đáo đồng thời giáp với các quận huyện: Quận 5, Quận 7, Quận 4 và huyện Nhà Bè."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-8.jpg"
+              data-target="q8"
+            />
+            <area
+              shape="poly"
+              coords="313,360,321,360,331,354,339,350,334,343,325,342,314,337"
+              alt="Quận 6"
+              data-description="Quận 6 nằm ở phía tây của trung tâm TPHCM, giáp ranh với Quận 5, Quận 8, Quận 11, Quận Bình Tân và Quận Tân Phú. Khu vực Quận 6 bao gồm 14 phường: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-6.jpg"
+              data-target="q6"
+            />
+            <area
+              shape="poly"
+              coords="368,368,380,368,389,373,396,371,396,378,399,386,406,388,416,384,419,375,431,356,420,353,413,353,414,344,418,336,413,327,406,332,401,338,395,342,387,345,370,345,371,357"
+              alt="Quận 7"
+              data-description="Quận 7 là một trong những quận phát triển mạnh mẽ, nằm ở phía nam trên bản đồ hành chính TP HCM. Xét về đơn vị hành chính, Quận 7 được chia thành 10 phường bao gồm: Phú Mỹ, Phú Thuận, Bình Thuận, Tân Phong, Tân Phú, Tân Hưng, Tân Kiểng, Tân Quy, Tân Thuận Đông, Tân Thuận Tây."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/quan-7.jpg"
+              data-target="q7"
+            />
+            <area
+              shape="poly"
+              coords="233,244,239,246,235,258,245,267,263,267,273,270,288,278,279,289,279,305,284,315,282,323,267,331,270,338,258,348,260,357,291,369,294,379,295,392,313,392,328,367,350,360,369,356,368,376,359,379,355,387,356,400,358,417,363,429,353,442,325,450,299,428,261,429,252,424,250,403,240,397,232,375,220,373,199,366,181,342,214,314"
+              alt="Huyện Bình Chánh"
+              data-description="Huyện Bình Chánh có diện tích tự nhiên khá lớn khoảng 252,56 km2. Trong đó bao gồm 16 đơn vị hành chính là 1 thị trấn (Tân Túc) và 15 xã (An Phú Tây, Bình Hưng, Bình Chánh, Bình Lợi, Đa Phước, Hưng Long, Lê Minh Xuân, Phạm Văn Hai, Phong Phú, Quy Đức, Tân Kiên, Tân Nhựt, Tân Quý Tây, Vĩnh Lộc A, Vĩnh Lộc B)."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/binh-chanh.jpg"
+              data-target="binh-chanh"
+            />
+            <area
+              shape="poly"
+              coords="390,224,389,237,389,249,387,257,375,263,379,273,390,286,410,276,418,281,419,293,408,294,401,288,395,295,398,306,393,314,387,318,384,326,390,336,401,336,407,327,416,330,418,337,414,345,416,354,425,352,432,354,444,346,457,338,466,330,474,324,480,329,480,337,491,329,501,326,511,331,518,331,516,312,528,299,524,288,497,255,501,240,497,231,493,221,481,226,467,240,447,245,441,232,435,225,427,233,427,243,420,247,417,238,408,238,402,228"
+              alt="Thành Phố Thủ Đức"
+              data-description="Thành phố Thủ Đức chính thức được thành lập vào tháng 01/2022 trên cơ sở sáp nhập 3 quận: Quận 2, Quận 9 và quận Thủ Đức. Đây là thành phố đầu tiên của nước ta thuộc loại hình đơn vị hành chính là thành phố thuộc thành phố trực thuộc trung ương.
 
             Sau khi đã chính thức sáp nhập, đơn vị hành chính của TP. Thủ Đức có 34 phường, cụ thể gồm: An Khánh, An Phú, An Lợi Đông, Bình Chiểu, Bình Thọ, Bình Trưng Đông, Bình Trưng Tây, Hiệp Phú, Hiệp Bình Chánh, Hiệp Bình Phước, Cát Lái, Linh Trung, Linh Xuân, Linh Tây, Linh Đông, Long Phước, Long Bình, Long Trường, Long Thạnh Mỹ, Phú Hữu, Phước Bình, Phước Long A, Phước Long B, Tam Phú, Tam Bình, Tăng Nhơn Phú A, Tăng Nhơn Phú B, Tân Phú, Thạnh Mỹ Lợi, Thảo Điền, Thủ Thiêm, Trường Thạnh, Trường Thọ."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/thanh-pho-thu-duc.jpg"
-            data-target="thu-duc"
-          />
-          <area
-            shape="poly"
-            coords="401,389,395,379,396,373,387,373,380,367,369,368,365,379,356,383,353,395,358,405,359,418,365,429,375,430,393,435,404,449,399,462,393,473,398,485,408,488,414,493,425,488,443,494,447,479,436,457,435,438,412,425,411,413,423,414,431,417,437,412,431,400,416,382"
-            alt="Huyện Nhà Bè"
-            data-description="Huyện Nhà Bè nằm ở phía đông nam TPHCM, có diện tích tự nhiên là 100,43 km2. Khu vực này được chia thành 7 đơn vị hành chính, trong đó gồm 1 thị trấn (Nhà Bè) và 6 xã (Hiệp Phước, Long Thới, Nhơn Đức, Phú Xuân, Phước Lộc, Phước Kiển)."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/nha-be.jpg"
-            data-target="nha-be"
-          />
-          <area
-            shape="poly"
-            coords="437,413,432,420,413,414,411,428,433,440,436,461,445,475,445,488,436,491,425,488,414,493,408,567,488,679,628,642,601,610,622,593,623,554,648,524,647,484,634,463,610,488,554,465,530,435,490,448,467,422"
-            alt="Huyện Cần Giờ"
-            data-description="Huyện Cần Giờ được biết đến là huyện duy nhất của TP.HCM giáp biển, cách trung tâm thành phố khoảng 50km về phía Đông Nam. Diện tích tự nhiên của huyện Cần Giờ là 704,45 km2, được chia thành 7 đơn vị hành chính. Trong đó gồm 1 thị trấn (Cần Thạnh) và 6 xã (An Thới Đông, Bình Khánh, Long Hòa, Lý Nhơn, Tam Thôn Hiệp, Thạnh An)."
-            data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/can-gio.jpg"
-            data-target="can-gio"
-          />
-        </map>
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/thanh-pho-thu-duc.jpg"
+              data-target="thu-duc"
+            />
+            <area
+              shape="poly"
+              coords="401,389,395,379,396,373,387,373,380,367,369,368,365,379,356,383,353,395,358,405,359,418,365,429,375,430,393,435,404,449,399,462,393,473,398,485,408,488,414,493,425,488,443,494,447,479,436,457,435,438,412,425,411,413,423,414,431,417,437,412,431,400,416,382"
+              alt="Huyện Nhà Bè"
+              data-description="Huyện Nhà Bè nằm ở phía đông nam TPHCM, có diện tích tự nhiên là 100,43 km2. Khu vực này được chia thành 7 đơn vị hành chính, trong đó gồm 1 thị trấn (Nhà Bè) và 6 xã (Hiệp Phước, Long Thới, Nhơn Đức, Phú Xuân, Phước Lộc, Phước Kiển)."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/nha-be.jpg"
+              data-target="nha-be"
+            />
+            <area
+              shape="poly"
+              coords="437,413,432,420,413,414,411,428,433,440,436,461,445,475,445,488,436,491,425,488,414,493,408,567,488,679,628,642,601,610,622,593,623,554,648,524,647,484,634,463,610,488,554,465,530,435,490,448,467,422"
+              alt="Huyện Cần Giờ"
+              data-description="Huyện Cần Giờ được biết đến là huyện duy nhất của TP.HCM giáp biển, cách trung tâm thành phố khoảng 50km về phía Đông Nam. Diện tích tự nhiên của huyện Cần Giờ là 704,45 km2, được chia thành 7 đơn vị hành chính. Trong đó gồm 1 thị trấn (Cần Thạnh) và 6 xã (An Thới Đông, Bình Khánh, Long Hòa, Lý Nhơn, Tam Thôn Hiệp, Thạnh An)."
+              data-image="https://cdn.thuvienphapluat.vn/uploads/tintuc/2023/12/30/can-gio.jpg"
+              data-target="can-gio"
+            />
+          </map>
+        </div>
+        <!-- New container for detailed district info -->
+        <div id="district-details" class="district-details-container">
+          <h2 id="district-name-details"></h2>
+          <img id="district-image-details" src="" alt="District Image" />
+          <p id="district-description-details"></p>
+        </div>
+        <div id="popup-content-bando-hcm" class="popup-content-bando-hcm">
+          <h2 id="district-name-popup"></h2>
+          <p id="district-description-popup"></p>
+        </div>
+        <p><strong>Về vị trí địa lý</strong></p>
+
+        <p>
+          Trên bản đồ Việt Nam, thành phố Hồ Chí Minh có vị trí địa lý tại miền
+          Nam nước ta, nằm trong vùng chuyển tiếp giữa Đông Nam Bộ và Đồng bằng
+          sông Cửu Long. Tọa độ địa lý chính xác trên bản đồ HCM là 10°10′ –
+          10°38′ Bắc và 106°22′ – 106°54′ Đông. Các điểm cực của TP.HCM cụ thể
+          như sau:
+        </p>
+
+        <p>- Điểm cực Bắc TP.HCM nằm tại xã Phú Mỹ Hưng, huyện Củ Chi.</p>
+
+        <p>- Điểm cực Nam TP.HCM nằm tại: xã Long Hòa, huyện Cần Giờ.</p>
+
+        <p>- Điểm cực Tây TP.HCM nằm tại: xã Thái Mỹ, huyện Củ Chi.</p>
+
+        <p>- Điểm cực Đông TP.HCM nằm tại: xã Thạnh An, huyện Cần Giờ.</p>
+
+        <p><strong>Về mật độ dân số</strong></p>
+
+        <p>
+          Theo báo cáo của Sở Y tế, tính đến ngày 1/6/2023, TP.HCM có tổng dân
+          số gần 8,9 triệu người (con số cụ thể là 8.899.866 người). Mật độ dân
+          số của thành phố này cũng dẫn đầu cả nước, vào khoảng 4.248 người/km2.
+          Nếu tính cả những trường hợp cư trú mà không đăng ký hộ khẩu, dân số
+          thực tế của toàn thành phố có thể lên đến 14 triệu người.
+        </p>
+
+        <p>
+          Trong đó, dân số tại những khu vực thành thị chiếm khoảng 79% dân số
+          toàn thành phố (khoảng hơn 7 triệu người). 21% còn lại là tỷ lệ dân số
+          sống tại khu vực nông thôn (khoảng hơn 1,9 triệu người). Có thể thấy,
+          sự phân bố dân cư tại TP.HCM có sự chênh lệch rõ ràng. Cụ thể, dân cư
+          chủ yếu tập trung tại các quận trung tâm thành phố, trong khi đó những
+          khu vùng ven như huyện Cần Giờ thường có ít dân cư sinh sống.
+        </p>
+
+        <div class="clr"></div>
       </div>
-      <!-- New container for detailed district info -->
-      <div id="district-details" class="district-details-container">
-        <h2 id="district-name-details"></h2>
-        <img id="district-image-details" src="" alt="District Image" />
-        <p id="district-description-details"></p>
-      </div>
-      <div id="popup-content-bando-hcm" class="popup-content-bando-hcm">
-        <h2 id="district-name-popup"></h2>
-        <p id="district-description-popup"></p>
-      </div>
-      <p><strong>Về vị trí địa lý</strong></p>
-
-      <p>
-        Trên bản đồ Việt Nam, thành phố Hồ Chí Minh có vị trí địa lý tại miền
-        Nam nước ta, nằm trong vùng chuyển tiếp giữa Đông Nam Bộ và Đồng bằng
-        sông Cửu Long. Tọa độ địa lý chính xác trên bản đồ HCM là 10°10′ –
-        10°38′ Bắc và 106°22′ – 106°54′ Đông. Các điểm cực của TP.HCM cụ thể như
-        sau:
-      </p>
-
-      <p>- Điểm cực Bắc TP.HCM nằm tại xã Phú Mỹ Hưng, huyện Củ Chi.</p>
-
-      <p>- Điểm cực Nam TP.HCM nằm tại: xã Long Hòa, huyện Cần Giờ.</p>
-
-      <p>- Điểm cực Tây TP.HCM nằm tại: xã Thái Mỹ, huyện Củ Chi.</p>
-
-      <p>- Điểm cực Đông TP.HCM nằm tại: xã Thạnh An, huyện Cần Giờ.</p>
-
-      <p><strong>Về mật độ dân số</strong></p>
-
-      <p>
-        Theo báo cáo của Sở Y tế, tính đến ngày 1/6/2023, TP.HCM có tổng dân số
-        gần 8,9 triệu người (con số cụ thể là 8.899.866 người). Mật độ dân số
-        của thành phố này cũng dẫn đầu cả nước, vào khoảng 4.248 người/km2. Nếu
-        tính cả những trường hợp cư trú mà không đăng ký hộ khẩu, dân số thực tế
-        của toàn thành phố có thể lên đến 14 triệu người.
-      </p>
-
-      <p>
-        Trong đó, dân số tại những khu vực thành thị chiếm khoảng 79% dân số
-        toàn thành phố (khoảng hơn 7 triệu người). 21% còn lại là tỷ lệ dân số
-        sống tại khu vực nông thôn (khoảng hơn 1,9 triệu người). Có thể thấy, sự
-        phân bố dân cư tại TP.HCM có sự chênh lệch rõ ràng. Cụ thể, dân cư chủ
-        yếu tập trung tại các quận trung tâm thành phố, trong khi đó những khu
-        vùng ven như huyện Cần Giờ thường có ít dân cư sinh sống.
-      </p>
-
-      <div class="clr"></div>
     </div>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // District details handling
+      const areas = document.querySelectorAll("area");
+      const districtDetailsContainer =
+        document.getElementById("district-details");
+      const districtNameDetails = document.getElementById(
+        "district-name-details"
+      );
+      const districtImageDetails = document.getElementById(
+        "district-image-details"
+      );
+      const districtDescriptionDetails = document.getElementById(
+        "district-description-details"
+      );
+
+      // Click handlers for areas
+      areas.forEach((area) => {
+        area.addEventListener("click", function (event) {
+          event.preventDefault();
+
+          const districtName = area.getAttribute("alt");
+          const description = area.getAttribute("data-description");
+          const imageUrl = area.getAttribute("data-image");
+
+          districtNameDetails.textContent = districtName;
+          districtImageDetails.src = imageUrl;
+          districtDescriptionDetails.textContent = description;
+          districtDetailsContainer.style.display = "block";
+          districtDetailsContainer.focus();
+        });
+      });
+
+      // Close details when clicking outside
+      document.addEventListener("click", function (event) {
+        if (
+          districtDetailsContainer.style.display === "block" &&
+          !event.target.closest("area") &&
+          !event.target.closest(".district-details-container")
+        ) {
+          districtDetailsContainer.style.display = "none";
+        }
+      });
+    });
+  </script>
 </div>

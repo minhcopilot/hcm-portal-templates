@@ -668,6 +668,12 @@
     .reset:hover {
         filter: brightness(1.2);
     }
+    .asset-details .mr-3 a{
+        display: none !important;
+    }
+    .separator{
+        display: none !important;
+    }
 </style>
 <#assign AssetEntryLocalService = serviceLocator.findService("com.liferay.asset.kernel.service.AssetEntryLocalService" )>
 <#assign JournalArticleLocalService = serviceLocator.findService("com.liferay.journal.service.JournalArticleLocalService")>
@@ -1173,11 +1179,14 @@ images_folder = theme_display.getPathThemeImages()
                 </section>
                 <div id="comment-list"></div>
                 <div class="line"></div>
-                <div class="col-lg-12 col-xl-12 box-tlq">
+                <div class="col-lg-12 col-xl-12 box-tlq mb-4">
                     <#if teste?has_content>
                         <h1 class="title-content-tlq font-merri mb-3">Tin liên quan</h1>
                         <div class="row">
                             <#assign indexLocal = 0/>
+							<#assign
+								isSpecialSite = getterUtil.getBoolean(themeDisplay.getThemeSetting("isSpecialSite"))
+							/>
                             <#list teste?filter(curEntryyy -> curEntryyy.getEntryId() != currentArticleAssetEntry.getEntryId()) as  curEntryyy>
                                 <#if curEntryyy?? && curEntryyy.getAssetRenderer()??>
                                     <#assign
@@ -1191,9 +1200,20 @@ images_folder = theme_display.getPathThemeImages()
                                         SmallImage  = article.getSmallImageURL()
                                         description = article.getDescription(locale)
                                         curEntryyy = curEntryyy
-                                         viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/chi-tiet-bai-viet/-/asset_publisher/rvlr/content/${renderer.getUrlTitle()}/39403"
+                                        viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/-/${renderer.getUrlTitle()}"
                                         hasMatch = false />
-
+										<#if isSpecialSite?c == "true">
+											<#assign currentUrl = themeDisplay.getURLCurrent() />
+											<#assign parts_split = currentUrl?split("/")>
+											<#assign aidx = parts_split?seq_index_of("asset_publisher")>
+											<#if aidx != -1 && (parts_split?size > (aidx + 1))>
+												<#assign portletKey = parts_split[aidx + 1]>
+											<#else>
+												<#assign portletKey = rvlr>
+											</#if>
+											<#assign viewURL = 	"${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/chi-tiet-bai-viet/-/asset_publisher/${portletKey}/content/${renderer.getUrlTitle()}/39403"
+												/>
+										</#if>
                                         <#list curEntryyy.getCategories() as categoryList>
                                             <#list currentArticleAssetEntry.getCategories() as cateId>
                                                 <#if categoryList.getCategoryId() == cateId.getCategoryId()>
@@ -1212,7 +1232,7 @@ images_folder = theme_display.getPathThemeImages()
                                             <#elseif SmallImageID ?? && SmallImageID != 0>
                                                 <#assign smallImageUrl = "/image/journal/article?img_id=${SmallImageID}">
                                             <#else>
-                                                <#assign smallImageUrl = "/documents/20123/41696/cover-emty-img.jpg" />
+                                                <#assign smallImageUrl = "/documents/60205/77945/no-image.jpg" >
                                             </#if>
                                             <#if indexLocal  == 0>
                                                 <div class="col-12 d-flex p-0 mb-16" idx="${indexLocal+1}" style="height: 100% !important;">

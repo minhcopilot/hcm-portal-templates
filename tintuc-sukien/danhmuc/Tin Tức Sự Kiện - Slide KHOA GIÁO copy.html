@@ -48,10 +48,10 @@
         </div>
         <div class="slideshow-news-container position-relative">
             <!-- Thêm nút điều hướng tùy chỉnh -->
-            <button class="custom-prev-btn" id="kg-prev-btn" onclick="handleSlideNav('prev')">
+            <button class="custom-prev-btn" id="ttdn-prev-btn" onclick="handleSlideNav('prev')">
                 <i class="icon-prev-ttsk fa fa-chevron-left" ></i>
             </button>
-            <button class="custom-next-btn" id="kg-next-btn" onclick="handleSlideNav('next')">
+            <button class="custom-next-btn" id="ttdn-next-btn" onclick="handleSlideNav('next')">
                 <i class="icon-next-ttsk fa fa-chevron-right" ></i>
             </button>
 
@@ -62,7 +62,7 @@
             "HA_TANG": "/documents/39403/331149/ic_ht.png/efcf15fa-7c8d-0461-3095-831796a669d8?t=1732155565437",
             "VAN_HOA": "/documents/39403/331149/ic_vh.png/05543994-41a5-e16e-89b9-cee9a415e8f1?t=1732155566178",
            "KHOA_GIAO":"/documents/39403/331149/khoa+gi%C3%A1o.png/100f8139-6dbd-6b6a-b441-0e51259b0807?t=1732155566411",
-            "DOI_NGOAI": "/documents/39403/331149/%C4%91%E1%BB%91i+ngo%E1%BA%A1i.png/e9278b95-d550-abbb-7a3c-bc0e6c7145bf?t=1732155565214",
+           "DOI_NGOAI": "/documents/39403/331149/ic_hdld.png/be3c1e71-1ec8-7435-0ca3-6c54c099131a?t=1734416957414",
             "CHINH_TRI": "/documents/39403/331149/CH%C3%8DNH+TR%E1%BB%8A.png/aff1039f-cafc-1121-e49f-210645a54730?t=1732155564962",
             "BUSINESS": "/documents/39403/331149/BUSINESS.png/8e06bae4-1c7e-aec4-c6b0-291439f12207?t=1732155564731",
             "AN_NINH":"/documents/39403/331149/AN+NINH+TRAT+TU.png/adb2dc88-bb80-b5fe-c14a-c9f3b3b1e15e?t=1732155564481"
@@ -76,7 +76,7 @@
             <#assign dateFormatTime = "HH:mm" />
             <#assign indexLocal = 0/>
             <swiper-container
-                    class="kg-newsSwiper position-relative"
+                    class="ttdn-newsSwiper position-relative"
                     pagination="true"
                     pagination-clickable="true"
                     space-between="20"
@@ -94,7 +94,7 @@
                         renderer = curEntry.getAssetRenderer()
                         className = renderer.getClassName()
 
-                        iconUrl = categoryIcons["KHOA_GIAO"]!""
+                        iconUrl = categoryIcons["BUSINESS"]!""
                         />
                         <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 10>
                             <#assign
@@ -187,17 +187,17 @@ displayDate = article.getDisplayDate()?datetime
 
         $(document).ready(function () {
             // Đổi tên biến để tránh xung đột
-            const newsSwiper = $(".kg-newsSwiper")[0];
+            const newsSwiper = $(".ttdn-newsSwiper")[0];
             if (newsSwiper && newsSwiper.swiper) {
                 const swiperNewsWrapper = newsSwiper.swiper;
 
                 // Xử lý nút Previous
-                $("#kg-prev-btn").off('click').on("click", () => {
+                $("#ttdn-prev-btn").off('click').on("click", () => {
                     if (swiperNewsWrapper) swiperNewsWrapper.slidePrev();
                 });
 
                 // Xử lý nút Next
-                $("#kg-next-btn").off('click').on("click", () => {
+                $("#ttdn-next-btn").off('click').on("click", () => {
                     if (swiperNewsWrapper) swiperNewsWrapper.slideNext();
                 });
 
@@ -236,7 +236,7 @@ displayDate = article.getDisplayDate()?datetime
                         });
 
                         // Kiểm tra và xử lý hiển thị nút điều hướng
-                        const navigationButtons = $("#kg-prev-btn, #kg-next-btn");
+                        const navigationButtons = $("#ttdn-prev-btn, #ttdn-next-btn");
                         if (visibleSlides <= 4) {
                             navigationButtons.hide();
                         } else {
@@ -254,7 +254,7 @@ displayDate = article.getDisplayDate()?datetime
                                     '<h5 class="text-muted">Không tìm thấy bài viết nào</h5>' +
                                     '<p class="text-muted">Không có bài viết nào trong tháng ' + selectedMonth + '/' + selectedYear + '</p>' +
                                     '</div>';
-                                $(".kg-newsSwiper").after(noResultsMessage);
+                                $(".ttdn-newsSwiper").after(noResultsMessage);
                                 $(".btn-orange").hide();
                             }
                         } else {
