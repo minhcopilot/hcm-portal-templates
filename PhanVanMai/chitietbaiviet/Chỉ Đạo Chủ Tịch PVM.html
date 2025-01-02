@@ -1,0 +1,72 @@
+<#assign dateFormatDay = "dd" />
+<#assign monthFormatDay = "MM" />
+<#assign yearFormatDay = "yyyy" />
+<#assign dateFormatTime = "HH:mm" />
+<#assign indexLocal = 0/>
+
+<div class="bg-F8F9FA mr-15pt box-shadow-right-15pt wrapper-chi-dao-pvm">
+    <div class="row m-0">
+        <div class="baner-content col-12 col-md-12 pb-0 banner-cd-pvm row m-0">
+            <!-- Giới thiệu Chỉ đạo -->
+            <div class="profile-right-pct col-12 pt-0  pb-0">
+                <div class="activities-header-pct">
+                    <div class="activities-icon-pct">
+                        <div class="icon-wrapper-pct">
+                            <img src="/documents/58202/1035722/ic_hoat_dong.png" alt="Hoạt động" />
+                            <img
+                                    src="/documents/58202/1035722/ic-chidao.png"
+                                    alt="icon"
+                                    class="overlay-icon-pct"
+                            />
+                        </div>
+                    </div>
+                    <h2 class="activities-title-pct">CHỈ ĐẠO</h2>
+                    <a href="/web/ct-phan-van-mai/chi-dao" class="view-more-pct"
+                    >Xem thêm <i class="fa fa-arrow-right"></i
+                        ></a>
+                </div>
+                <#assign indexLocal = 3/>
+                <div class="activities-list-pct">
+                    <#if entries?has_content>
+                        <#list entries as curEntry>
+                            <#if  curEntry?? && curEntry.getAssetRenderer()?exists>
+                                <#assign
+                                renderer = curEntry.getAssetRenderer()
+                                className = renderer.getClassName() />
+                                <#if className == "com.liferay.journal.model.JournalArticle" && curEntry.getAvailableLanguageIds()?seq_contains(locale) && indexLocal &lt; 6>
+                                    <#assign
+                                    title = curEntry.getTitle(locale)
+                                    article = renderer.getArticle()
+                                    description = article.getDescription(locale)
+                                    ddmTemplateKey = article.getDDMTemplateKey()
+                                    createDay = dateUtil.getDate(curEntry.getCreateDate(), dateFormatDay, locale)
+                                    createMonth = dateUtil.getDate(curEntry.getCreateDate(), monthFormatDay, locale)
+                                    createYear = dateUtil.getDate(curEntry.getCreateDate(), yearFormatDay, locale)
+                                    createTime = dateUtil.getDate(curEntry.getCreateDate(), dateFormatTime, locale)
+                                    curEntry = curEntry
+                        viewURL = "${themeDisplay.getPathFriendlyURLPublic()}${themeDisplay.getSiteGroup().getFriendlyURL()}/chi-tiet/-/asset_publisher/CMza76FA1jTp/content/${renderer.getUrlTitle()}/39403"
+                                    indexLocal = indexLocal + 1 />
+                                    <#if curEntry.getAssetRenderer().getThumbnailPath(renderRequest)??>
+                                        <#assign smallImageUrl = curEntry.getAssetRenderer().getThumbnailPath(renderRequest) >
+                                    <#else>
+                                        <#assign smallImageUrl = "" >
+                                    </#if>
+                                    <div class="activity-item-pct">
+                                        <img
+                                                class="activity-item-dot-pct"
+                                                src="/documents/58202/1035722/dot.png"
+                                                alt=""
+                                        />
+                                        <a class="activity-item-text-pct" href="${viewURL}">
+                                            ${title}
+                                        </a>
+                                    </div>
+                                </#if>
+                            </#if>
+                        </#list>
+                    </#if>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,270 @@
+<style>
+    .contact-header {
+        background: url("/documents/39403/53397/bg_tt_lh.png");
+        min-height: 472px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background-size: cover;
+        background-position: center;
+        margin-bottom: 200px;
+        padding: 0 1.1%;
+    }
+
+    .contact-header .contact-header-title {
+        font-size: 30px;
+        font-weight: 500;
+    }
+    .contact-content-gioi-thieu {
+        margin-top: -298px;
+        width: 90%;
+        box-shadow: -18px 10px 20px 0 rgba(0, 0, 0, 0.2);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .contact-content-gioi-thieu .contact-content-gioi-thieu-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #0d4c92;
+    }
+    .contact-content-gioi-thieu .info-section-portal {
+        font-size: 14px;
+        padding: 40px;
+        border-radius: 10px 0 0 10px;
+    }
+    .contact-content-gioi-thieu .info-section-address {
+        font-size: 14px;
+        background-color: #0d4c92;
+        color: #ffffff;
+        border-radius: 0 10px 10px 0;
+        padding: 40px 40px 40px 25px;
+    }
+
+    /* Màn hình nhỏ hơn 426px */
+    @media screen and (max-width: 425px) {
+        .contact-header .contact-header-title {
+            font-size: 24px;
+        }
+        .contact-content-gioi-thieu {
+            margin-top: -310px;
+        }
+
+        .contact-content-gioi-thieu .contact-content-gioi-thieu-title {
+            font-size: 20px;
+        }
+        .contact-header {
+            margin-bottom: 150px;
+        }
+
+        .contact-content-gioi-thieu .info-section-portal {
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-content-gioi-thieu .info-section-address {
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+
+    }
+
+    /* Màn hình từ 426px đến 768px */
+    @media screen and (min-width: 426px) and (max-width: 768px) {
+        .contact-header .contact-header-title {
+            font-size: 26px;
+        }
+        .contact-content-gioi-thieu {
+            margin-top: -285px;
+        }
+        .contact-content-gioi-thieu .info-section-portal,
+        .contact-content-gioi-thieu .info-section-address {
+            padding: 25px;
+        }
+        .contact-header {
+            margin-bottom: 180px;
+        }
+    }
+
+    /* Màn hình từ 769px đến 1024px */
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+        .contact-header .contact-header-title {
+            font-size: 28px;
+        }
+        .contact-header {
+            padding: 0;
+        }
+        .contact-content-gioi-thieu .info-section-portal,
+        .contact-content-gioi-thieu .info-section-address {
+            padding: 30px;
+        }
+        .contact-content-gioi-thieu-title {
+            font-size: 24px!important;
+            margin-bottom: 25px !important;
+        }
+    }
+    @media screen and (min-width: 1024px) and (max-width: 1124px) {
+        .contact-content-gioi-thieu {
+            margin-top: -310px;
+            width: 90%;
+            margin-left: 5.8%;
+        }
+
+    }
+    @media screen and (min-width: 1124px) and (max-width: 1224px) {
+        .contact-content-gioi-thieu {
+            margin-top: -310px;
+            width: 90%;
+            margin-left: 5.8%;
+        }
+        .contact-header .contact-header-title {
+            padding-left: 3.6% !important;
+        }
+    }
+    @media screen and (min-width: 1224px) and (max-width: 1324px) {
+        .contact-content-gioi-thieu {
+            margin-top: -310px;
+            width: 85.8%;
+            margin-left: 7.8%;
+        }
+        .contact-header .contact-header-title {
+            padding-left: 5.7% !important;
+        }
+    }
+    @media screen and (min-width: 1324px) and (max-width: 1440px) {
+        .contact-content-gioi-thieu {
+            margin-top: -310px;
+            width: 84%;
+            margin-left: 8.6%;
+        }
+        .contact-header .contact-header-title {
+            padding-left: 6.6% !important;
+        }
+    }
+    @media screen and (min-width: 1024px) and (max-width: 1440px) {
+        .contact-content-gioi-thieu .info-section-portal {
+            flex: 0 0 60%;
+            max-width: 60%;
+            padding: 35px;
+        }
+
+        .contact-content-gioi-thieu .info-section-address {
+            flex: 0 0 40%;
+            max-width: 40%;
+            padding: 35px;
+        }
+
+        .contact-content-gioi-thieu-title {
+            font-size: 24px!important;
+            margin-bottom: 25px !important;
+        }
+
+        .info-section-portal p,
+        .info-section-address p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+    }
+    @media screen and (min-width: 1440px) and (max-width: 1824px) {
+        .contact-content-gioi-thieu {
+            width: 77.5%;
+            margin-left: 12%;
+        }
+        .contact-header .contact-header-title {
+            padding-left: 9.9% !important;
+        }
+        .contact-content-gioi-thieu .info-section-portal {
+            flex: 0 0 55%;
+            max-width: 55%;
+        }
+
+        .contact-content-gioi-thieu .info-section-address {
+            flex: 0 0 45%;
+            max-width: 45%;
+        }
+    }
+    /* Màn hình lớn hơn 1825px */
+    @media screen and (min-width: 1825px) and (max-width: 2305px) {
+        .contact-content-gioi-thieu {
+            width: 76.3%;
+            margin-left: 12.5%;
+        }
+        .contact-header .contact-header-title {
+            padding-left: 10.2% !important;
+        }
+        .contact-header {
+            min-height: 600px;
+            padding: 0px 1.7%;
+        }
+        .contact-header .contact-header-title {
+            font-size: 36px;
+        }
+
+    }
+    @media screen and (min-width: 2305px) {
+        .contact-content-gioi-thieu {
+            width: 60%;
+        }
+        .contact-header .contact-header-title {
+            padding-left: 18% !important;
+        }
+        .contact-header {
+            min-height: 600px;
+            padding: 0 2.5%;
+        }
+        .contact-header .contact-header-title {
+            font-size: 36px;
+        }
+    }
+    .contact-content-gioi-thieu > p {
+        color: rgba(255, 255, 255, 1) !important;
+    }
+    .info-section-address > p {
+        color: rgba(255, 255, 255, 1);
+    }
+
+    .mg-b-41 {
+        margin-bottom: 41px;
+    }
+
+</style>
+<div class="contact-header">
+    <h1 class="contact-header-title text-white p-5">THÔNG TIN LIÊN HỆ</h1>
+</div>
+
+<div class="contact-content-gioi-thieu ">
+    <div class="row px-2 px-md-0 mg-b-41">
+        <div class="col-md-7 bg-white info-section-portal">
+            <h2 class="contact-content-gioi-thieu-title mb-4">
+                Cổng Thông tin điện tử Thành phố Hồ Chí Minh
+            </h2>
+
+            <div>
+                <p>
+                    <strong>Giấy phép số:</strong> 08/GP-STTTT, ngày 26 tháng 5 năm
+                    2020
+                </p>
+                <p>
+                    <strong>Cơ quan chủ quản:</strong> Ủy ban nhân dân Thành phố Hồ
+                    Chí Minh
+                </p>
+                <p>
+                    <strong>Cơ quan thường trực mạng:</strong> Văn phòng Ủy ban nhân
+                    dân Thành phố
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-5 text-white info-section-address">
+            <p>
+                <strong>Trụ sở:</strong> 86 Lê Thánh Tôn, Phường Bến Nghé, Quận 1,
+                Thành phố Hồ Chí Minh
+            </p>
+            <p><strong>Điện thoại:</strong> (028) 38226191</p>
+            <p><strong>Fax:</strong> (028) 38296723</p>
+            <p><strong>Email:</strong> cityweb@tphcm.gov.vn</p>
+        </div>
+    </div>
+</div>

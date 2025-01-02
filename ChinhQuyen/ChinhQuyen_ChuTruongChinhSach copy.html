@@ -1,15 +1,17 @@
+<#assign isMobile = getterUtil.getBoolean(request.getAttribute("MOBILE_DEVICE"))/>
+<#assign groupSize = isMobile?then(1, 4)/>
+
 <div class="mt-4 mb-3">
     <div class="ct-margin d-flex align-items-center justify-content-between">
         <p class="title-chutruong-chinhquyen pt-2">CHỦ TRƯƠNG CHÍNH SÁCH</p>
         <a class="ct-xemthem" href="/chủ-trương-chính-sách">Xem thêm <img src="/documents/39403/307879/arrow-right.svg" class="ml-1"></a>
     </div>
 </div>
-<div id="carouselExample" class="carousel slide position-relative d-flex justify-content-center align-items-center ct-margin" data-ride="carousel">
 
+<div id="carouselExample" class="carousel slide position-relative d-flex justify-content-center align-items-center ct-margin" data-ride="carousel">
     <div class="carousel-inner">
         <#assign indexLocal = 0 />
         <#assign totalEntries = entries?size />
-        <#assign groupSize = 4 />
         <#assign totalPages = ((totalEntries + groupSize - 1) / groupSize)>
 
         <ol class="carousel-indicators ct-dot ml-auto mr-auto">
@@ -20,7 +22,7 @@
 
         <#if entries?has_content>
             <#list entries as curEntry>
-                <#if  curEntry?? && curEntry.getAssetRenderer()?exists>
+                <#if curEntry?? && curEntry.getAssetRenderer()?exists>
                     <#assign renderer = curEntry.getAssetRenderer() />
                     <#assign className = renderer.getClassName() />
 
@@ -40,8 +42,7 @@
 
                         <#if indexLocal % groupSize == 1>
                             <div class="carousel-item <#if indexLocal == 1>active</#if>">
-<#--                            <div class="row">-->
-                            <div class="d-flex wrapper-ctcs-slide" >
+                            <div class="d-flex ">
                         </#if>
 
                         <div class="col-12 col-md-6 col-lg-3 pr-0">
@@ -51,7 +52,7 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title text-clamp">${title}</h5>
-                                    <p>${htmlUtil.extractText(description)}</p>
+                                     <p>${htmlUtil.extractText(description)}</p>
                                     <a href="${viewURL}" class="ct-btn-detail mt-auto">Xem chi tiết</a>
                                 </div>
                             </div>
@@ -67,35 +68,32 @@
         </#if>
     </div>
 
-    <a class="carousel-control-prev position-absolute ct-carousel-left wrapper-cddh-prev" href="#carouselExample" role="button" data-slide="prev">
-        <span class="ct-btn-carousel d-flex align-items-center justify-content-center btn-cddh-prev">
+    <a class="carousel-control-prev position-absolute ct-carousel-left" href="#carouselExample" role="button" data-slide="prev" style="width: 40px !important;">
+        <span class="ct-btn-carousel d-flex align-items-center justify-content-center">
             <img src="/documents/39403/307879/left.svg" width="8px" height="19px">
         </span>
     </a>
-    <a class="carousel-control-next ct-carousel-right wrapper-cddh-next" href="#carouselExample" role="button" data-slide="next">
-        <span class="ct-btn-carousel d-flex align-items-center justify-content-center btn-cddh-next">
+    <a class="carousel-control-next ct-carousel-right" href="#carouselExample" role="button" data-slide="next" style="width: 40px !important;">
+        <span class="ct-btn-carousel d-flex align-items-center justify-content-center">
             <img class="ct-rotate" src="/documents/39403/307879/left.svg" width="8px" height="19px">
         </span>
     </a>
 </div>
 
 <style>
-    
-    .carousel-inner{
+    .carousel-inner {
         padding-bottom: 60px;
     }
+    
     .ct-carousel-left {
-        font-family: Roboto;
         left: -50px !important;
     }
 
     .ct-carousel-right {
-        font-family: Roboto;
         right: -50px !important;
     }
 
     .ct-btn-carousel {
-        font-family: Roboto;
         border-radius: 50%;
         background-color: lightgray !important;
         width: 40px !important;
@@ -104,12 +102,12 @@
 
     .ct-btn-carousel:hover {
         background-color: #DB7100 !important;
-        img {
-            transition: filter 0s ease;
-            filter: invert(100%) brightness(200%);
-        }
     }
-
+    
+    .ct-btn-carousel:hover img {
+        transition: filter 0s ease;
+        filter: invert(100%) brightness(200%);
+    }
     .ct-rotate {
         transform: rotate(180deg);
     }
@@ -129,11 +127,12 @@
         border-radius: 20px;
         background-color: #BCE6FE4D;
     }
-
     .card {
-        /*font-family: Roboto;*/
         border: unset !important;
         box-shadow: unset !important;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
     }
     .title-chutruong-chinhquyen {
         /*font-family: Roboto;*/
@@ -146,21 +145,20 @@
         text-decoration-skip-ink: none !important;
         color: #0D4C92 !important;
     }
-
-    .card-img-top {
+        .card-img-top {
         border-radius: 10px;
     }
-
     .card-body {
+        flex: 1;
         padding: 13px 20px 20px 20px !important;
         background-color: #fefefe;
         border-top-left-radius: 9px;
-        /*margin-left: 20px!important;*/
         margin-left: 20px;
         margin-top: -10px;
+        display: flex;
+        flex-direction: column;
     }
-
-    .card-title {
+ .card-title {
         font-size: 24px;
         font-weight: 700;
         line-height: 31.2px;
@@ -214,7 +212,7 @@
         color: #031739 !important;
     }
 
-    .text-clamp{
+    .text-clamp {
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
@@ -223,7 +221,13 @@
         line-height: 1.5;
         max-height: 4.5em;
     }
-    .card-body p {
+
+    .ct-img {
+        z-index: 10;
+        padding-right: 20px !important;
+        min-height: 197px;
+    }
+ .card-body p {
         display: -webkit-box;
         -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
@@ -242,135 +246,54 @@
         background-color: #0D4C92;
         color: #fefefe;
     }
-
+    
     .carousel-item img {
         max-width: 100% !important;
         min-height: 197px !important;
         object-fit: cover !important;
-        height:revert-layer!important;
-    }
-
-    .carousel-control-prev, .carousel-control-next {
-        width: unset !important;
-    }
-
-    .carousel-indicators {
-        text-align: center;
-    }
-    .ct-breadcrum span{
-        font-family: Roboto;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 20.8px;
-        letter-spacing: 0.0015em;
-        text-align: left;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color:#ABABAB;
-    }
-    .ct-breadcrum-active{
-        color:#0D4C92!important;
-    }
-    .ct-img{
-        z-index: 10;
-        padding-right: 20px !important;
-        min-height:197px;
-    }
-    .card {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-
-
-    .card-body {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 13px 20px 20px 20px !important;
-        background-color: #fefefe;
-        border-top-left-radius: 9px;
-        /*margin-left: 20px!important;*/
-        margin-left: 20px;
-        margin-top: -10px;
-    }
-
-    .card-body .text-clamp {
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        line-height: 1.5;
-        max-height: 4.5em;
-    }
-
-    .card-body p {
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        line-height: 1.5;
-        max-height: 6.5em;
-    }
-
-    .card:hover .card-body {
-        background-color: #0D4C92 !important;
-    }
-
-    .card:hover .card-body a {
-        background-color: #BCE6FE;
-        text-decoration: none;
-        color: #031739;
-    }
-
-    .card:hover .card-title {
-        color: #fefefe !important;
-    }
-
-    .card:hover .card-text, .card:hover p {
-        color: #fefefe !important;
-    }
-
-    .ct-btn-detail:hover {
-        background-color: #fefefe !important;
-        color: #031739 !important;
+        height: revert-layer !important;
     }
 
     @media (max-width: 576px) {
+        .carousel-inner {
+            padding-bottom: 40px;
+        }
+        
         .card-body {
-            margin-left: 0!important;
-            margin-top: -10px;
+            margin-left: 0 !important;
         }
+        
         .ct-carousel-left {
-            left: -8px !important;
+            left: -15px !important;
         }
+        
         .ct-carousel-right {
-            right: -8px !important;
+            right: -15px !important;
         }
-        .wrapper-ctcs-slide{
-        max-width: 325px !important;
+        
+        .carousel-item .col-12 {
+            flex: 0 0 100%;
+            max-width: 100%;
         }
-        .wrapper-cddh-prev,
-        .wrapper-cddh-next
-        {
-            top: 50% !important;
+        
+        .ct-img {
+            padding-right: 0 !important;
         }
-       
+        
+        .ct-btn-detail {
+            margin-top: unset !important;
+        }
     }
-@media screen and (min-width: 577px) and (max-width: 1024px) {
-            .wrapper-ctcs-slide{
-             max-width: 363px !important;
-            }
-        }
 </style>
 
-
 <script>
-    $(document).ready(function () {
-        $("img.img-3x4").each(function () {
-            $(this).outerHeight($(this).width() * 0.6);
-        });
-    })
+    $(document).ready(function() {
+        if (window.innerWidth < 577) {
+            $('.carousel-indicators li').remove();
+            var totalItems = $('.carousel-item').length;
+            for (var i = 0; i < totalItems; i++) {
+                $('.carousel-indicators').append('<li data-target="#carouselExample" data-slide-to="' + i + '" ' + (i === 0 ? 'class="active"' : '') + '></li>');
+            }
+        }
+    });
 </script>
